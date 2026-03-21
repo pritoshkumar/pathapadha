@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pathapadha",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3000", "-d", "C:/Users/prito/Documents/pathapadha"],
+      "port": 3000
+    }
+  ]
+}

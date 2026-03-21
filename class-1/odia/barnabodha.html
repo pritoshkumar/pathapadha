@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ବର୍ଣ୍ଣବୋଧ - Odia Letters for Kids</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF8F0;
+    --card-1: #FF6B6B;
+    --card-2: #FF9F43;
+    --card-3: #FECA57;
+    --card-4: #48DBFB;
+    --card-5: #1DD1A1;
+    --card-6: #A29BFE;
+    --card-7: #FD79A8;
+    --card-8: #6C5CE7;
+    --card-9: #00B894;
+    --card-10: #E17055;
+    --text-dark: #2D3436;
+    --text-light: #fff;
+    --shadow: 0 8px 32px rgba(0,0,0,0.13);
+    --radius: 24px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Baloo 2', cursive;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 20%, #FFE0B2 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, #E8F5E9 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, #E3F2FD 0%, transparent 60%);
+    min-height: 100vh;
+    padding: 0 0 60px 0;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    position: relative;
+  }
+  .stars {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    display: block;
+    margin-bottom: 8px;
+    animation: twinkle 2s infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.6; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.08); }
+  }
+  header h1 {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  header h1 .odia-title {
+    font-family: 'Noto Sans Oriya', serif;
+    display: block;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    background: linear-gradient(135deg, #FF6B6B, #A29BFE, #48DBFB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+  header p {
+    font-size: 1.15rem;
+    color: #636e72;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    text-align: center;
+    margin: 40px 0 20px;
+    position: relative;
+  }
+  .section-label h2 {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+    padding: 10px 36px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(108,92,231,0.3);
+    font-family: 'Noto Sans Oriya', serif;
+    letter-spacing: 1px;
+  }
+  .section-label h2 span {
+    font-family: 'Baloo 2', cursive;
+    font-size: 0.9rem;
+    display: block;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* CARD */
+  .card {
+    border-radius: var(--radius);
+    padding: 22px 14px 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+    animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+  }
+  .card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  }
+  .card:active {
+    transform: scale(0.96);
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.7) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* staggered delay */
+  .card:nth-child(1)  { animation-delay: 0.03s; }
+  .card:nth-child(2)  { animation-delay: 0.06s; }
+  .card:nth-child(3)  { animation-delay: 0.09s; }
+  .card:nth-child(4)  { animation-delay: 0.12s; }
+  .card:nth-child(5)  { animation-delay: 0.15s; }
+  .card:nth-child(6)  { animation-delay: 0.18s; }
+  .card:nth-child(7)  { animation-delay: 0.21s; }
+  .card:nth-child(8)  { animation-delay: 0.24s; }
+  .card:nth-child(9)  { animation-delay: 0.27s; }
+  .card:nth-child(10) { animation-delay: 0.30s; }
+  .card:nth-child(11) { animation-delay: 0.33s; }
+  .card:nth-child(12) { animation-delay: 0.36s; }
+
+  .card-letter {
+    font-family: 'Noto Sans Oriya', serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.18);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .card-emoji {
+    font-size: 2.4rem;
+    display: block;
+    margin: 6px 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  .card-word-odia {
+    font-family: 'Noto Sans Oriya', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    display: block;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    margin-bottom: 2px;
+  }
+  .card-word-eng {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Color cycling for cards */
+  .card:nth-child(10n+1)  { background: linear-gradient(135deg, #FF6B6B, #ff8e8e); }
+  .card:nth-child(10n+2)  { background: linear-gradient(135deg, #FF9F43, #ffbe76); }
+  .card:nth-child(10n+3)  { background: linear-gradient(135deg, #F9CA24, #f0932b); }
+  .card:nth-child(10n+4)  { background: linear-gradient(135deg, #48DBFB, #0abde3); }
+  .card:nth-child(10n+5)  { background: linear-gradient(135deg, #1DD1A1, #10ac84); }
+  .card:nth-child(10n+6)  { background: linear-gradient(135deg, #A29BFE, #6C5CE7); }
+  .card:nth-child(10n+7)  { background: linear-gradient(135deg, #FD79A8, #e84393); }
+  .card:nth-child(10n+8)  { background: linear-gradient(135deg, #55EFC4, #00b894); }
+  .card:nth-child(10n+9)  { background: linear-gradient(135deg, #74B9FF, #0984e3); }
+  .card:nth-child(10n+0)  { background: linear-gradient(135deg, #FDCB6E, #e17055); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 20px 0;
+    color: #b2bec3;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  footer span {
+    color: #FF6B6B;
+  }
+
+  /* BOUNCE on click */
+  .card.bounce {
+    animation: bounce 0.4s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes bounce {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.18) rotate(-3deg); }
+    70%  { transform: scale(0.95) rotate(2deg); }
+    100% { transform: scale(1); }
+  }
+
+  .card-word-odia .hl {
+    background: rgba(255,255,255,0.4);
+    border-radius: 4px;
+    padding: 0 2px;
+    font-weight: 900;
+  }
+  .card-note {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.75);
+    display: block;
+    margin-top: 3px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 0 14px; }
+    .card-letter { font-size: 3rem; }
+    .card-emoji { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="stars">⭐ 🌟 ⭐ 🌟 ⭐</span>
+  <h1>
+    <span class="odia-title">ବର୍ଣ୍ଣବୋଧ</span>
+    Learn Odia Letters!
+  </h1>
+  <p>Click on any letter to hear it! 🔊</p>
+</header>
+
+<!-- VOWELS / ସ୍ୱର -->
+<div class="section-label">
+  <h2>ସ୍ୱର <span>Vowels (Swara)</span></h2>
+</div>
+
+<div class="grid" id="vowels-grid"></div>
+
+<!-- CONSONANTS / ବ୍ୟଞ୍ଜନ -->
+<div class="section-label" style="margin-top:50px;">
+  <h2>ବ୍ୟଞ୍ଜନ <span>Consonants (Byanjana)</span></h2>
+</div>
+
+<div class="grid" id="consonants-grid"></div>
+
+<footer>
+  Made with <span>❤️</span> for Odia children everywhere &nbsp;|&nbsp; ଓଡ଼ିଆ ପିଲାଙ୍କ ପାଇଁ
+</footer>
+
+<script>
+const vowels = [
+  { letter: 'ଅ', word: 'ଅଙ୍କ',    eng: 'Anka (Number)',    emoji: '🔢' },
+  { letter: 'ଆ', word: 'ଆମ୍ବ',    eng: 'Amba (Mango)',     emoji: '🥭' },
+  { letter: 'ଇ', word: 'ଇଟା',     eng: 'Ita (Brick)',      emoji: '🧱' },
+  { letter: 'ଈ', word: 'ଈଶ୍ୱର',   eng: 'Ishwara (God)',    emoji: '🙏' },
+  { letter: 'ଉ', word: 'ଉଟ',      eng: 'Uta (Camel)',      emoji: '🐪' },
+  { letter: 'ଊ', word: 'ଊଷା',     eng: 'Usha (Dawn)',      emoji: '🌅' },
+  { letter: 'ଋ', word: 'ଋଷି',     eng: 'Rishi (Sage)',     emoji: '🧘' },
+  { letter: 'ଏ', word: 'ଏଳା',     eng: 'Ela (Cardamom)',   emoji: '🌿' },
+  { letter: 'ଐ', word: 'ଐରାବତ',  eng: 'Airavata (Elephant)', emoji: '🐘' },
+  { letter: 'ଓ', word: 'ଓଠ',      eng: 'Otha (Lip)',       emoji: '💋' },
+  { letter: 'ଔ', word: 'ଔଷଧ',    eng: 'Aushadha (Medicine)', emoji: '💊' },
+  { letter: 'ଅଂ', word: 'ଅଂଶ',   eng: 'Ansha (Part)',     emoji: '🔹' },
+];
+
+const consonants = [
+  { letter: 'କ', word: 'କଳା',     eng: 'Kala (Art)',        emoji: '🎨' },
+  { letter: 'ଖ', word: 'ଖରଗୋଶ', eng: 'Kharagosha (Rabbit)', emoji: '🐰' },
+  { letter: 'ଗ', word: 'ଗଧ',      eng: 'Gadha (Donkey)',    emoji: '🫏' },
+  { letter: 'ଘ', word: 'ଘର',      eng: 'Ghara (House)',     emoji: '🏠' },
+  { letter: 'ଙ', word: 'ଜଙ୍ଘ',    highlight: 'ଙ',  eng: 'Jangha (Leg)',         emoji: '🦵',  note: '← ଙ is inside the word' },
+  { letter: 'ଚ', word: 'ଚଢ଼େଇ',   eng: 'Chadhei (Bird)',    emoji: '🐦' },
+  { letter: 'ଛ', word: 'ଛତା',     eng: 'Chhata (Umbrella)', emoji: '☂️' },
+  { letter: 'ଜ', word: 'ଜଳ',      eng: 'Jala (Water)',      emoji: '💧' },
+  { letter: 'ଝ', word: 'ଝରଣା',   eng: 'Jharana (Waterfall)', emoji: '🌊' },
+  { letter: 'ଞ', word: 'ଅଞ୍ଜଳି',  highlight: 'ଞ',  eng: 'Anjali (Cupped hands)', emoji: '🙌', note: '← ଞ is inside the word' },
+  { letter: 'ଟ', word: 'ଟମାଟ',   eng: 'Tamata (Tomato)',   emoji: '🍅' },
+  { letter: 'ଠ', word: 'ଠାକୁର',  eng: 'Thakura (God)',     emoji: '🙏' },
+  { letter: 'ଡ', word: 'ଡଙ୍ଗା',  eng: 'Danga (Boat)',      emoji: '⛵' },
+  { letter: 'ଢ', word: 'ଢୋଲ',    eng: 'Dhola (Drum)',      emoji: '🥁' },
+  { letter: 'ଣ', word: 'ଘଣ୍ଟା',   highlight: 'ଣ',  eng: 'Ghanta (Bell)',         emoji: '🔔', note: '← ଣ is inside the word' },
+  { letter: 'ତ', word: 'ତରଭୁଜ', eng: 'Tarabhuja (Watermelon)', emoji: '🍉' },
+  { letter: 'ଥ', word: 'ଥଳିଆ',   eng: 'Thalia (Bag)',      emoji: '👜' },
+  { letter: 'ଦ', word: 'ଦାନ୍ତ',  eng: 'Danta (Tooth)',     emoji: '🦷' },
+  { letter: 'ଧ', word: 'ଧନୁ',    eng: 'Dhanu (Bow)',       emoji: '🏹' },
+  { letter: 'ନ', word: 'ନଦୀ',    eng: 'Nadi (River)',      emoji: '🏞️' },
+  { letter: 'ପ', word: 'ପଦ୍ମ',   eng: 'Padma (Lotus)',     emoji: '🪷' },
+  { letter: 'ଫ', word: 'ଫୁଲ',    eng: 'Phula (Flower)',    emoji: '🌸' },
+  { letter: 'ବ', word: 'ବଳଦ',    eng: 'Balada (Bull)',     emoji: '🐂' },
+  { letter: 'ଭ', word: 'ଭାଲୁ',  eng: 'Bhalu (Bear)',      emoji: '🐻' },
+  { letter: 'ମ', word: 'ମାଛ',    eng: 'Macha (Fish)',      emoji: '🐟' },
+  { letter: 'ଯ', word: 'ଯଜ୍ଞ',   eng: 'Yajna (Prayer)',    emoji: '🔥' },
+  { letter: 'ର', word: 'ରଥ',     eng: 'Ratha (Chariot)',   emoji: '🎡' },
+  { letter: 'ଳ', word: 'କଳା',    highlight: 'ଳ',  eng: 'Kala (Banana)',         emoji: '🍌', note: '← ଳ is inside the word' },
+  { letter: 'ଲ', word: 'ଲଙ୍କା',  eng: 'Lanka (Chilli)',    emoji: '🌶️' },
+  { letter: 'ଵ', word: 'ଦ୍ୱାର',   highlight: 'ଵ',  eng: 'Dwara (Door/Gate)',     emoji: '🚪', note: '← ଵ is inside the word' },
+  { letter: 'ଶ', word: 'ଶଙ୍ଖ',   eng: 'Shankha (Conch)',   emoji: '🐚' },
+  { letter: 'ଷ', word: 'ଷଣ୍ଢ',   eng: 'Shanda (Bull)',     emoji: '🐃' },
+  { letter: 'ସ', word: 'ସୂର୍ଯ୍ୟ', eng: 'Surya (Sun)',       emoji: '☀️' },
+  { letter: 'ହ', word: 'ହଂସ',    eng: 'Hamsa (Swan)',      emoji: '🦢' },
+  { letter: 'କ୍ଷ', word: 'କ୍ଷୀର', eng: 'Kshira (Milk)',    emoji: '🥛' },
+];
+
+function createCard(item) {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  // Build word display — highlight the target letter if it's medial
+  let wordDisplay = item.word;
+  if (item.highlight && item.word.includes(item.highlight)) {
+    wordDisplay = item.word.replace(
+      item.highlight,
+      `<span class="hl">${item.highlight}</span>`
+    );
+  }
+
+  card.innerHTML = `
+    <span class="card-letter">${item.letter}</span>
+    <span class="card-emoji">${item.emoji}</span>
+    <span class="card-word-odia">${wordDisplay}</span>
+    <span class="card-word-eng">${item.eng}</span>
+    ${item.note ? `<span class="card-note">${item.note}</span>` : ''}
+  `;
+  card.addEventListener('click', () => {
+    card.classList.remove('bounce');
+    void card.offsetWidth; // reflow
+    card.classList.add('bounce');
+    // speak the Odia word
+    if ('speechSynthesis' in window) {
+      const utt = new SpeechSynthesisUtterance(item.letter + '... ' + item.word);
+      utt.lang = 'or-IN';
+      utt.rate = 0.85;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utt);
+    }
+  });
+  return card;
+}
+
+const vGrid = document.getElementById('vowels-grid');
+const cGrid = document.getElementById('consonants-grid');
+
+vowels.forEach(v => vGrid.appendChild(createCard(v)));
+consonants.forEach(c => cGrid.appendChild(createCard(c)));
+</script>
+</body>
+</html>

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ବର୍ଣ୍ଣବୋଧ ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #FFFDF9;
+  --off:    #F7F5F0;
+  --border: #EBEBEB;
+  --c:      #FF6B6B;
+  --cbg:    #FFF0F0;
+  --green:  #43AA8B;
+  --greenbg:#EDFAF4;
+  --yellow: #F9C74F;
+  --blue:   #3A86FF;
+  --bluebg: #EEF4FF;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,253,249,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* STAR BAR */
+.star-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 48px;
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+}
+.star-display { display: flex; align-items: center; gap: 6px; }
+.star-count { font-size: 1.5rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+.star-label { font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.progress-wrap { flex: 1; min-width: 160px; }
+.progress-label { font-size: 0.72rem; font-weight: 700; color: var(--light); margin-bottom: 4px; }
+.progress-bar { height: 8px; background: var(--off); border-radius: 50px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--yellow), var(--c)); border-radius: 50px; transition: width 0.5s ease; }
+.games-done { font-size: 0.78rem; font-weight: 700; color: var(--light); }
+
+/* PAGE HERO */
+.page-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+}
+.page-hero h1 { font-family: var(--font-or); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 8px; }
+.page-hero p { font-size: 0.95rem; color: var(--soft); }
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* GAME SECTION */
+.game-section {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 56px;
+}
+.game-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+}
+.game-icon { font-size: 2rem; }
+.game-title { font-size: 1.3rem; font-weight: 900; color: var(--ink); }
+.game-subtitle { font-size: 0.82rem; font-weight: 600; color: var(--light); margin-top: 2px; }
+.game-stars-possible {
+  margin-left: auto;
+  font-size: 0.78rem; font-weight: 800;
+  background: #FFFBEC; color: var(--yellow);
+  border: 1px solid #FFE99A;
+  padding: 4px 12px; border-radius: 50px;
+}
+
+/* ── GAME 1: LETTER MATCH ── */
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.match-col { display: flex; flex-direction: column; gap: 10px; }
+.match-col-label { font-size: 0.7rem; font-weight: 800; color: var(--light); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.match-item {
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .15s;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 700;
+  user-select: none;
+}
+.match-item:hover { border-color: var(--c); background: var(--cbg); }
+.match-item.selected { border-color: var(--blue); background: var(--bluebg); }
+.match-item.correct  { border-color: var(--green); background: var(--greenbg); pointer-events: none; }
+.match-item.wrong    { border-color: var(--c); background: var(--cbg); animation: shake .3s; }
+.match-letter { font-family: var(--font-or); font-size: 1.8rem; font-weight: 700; }
+.match-emoji  { font-size: 1.8rem; }
+.match-word   { font-family: var(--font-or); font-size: 0.9rem; color: var(--soft); }
+
+/* ── GAME 2: MCQ QUIZ ── */
+.quiz-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 32px; margin-bottom: 16px;
+}
+.quiz-q-num { font-size: 0.72rem; font-weight: 800; color: var(--light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.quiz-question {
+  font-family: var(--font-or);
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 12px;
+}
+.quiz-question .q-emoji { font-size: 2.2rem; }
+.quiz-instruction { font-size: 0.85rem; color: var(--soft); margin-bottom: 24px; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quiz-opt {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff; cursor: pointer;
+  font-family: var(--font-or); font-size: 1.2rem; font-weight: 700;
+  transition: all .15s;
+  display: flex; align-items: center; gap: 10px;
+}
+.quiz-opt:hover:not(:disabled) { border-color: var(--blue); background: var(--bluebg); }
+.quiz-opt.correct  { border-color: var(--green); background: var(--greenbg); color: var(--green); }
+.quiz-opt.wrong    { border-color: var(--c); background: var(--cbg); color: var(--c); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-opt .opt-emoji { font-size: 1.5rem; }
+.quiz-feedback {
+  margin-top: 14px; padding: 12px 16px;
+  border-radius: 12px; font-size: 0.88rem; font-weight: 700;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.ok  { background: var(--greenbg); color: var(--green); }
+.quiz-feedback.bad { background: var(--cbg); color: var(--c); }
+.quiz-next {
+  margin-top: 16px;
+  background: var(--ink); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 800;
+  display: none; transition: opacity .15s;
+}
+.quiz-next:hover { opacity: 0.8; }
+.quiz-next.show { display: inline-block; }
+
+/* ── GAME 3: FILL IN THE BLANK ── */
+.fill-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 32px; margin-bottom: 16px;
+}
+.fill-prompt {
+  font-family: var(--font-or);
+  font-size: 2rem; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.fill-blank {
+  display: inline-block;
+  width: 56px; height: 52px;
+  border-bottom: 3px solid var(--ink);
+  text-align: center;
+  font-family: var(--font-or);
+  font-size: 2rem; font-weight: 700;
+  background: transparent; border-top: none;
+  border-left: none; border-right: none;
+  outline: none; color: var(--c);
+  transition: border-color .15s;
+}
+.fill-blank:focus { border-color: var(--blue); }
+.fill-blank.correct { border-color: var(--green); color: var(--green); }
+.fill-blank.wrong   { border-color: var(--c); color: var(--c); animation: shake .3s; }
+.fill-hint { font-size: 0.85rem; color: var(--soft); margin-bottom: 20px; }
+.fill-hint .hint-emoji { font-size: 1.4rem; }
+.fill-choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.fill-choice {
+  font-family: var(--font-or);
+  font-size: 1.4rem; font-weight: 700;
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--off); cursor: pointer;
+  transition: all .15s;
+  display: grid; place-items: center;
+}
+.fill-choice:hover { border-color: var(--blue); background: var(--bluebg); }
+.fill-choice.used { opacity: 0.3; pointer-events: none; }
+.fill-submit {
+  background: var(--green); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 800;
+  transition: opacity .15s;
+}
+.fill-submit:hover { opacity: 0.85; }
+.fill-feedback { margin-top: 12px; font-size: 0.88rem; font-weight: 700; display: none; }
+.fill-feedback.show { display: block; }
+.fill-feedback.ok  { color: var(--green); }
+.fill-feedback.bad { color: var(--c); }
+
+/* ── GAME 4: LISTEN & IDENTIFY ── */
+.listen-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.listen-card-wrap { display: flex; flex-direction: column; gap: 8px; }
+.listen-play {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  background: #fff;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; cursor: pointer;
+  transition: all .18s cubic-bezier(.34,1.56,.64,1);
+  font-family: var(--font-or); font-size: 2.2rem; font-weight: 700;
+}
+.listen-play:hover { transform: scale(1.05); border-color: var(--blue); background: var(--bluebg); }
+.listen-play .play-icon { font-size: 1.4rem; }
+.listen-choices-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.listen-opt {
+  flex: 1; min-width: 40px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--off);
+  font-family: var(--font-or); font-size: 1.1rem; font-weight: 700;
+  cursor: pointer; text-align: center;
+  transition: all .15s;
+}
+.listen-opt:hover  { border-color: var(--blue); background: var(--bluebg); }
+.listen-opt.correct{ border-color: var(--green); background: var(--greenbg); }
+.listen-opt.wrong  { border-color: var(--c); background: var(--cbg); }
+
+/* ── GAME 5: SORT VOWELS / CONSONANTS ── */
+.sort-wrap { display: flex; flex-direction: column; gap: 20px; }
+.sort-pool {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  min-height: 64px;
+  background: var(--off); border-radius: 16px;
+  padding: 14px; border: 2px dashed var(--border);
+}
+.sort-zones { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sort-zone {
+  border-radius: 16px; padding: 16px;
+  min-height: 120px;
+  border: 2px dashed var(--border);
+  transition: border-color .15s, background .15s;
+}
+.sort-zone.drag-over { border-color: var(--blue); background: var(--bluebg); }
+.sort-zone.correct-zone { border-color: var(--green); background: var(--greenbg); }
+.sort-zone-label {
+  font-size: 0.75rem; font-weight: 800;
+  color: var(--light); letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.sort-zone-letters { display: flex; flex-wrap: wrap; gap: 8px; }
+.sort-letter {
+  font-family: var(--font-or);
+  font-size: 1.6rem; font-weight: 700;
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: #fff; border: 2px solid var(--border);
+  display: grid; place-items: center;
+  cursor: grab; user-select: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.sort-letter:hover { transform: scale(1.08); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.sort-letter.dragging { opacity: 0.5; cursor: grabbing; }
+.sort-check {
+  background: var(--blue); color: #fff;
+  padding: 11px 28px; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 800;
+  align-self: flex-start; transition: opacity .15s;
+}
+.sort-check:hover { opacity: 0.85; }
+.sort-result { font-size: 0.9rem; font-weight: 700; margin-top: 10px; display: none; }
+.sort-result.show { display: block; }
+.sort-result.ok  { color: var(--green); }
+.sort-result.bad { color: var(--c); }
+
+/* ── GAME 6: WORD BUILDER ── */
+.wb-target {
+  font-family: var(--font-or);
+  font-size: 1.3rem; font-weight: 700;
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.wb-slot {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  border: 2px dashed var(--border);
+  display: grid; place-items: center;
+  font-family: var(--font-or); font-size: 1.6rem; font-weight: 700;
+  background: var(--off); color: var(--ink);
+  transition: border-color .15s;
+}
+.wb-slot.filled { border-style: solid; border-color: var(--blue); background: var(--bluebg); }
+.wb-slot.correct { border-color: var(--green); background: var(--greenbg); }
+.wb-slot.wrong   { border-color: var(--c); background: var(--cbg); }
+.wb-letters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.wb-letter {
+  font-family: var(--font-or);
+  font-size: 1.5rem; font-weight: 700;
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: #fff; border: 2px solid var(--border);
+  display: grid; place-items: center;
+  cursor: pointer; transition: all .15s;
+}
+.wb-letter:hover:not(.used) { border-color: var(--blue); background: var(--bluebg); transform: scale(1.08); }
+.wb-letter.used { opacity: 0.3; pointer-events: none; }
+.wb-hint { font-size: 1.8rem; margin-bottom: 12px; }
+.wb-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.wb-clear {
+  background: var(--off); color: var(--ink);
+  padding: 10px 20px; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 800; border: 2px solid var(--border);
+}
+.wb-submit {
+  background: var(--green); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 800;
+}
+.wb-submit:hover { opacity: 0.85; }
+.wb-feedback { font-size: 0.9rem; font-weight: 700; margin-top: 10px; display: none; }
+.wb-feedback.show { display: block; }
+.wb-feedback.ok  { color: var(--green); }
+.wb-feedback.bad { color: var(--c); }
+.wb-next {
+  background: var(--ink); color: #fff;
+  padding: 10px 22px; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 800;
+  margin-top: 10px; display: none;
+}
+.wb-next.show { display: inline-block; }
+
+/* RESULTS BANNER */
+.results-banner {
+  background: #fff; border: 2px solid var(--yellow);
+  border-radius: 24px; padding: 40px;
+  text-align: center; margin: 0 auto 40px;
+  max-width: 900px; display: none;
+}
+.results-banner.show { display: block; animation: popIn .5s cubic-bezier(.34,1.56,.64,1); }
+.results-emoji { font-size: 4rem; margin-bottom: 12px; }
+.results-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; }
+.results-score { font-size: 1.1rem; color: var(--soft); margin-bottom: 20px; }
+.results-stars { font-size: 2.5rem; letter-spacing: 4px; margin-bottom: 24px; }
+.results-retry {
+  background: var(--c); color: #fff;
+  padding: 12px 32px; border-radius: 12px;
+  font-size: 1rem; font-weight: 800;
+  transition: opacity .15s;
+}
+.results-retry:hover { opacity: 0.85; }
+
+/* CONFETTI CANVAS */
+#confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none; }
+
+/* COMMON */
+.game-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.star-pop {
+  position: fixed; font-size: 2rem;
+  pointer-events: none; z-index: 999;
+  animation: starFloat 1s ease forwards;
+}
+@keyframes starFloat {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .star-bar, .page-hero, .game-section, footer { padding-left: 20px; padding-right: 20px; }
+  .match-grid, .quiz-options, .listen-grid, .sort-zones { grid-template-columns: 1fr; }
+  .listen-grid { grid-template-columns: repeat(2,1fr); }
+  .quiz-options { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <span>ବର୍ଣ୍ଣବୋଧ ଖେଳ</span>
+  </div>
+</nav>
+
+<!-- STAR BAR -->
+<div class="star-bar">
+  <div class="star-display">
+    <span class="star-count" id="starCount">0</span>
+    <span style="font-size:1.4rem">⭐</span>
+    <span class="star-label">Stars earned</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Overall progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="games-done" id="gamesDone">0 / 6 games done</div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>ବର୍ଣ୍ଣବୋଧ ଖେଳ 🎮</h1>
+  <p>6 fun games to practise your Odia letters — earn ⭐ for every correct answer!</p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 1 — MATCH LETTER TO PICTURE
+════════════════════════════════════════════ -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div>
+      <div class="game-title">Game 1 — Match the Letter</div>
+      <div class="game-subtitle">Click a letter, then click the matching picture word</div>
+    </div>
+    <div class="game-stars-possible">Up to 8 ⭐</div>
+  </div>
+  <div class="match-grid">
+    <div class="match-col">
+      <div class="match-col-label">Letters</div>
+      <div id="matchLetters"></div>
+    </div>
+    <div class="match-col">
+      <div class="match-col-label">Picture Words</div>
+      <div id="matchPictures"></div>
+    </div>
+  </div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus"></div>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 2 — MCQ QUIZ
+════════════════════════════════════════════ -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div>
+      <div class="game-title">Game 2 — What Starts With?</div>
+      <div class="game-subtitle">Look at the picture — which letter does this word start with?</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next show" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 3 — FILL IN THE BLANK
+════════════════════════════════════════════ -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">✏️</div>
+    <div>
+      <div class="game-title">Game 3 — Fill the Missing Letter</div>
+      <div class="game-subtitle">Choose the missing letter to complete the word</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="fillContainer"></div>
+  <button class="quiz-next show" id="fillNextBtn" onclick="nextFill()" style="background:var(--green)">Next Word →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 4 — LISTEN & IDENTIFY
+════════════════════════════════════════════ -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">🔊</div>
+    <div>
+      <div class="game-title">Game 4 — Hear & Pick the Letter</div>
+      <div class="game-subtitle">Tap the card to hear the letter, then choose the correct one below</div>
+    </div>
+    <div class="game-stars-possible">Up to 8 ⭐</div>
+  </div>
+  <div class="listen-grid" id="listenGrid"></div>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 5 — SORT: VOWEL OR CONSONANT
+════════════════════════════════════════════ -->
+<section class="game-section" id="game5">
+  <div class="game-header">
+    <div class="game-icon">🗂️</div>
+    <div>
+      <div class="game-title">Game 5 — Sort: ସ୍ୱର or ବ୍ୟଞ୍ଜନ?</div>
+      <div class="game-subtitle">Drag each letter into the correct box — Vowel (ସ୍ୱର) or Consonant (ବ୍ୟଞ୍ଜନ)</div>
+    </div>
+    <div class="game-stars-possible">Up to 10 ⭐</div>
+  </div>
+  <div class="sort-wrap">
+    <div>
+      <div style="font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Letters to sort</div>
+      <div class="sort-pool" id="sortPool"></div>
+    </div>
+    <div class="sort-zones">
+      <div class="sort-zone" id="sortVowel" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropSort(event,'vowel')">
+        <div class="sort-zone-label">🔵 ସ୍ୱର — Vowels</div>
+        <div class="sort-zone-letters" id="sortVowelLetters"></div>
+      </div>
+      <div class="sort-zone" id="sortConsonant" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropSort(event,'consonant')">
+        <div class="sort-zone-label">🟠 ବ୍ୟଞ୍ଜନ — Consonants</div>
+        <div class="sort-zone-letters" id="sortConsonantLetters"></div>
+      </div>
+    </div>
+    <div>
+      <button class="sort-check" onclick="checkSort()">Check Answers ✓</button>
+      <div class="sort-result" id="sortResult"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 6 — WORD BUILDER
+════════════════════════════════════════════ -->
+<section class="game-section" id="game6">
+  <div class="game-header">
+    <div class="game-icon">🔨</div>
+    <div>
+      <div class="game-title">Game 6 — Build the Word</div>
+      <div class="game-subtitle">Look at the picture, tap the letters in the correct order to build the word</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="wbContainer"></div>
+</section>
+
+<!-- RESULTS -->
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div>
+  <div class="results-title" id="resultsTitle">Fantastic!</div>
+  <div class="results-score" id="resultsScore"></div>
+  <div class="results-stars" id="resultsStars"></div>
+  <button class="results-retry" onclick="retryAll()">Play Again 🔄</button>
+</div>
+
+<footer>
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · ଓଡ଼ିଆ · ବର୍ଣ୍ଣବୋଧ · Free forever</span>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+var vowels = [
+  {l:'ଅ',w:'ଅଙ୍କ',  e:'🔢'}, {l:'ଆ',w:'ଆମ୍ବ', e:'🥭'},
+  {l:'ଇ',w:'ଇଟା',  e:'🧱'}, {l:'ଉ',w:'ଉଟ',  e:'🐪'},
+  {l:'ଏ',w:'ଏଳା',  e:'🌿'}, {l:'ଓ',w:'ଓଠ',  e:'👄'},
+];
+var consonants = [
+  {l:'କ',w:'କଳା',  e:'🎨'}, {l:'ଖ',w:'ଖରଗୋଶ',e:'🐰'},
+  {l:'ଗ',w:'ଗଧ',  e:'🫏'}, {l:'ଘ',w:'ଘର',  e:'🏠'},
+  {l:'ଚ',w:'ଚଢ଼େଇ',e:'🐦'}, {l:'ଛ',w:'ଛତା', e:'☂️'},
+  {l:'ଜ',w:'ଜଳ',  e:'💧'}, {l:'ଟ',w:'ଟମାଟ', e:'🍅'},
+  {l:'ଦ',w:'ଦାନ୍ତ',e:'🦷'}, {l:'ନ',w:'ନଦୀ',  e:'🏞️'},
+  {l:'ପ',w:'ପଦ୍ମ', e:'🪷'}, {l:'ଫ',w:'ଫୁଲ',  e:'🌸'},
+  {l:'ବ',w:'ବଳଦ', e:'🐂'}, {l:'ଭ',w:'ଭାଲୁ', e:'🐻'},
+  {l:'ମ',w:'ମାଛ', e:'🐟'}, {l:'ଲ',w:'ଲଙ୍କା', e:'🌶️'},
+  {l:'ସ',w:'ସୂର୍ଯ୍ୟ',e:'☀️'},{l:'ହ',w:'ହଂସ', e:'🦢'},
+];
+
+// Global state
+var totalStars = 0;
+var gamesCompleted = 0;
+var totalGames = 6;
+
+function addStars(n, el) {
+  totalStars += n;
+  document.getElementById('starCount').textContent = totalStars;
+  updateProgress();
+  // floating star pop
+  for (var i = 0; i < n; i++) {
+    (function(idx) {
+      setTimeout(function() {
+        var pop = document.createElement('div');
+        pop.className = 'star-pop';
+        pop.textContent = '⭐';
+        var rect = el ? el.getBoundingClientRect() : {left: window.innerWidth/2, top: window.innerHeight/2};
+        pop.style.left = (rect.left + Math.random()*40 - 20) + 'px';
+        pop.style.top  = (rect.top  + window.scrollY - 20) + 'px';
+        document.body.appendChild(pop);
+        setTimeout(function(){ pop.remove(); }, 1000);
+      }, idx * 180);
+    })(i);
+  }
+}
+
+function markGameDone() {
+  gamesCompleted++;
+  document.getElementById('gamesDone').textContent = gamesCompleted + ' / ' + totalGames + ' games done';
+  updateProgress();
+  if (gamesCompleted === totalGames) setTimeout(showResults, 600);
+}
+
+function updateProgress() {
+  var pct = Math.round((gamesCompleted / totalGames) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function speak(text) {
+  if (!('speechSynthesis' in window)) return;
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'or-IN'; u.rate = 0.8;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i+1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+// ── GAME 1: MATCH ─────────────────────────────────────────────────
+var matchData = shuffle(vowels.concat(consonants)).slice(0,8);
+var matchShuffledPics = shuffle(matchData.slice());
+var selectedLetter = null;
+var matchedPairs = 0;
+
+function initMatch() {
+  var lCol = document.getElementById('matchLetters');
+  var pCol = document.getElementById('matchPictures');
+  lCol.innerHTML = ''; pCol.innerHTML = '';
+
+  matchData.forEach(function(item) {
+    var el = document.createElement('div');
+    el.className = 'match-item';
+    el.dataset.letter = item.l;
+    el.innerHTML = '<span class="match-letter">' + item.l + '</span>';
+    el.onclick = function() { selectLetter(this, item.l); };
+    lCol.appendChild(el);
+  });
+
+  matchShuffledPics.forEach(function(item) {
+    var el = document.createElement('div');
+    el.className = 'match-item';
+    el.dataset.letter = item.l;
+    el.innerHTML = '<span class="match-emoji">' + item.e + '</span><span class="match-word">' + item.w + '</span>';
+    el.onclick = function() { selectPicture(this, item.l); };
+    pCol.appendChild(el);
+  });
+}
+
+function selectLetter(el, letter) {
+  document.querySelectorAll('#matchLetters .match-item.selected').forEach(function(e){ e.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedLetter = letter;
+}
+
+function selectPicture(el, letter) {
+  if (!selectedLetter) return;
+  if (selectedLetter === letter) {
+    // correct
+    el.classList.remove('selected'); el.classList.add('correct');
+    var lEl = document.querySelector('#matchLetters .match-item[data-letter="' + selectedLetter + '"]');
+    if (lEl) { lEl.classList.remove('selected'); lEl.classList.add('correct'); lEl.onclick = null; }
+    el.onclick = null;
+    matchedPairs++;
+    addStars(1, el);
+    speak(letter);
+    selectedLetter = null;
+    document.getElementById('matchStatus').textContent = matchedPairs + ' / 8 matched ✓';
+    if (matchedPairs === 8) { markGameDone(); document.getElementById('matchStatus').textContent = '🎉 All matched! +8 ⭐'; }
+  } else {
+    // wrong
+    el.classList.add('wrong');
+    setTimeout(function(){ el.classList.remove('wrong'); }, 400);
+    selectedLetter = null;
+    document.querySelectorAll('#matchLetters .match-item.selected').forEach(function(e){ e.classList.remove('selected'); });
+  }
+}
+
+// ── GAME 2: MCQ QUIZ ──────────────────────────────────────────────
+var quizData = shuffle([
+  {emoji:'🥭', word:'ଆମ୍ବ',  correct:'ଆ', opts:['ଅ','ଆ','ଇ','ଉ']},
+  {emoji:'🏠', word:'ଘର',   correct:'ଘ', opts:['ଗ','ଘ','କ','ଖ']},
+  {emoji:'🐟', word:'ମାଛ',  correct:'ମ', opts:['ନ','ମ','ପ','ବ']},
+  {emoji:'🌸', word:'ଫୁଲ',  correct:'ଫ', opts:['ପ','ଫ','ବ','ଭ']},
+  {emoji:'💧', word:'ଜଳ',   correct:'ଜ', opts:['ଚ','ଛ','ଜ','ଝ']},
+  {emoji:'☀️', word:'ସୂର୍ଯ୍ୟ',correct:'ସ', opts:['ଶ','ଷ','ସ','ହ']},
+]);
+var quizIdx = 0;
+var quizStars = 0;
+var quizDone = false;
+
+function renderQuiz() {
+  var c = document.getElementById('quizContainer');
+  if (quizIdx >= quizData.length) {
+    c.innerHTML = '<div style="text-align:center;padding:32px;font-size:1rem;font-weight:800;color:var(--green)">🎉 Quiz complete! You earned ' + quizStars + ' ⭐</div>';
+    document.getElementById('quizNextBtn').style.display = 'none';
+    if (!quizDone) { quizDone = true; markGameDone(); }
+    return;
+  }
+  var q = quizData[quizIdx];
+  var optsHTML = shuffle(q.opts).map(function(o) {
+    return '<button class="quiz-opt" onclick="answerQuiz(this,\'' + o + '\',\'' + q.correct + '\')">' + o + '</button>';
+  }).join('');
+  c.innerHTML =
+    '<div class="quiz-card">' +
+      '<div class="quiz-q-num">Question ' + (quizIdx+1) + ' of ' + quizData.length + '</div>' +
+      '<div class="quiz-question"><span class="q-emoji">' + q.emoji + '</span> ' + q.word + '</div>' +
+      '<div class="quiz-instruction">Which letter does this word start with?</div>' +
+      '<div class="quiz-options">' + optsHTML + '</div>' +
+      '<div class="quiz-feedback" id="quizFeedback"></div>' +
+    '</div>';
+  document.getElementById('quizNextBtn').style.display = 'none';
+}
+
+function answerQuiz(el, chosen, correct) {
+  document.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+  var fb = document.getElementById('quizFeedback');
+  if (chosen === correct) {
+    el.classList.add('correct');
+    fb.className = 'quiz-feedback show ok';
+    fb.textContent = '✅ Correct! ' + correct + ' is right!';
+    addStars(1, el); quizStars++;
+  } else {
+    el.classList.add('wrong');
+    fb.className = 'quiz-feedback show bad';
+    fb.textContent = '❌ The correct answer is ' + correct;
+    document.querySelectorAll('.quiz-opt').forEach(function(b){
+      if (b.textContent === correct) b.classList.add('correct');
+    });
+  }
+  document.getElementById('quizNextBtn').style.display = 'inline-block';
+}
+
+function nextQuiz() {
+  quizIdx++;
+  renderQuiz();
+}
+
+// ── GAME 3: FILL IN THE BLANK ─────────────────────────────────────
+var fillData = shuffle([
+  {before:'',  blank:'ଅ', after:'ଙ୍କ', full:'ଅଙ୍କ', hint:'🔢 Number', opts:['ଅ','ଆ','ଇ','ଉ']},
+  {before:'ଆ', blank:'ମ', after:'୍ବ',  full:'ଆମ୍ବ', hint:'🥭 Mango',  opts:['ନ','ମ','ପ','ଲ']},
+  {before:'',  blank:'ଘ', after:'ର',   full:'ଘର',  hint:'🏠 House',  opts:['ଗ','ଘ','ଖ','କ']},
+  {before:'ଜ', blank:'ଳ', after:'',    full:'ଜଳ',  hint:'💧 Water',  opts:['ଳ','ଲ','ନ','ର']},
+  {before:'',  blank:'ସ', after:'ୂର୍ଯ୍ୟ',full:'ସୂର୍ଯ୍ୟ',hint:'☀️ Sun', opts:['ଶ','ଷ','ସ','ହ']},
+  {before:'ହ', blank:'ଂ', after:'ସ',   full:'ହଂସ', hint:'🦢 Swan',   opts:['ଂ','ଃ','ଁ','ଣ']},
+]);
+var fillIdx = 0;
+var fillStars = 0;
+var fillDone = false;
+var fillSelectedChoice = null;
+
+function renderFill() {
+  var c = document.getElementById('fillContainer');
+  if (fillIdx >= fillData.length) {
+    c.innerHTML = '<div style="text-align:center;padding:32px;font-size:1rem;font-weight:800;color:var(--green)">🎉 Fill game complete! You earned ' + fillStars + ' ⭐</div>';
+    document.getElementById('fillNextBtn').style.display = 'none';
+    if (!fillDone) { fillDone = true; markGameDone(); }
+    return;
+  }
+  var q = fillData[fillIdx];
+  fillSelectedChoice = null;
+  var choicesHTML = shuffle(q.opts).map(function(o) {
+    return '<button class="fill-choice" onclick="pickFillChoice(this,\'' + o + '\')">' + o + '</button>';
+  }).join('');
+  c.innerHTML =
+    '<div class="fill-card">' +
+      '<div class="fill-prompt">' +
+        (q.before ? '<span>' + q.before + '</span>' : '') +
+        '<input class="fill-blank" id="fillInput" readonly placeholder="?" value="">' +
+        (q.after  ? '<span>' + q.after  + '</span>' : '') +
+      '</div>' +
+      '<div class="fill-hint"><span class="hint-emoji">' + q.hint.split(' ')[0] + '</span> ' + q.hint.split(' ').slice(1).join(' ') + '</div>' +
+      '<div class="fill-choices">' + choicesHTML + '</div>' +
+      '<button class="fill-submit" onclick="checkFill(\'' + q.blank + '\')">Check ✓</button>' +
+      '<div class="fill-feedback" id="fillFeedback"></div>' +
+    '</div>';
+  document.getElementById('fillNextBtn').style.display = 'none';
+}
+
+function pickFillChoice(el, letter) {
+  document.querySelectorAll('.fill-choice').forEach(function(b){ b.classList.remove('selected'); b.style.borderColor=''; b.style.background=''; });
+  el.style.borderColor = 'var(--blue)'; el.style.background = 'var(--bluebg)';
+  fillSelectedChoice = letter;
+  var inp = document.getElementById('fillInput');
+  if (inp) inp.value = letter;
+}
+
+function checkFill(correct) {
+  if (!fillSelectedChoice) return;
+  var fb = document.getElementById('fillFeedback');
+  var inp = document.getElementById('fillInput');
+  fb.className = 'fill-feedback show';
+  if (fillSelectedChoice === correct) {
+    fb.className += ' ok'; fb.textContent = '✅ Correct! ';
+    if (inp) { inp.classList.add('correct'); }
+    addStars(1, document.querySelector('.fill-submit'));
+    fillStars++;
+  } else {
+    fb.className += ' bad'; fb.textContent = '❌ The correct letter is ' + correct;
+    if (inp) { inp.classList.add('wrong'); inp.value = correct; }
+  }
+  document.querySelector('.fill-submit').disabled = true;
+  document.querySelectorAll('.fill-choice').forEach(function(b){ b.disabled = true; });
+  document.getElementById('fillNextBtn').style.display = 'inline-block';
+}
+
+function nextFill() { fillIdx++; renderFill(); }
+
+// ── GAME 4: LISTEN & IDENTIFY ─────────────────────────────────────
+var listenData = shuffle(vowels.concat(consonants)).slice(0,8);
+var listenScore = 0;
+var listenDone = false;
+
+function initListen() {
+  var grid = document.getElementById('listenGrid');
+  grid.innerHTML = '';
+  listenData.forEach(function(item, i) {
+    var wrongOpts = shuffle(vowels.concat(consonants).filter(function(x){ return x.l !== item.l; })).slice(0,3).map(function(x){ return x.l; });
+    var opts = shuffle([item.l].concat(wrongOpts));
+    var optsHTML = opts.map(function(o) {
+      return '<button class="listen-opt" onclick="answerListen(this,\'' + o + '\',\'' + item.l + '\',' + i + ')">' + o + '</button>';
+    }).join('');
+    var wrap = document.createElement('div');
+    wrap.className = 'listen-card-wrap';
+    wrap.id = 'listenWrap' + i;
+    wrap.innerHTML =
+      '<div class="listen-play" onclick="speak(\'' + item.l + '\')">' +
+        item.l +
+        '<span class="play-icon">🔊</span>' +
+      '</div>' +
+      '<div class="listen-choices-row">' + optsHTML + '</div>';
+    grid.appendChild(wrap);
+  });
+}
+
+function answerListen(el, chosen, correct, idx) {
+  var wrap = document.getElementById('listenWrap' + idx);
+  wrap.querySelectorAll('.listen-opt').forEach(function(b){ b.disabled = true; });
+  if (chosen === correct) {
+    el.classList.add('correct');
+    addStars(1, el); listenScore++;
+    if (listenScore === listenData.length && !listenDone) { listenDone = true; markGameDone(); }
+  } else {
+    el.classList.add('wrong');
+    wrap.querySelectorAll('.listen-opt').forEach(function(b){ if(b.textContent === correct) b.classList.add('correct'); });
+  }
+  // auto-complete check
+  var allDone = true;
+  listenData.forEach(function(_, i) {
+    var w = document.getElementById('listenWrap' + i);
+    if (w && !w.querySelector('.listen-opt.correct') && !w.querySelector('.listen-opt.wrong')) allDone = false;
+  });
+  if (allDone && !listenDone) { listenDone = true; markGameDone(); }
+}
+
+// ── GAME 5: SORT ──────────────────────────────────────────────────
+var sortItems = shuffle([
+  {l:'ଅ',type:'vowel'},{l:'ଆ',type:'vowel'},{l:'ଇ',type:'vowel'},
+  {l:'ଉ',type:'vowel'},{l:'ଏ',type:'vowel'},
+  {l:'କ',type:'consonant'},{l:'ଘ',type:'consonant'},{l:'ଜ',type:'consonant'},
+  {l:'ମ',type:'consonant'},{l:'ସ',type:'consonant'},
+]);
+var sortDone = false;
+
+function initSort() {
+  var pool = document.getElementById('sortPool');
+  pool.innerHTML = '';
+  sortItems.forEach(function(item) {
+    var el = document.createElement('div');
+    el.className = 'sort-letter';
+    el.textContent = item.l;
+    el.dataset.letter = item.l;
+    el.dataset.type = item.type;
+    el.draggable = true;
+    el.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text', item.l + '|' + item.type);
+      el.classList.add('dragging');
+    });
+    el.addEventListener('dragend', function() { el.classList.remove('dragging'); });
+    // touch support
+    el.addEventListener('touchstart', touchStart, {passive:true});
+    el.addEventListener('touchmove',  touchMove,  {passive:false});
+    el.addEventListener('touchend',   touchEnd);
+    pool.appendChild(el);
+  });
+}
+
+// minimal touch-drag for sort
+var touchEl = null, touchClone = null;
+function touchStart(e) {
+  touchEl = e.currentTarget;
+  touchClone = touchEl.cloneNode(true);
+  touchClone.style.cssText = 'position:fixed;opacity:0.8;pointer-events:none;z-index:999;width:52px;height:52px;border-radius:12px;background:#fff;border:2px solid var(--blue);display:grid;place-items:center;font-family:var(--font-or);font-size:1.6rem;font-weight:700;';
+  document.body.appendChild(touchClone);
+}
+function touchMove(e) {
+  if (!touchClone) return;
+  e.preventDefault();
+  var t = e.touches[0];
+  touchClone.style.left = (t.clientX - 26) + 'px';
+  touchClone.style.top  = (t.clientY - 26) + 'px';
+}
+function touchEnd(e) {
+  if (!touchClone || !touchEl) return;
+  var t = e.changedTouches[0];
+  var el = document.elementFromPoint(t.clientX, t.clientY);
+  var zone = el ? el.closest('.sort-zone') : null;
+  if (zone) {
+    var id = zone.id === 'sortVowel' ? 'vowel' : 'consonant';
+    appendToZone(touchEl.dataset.letter, touchEl.dataset.type, id);
+    touchEl.remove();
+  }
+  touchClone.remove(); touchClone = null; touchEl = null;
+}
+
+function dropSort(e, zoneType) {
+  e.preventDefault();
+  document.getElementById('sortVowel').classList.remove('drag-over');
+  document.getElementById('sortConsonant').classList.remove('drag-over');
+  var data = e.dataTransfer.getData('text').split('|');
+  var letter = data[0], type = data[1];
+  var srcEl = document.querySelector('.sort-letter[data-letter="' + letter + '"]');
+  if (srcEl) { srcEl.remove(); appendToZone(letter, type, zoneType); }
+}
+
+function appendToZone(letter, type, zoneType) {
+  var zoneLetters = document.getElementById(zoneType === 'vowel' ? 'sortVowelLetters' : 'sortConsonantLetters');
+  var el = document.createElement('div');
+  el.className = 'sort-letter';
+  el.textContent = letter;
+  el.dataset.letter = letter;
+  el.dataset.type = type;
+  el.draggable = true;
+  el.addEventListener('dragstart', function(e2) {
+    e2.dataTransfer.setData('text', letter + '|' + type);
+    el.classList.add('dragging');
+  });
+  el.addEventListener('dragend', function() { el.classList.remove('dragging'); });
+  el.addEventListener('dragstart', function(ev) {
+    ev.dataTransfer.setData('text', letter + '|' + type);
+  });
+  // click to send back to pool
+  el.onclick = function() {
+    el.remove();
+    var pool = document.getElementById('sortPool');
+    pool.appendChild(el);
+  };
+  zoneLetters.appendChild(el);
+}
+
+function checkSort() {
+  var vowelZone = document.getElementById('sortVowelLetters');
+  var consZone  = document.getElementById('sortConsonantLetters');
+  var allInPool = document.getElementById('sortPool').children.length > 0;
+  if (allInPool) { document.getElementById('sortResult').className='sort-result show bad'; document.getElementById('sortResult').textContent='❌ Please sort all letters first!'; return; }
+  var correct = 0, total = 0;
+  [].slice.call(vowelZone.children).forEach(function(el) {
+    total++;
+    if (el.dataset.type === 'vowel') { correct++; el.style.borderColor = 'var(--green)'; el.style.background = 'var(--greenbg)'; }
+    else { el.style.borderColor = 'var(--c)'; el.style.background = 'var(--cbg)'; }
+  });
+  [].slice.call(consZone.children).forEach(function(el) {
+    total++;
+    if (el.dataset.type === 'consonant') { correct++; el.style.borderColor = 'var(--green)'; el.style.background = 'var(--greenbg)'; }
+    else { el.style.borderColor = 'var(--c)'; el.style.background = 'var(--cbg)'; }
+  });
+  var res = document.getElementById('sortResult');
+  res.className = 'sort-result show ' + (correct === total ? 'ok' : 'bad');
+  res.textContent = correct === total
+    ? '🎉 Perfect! All ' + total + ' correct!'
+    : '❌ ' + correct + ' / ' + total + ' correct. Try again!';
+  addStars(correct, document.querySelector('.sort-check'));
+  if (!sortDone) { sortDone = true; markGameDone(); }
+}
+
+// ── GAME 6: WORD BUILDER ──────────────────────────────────────────
+var wbData = shuffle([
+  {emoji:'🥭', word:'ଆମ୍ବ', letters:['ଆ','ମ','୍','ବ']},
+  {emoji:'🏠', word:'ଘର',   letters:['ଘ','ର','ଖ']},
+  {emoji:'💧', word:'ଜଳ',   letters:['ଜ','ଳ','ଲ']},
+  {emoji:'🐟', word:'ମାଛ',  letters:['ମ','ା','ଛ','ଚ']},
+  {emoji:'🌸', word:'ଫୁଲ',  letters:['ଫ','ୁ','ଲ','ପ']},
+  {emoji:'☀️', word:'ସୂର୍ଯ୍ୟ',letters:['ସ','ୂ','ର','୍','ଯ','୍','ୟ','ଶ']},
+]);
+var wbIdx = 0;
+var wbStars = 0;
+var wbDone = false;
+var wbCurrent = [];
+
+function renderWB() {
+  var c = document.getElementById('wbContainer');
+  if (wbIdx >= wbData.length) {
+    c.innerHTML = '<div style="text-align:center;padding:32px;font-size:1rem;font-weight:800;color:var(--green)">🎉 Word Builder complete! You earned ' + wbStars + ' ⭐</div>';
+    if (!wbDone) { wbDone = true; markGameDone(); }
+    return;
+  }
+  var q = wbData[wbIdx];
+  wbCurrent = [];
+  var wordLen = q.word.length;
+  var slotsHTML = '';
+  for (var i = 0; i < wordLen; i++) {
+    slotsHTML += '<div class="wb-slot" id="wbSlot' + i + '"></div>';
+  }
+  var lettersHTML = shuffle(q.letters).map(function(l,i) {
+    return '<button class="wb-letter" id="wbLet' + i + '" onclick="pickWBLetter(this,\'' + l.replace(/'/g,"\\'") + '\')">' + l + '</button>';
+  }).join('');
+  c.innerHTML =
+    '<div class="wb-hint">' + q.emoji + '</div>' +
+    '<div style="font-size:0.82rem;font-weight:700;color:var(--soft);margin-bottom:14px;">Build this word: tap the letters in order</div>' +
+    '<div class="wb-target">' + slotsHTML + '</div>' +
+    '<div class="wb-letters">' + lettersHTML + '</div>' +
+    '<div class="wb-actions">' +
+      '<button class="wb-clear" onclick="clearWB()">Clear ✕</button>' +
+      '<button class="wb-submit" onclick="checkWB(\'' + q.word.replace(/'/g,"\\'") + '\')">Check ✓</button>' +
+    '</div>' +
+    '<div class="wb-feedback" id="wbFeedback"></div>' +
+    '<button class="wb-next" id="wbNext" onclick="nextWB()">Next Word →</button>';
+}
+
+function pickWBLetter(el, letter) {
+  var q = wbData[wbIdx];
+  if (wbCurrent.length >= q.word.length) return;
+  el.classList.add('used');
+  wbCurrent.push(letter);
+  var slot = document.getElementById('wbSlot' + (wbCurrent.length - 1));
+  if (slot) { slot.textContent = letter; slot.classList.add('filled'); }
+}
+
+function clearWB() {
+  wbCurrent = [];
+  var q = wbData[wbIdx];
+  for (var i = 0; i < q.word.length; i++) {
+    var slot = document.getElementById('wbSlot' + i);
+    if (slot) { slot.textContent = ''; slot.className = 'wb-slot'; }
+  }
+  document.querySelectorAll('.wb-letter').forEach(function(b){ b.classList.remove('used'); });
+}
+
+function checkWB(correct) {
+  var built = wbCurrent.join('');
+  var fb = document.getElementById('wbFeedback');
+  fb.className = 'wb-feedback show';
+  var q = wbData[wbIdx];
+  if (built === correct) {
+    fb.className += ' ok'; fb.textContent = '🎉 Correct! You built ' + correct;
+    for (var i = 0; i < q.word.length; i++) {
+      var s = document.getElementById('wbSlot' + i);
+      if (s) { s.classList.remove('filled'); s.classList.add('correct'); }
+    }
+    addStars(1, document.querySelector('.wb-submit')); wbStars++;
+  } else {
+    fb.className += ' bad'; fb.textContent = '❌ Not quite. The word is ' + correct;
+    for (var j = 0; j < q.word.length; j++) {
+      var sl = document.getElementById('wbSlot' + j);
+      if (sl) { sl.classList.remove('filled'); sl.classList.add('wrong'); }
+    }
+  }
+  document.querySelector('.wb-submit').disabled = true;
+  document.querySelectorAll('.wb-letter').forEach(function(b){ b.disabled = true; });
+  document.getElementById('wbNext').className = 'wb-next show';
+}
+
+function nextWB() { wbIdx++; renderWB(); }
+
+// ── RESULTS ───────────────────────────────────────────────────────
+function showResults() {
+  var banner = document.getElementById('resultsBanner');
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth'});
+  var emoji = totalStars >= 35 ? '🏆' : totalStars >= 20 ? '🥇' : '🎉';
+  var title = totalStars >= 35 ? 'Outstanding!' : totalStars >= 20 ? 'Great Job!' : 'Well Done!';
+  document.getElementById('resultsEmoji').textContent = emoji;
+  document.getElementById('resultsTitle').textContent = title;
+  document.getElementById('resultsScore').textContent = 'You completed all 6 games and earned ' + totalStars + ' stars!';
+  var starsStr = '';
+  for (var i = 0; i < Math.min(totalStars, 20); i++) starsStr += '⭐';
+  document.getElementById('resultsStars').textContent = starsStr;
+  launchConfetti();
+}
+
+function retryAll() {
+  location.reload();
+}
+
+// ── CONFETTI ──────────────────────────────────────────────────────
+function launchConfetti() {
+  var canvas = document.getElementById('confetti');
+  canvas.style.display = 'block';
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  var pieces = [];
+  var colors = ['#FF6B6B','#FF9F43','#F9C74F','#43AA8B','#3A86FF','#7B5EA7','#FD79A8'];
+  for (var i = 0; i < 120; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -10 - Math.random() * 200,
+      r: 4 + Math.random() * 6,
+      d: 1 + Math.random() * 2,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: Math.random() * 10 - 5,
+      tiltAngle: 0,
+      tiltSpeed: 0.05 + Math.random() * 0.1
+    });
+  }
+  var frame = 0;
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(function(p) {
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, p.r, p.r*0.5, p.tilt, 0, Math.PI*2);
+      ctx.fillStyle = p.color; ctx.fill();
+      p.y += p.d; p.tiltAngle += p.tiltSpeed; p.tilt = Math.sin(p.tiltAngle) * 12;
+      if (p.y > canvas.height + 10) { p.y = -10; p.x = Math.random()*canvas.width; }
+    });
+    frame++;
+    if (frame < 200) requestAnimationFrame(draw);
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); canvas.style.display='none'; }
+  }
+  draw();
+}
+
+// ── INIT ALL ──────────────────────────────────────────────────────
+initMatch();
+renderQuiz();
+renderFill();
+initListen();
+initSort();
+renderWB();
+</script>
+</body>
+</html>
