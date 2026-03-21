@@ -240,7 +240,7 @@ footer {
   <div class="nav-right">
     <a href="#classes" class="nav-link">Classes</a>
     <a href="#about" class="nav-link">About</a>
-    <a href="/cdn-cgi/l/email-protection#80e8e5ececefc0f0e1f4e8e1f0e1e4e8e1aee3efed" class="nav-cta">Contact Us</a>
+    <a href="mailto:pathapadha@gmail.com" class="nav-cta">Contact Us</a>
   </div>
 </nav>
 
@@ -329,12 +329,12 @@ footer {
   <div class="footer-links">
     <a href="#classes">Classes</a>
     <a href="#about">About</a>
-    <a href="/cdn-cgi/l/email-protection#f79f929b9b98b78796839f968796939f96d994989a">Contact</a>
+    <a href="mailto:pathapadha@gmail.com">Contact</a>
   </div>
   <span class="footer-copy">Made with ♥ for Odia children everywhere</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const classes = [
   { num:1,  odia:'ପ୍ରଥମ ଶ୍ରେଣୀ',  eng:'Class 1',  emoji:'🌱', color:'#FF6B6B', bg:'#FFF0F0', subjects:['Odia','Math','English','EVS'],           live:['Odia'] },
   { num:2,  odia:'ଦ୍ୱିତୀୟ ଶ୍ରେଣୀ', eng:'Class 2',  emoji:'🌿', color:'#FF9F43', bg:'#FFF5EC', subjects:['Odia','Math','English','EVS'],           live:[] },
@@ -376,3 +376,12 @@ classes.forEach(function(c) {
     '<div class="card-subjects">' + subjHTML + '</div>' +
     '<div class="card-footer">' +
       (isLive
+        ? '<div class="card-go">Start learning →</div>'
+        : '<div class="card-soon-tag">Coming Soon</div>') +
+    '</div>';
+
+  grid.appendChild(el);
+});
+</script>
+</body>
+</html>
