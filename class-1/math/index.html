@@ -104,6 +104,21 @@ hr.divider { border: none; border-top: 1px solid var(--border); }
 footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
 .footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+.topic-footer { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.topic-btn-learn {
+  font-size: 0.82rem; font-weight: 800; color: #fff;
+  background: var(--tc); padding: 8px 18px;
+  border-radius: 10px; transition: opacity .15s;
+}
+.topic-btn-learn:hover { opacity: 0.85; }
+.topic-btn-games {
+  font-size: 0.82rem; font-weight: 800;
+  color: var(--tc); background: var(--tcbg);
+  border: 2px solid var(--tc);
+  padding: 6px 16px; border-radius: 10px;
+  transition: all .15s;
+}
+.topic-btn-games:hover { background: var(--tc); color: #fff; }
 
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
@@ -168,6 +183,7 @@ var topics = [
     bg: '#EEF4FF',
     tags: ['Recognition', 'Writing', 'Odia Numerals'],
     href: 'numbers.html',
+    gamesHref: 'numbers-games.html',
     live: true
   },
   {
@@ -180,6 +196,7 @@ var topics = [
     bg: '#FFF0F0',
     tags: ['Counting', 'Objects', 'Matching'],
     href: 'counting.html',
+    gamesHref: 'counting-games.html',
     live: true
   },
   {
@@ -192,6 +209,7 @@ var topics = [
     bg: '#EDFAF4',
     tags: ['Order', 'Sequence', 'Practice'],
     href: 'order.html',
+    gamesHref: 'order-games.html',
     live: true
   },
   {
@@ -204,6 +222,7 @@ var topics = [
     bg: '#FFFBEC',
     tags: ['Addition', 'Subtraction', 'Number Line'],
     href: 'addsub.html',
+    gamesHref: 'addsub-games.html',
     live: true
   },
   {
@@ -216,6 +235,7 @@ var topics = [
     bg: '#F3EDFF',
     tags: ['2D Shapes', 'Names', 'Drawing'],
     href: 'shapes.html',
+    gamesHref: 'shapes-games.html',
     live: true
   },
   {
@@ -228,6 +248,7 @@ var topics = [
     bg: '#FFF0F1',
     tags: ['Patterns', 'Sequence', 'Predict'],
     href: 'patterns.html',
+    gamesHref: 'patterns-games.html',
     live: true
   }
 ];
@@ -235,8 +256,7 @@ var topics = [
 var grid = document.getElementById('topicGrid');
 
 topics.forEach(function(t) {
-  var el = document.createElement(t.live ? 'a' : 'div');
-  if (t.live) el.href = t.href;
+  var el = document.createElement('div');
   el.className = 'topic-card ' + (t.live ? 'live' : 'soon');
   el.style.setProperty('--tc',   t.color);
   el.style.setProperty('--tcbg', t.bg);
@@ -255,10 +275,10 @@ topics.forEach(function(t) {
         '<div class="topic-desc">' + t.desc + '</div>' +
       '</div>' +
     '</div>' +
-    '<div class="topic-right">' +
-      '<div class="topic-tags">' + tagsHTML + '</div>' +
+    '<div class="topic-footer">' +
       (t.live
-        ? '<div class="topic-arrow">→</div>'
+        ? '<a href="' + t.href + '" class="topic-btn-learn">Learn →</a>' +
+          (t.gamesHref ? '<a href="' + t.gamesHref + '" class="topic-btn-games">🎮 Play Games</a>' : '')
         : '<div class="topic-soon-tag">Soon</div>') +
     '</div>';
 
