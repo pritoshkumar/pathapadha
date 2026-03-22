@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Writing — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.5rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.hero{max-width:1100px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:8px;}
+.hero p{font-size:0.95rem;color:var(--soft);max-width:500px;margin:0 auto;}
+
+hr.divider{border:none;border-top:1px solid var(--border);}
+
+.section{max-width:900px;margin:0 auto;padding:48px 48px 32px;}
+.section-title{font-size:1.3rem;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.section-sub{font-size:0.82rem;color:var(--soft);margin-bottom:24px;}
+
+.lesson-card{
+  background:#fff;border:2px solid var(--border);border-radius:20px;
+  padding:28px;margin-bottom:20px;
+  transition:box-shadow .18s;
+}
+.lesson-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+.lesson-title{font-size:1.1rem;font-weight:900;color:var(--c);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.lesson-text{font-size:0.95rem;line-height:1.8;color:var(--ink);margin-bottom:16px;}
+.lesson-odia{font-family:var(--font-or);font-size:0.85rem;color:var(--soft);margin-bottom:16px;padding:10px 16px;background:#FFFBEC;border-radius:10px;border-left:4px solid #F9C74F;line-height:1.8;}
+
+.example-box{background:var(--off);border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid var(--border);}
+.example-label{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.example-item{font-size:0.95rem;line-height:1.8;color:var(--ink);margin-bottom:6px;padding-left:16px;border-left:3px solid var(--c);}
+
+.letter-box{background:var(--cbg);border-radius:16px;padding:24px;margin-bottom:16px;border:2px solid var(--c);font-family:var(--font);line-height:2;}
+.letter-line{font-size:0.95rem;color:var(--ink);}
+.letter-line.indent{padding-left:40px;}
+.letter-line.right{text-align:right;}
+.letter-highlight{color:var(--c);font-weight:800;}
+
+.tip-box{background:#EDFAF4;border-radius:12px;padding:16px 20px;margin-bottom:16px;border-left:4px solid #43AA8B;}
+.tip-label{font-size:0.72rem;font-weight:800;color:#43AA8B;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.tip-text{font-size:0.88rem;color:var(--soft);line-height:1.7;}
+
+.games-cta{text-align:center;padding:32px 20px 16px;}
+.games-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--c);color:#fff;font-size:1rem;font-weight:800;padding:14px 32px;border-radius:14px;transition:opacity .15s;}
+.games-cta a:hover{opacity:0.85;}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:16px 48px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.bottom-nav a{font-size:0.88rem;font-weight:800;color:var(--c);padding:10px 20px;border:2px solid var(--c);border-radius:12px;transition:all .15s;}
+.bottom-nav a:hover{background:var(--c);color:#fff;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .hero{padding:32px 20px 24px;}
+  .section{padding:32px 20px 24px;}
+  .lesson-card{padding:20px;}
+  .bottom-nav{padding:16px 20px 36px;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <a href="index.html">English</a> ›
+    <span>Writing</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">✏️ Writing</div>
+  <h1>✏️ Writing Skills</h1>
+  <!-- REVIEW NEEDED -->
+  <p>ବାକ୍ୟ ଗଠନ, ଅନୁଚ୍ଛେଦ ଓ ଚିଠି ଲେଖିବା ଶିଖନ୍ତୁ — Learn to form sentences, write paragraphs and letters!</p>
+</section>
+
+<hr class="divider">
+
+<!-- Section 1: Sentence Formation -->
+<section class="section">
+  <div class="section-title">📐 Forming Sentences</div>
+  <div class="section-sub">Learn to make correct English sentences</div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">📘 What is a Sentence?</div>
+    <div class="lesson-text">
+      A sentence is a group of words that makes complete sense. Every sentence starts with a <strong>capital letter</strong> and ends with a <strong>full stop (.)</strong>, <strong>question mark (?)</strong> or <strong>exclamation mark (!)</strong>.
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="lesson-odia">
+      ବାକ୍ୟ ହେଉଛି ଶବ୍ଦଗୁଡ଼ିକର ଗୋଟିଏ ସମୂହ ଯାହା ସମ୍ପୂର୍ଣ୍ଣ ଅର୍ଥ ଦେଇଥାଏ। ପ୍ରତ୍ୟେକ ବାକ୍ୟ ବଡ଼ ଅକ୍ଷରରେ ଆରମ୍ଭ ହୁଏ ଓ ପୂର୍ଣ୍ଣବିରାମ, ପ୍ରଶ୍ନବୋଧକ ବା ବିସ୍ମୟସୂଚକ ଚିହ୍ନରେ ଶେଷ ହୁଏ।
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">Remember</div>
+      <div class="tip-text">A sentence needs: <strong>Who/What</strong> (subject) + <strong>Does what</strong> (verb) + <strong>More info</strong> (object)</div>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Examples</div>
+      <div class="example-item"><strong>The cat</strong> sits on the mat.</div>
+      <div class="example-item"><strong>My mother</strong> cooks food.</div>
+      <div class="example-item"><strong>I</strong> go to school every day.</div>
+      <div class="example-item"><strong>Birds</strong> fly in the sky.</div>
+      <div class="example-item"><strong>We</strong> play in the park.</div>
+    </div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">❓ Types of Sentences</div>
+    <div class="lesson-text">
+      <strong>1. Statements</strong> — tell something. End with a full stop (.)<br>
+      <strong>2. Questions</strong> — ask something. End with a question mark (?)<br>
+      <strong>3. Exclamations</strong> — show surprise or strong feelings. End with an exclamation mark (!)
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Examples</div>
+      <div class="example-item">The sun is bright. (Statement)</div>
+      <div class="example-item">Where is my book? (Question)</div>
+      <div class="example-item">What a beautiful flower! (Exclamation)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Section 2: Paragraph Writing -->
+<section class="section">
+  <div class="section-title">📝 Writing Paragraphs</div>
+  <div class="section-sub">How to write a simple paragraph</div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">📘 What is a Paragraph?</div>
+    <div class="lesson-text">
+      A paragraph is a group of sentences about <strong>one topic</strong>. Start with a <strong>topic sentence</strong> that tells the main idea. Then add 2-3 sentences with more details.
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="lesson-odia">
+      ଅନୁଚ୍ଛେଦ ହେଉଛି ଗୋଟିଏ ବିଷୟ ବାବଦରେ ଲେଖାଯାଇଥିବା ବାକ୍ୟ ସମୂହ। ପ୍ରଥମ ବାକ୍ୟରେ ମୁଖ୍ୟ ଧାରଣା ଲେଖନ୍ତୁ। ତାପରେ ୨-୩ ଟି ବାକ୍ୟରେ ଅଧିକ ବିବରଣୀ ଦିଅନ୍ତୁ।
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Example Paragraph: My School</div>
+      <div class="example-item" style="border-left-color:#7B5EA7;">
+        <strong>My school is very nice.</strong> It has many rooms and a big playground. My teacher is kind and helpful. I love going to school every day. My friends and I play together during break time.
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Example Paragraph: My Pet</div>
+      <div class="example-item" style="border-left-color:#7B5EA7;">
+        <strong>I have a pet dog named Tommy.</strong> He is brown and very friendly. He likes to run in the garden. I give him food and water every day. Tommy makes me very happy.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Section 3: Letter Writing -->
+<section class="section">
+  <div class="section-title">✉️ Letter Writing</div>
+  <div class="section-sub">How to write a simple letter</div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">📘 Parts of a Letter</div>
+    <div class="lesson-text">
+      A simple letter has these parts:<br>
+      <strong>1.</strong> Your address and date (top right)<br>
+      <strong>2.</strong> Greeting: Dear ___ (who you are writing to)<br>
+      <strong>3.</strong> Body: What you want to say<br>
+      <strong>4.</strong> Closing: Yours lovingly / Your friend<br>
+      <strong>5.</strong> Your name
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="lesson-odia">
+      ଏକ ସରଳ ଚିଠିର ଅଂଶଗୁଡ଼ିକ: ଠିକଣା ଓ ତାରିଖ, ଅଭିବାଦନ, ମୂଳ ବିଷୟ, ସମାପ୍ତି ଓ ନାମ।
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Example Letter: To a Friend</div>
+    </div>
+
+    <div class="letter-box">
+      <div class="letter-line right"><span class="letter-highlight">My Home</span></div>
+      <div class="letter-line right"><span class="letter-highlight">Bhubaneswar</span></div>
+      <div class="letter-line right"><span class="letter-highlight">10 March 2026</span></div>
+      <br>
+      <div class="letter-line"><span class="letter-highlight">Dear Raju,</span></div>
+      <br>
+      <div class="letter-line indent">How are you? I am fine. I miss you very much. We had a sports day at our school last week. I won the running race! I wish you were there.</div>
+      <br>
+      <div class="letter-line indent">Please come to visit me during the holidays. We will play together and have fun.</div>
+      <br>
+      <div class="letter-line"><span class="letter-highlight">Your friend,</span></div>
+      <div class="letter-line"><span class="letter-highlight">Sita</span></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">Writing Tips</div>
+      <div class="tip-text">
+        1. Always write neatly<br>
+        2. Use capital letters at the start of sentences and for names<br>
+        3. End sentences with the correct punctuation mark<br>
+        4. Leave space between paragraphs
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="games-cta">
+  <a href="writing-games.html">🎮 Play Writing Games →</a>
+</div>
+
+<div class="bottom-nav">
+  <a href="grammar.html">← Previous: Grammar</a>
+  <a href="index.html">Back to English →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · English · Free forever</span>
+</footer>
+
+</body>
+</html>

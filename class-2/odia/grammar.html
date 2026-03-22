@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବ୍ୟାକରଣ — Grammar Basics | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #B3D4FF}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;padding:0 48px}
+
+.grammar-section{max-width:900px;margin:0 auto;padding:0 48px 40px}
+.grammar-card{background:#fff;border-radius:24px;border:2px solid var(--border);padding:32px;margin-bottom:24px;transition:border-color .18s}
+.grammar-card:hover{border-color:var(--c)}
+.grammar-card-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.grammar-card-emoji{font-size:2.5rem}
+.grammar-card-title{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--c)}
+.grammar-card-title-en{font-size:0.85rem;font-weight:600;color:var(--light);margin-top:2px}
+.grammar-card-desc{font-size:0.92rem;color:var(--soft);margin-bottom:20px;line-height:1.8}
+
+.example-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.example-table th{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:8px 12px;border-bottom:2px solid var(--border)}
+.example-table td{font-family:var(--font-or);font-size:1.1rem;font-weight:700;padding:10px 12px;border-bottom:1px solid var(--off)}
+.example-table td.eng{font-family:var(--font);font-size:0.88rem;font-weight:600;color:var(--light)}
+.example-table tr:hover td{background:var(--cbg)}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}
+.btn:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}
+.btn-primary{background:var(--c);color:#fff}
+.btn-forward{background:var(--ink);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.page-hero,.intro,.grammar-section,.bottom-nav,footer,.section-label{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}.example-table{font-size:0.9rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 2</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ବ୍ୟାକରଣ</span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-emoji">📐</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ବ୍ୟାକରଣ</h1>
+  <p class="subtitle">Byakarana — Grammar Basics</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୨ (SCERT Odisha)</span>
+</div>
+<hr class="divider">
+
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ଓଡ଼ିଆ ବ୍ୟାକରଣର ମୂଳ ଧାରଣା — ବିଶେଷ୍ୟ, କ୍ରିୟା ଓ ସର୍ବନାମ ଶିଖ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Learn the basic building blocks of Odia grammar — nouns, verbs, and pronouns!</p>
+</div>
+
+<div class="grammar-section" id="grammarSection"></div>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="stories.html" class="btn btn-outline">← ଗଳ୍ପ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="grammar-games.html" class="btn btn-primary">🎮 ବ୍ୟାକରଣ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="index.html" class="btn btn-forward">ଓଡ଼ିଆ ବିଷୟ →</a>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 2 · Odia · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED
+var grammarTopics = [
+  {
+    title: 'ବିଶେଷ୍ୟ',
+    titleEn: 'Biseshya — Nouns (naming words)',
+    emoji: '📦',
+    desc: 'ବିଶେଷ୍ୟ ହେଉଛି ନାମ ଶବ୍ଦ — ବ୍ୟକ୍ତି, ବସ୍ତୁ, ସ୍ଥାନ ବା ଜନ୍ତୁର ନାମ। (Nouns are naming words for people, things, places, or animals.)',
+    examples: [
+      { odia: 'ପିଲା', eng: 'Child (person)', emoji: '🧒' },
+      { odia: 'ଘର', eng: 'House (thing)', emoji: '🏠' },
+      { odia: 'ବିଦ୍ୟାଳୟ', eng: 'School (place)', emoji: '🏫' },
+      { odia: 'ଗୋରୁ', eng: 'Cow (animal)', emoji: '🐄' },
+      { odia: 'ଫୁଲ', eng: 'Flower (thing)', emoji: '🌸' },
+      { odia: 'ନଦୀ', eng: 'River (place)', emoji: '🏞️' }
+    ]
+  },
+  {
+    title: 'କ୍ରିୟା',
+    titleEn: 'Kriya — Verbs (action words)',
+    emoji: '🏃',
+    desc: 'କ୍ରିୟା ହେଉଛି କାମ ଶବ୍ଦ — କ\'ଣ କରୁଛ ତାହା ବୁଝାଏ। (Verbs are action words that tell what someone is doing.)',
+    examples: [
+      { odia: 'ଖାଏ', eng: 'Eats', emoji: '🍽️' },
+      { odia: 'ଯାଏ', eng: 'Goes', emoji: '🚶' },
+      { odia: 'ଖେଳେ', eng: 'Plays', emoji: '⚽' },
+      { odia: 'ପଢ଼େ', eng: 'Reads', emoji: '📖' },
+      { odia: 'ଲେଖେ', eng: 'Writes', emoji: '✍️' },
+      { odia: 'ଶୋଏ', eng: 'Sleeps', emoji: '😴' }
+    ]
+  },
+  {
+    title: 'ସର୍ବନାମ',
+    titleEn: 'Sarbanama — Pronouns',
+    emoji: '👤',
+    desc: 'ସର୍ବନାମ ବିଶେଷ୍ୟ ବଦଳରେ ବ୍ୟବହୃତ ହୁଏ। (Pronouns are used in place of nouns.)',
+    examples: [
+      { odia: 'ମୁଁ', eng: 'I', emoji: '🙋' },
+      { odia: 'ତୁ', eng: 'You (informal)', emoji: '👉' },
+      { odia: 'ସେ', eng: 'He/She', emoji: '👤' },
+      { odia: 'ଆମେ', eng: 'We', emoji: '👥' },
+      { odia: 'ତୁମେ', eng: 'You (formal)', emoji: '🤝' },
+      { odia: 'ସେମାନେ', eng: 'They', emoji: '👨‍👩‍👧‍👦' }
+    ]
+  }
+];
+
+var section = document.getElementById('grammarSection');
+grammarTopics.forEach(function(g) {
+  var tableRows = g.examples.map(function(ex) {
+    return '<tr><td>' + ex.emoji + ' ' + ex.odia + '</td><td class="eng">' + ex.eng + '</td></tr>';
+  }).join('');
+
+  var card = document.createElement('div');
+  card.className = 'grammar-card';
+  card.innerHTML =
+    '<div class="grammar-card-header">' +
+      '<div class="grammar-card-emoji">' + g.emoji + '</div>' +
+      '<div><div class="grammar-card-title">' + g.title + '</div><div class="grammar-card-title-en">' + g.titleEn + '</div></div>' +
+    '</div>' +
+    '<div class="grammar-card-desc">' + g.desc + '</div>' +
+    '<table class="example-table"><thead><tr><th>ଓଡ଼ିଆ</th><th>English</th></tr></thead><tbody>' + tableRows + '</tbody></table>';
+  section.appendChild(card);
+});
+</script>
+</body>
+</html>

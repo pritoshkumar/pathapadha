@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Grammar — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.5rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.hero{max-width:1100px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:8px;}
+.hero p{font-size:0.95rem;color:var(--soft);max-width:500px;margin:0 auto;}
+
+hr.divider{border:none;border-top:1px solid var(--border);}
+
+.section{max-width:900px;margin:0 auto;padding:48px 48px 32px;}
+.section-title{font-size:1.3rem;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.section-sub{font-size:0.82rem;color:var(--soft);margin-bottom:24px;}
+
+.rule-card{
+  background:#fff;border:2px solid var(--border);border-radius:20px;
+  padding:28px;margin-bottom:20px;
+  transition:box-shadow .18s;
+}
+.rule-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+.rule-title{font-size:1.1rem;font-weight:900;color:var(--c);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.rule-text{font-size:0.95rem;line-height:1.8;color:var(--ink);margin-bottom:16px;}
+.rule-odia{font-family:var(--font-or);font-size:0.85rem;color:var(--soft);margin-bottom:16px;padding:10px 16px;background:#FFFBEC;border-radius:10px;border-left:4px solid #F9C74F;line-height:1.8;}
+
+.example-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;border:2px solid var(--border);margin-bottom:16px;}
+.example-table th{background:var(--cbg);color:var(--c);font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:12px 16px;text-align:left;}
+.example-table td{padding:12px 16px;font-size:0.95rem;font-weight:600;border-top:1px solid var(--border);}
+.example-table tr:nth-child(even) td{background:var(--off);}
+.highlight{color:var(--c);font-weight:900;}
+
+.games-cta{text-align:center;padding:32px 20px 16px;}
+.games-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--c);color:#fff;font-size:1rem;font-weight:800;padding:14px 32px;border-radius:14px;transition:opacity .15s;}
+.games-cta a:hover{opacity:0.85;}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:16px 48px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.bottom-nav a{font-size:0.88rem;font-weight:800;color:var(--c);padding:10px 20px;border:2px solid var(--c);border-radius:12px;transition:all .15s;}
+.bottom-nav a:hover{background:var(--c);color:#fff;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .hero{padding:32px 20px 24px;}
+  .section{padding:32px 20px 24px;}
+  .rule-card{padding:20px;}
+  .example-table th,.example-table td{padding:10px 12px;font-size:0.85rem;}
+  .bottom-nav{padding:16px 20px 36px;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <a href="index.html">English</a> ›
+    <span>Grammar</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">📝 Grammar</div>
+  <h1>📝 Basic Grammar</h1>
+  <!-- REVIEW NEEDED -->
+  <p>ଇଂରାଜୀ ବ୍ୟାକରଣର ସରଳ ନିୟମ ଶିଖନ୍ତୁ — Learn simple English grammar rules with examples!</p>
+</section>
+
+<hr class="divider">
+
+<!-- Section 1: is / am / are -->
+<section class="section">
+  <div class="section-title">📌 Using is, am, are</div>
+  <div class="section-sub">When to use is, am and are in sentences</div>
+
+  <div class="rule-card">
+    <div class="rule-title">📘 The Rule</div>
+    <div class="rule-text">
+      <strong>I</strong> → use <span class="highlight">am</span><br>
+      <strong>He / She / It</strong> (one person or thing) → use <span class="highlight">is</span><br>
+      <strong>We / You / They</strong> (more than one) → use <span class="highlight">are</span>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rule-odia">
+      <strong>ମୁଁ</strong> → <strong>am</strong> ବ୍ୟବହାର କରନ୍ତୁ<br>
+      <strong>ସେ (ପୁରୁଷ/ସ୍ତ୍ରୀ/ବସ୍ତୁ)</strong> → <strong>is</strong> ବ୍ୟବହାର କରନ୍ତୁ<br>
+      <strong>ଆମେ / ତୁମେ / ସେମାନେ</strong> → <strong>are</strong> ବ୍ୟବହାର କରନ୍ତୁ
+    </div>
+
+    <table class="example-table">
+      <tr><th>Subject</th><th>Verb</th><th>Example Sentence</th></tr>
+      <tr><td>I</td><td class="highlight">am</td><td>I <span class="highlight">am</span> a student.</td></tr>
+      <tr><td>He</td><td class="highlight">is</td><td>He <span class="highlight">is</span> my friend.</td></tr>
+      <tr><td>She</td><td class="highlight">is</td><td>She <span class="highlight">is</span> a teacher.</td></tr>
+      <tr><td>It</td><td class="highlight">is</td><td>It <span class="highlight">is</span> a cat.</td></tr>
+      <tr><td>We</td><td class="highlight">are</td><td>We <span class="highlight">are</span> happy.</td></tr>
+      <tr><td>You</td><td class="highlight">are</td><td>You <span class="highlight">are</span> tall.</td></tr>
+      <tr><td>They</td><td class="highlight">are</td><td>They <span class="highlight">are</span> playing.</td></tr>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Section 2: this / that / these / those -->
+<section class="section">
+  <div class="section-title">👉 Using this, that, these, those</div>
+  <div class="section-sub">Pointing to things near and far</div>
+
+  <div class="rule-card">
+    <div class="rule-title">📘 The Rule</div>
+    <div class="rule-text">
+      <span class="highlight">This</span> → one thing, <strong>near</strong> you 👈<br>
+      <span class="highlight">That</span> → one thing, <strong>far</strong> from you 👉<br>
+      <span class="highlight">These</span> → many things, <strong>near</strong> you 👈<br>
+      <span class="highlight">Those</span> → many things, <strong>far</strong> from you 👉
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rule-odia">
+      <strong>This</strong> = ଏହା (ନିକଟ, ଏକବଚନ) &nbsp;|&nbsp; <strong>That</strong> = ସେହା (ଦୂର, ଏକବଚନ)<br>
+      <strong>These</strong> = ଏଗୁଡ଼ିକ (ନିକଟ, ବହୁବଚନ) &nbsp;|&nbsp; <strong>Those</strong> = ସେଗୁଡ଼ିକ (ଦୂର, ବହୁବଚନ)
+    </div>
+
+    <table class="example-table">
+      <tr><th>Word</th><th>Near/Far</th><th>Example</th></tr>
+      <tr><td class="highlight">This</td><td>Near (one)</td><td><span class="highlight">This</span> is my book. 📖</td></tr>
+      <tr><td class="highlight">That</td><td>Far (one)</td><td><span class="highlight">That</span> is a big tree. 🌳</td></tr>
+      <tr><td class="highlight">These</td><td>Near (many)</td><td><span class="highlight">These</span> are my pencils. ✏️</td></tr>
+      <tr><td class="highlight">Those</td><td>Far (many)</td><td><span class="highlight">Those</span> are birds. 🐦</td></tr>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Section 3: a / an -->
+<section class="section">
+  <div class="section-title">📎 Using a and an</div>
+  <div class="section-sub">Articles — when to use a and when to use an</div>
+
+  <div class="rule-card">
+    <div class="rule-title">📘 The Rule</div>
+    <div class="rule-text">
+      Use <span class="highlight">a</span> before words that start with a <strong>consonant sound</strong> (b, c, d, f, g...)<br>
+      Use <span class="highlight">an</span> before words that start with a <strong>vowel sound</strong> (a, e, i, o, u)
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rule-odia">
+      ବ୍ୟଞ୍ଜନ ସ୍ୱରରେ ଆରମ୍ଭ ହେଉଥିବା ଶବ୍ଦ ପୂର୍ବରେ <strong>a</strong> ବ୍ୟବହାର କରନ୍ତୁ<br>
+      ସ୍ୱର ସ୍ୱରରେ ଆରମ୍ଭ ହେଉଥିବା ଶବ୍ଦ ପୂର୍ବରେ <strong>an</strong> ବ୍ୟବହାର କରନ୍ତୁ
+    </div>
+
+    <table class="example-table">
+      <tr><th>Article</th><th>When?</th><th>Examples</th></tr>
+      <tr><td class="highlight">a</td><td>Consonant sound</td><td><span class="highlight">a</span> cat, <span class="highlight">a</span> dog, <span class="highlight">a</span> book, <span class="highlight">a</span> mango</td></tr>
+      <tr><td class="highlight">an</td><td>Vowel sound</td><td><span class="highlight">an</span> apple, <span class="highlight">an</span> egg, <span class="highlight">an</span> umbrella, <span class="highlight">an</span> orange</td></tr>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Section 4: Simple Present Tense -->
+<section class="section">
+  <div class="section-title">⏰ Simple Present Tense</div>
+  <div class="section-sub">Talking about things that happen regularly</div>
+
+  <div class="rule-card">
+    <div class="rule-title">📘 The Rule</div>
+    <div class="rule-text">
+      Use the simple present tense for things that happen <strong>every day</strong> or are <strong>always true</strong>.<br>
+      Add <span class="highlight">-s</span> to the verb when the subject is <strong>he, she, it</strong>.
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rule-odia">
+      ପ୍ରତିଦିନ ଘଟୁଥିବା ବା ସର୍ବଦା ସତ୍ୟ ଥିବା କଥା ପାଇଁ ସାଧାରଣ ବର୍ତ୍ତମାନ କାଳ ବ୍ୟବହାର କରନ୍ତୁ।<br>
+      he, she, it ପରେ କ୍ରିୟାପଦରେ <strong>-s</strong> ଯୋଡ଼ନ୍ତୁ।
+    </div>
+
+    <table class="example-table">
+      <tr><th>Subject</th><th>Verb</th><th>Example</th></tr>
+      <tr><td>I</td><td>play</td><td>I <span class="highlight">play</span> every day.</td></tr>
+      <tr><td>He</td><td>play<span class="highlight">s</span></td><td>He <span class="highlight">plays</span> cricket.</td></tr>
+      <tr><td>She</td><td>read<span class="highlight">s</span></td><td>She <span class="highlight">reads</span> a book.</td></tr>
+      <tr><td>We</td><td>eat</td><td>We <span class="highlight">eat</span> rice.</td></tr>
+      <tr><td>They</td><td>run</td><td>They <span class="highlight">run</span> fast.</td></tr>
+      <tr><td>It</td><td>rain<span class="highlight">s</span></td><td>It <span class="highlight">rains</span> in July.</td></tr>
+    </table>
+  </div>
+</section>
+
+<div class="games-cta">
+  <a href="grammar-games.html">🎮 Play Grammar Games →</a>
+</div>
+
+<div class="bottom-nav">
+  <a href="vocabulary.html">← Previous: Vocabulary</a>
+  <a href="writing.html">Next: Writing →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · English · Free forever</span>
+</footer>
+
+</body>
+</html>

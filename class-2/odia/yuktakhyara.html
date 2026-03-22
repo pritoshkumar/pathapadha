@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବ୍ୟଞ୍ଜନବର୍ଣ୍ଣ — Conjunct Consonants | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #FFFDF9;
+  --off:    #F7F5F0;
+  --border: #EBEBEB;
+  --c:      #FF6B6B;
+  --cbg:    #FFF0F0;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,253,249,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* HERO */
+.page-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+}
+.hero-emoji { font-size: 3.5rem; display: block; margin-bottom: 12px; animation: bounce-slow 2s ease-in-out infinite; }
+@keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.page-hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--c); margin-bottom: 6px; }
+.page-hero .subtitle { font-size: 1.05rem; color: var(--soft); font-weight: 600; }
+.page-hero .textbook-ref {
+  font-size: 0.78rem; color: var(--light); font-weight: 600;
+  margin-top: 10px; display: inline-block;
+  background: var(--cbg); padding: 4px 16px; border-radius: 50px;
+  border: 1px solid #FFCDD2;
+}
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* INTRO */
+.intro { max-width: 900px; margin: 0 auto; padding: 36px 48px; text-align: center; }
+.intro p { font-size: 0.95rem; color: var(--soft); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+/* CONJUNCT GRID */
+.conjunct-grid {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 48px 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.conjunct-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 28px 24px;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+  animation: fadeUp .5s ease both;
+}
+.conjunct-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--c);
+  box-shadow: 0 8px 24px rgba(255,107,107,0.12);
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+.conjunct-card-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.conjunct-symbol {
+  font-family: var(--font-or); font-size: 3.2rem; font-weight: 700;
+  width: 72px; height: 72px; display: grid; place-items: center;
+  border-radius: 16px; flex-shrink: 0;
+}
+.conjunct-info { flex: 1; }
+.conjunct-parts {
+  font-family: var(--font-or); font-size: 0.85rem; font-weight: 700;
+  color: var(--light); margin-bottom: 2px;
+}
+.conjunct-parts .part-char { font-size: 1.1rem; color: var(--ink); }
+.conjunct-name {
+  font-size: 0.78rem; font-weight: 700; color: var(--soft);
+  background: var(--off); display: inline-block;
+  padding: 2px 10px; border-radius: 50px;
+}
+
+.conjunct-combo {
+  background: var(--off); border-radius: 12px;
+  padding: 12px 16px; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-or); font-size: 1.5rem; font-weight: 700;
+}
+.conjunct-combo .plus { color: var(--light); font-family: var(--font); font-size: 1.2rem; }
+.conjunct-combo .equals { color: var(--light); font-family: var(--font); font-size: 1.2rem; }
+.conjunct-combo .result { color: var(--c); }
+
+.conjunct-examples { display: flex; flex-wrap: wrap; gap: 8px; }
+.conjunct-example {
+  font-family: var(--font-or); font-size: 0.95rem; font-weight: 700;
+  background: #fff; border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.conjunct-example .ex-emoji { font-size: 1.1rem; }
+.conjunct-example .hl { color: var(--c); font-weight: 900; }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 48px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 800;
+  transition: opacity .15s, transform .15s;
+  border: none; cursor: pointer; font-family: var(--font);
+}
+.btn:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-outline { background: #fff; color: var(--ink); border: 2px solid var(--border); }
+.btn-primary { background: var(--c); color: #fff; }
+.btn-forward { background: var(--ink); color: #fff; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .page-hero, .intro, .conjunct-grid, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .conjunct-grid { grid-template-columns: 1fr; }
+  .bottom-nav { flex-direction: column; align-items: stretch; text-align: center; }
+  .btn { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .breadcrumb { display: none; }
+  .conjunct-combo { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ବ୍ୟଞ୍ଜନବର୍ଣ୍ଣ</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-emoji">🔗</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ବ୍ୟଞ୍ଜନବର୍ଣ୍ଣ</h1>
+  <p class="subtitle">Yuktakhyara — Conjunct Consonants</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୨ (SCERT Odisha)</span>
+</div>
+
+<hr class="divider">
+
+<!-- INTRO -->
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ଦୁଇଟି ବ୍ୟଞ୍ଜନ ଅକ୍ଷର ଯୋଡ଼ି ହୋଇ ଯୁକ୍ତାକ୍ଷର ତିଆରି ହୁଏ। ନିମ୍ନରେ ସାଧାରଣ ଯୁକ୍ତାକ୍ଷରଗୁଡ଼ିକ ଶିଖ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Two consonants join together to form conjunct letters. Learn the common ones below!</p>
+</div>
+
+<!-- CONJUNCT CARDS -->
+<div class="conjunct-grid" id="conjunctGrid"></div>
+
+<hr class="divider">
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="index.html" class="btn btn-outline">← ଓଡ଼ିଆ ବିଷୟ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="yuktakhyara-games.html" class="btn btn-primary">🎮 ଯୁକ୍ତାକ୍ଷର ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="word-formation.html" class="btn btn-forward">ଶବ୍ଦ ଗଠନ →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · Odia · Free forever</span>
+</footer>
+
+<script>
+// REVIEW NEEDED (all Odia text in the data below)
+var conjuncts = [
+  {
+    conjunct: 'କ୍ଷ', parts: ['କ', '+ ଷ'], name: 'ksha',
+    combo: ['କ', 'ଷ', 'କ୍ଷ'],
+    examples: [
+      { word: 'ରକ୍ଷା', hl: 'କ୍ଷ', emoji: '🛡️' },
+      { word: 'କ୍ଷୀର', hl: 'କ୍ଷ', emoji: '🥛' },
+      { word: 'ଶିକ୍ଷା', hl: 'କ୍ଷ', emoji: '📚' }
+    ]
+  },
+  {
+    conjunct: 'ତ୍ର', parts: ['ତ', '+ ର'], name: 'tra',
+    combo: ['ତ', 'ର', 'ତ୍ର'],
+    examples: [
+      { word: 'ମିତ୍ର', hl: 'ତ୍ର', emoji: '🤝' },
+      { word: 'ପାତ୍ର', hl: 'ତ୍ର', emoji: '🍲' },
+      { word: 'ଚିତ୍ର', hl: 'ତ୍ର', emoji: '🖼️' }
+    ]
+  },
+  {
+    conjunct: 'ଜ୍ଞ', parts: ['ଜ', '+ ଞ'], name: 'gya',
+    combo: ['ଜ', 'ଞ', 'ଜ୍ଞ'],
+    examples: [
+      { word: 'ଜ୍ଞାନ', hl: 'ଜ୍ଞ', emoji: '🧠' },
+      { word: 'ଯଜ୍ଞ', hl: 'ଜ୍ଞ', emoji: '🔥' },
+      { word: 'ବିଜ୍ଞାନ', hl: 'ଜ୍ଞ', emoji: '🔬' }
+    ]
+  },
+  {
+    conjunct: 'ନ୍ତ', parts: ['ନ', '+ ତ'], name: 'nta',
+    combo: ['ନ', 'ତ', 'ନ୍ତ'],
+    examples: [
+      { word: 'ସନ୍ତ', hl: 'ନ୍ତ', emoji: '🙏' },
+      { word: 'ଅନ୍ତ', hl: 'ନ୍ତ', emoji: '🔚' },
+      { word: 'ଶାନ୍ତ', hl: 'ନ୍ତ', emoji: '☮️' }
+    ]
+  },
+  {
+    conjunct: 'ସ୍ତ', parts: ['ସ', '+ ତ'], name: 'sta',
+    combo: ['ସ', 'ତ', 'ସ୍ତ'],
+    examples: [
+      { word: 'ହସ୍ତ', hl: 'ସ୍ତ', emoji: '✋' },
+      { word: 'ବସ୍ତୁ', hl: 'ସ୍ତ', emoji: '📦' },
+      { word: 'ମସ୍ତ', hl: 'ସ୍ତ', emoji: '👍' }
+    ]
+  },
+  {
+    conjunct: 'ନ୍ଦ', parts: ['ନ', '+ ଦ'], name: 'nda',
+    combo: ['ନ', 'ଦ', 'ନ୍ଦ'],
+    examples: [
+      { word: 'ଚନ୍ଦ୍ର', hl: 'ନ୍ଦ', emoji: '🌙' },
+      { word: 'ସୁନ୍ଦର', hl: 'ନ୍ଦ', emoji: '🌸' },
+      { word: 'ବନ୍ଦ', hl: 'ନ୍ଦ', emoji: '🔒' }
+    ]
+  },
+  {
+    conjunct: 'ଷ୍ଟ', parts: ['ଷ', '+ ଟ'], name: 'shta',
+    combo: ['ଷ', 'ଟ', 'ଷ୍ଟ'],
+    examples: [
+      { word: 'କଷ୍ଟ', hl: 'ଷ୍ଟ', emoji: '😰' },
+      { word: 'ନଷ୍ଟ', hl: 'ଷ୍ଟ', emoji: '💔' },
+      { word: 'ସ୍ପଷ୍ଟ', hl: 'ଷ୍ଟ', emoji: '✅' }
+    ]
+  },
+  {
+    conjunct: 'ଙ୍କ', parts: ['ଙ', '+ କ'], name: 'nka',
+    combo: ['ଙ', 'କ', 'ଙ୍କ'],
+    examples: [
+      { word: 'ଅଙ୍କ', hl: 'ଙ୍କ', emoji: '🔢' },
+      { word: 'ଶଙ୍କ', hl: 'ଙ୍କ', emoji: '😟' },
+      { word: 'ବଙ୍କ', hl: 'ଙ୍କ', emoji: '↩️' }
+    ]
+  },
+  {
+    conjunct: 'ମ୍ବ', parts: ['ମ', '+ ବ'], name: 'mba',
+    combo: ['ମ', 'ବ', 'ମ୍ବ'],
+    examples: [
+      { word: 'ସ୍ତମ୍ବ', hl: 'ମ୍ବ', emoji: '🏛️' },
+      { word: 'ଲମ୍ବ', hl: 'ମ୍ବ', emoji: '📏' },
+      { word: 'ବମ୍ବ', hl: 'ମ୍ବ', emoji: '💣' }
+    ]
+  },
+  {
+    conjunct: 'ତ୍ତ', parts: ['ତ', '+ ତ'], name: 'tta',
+    combo: ['ତ', 'ତ', 'ତ୍ତ'],
+    examples: [
+      { word: 'ସତ୍ତ୍ୱ', hl: 'ତ୍ତ', emoji: '✨' },
+      { word: 'ଉତ୍ତର', hl: 'ତ୍ତ', emoji: '🧭' },
+      { word: 'ମତ୍ତ', hl: 'ତ୍ତ', emoji: '😵' }
+    ]
+  },
+  {
+    conjunct: 'ଦ୍ଧ', parts: ['ଦ', '+ ଧ'], name: 'ddha',
+    combo: ['ଦ', 'ଧ', 'ଦ୍ଧ'],
+    examples: [
+      { word: 'ବୁଦ୍ଧ', hl: 'ଦ୍ଧ', emoji: '🧘' },
+      { word: 'ଶୁଦ୍ଧ', hl: 'ଦ୍ଧ', emoji: '💎' },
+      { word: 'ସିଦ୍ଧ', hl: 'ଦ୍ଧ', emoji: '🏆' }
+    ]
+  },
+  {
+    conjunct: 'ଚ୍ଛ', parts: ['ଚ', '+ ଛ'], name: 'cchha',
+    combo: ['ଚ', 'ଛ', 'ଚ୍ଛ'],
+    examples: [
+      { word: 'ଇଚ୍ଛା', hl: 'ଚ୍ଛ', emoji: '💭' },
+      { word: 'ଅଚ୍ଛା', hl: 'ଚ୍ଛ', emoji: '👌' },
+      { word: 'ସ୍ୱଚ୍ଛ', hl: 'ଚ୍ଛ', emoji: '🧹' }
+    ]
+  }
+];
+
+var grid = document.getElementById('conjunctGrid');
+var colors = ['#FF6B6B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7','#00B894','#E17055','#74B9FF','#0984E3'];
+var bgColors = ['#FFF0F0','#FFF5EC','#FFFBEC','#E8F8FD','#EDFAF4','#F3F2FE','#FEF0F5','#F1EFFC','#EDFAF4','#FDF0ED','#EEF4FF','#E8F0FE'];
+
+conjuncts.forEach(function(c, i) {
+  var col = colors[i % colors.length];
+  var bgCol = bgColors[i % bgColors.length];
+  var card = document.createElement('div');
+  card.className = 'conjunct-card';
+  card.style.animationDelay = (i * 0.06) + 's';
+
+  var exHTML = '';
+  c.examples.forEach(function(ex) {
+    exHTML += '<span class="conjunct-example"><span class="ex-emoji">' + ex.emoji + '</span> ' + ex.word + '</span>';
+  });
+
+  card.innerHTML =
+    '<div class="conjunct-card-top">' +
+      '<div class="conjunct-symbol" style="color:' + col + ';background:' + bgCol + '">' + c.conjunct + '</div>' +
+      '<div class="conjunct-info">' +
+        '<div class="conjunct-parts"><span class="part-char">' + c.parts[0] + '</span> ' + c.parts[1] + '</div>' +
+        '<span class="conjunct-name">' + c.name + '</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="conjunct-combo">' +
+      '<span>' + c.combo[0] + '</span>' +
+      '<span class="plus">+</span>' +
+      '<span style="color:' + col + '">' + c.combo[1] + '</span>' +
+      '<span class="equals">=</span>' +
+      '<span class="result" style="color:' + col + '">' + c.combo[2] + '</span>' +
+    '</div>' +
+    '<div class="conjunct-examples">' + exHTML + '</div>';
+
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

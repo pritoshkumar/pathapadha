@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶବ୍ଦ ଗଠନ — Word Formation | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#FF9F43;--cbg:#FFF5EC;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #FFE0B2}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;padding:0 48px}
+
+.word-grid{max-width:900px;margin:0 auto;padding:0 48px 48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.word-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:24px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.word-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(255,159,67,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.word-card-emoji{font-size:2.5rem;margin-bottom:10px}
+.word-card-word{font-family:var(--font-or);font-size:2rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.word-card-trans{font-size:0.85rem;font-weight:700;color:var(--light);margin-bottom:10px}
+.word-card-breakdown{background:var(--off);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:6px;font-family:var(--font-or);font-size:1.2rem;font-weight:700;flex-wrap:wrap}
+.word-card-breakdown .plus{color:var(--light);font-family:var(--font);font-size:1rem}
+.word-card-breakdown .hl{color:var(--c)}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}
+.btn:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}
+.btn-primary{background:var(--c);color:#fff}
+.btn-forward{background:var(--ink);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.page-hero,.intro,.word-grid,.bottom-nav,footer,.section-label{padding-left:20px;padding-right:20px}.word-grid{grid-template-columns:1fr}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଶବ୍ଦ ଗଠନ</span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-emoji">🧩</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ଶବ୍ଦ ଗଠନ</h1>
+  <p class="subtitle">Shabda Gathana — Word Formation</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୨ (SCERT Odisha)</span>
+</div>
+
+<hr class="divider">
+
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ବ୍ୟଞ୍ଜନ ଓ ମାତ୍ରା ଯୋଡ଼ି ଶବ୍ଦ ତିଆରି କର। ନିମ୍ନରେ ଅନେକ ଶବ୍ଦ ଦେଖ ଓ ସେମାନଙ୍କ ଗଠନ ବୁଝ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Combine consonants and matras to form words. See each word broken down below!</p>
+</div>
+
+<!-- REVIEW NEEDED -->
+<div class="section-label">ଦୁଇ ଅକ୍ଷର ଶବ୍ଦ — Two-Syllable Words</div>
+<div class="word-grid" id="twoSylGrid"></div>
+
+<!-- REVIEW NEEDED -->
+<div class="section-label" style="margin-top:40px">ତିନି ଅକ୍ଷର ଶବ୍ଦ — Three-Syllable Words</div>
+<div class="word-grid" id="threeSylGrid"></div>
+
+<!-- REVIEW NEEDED -->
+<div class="section-label" style="margin-top:40px">ଯୁକ୍ତାକ୍ଷର ଶବ୍ଦ — Words with Conjuncts</div>
+<div class="word-grid" id="conjunctWordGrid"></div>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="yuktakhyara.html" class="btn btn-outline">← ବ୍ୟଞ୍ଜନବର୍ଣ୍ଣ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="word-formation-games.html" class="btn btn-primary">🎮 ଶବ୍ଦ ଗଠନ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="sentences.html" class="btn btn-forward">ବାକ୍ୟ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · Odia · Free forever</span>
+</footer>
+
+<script>
+// REVIEW NEEDED
+var twoSylWords = [
+  { word: 'ଗୋରୁ', trans: 'Cow', emoji: '🐄', parts: ['ଗୋ','ରୁ'] },
+  { word: 'ପାଣି', trans: 'Water', emoji: '💧', parts: ['ପା','ଣି'] },
+  { word: 'ନଦୀ', trans: 'River', emoji: '🏞️', parts: ['ନ','ଦୀ'] },
+  { word: 'ଫୁଲ', trans: 'Flower', emoji: '🌸', parts: ['ଫୁ','ଲ'] },
+  { word: 'ଘର', trans: 'House', emoji: '🏠', parts: ['ଘ','ର'] },
+  { word: 'ବାଘ', trans: 'Tiger', emoji: '🐯', parts: ['ବା','ଘ'] },
+  { word: 'ଚାଲ', trans: 'Rice', emoji: '🍚', parts: ['ଚା','ଲ'] },
+  { word: 'ପୁଅ', trans: 'Son', emoji: '👦', parts: ['ପୁ','ଅ'] }
+];
+
+var threeSylWords = [
+  { word: 'ମାଛୁଆ', trans: 'Fisherman', emoji: '🎣', parts: ['ମା','ଛୁ','ଆ'] },
+  { word: 'କଦଳୀ', trans: 'Banana', emoji: '🍌', parts: ['କ','ଦ','ଳୀ'] },
+  { word: 'ପିଲାଟି', trans: 'Child', emoji: '🧒', parts: ['ପି','ଲା','ଟି'] },
+  { word: 'ଆକାଶ', trans: 'Sky', emoji: '🌤️', parts: ['ଆ','କା','ଶ'] },
+  { word: 'ପତାକା', trans: 'Flag', emoji: '🏴', parts: ['ପ','ତା','କା'] },
+  { word: 'କମଳ', trans: 'Lotus', emoji: '🪷', parts: ['କ','ମ','ଳ'] }
+];
+
+var conjunctWords = [
+  { word: 'ବିଦ୍ୟା', trans: 'Knowledge', emoji: '📚', parts: ['ବି','ଦ୍ୟା'] },
+  { word: 'ଶିକ୍ଷା', trans: 'Education', emoji: '🏫', parts: ['ଶି','କ୍ଷା'] },
+  { word: 'ବୁଦ୍ଧି', trans: 'Intelligence', emoji: '🧠', parts: ['ବୁ','ଦ୍ଧି'] },
+  { word: 'ସ୍ୱଚ୍ଛ', trans: 'Clean', emoji: '✨', parts: ['ସ୍ୱ','ଚ୍ଛ'] },
+  { word: 'ଉତ୍ତର', trans: 'Answer', emoji: '💡', parts: ['ଉ','ତ୍ତ','ର'] },
+  { word: 'ମିତ୍ର', trans: 'Friend', emoji: '🤝', parts: ['ମି','ତ୍ର'] }
+];
+
+function renderWords(data, gridId) {
+  var grid = document.getElementById(gridId);
+  data.forEach(function(w, i) {
+    var card = document.createElement('div');
+    card.className = 'word-card';
+    card.style.animationDelay = (i * 0.06) + 's';
+    var breakdownHTML = w.parts.map(function(p, idx) {
+      return (idx > 0 ? '<span class="plus">+</span>' : '') + '<span class="hl">' + p + '</span>';
+    }).join('');
+    card.innerHTML =
+      '<div class="word-card-emoji">' + w.emoji + '</div>' +
+      '<div class="word-card-word">' + w.word + '</div>' +
+      '<div class="word-card-trans">' + w.trans + '</div>' +
+      '<div class="word-card-breakdown">' + breakdownHTML + ' <span class="plus">=</span> <span>' + w.word + '</span></div>';
+    grid.appendChild(card);
+  });
+}
+
+renderWords(twoSylWords, 'twoSylGrid');
+renderWords(threeSylWords, 'threeSylGrid');
+renderWords(conjunctWords, 'conjunctWordGrid');
+</script>
+</body>
+</html>

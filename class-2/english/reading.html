@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Reading — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.5rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.hero{max-width:1100px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:8px;}
+.hero p{font-size:0.95rem;color:var(--soft);max-width:500px;margin:0 auto;}
+
+hr.divider{border:none;border-top:1px solid var(--border);}
+
+.section{max-width:900px;margin:0 auto;padding:48px 48px 32px;}
+.section-title{font-size:1.3rem;font-weight:900;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.section-sub{font-size:0.82rem;color:var(--soft);margin-bottom:24px;}
+
+.passage-card{
+  background:#fff;border:2px solid var(--border);border-radius:20px;
+  padding:28px;margin-bottom:24px;
+  transition:box-shadow .18s;
+}
+.passage-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+.passage-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.passage-title{font-size:1.15rem;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.passage-text{font-size:1rem;line-height:1.9;color:var(--ink);margin-bottom:16px;padding:16px 20px;background:var(--off);border-radius:14px;}
+.passage-odia{font-family:var(--font-or);font-size:0.88rem;color:var(--soft);line-height:1.8;margin-bottom:16px;padding:12px 20px;background:#FFFBEC;border-radius:12px;border-left:4px solid #F9C74F;}
+.passage-odia-label{font-size:0.7rem;font-weight:800;color:#D4A017;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.passage-questions{margin-top:12px;}
+.passage-q-label{font-size:0.72rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.passage-q{font-size:0.92rem;font-weight:700;color:var(--ink);margin-bottom:6px;padding:10px 16px;background:var(--cbg);border-radius:10px;cursor:pointer;transition:all .15s;}
+.passage-q:hover{background:var(--c);color:#fff;}
+.passage-a{font-size:0.85rem;color:var(--c);font-weight:700;padding:6px 16px;display:none;margin-bottom:8px;}
+.passage-a.show{display:block;}
+
+.games-cta{text-align:center;padding:32px 20px 16px;}
+.games-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--c);color:#fff;font-size:1rem;font-weight:800;padding:14px 32px;border-radius:14px;transition:opacity .15s;}
+.games-cta a:hover{opacity:0.85;}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:16px 48px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.bottom-nav a{font-size:0.88rem;font-weight:800;color:var(--c);padding:10px 20px;border:2px solid var(--c);border-radius:12px;transition:all .15s;}
+.bottom-nav a:hover{background:var(--c);color:#fff;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .hero{padding:32px 20px 24px;}
+  .section{padding:32px 20px 24px;}
+  .passage-card{padding:20px;}
+  .bottom-nav{padding:16px 20px 36px;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <a href="index.html">English</a> ›
+    <span>Reading</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">📖 Reading</div>
+  <h1>📖 Reading Passages</h1>
+  <!-- REVIEW NEEDED -->
+  <p>ସରଳ ଇଂରାଜୀ ଗଳ୍ପ ପଢ଼ନ୍ତୁ ଓ ପ୍ରଶ୍ନର ଉତ୍ତର ଦିଅନ୍ତୁ — Read simple English passages and answer questions!</p>
+</section>
+
+<hr class="divider">
+
+<div id="passageContainer"></div>
+
+<div class="games-cta">
+  <a href="reading-games.html">🎮 Play Reading Games →</a>
+</div>
+
+<div class="bottom-nav">
+  <a href="index.html">← Back to English</a>
+  <a href="vocabulary.html">Next: Vocabulary →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · English · Free forever</span>
+</footer>
+
+<script>
+var passages = [
+  {
+    num: '01',
+    title: '🐕 My Pet Dog',
+    text: 'I have a pet dog. His name is Motu. He is brown and white. He likes to run and play. He eats rice and milk. I love my dog very much.',
+    /* REVIEW NEEDED */
+    odia: 'ମୋର ଗୋଟିଏ ପୋଷା କୁକୁର ଅଛି। ତାର ନାମ ମୋଟୁ। ସେ ବାଦାମୀ ଓ ଧଳା। ସେ ଦୌଡ଼ିବା ଓ ଖେଳିବା ପସନ୍ଦ କରେ। ସେ ଭାତ ଓ କ୍ଷୀର ଖାଏ। ମୁଁ ମୋ କୁକୁରକୁ ବହୁତ ଭଲ ପାଏ।',
+    questions: [
+      { q: 'What is the dog\'s name?', a: 'The dog\'s name is Motu.' },
+      { q: 'What colour is the dog?', a: 'The dog is brown and white.' },
+      { q: 'What does the dog eat?', a: 'The dog eats rice and milk.' }
+    ]
+  },
+  {
+    num: '02',
+    title: '🏫 My School',
+    text: 'I go to school every day. My school is big. I have many friends there. My teacher is very kind. We read, write and play games. I like my school.',
+    /* REVIEW NEEDED */
+    odia: 'ମୁଁ ପ୍ରତିଦିନ ବିଦ୍ୟାଳୟ ଯାଏ। ମୋ ବିଦ୍ୟାଳୟ ବଡ଼। ସେଠାରେ ମୋର ଅନେକ ବନ୍ଧୁ ଅଛନ୍ତି। ମୋ ଶିକ୍ଷୟିତ୍ରୀ ବହୁତ ଦୟାଳୁ। ଆମେ ପଢ଼ୁ, ଲେଖୁ ଓ ଖେଳୁ। ମୁଁ ମୋ ବିଦ୍ୟାଳୟକୁ ଭଲ ପାଏ।',
+    questions: [
+      { q: 'How often does the child go to school?', a: 'The child goes to school every day.' },
+      { q: 'Is the school big or small?', a: 'The school is big.' },
+      { q: 'What do they do at school?', a: 'They read, write and play games.' }
+    ]
+  },
+  {
+    num: '03',
+    title: '🌧️ A Rainy Day',
+    text: 'Today it is raining. The sky is dark and grey. I can see big drops of water falling down. The trees are getting wet. The frogs are happy. They jump and sing in the rain.',
+    /* REVIEW NEEDED */
+    odia: 'ଆଜି ବର୍ଷା ହେଉଛି। ଆକାଶ ଅନ୍ଧାର ଓ ଧୂସର। ବଡ଼ ବଡ଼ ପାଣି ବୁନ୍ଦା ଝରୁଛି। ଗଛଗୁଡ଼ିକ ଭିଜୁଛନ୍ତି। ବେଙ୍ଗମାନେ ଖୁସି। ସେମାନେ ବର୍ଷାରେ ଡ଼ିଆଁ ମାରୁଛନ୍ତି ଓ ଗାଉଛନ୍ତି।',
+    questions: [
+      { q: 'What is the weather like today?', a: 'It is raining today.' },
+      { q: 'What colour is the sky?', a: 'The sky is dark and grey.' },
+      { q: 'Who is happy in the rain?', a: 'The frogs are happy in the rain.' }
+    ]
+  },
+  {
+    num: '04',
+    title: '🥭 The Mango Tree',
+    text: 'There is a big mango tree near my house. It has many green leaves. In summer, it gives sweet mangoes. Birds sit on its branches. I sit under the tree and read my book.',
+    /* REVIEW NEEDED */
+    odia: 'ମୋ ଘର ପାଖରେ ଗୋଟିଏ ବଡ଼ ଆମ୍ବ ଗଛ ଅଛି। ଏହାର ଅନେକ ସବୁଜ ପତ୍ର ଅଛି। ଗ୍ରୀଷ୍ମ ଋତୁରେ ଏହା ମିଠା ଆମ୍ବ ଦିଏ। ପକ୍ଷୀମାନେ ଏହାର ଡ଼ାଳରେ ବସନ୍ତି। ମୁଁ ଗଛ ତଳେ ବସି ପଢ଼େ।',
+    questions: [
+      { q: 'Where is the mango tree?', a: 'The mango tree is near the house.' },
+      { q: 'When does it give mangoes?', a: 'It gives mangoes in summer.' },
+      { q: 'What does the child do under the tree?', a: 'The child sits under the tree and reads a book.' }
+    ]
+  },
+  {
+    num: '05',
+    title: '👨‍👩‍👧‍👦 My Family',
+    text: 'My family has five people. My father is a teacher. My mother is a doctor. I have one brother and one sister. My brother is older than me. My sister is very small. We are a happy family.',
+    /* REVIEW NEEDED */
+    odia: 'ମୋ ପରିବାରରେ ପାଞ୍ଚ ଜଣ ଅଛନ୍ତି। ମୋ ବାପା ଜଣେ ଶିକ୍ଷକ। ମୋ ମା ଜଣେ ଡାକ୍ତର। ମୋର ଗୋଟିଏ ଭାଇ ଓ ଗୋଟିଏ ଭଉଣୀ ଅଛି। ମୋ ଭାଇ ମୋଠାରୁ ବଡ଼। ମୋ ଭଉଣୀ ବହୁତ ଛୋଟ। ଆମେ ଏକ ସୁଖୀ ପରିବାର।',
+    questions: [
+      { q: 'How many people are in the family?', a: 'There are five people in the family.' },
+      { q: 'What does the father do?', a: 'The father is a teacher.' },
+      { q: 'What does the mother do?', a: 'The mother is a doctor.' }
+    ]
+  },
+  {
+    num: '06',
+    title: '🐱 The Cat and the Mouse',
+    text: 'A cat sees a little mouse. The mouse is eating cheese. The cat walks slowly towards the mouse. But the mouse is very fast. It runs into a small hole. The cat cannot catch the mouse!',
+    /* REVIEW NEEDED */
+    odia: 'ଗୋଟିଏ ବିଲେଇ ଗୋଟିଏ ଛୋଟ ମୂଷା ଦେଖେ। ମୂଷାଟି ପନିର ଖାଉଛି। ବିଲେଇ ଧୀରେ ଧୀରେ ମୂଷା ପାଖକୁ ଯାଏ। କିନ୍ତୁ ମୂଷା ବହୁତ ଦ୍ରୁତ। ସେ ଗୋଟିଏ ଛୋଟ ଗାତରେ ଶୀଘ୍ର ଢୁକି ଯାଏ। ବିଲେଇ ମୂଷାକୁ ଧରିପାରେ ନାହିଁ!',
+    questions: [
+      { q: 'What is the mouse eating?', a: 'The mouse is eating cheese.' },
+      { q: 'Does the cat catch the mouse?', a: 'No, the cat cannot catch the mouse.' },
+      { q: 'Where does the mouse run?', a: 'The mouse runs into a small hole.' }
+    ]
+  }
+];
+
+var container = document.getElementById('passageContainer');
+passages.forEach(function(p) {
+  var sec = document.createElement('section');
+  sec.className = 'section';
+  var qHTML = '';
+  p.questions.forEach(function(qa, i) {
+    qHTML += '<div class="passage-q" onclick="toggleAnswer(this)" data-ans="' + qa.a.replace(/"/g, '&quot;') + '">Q' + (i+1) + '. ' + qa.q + '</div><div class="passage-a">✅ ' + qa.a + '</div>';
+  });
+  sec.innerHTML =
+    '<div class="passage-card">' +
+      '<div class="passage-num">Passage ' + p.num + '</div>' +
+      '<div class="passage-title">' + p.title + '</div>' +
+      '<div class="passage-text">' + p.text + '</div>' +
+      '<!-- REVIEW NEEDED -->' +
+      '<div class="passage-odia"><div class="passage-odia-label">ଓଡ଼ିଆ ଅନୁବାଦ</div>' + p.odia + '</div>' +
+      '<div class="passage-questions">' +
+        '<div class="passage-q-label">Comprehension Questions</div>' +
+        qHTML +
+      '</div>' +
+    '</div>';
+  container.appendChild(sec);
+});
+
+function toggleAnswer(el) {
+  var ans = el.nextElementSibling;
+  if (ans.classList.contains('show')) {
+    ans.classList.remove('show');
+  } else {
+    ans.classList.add('show');
+  }
+}
+</script>
+</body>
+</html>

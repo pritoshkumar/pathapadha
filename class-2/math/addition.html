@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଯୋଗ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-book{display:inline-flex;align-items:center;gap:8px;background:var(--off);border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-size:0.8rem;font-weight:700;color:var(--soft)}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.example-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.example-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:28px;text-align:center;transition:border-color .2s,box-shadow .2s}
+.example-card:hover{border-color:var(--c);box-shadow:0 6px 24px rgba(58,134,255,0.08)}
+.example-problem{font-family:var(--font-or);font-size:2.4rem;font-weight:700;color:var(--c);margin-bottom:8px}
+.example-visual{font-size:1.2rem;margin-bottom:8px;line-height:1.8}
+.example-answer{font-size:1rem;font-weight:700;color:var(--soft)}
+.example-odia{font-family:var(--font-or);font-size:0.95rem;color:var(--ink);margin-top:6px}
+
+.tip-box{background:var(--cbg);border:2px solid var(--c);border-radius:16px;padding:24px 28px;margin-top:32px}
+.tip-title{font-size:1rem;font-weight:800;color:var(--c);margin-bottom:8px}
+.tip-text{font-size:0.88rem;color:var(--soft);line-height:1.8}
+
+.bottom-nav{max-width:1100px;margin:0 auto;padding:0 48px 56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bottom-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;border:2px solid var(--border);transition:all .15s}
+.bottom-link:hover{border-color:var(--c);background:var(--cbg)}
+.bottom-link.primary{background:var(--c);color:#fff;border-color:var(--c)}
+.bottom-link.primary:hover{opacity:0.85}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav,.hero,.section,.bottom-nav,footer{padding-left:20px;padding-right:20px}
+  .hero{grid-template-columns:1fr;text-align:center;padding:40px 20px 36px}
+  .hero-art{margin:0 auto;width:120px;height:120px;font-size:3.5rem}
+  .hero-desc{margin:0 auto 20px}
+  .breadcrumb{display:none}
+  .example-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଯୋଗ</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">➕ ଯୋଗ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଯୋଗ</h1>
+    <div class="hero-eng">Addition up to 99</div>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଦୁଇଟି ସଂଖ୍ୟାକୁ ଯୋଗ କରିବା ଶିଖ। ୧ ରୁ ୯୯ ପର୍ଯ୍ୟନ୍ତ ଯୋଗ ଅଭ୍ୟାସ କର।</p>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-book">📘 ଗଣିତ ଖେଳ ଭାଗ ୨ — Ganita Khela Part 2</div>
+  </div>
+  <div class="hero-art">➕</div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଯୋଗ ଉଦାହରଣ — Addition Examples</div>
+  <div class="example-grid" id="exGrid"></div>
+
+  <div class="tip-box" style="margin-top:40px">
+    <!-- REVIEW NEEDED -->
+    <div class="tip-title">💡 ଯୋଗ କରିବାର ନିୟମ</div>
+    <!-- REVIEW NEEDED -->
+    <div class="tip-text">
+      ପ୍ରଥମେ ଏକକ ସ୍ଥାନର ସଂଖ୍ୟା ଯୋଗ କର। ଯଦି ଯୋଗଫଳ ୧୦ ବା ତାଠାରୁ ଅଧିକ, ତେବେ ଏକକ ସ୍ଥାନରେ ଶେଷ ଅଙ୍କ ଲେଖ ଓ ୧ କୁ ଦଶକ ସ୍ଥାନକୁ ନେଇଯାଅ (carry)। ତାପରେ ଦଶକ ସ୍ଥାନର ସଂଖ୍ୟା ଯୋଗ କର।
+    </div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="numbers-100.html" class="bottom-link">← ସଂଖ୍ୟା ୧-୧୦୦</a>
+  <!-- REVIEW NEEDED -->
+  <a href="addition-games.html" class="bottom-link primary">🎮 ଯୋଗ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="subtraction.html" class="bottom-link">ବିୟୋଗ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 2 · ଗଣିତ · Free forever</span>
+</footer>
+
+<script>
+var examples = [
+  {a:12, b:5,  emoji:'🍎'},
+  {a:23, b:14, emoji:'🌟'},
+  {a:35, b:22, emoji:'🐟'},
+  {a:47, b:31, emoji:'🌸'},
+  {a:18, b:27, emoji:'🦋'},
+  {a:36, b:48, emoji:'🍌'},
+  {a:54, b:29, emoji:'🐦'},
+  {a:41, b:38, emoji:'🍊'},
+  {a:67, b:25, emoji:'🌺'},
+  {a:19, b:19, emoji:'🐝'},
+  {a:55, b:44, emoji:'🎈'},
+  {a:33, b:66, emoji:'🍒'}
+];
+
+function toOd(n){var s='',d='୦୧୨୩୪୫୬୭୮୯';String(n).split('').forEach(function(c){s+=d[parseInt(c)]});return s}
+
+var grid = document.getElementById('exGrid');
+examples.forEach(function(ex){
+  var sum = ex.a + ex.b;
+  var card = document.createElement('div');
+  card.className = 'example-card';
+  card.innerHTML =
+    '<div class="example-problem">' + toOd(ex.a) + ' + ' + toOd(ex.b) + ' = ' + toOd(sum) + '</div>' +
+    '<div class="example-visual">' + ex.emoji.repeat(ex.a > 10 ? 5 : ex.a) + ' + ' + ex.emoji.repeat(ex.b > 10 ? 5 : ex.b) + '</div>' +
+    '<div class="example-answer">' + ex.a + ' + ' + ex.b + ' = ' + sum + '</div>';
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

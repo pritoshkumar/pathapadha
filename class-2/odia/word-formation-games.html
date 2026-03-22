@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶବ୍ଦ ଗଠନ ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#FF9F43;--cbg:#FFF5EC;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}.page-hero p{font-size:0.95rem;color:var(--soft)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}.game-icon{font-size:2rem}.game-title{font-size:1.3rem;font-weight:900;color:var(--ink)}.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}.game-stars-possible{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}.match-col{display:flex;flex-direction:column;gap:10px}.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}.match-item.selected{border-color:var(--blue);background:var(--bluebg)}.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.match-letter{font-family:var(--font-or);font-size:1.4rem;font-weight:700}
+
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.6}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1.2rem;font-weight:700;transition:all .15s;text-align:center}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}.quiz-feedback.show{display:block}.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}.quiz-feedback.bad{background:var(--redbg);color:var(--red)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.quiz-next:hover{opacity:0.8}.quiz-next.show{display:inline-block}
+
+.sort-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.sort-item{padding:12px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1.2rem;font-weight:700;transition:all .15s;user-select:none}
+.sort-item:hover{border-color:var(--c);background:var(--cbg)}.sort-item.selected{border-color:var(--blue);background:var(--bluebg)}.sort-item.correct{border-color:var(--green);background:var(--greenbg)}.sort-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.sort-answer{display:flex;gap:6px;min-height:60px;padding:12px;border:2px dashed var(--border);border-radius:14px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.sort-placed{padding:10px 16px;border-radius:10px;background:var(--cbg);font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--c)}
+
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}.results-retry:hover{opacity:0.85}
+
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}.match-grid,.quiz-options{grid-template-columns:1fr}}
+@media(max-width:480px){.breadcrumb{display:none}.quiz-options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 2</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ଶବ୍ଦ ଗଠନ ଖେଳ</span></div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span style="font-size:1.4rem">⭐</span><span class="star-label">Stars earned</span></div>
+  <div class="progress-wrap"><div class="progress-label">Overall progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 4 games done</div>
+</div>
+
+<div class="page-hero"><!-- REVIEW NEEDED --><h1>ଶବ୍ଦ ଗଠନ ଖେଳ 🎮</h1><p>4 fun games to practise word formation — earn ⭐ for every correct answer!</p></div>
+<hr class="divider">
+
+<!-- GAME 1 — MATCH WORD TO MEANING -->
+<section class="game-section" id="game1">
+  <div class="game-header"><div class="game-icon">🔗</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 1 — ଶବ୍ଦ ଓ ଅର୍ଥ ମିଳାଅ</div><div class="game-subtitle">Match each Odia word to its English meaning.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div class="match-grid">
+    <div class="match-col"><!-- REVIEW NEEDED --><div class="match-col-label">ଓଡ଼ିଆ ଶବ୍ଦ</div><div id="matchWords"></div></div>
+    <div class="match-col"><div class="match-col-label">English Meaning</div><div id="matchMeanings"></div></div>
+  </div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 2 — WORD BUILDER (sort syllables) -->
+<section class="game-section" id="game2">
+  <div class="game-header"><div class="game-icon">🧩</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 2 — ଶବ୍ଦ ଗଢ଼</div><div class="game-subtitle">Arrange the syllables in the correct order to form the word.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="sortContainer"></div>
+  <button class="quiz-next show" id="sortNextBtn" onclick="nextSort()">Next Word →</button>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 3 — PICK THE WORD (MCQ with emoji hint) -->
+<section class="game-section" id="game3">
+  <div class="game-header"><div class="game-icon">🖼️</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 3 — ଚିତ୍ର ଦେଖି ଶବ୍ଦ ଚୁଣ</div><div class="game-subtitle">Look at the emoji and pick the correct Odia word.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="pickContainer"></div>
+  <button class="quiz-next show" id="pickNextBtn" onclick="nextPick()">Next Question →</button>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 4 — MCQ QUIZ -->
+<section class="game-section" id="game4">
+  <div class="game-header"><div class="game-icon">❓</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 4 — ଶବ୍ଦ କୁଇଜ୍</div><div class="game-subtitle">10 questions about word formation!</div></div><div class="game-stars-possible">Up to 10 ⭐</div></div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next show" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div><!-- REVIEW NEEDED --><div class="results-title" id="resultsTitle">ବହୁତ ଭଲ!</div><div class="results-score" id="resultsScore"></div><div class="results-stars" id="resultsStars"></div><!-- REVIEW NEEDED --><button class="results-retry" onclick="retryAll()">ପୁଣି ଖେଳ 🔄</button>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 2 · ଓଡ଼ିଆ · ଶବ୍ଦ ଗଠନ · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED
+var matchData=[
+  {word:'ଗୋରୁ',meaning:'Cow'},{word:'ପାଣି',meaning:'Water'},
+  {word:'ନଦୀ',meaning:'River'},{word:'ଆକାଶ',meaning:'Sky'},
+  {word:'ଫୁଲ',meaning:'Flower'},{word:'ଘର',meaning:'House'},
+  {word:'ବାଘ',meaning:'Tiger'},{word:'ମାଛ',meaning:'Fish'}
+];
+
+var sortData=[
+  {word:'ପିଲାଟି',parts:['ପି','ଲା','ଟି'],emoji:'🧒'},
+  {word:'ମାଛୁଆ',parts:['ମା','ଛୁ','ଆ'],emoji:'🎣'},
+  {word:'ପତାକା',parts:['ପ','ତା','କା'],emoji:'🏴'},
+  {word:'ଆକାଶ',parts:['ଆ','କା','ଶ'],emoji:'🌤️'},
+  {word:'କଦଳୀ',parts:['କ','ଦ','ଳୀ'],emoji:'🍌'},
+  {word:'ଶିକ୍ଷା',parts:['ଶି','କ୍ଷା'],emoji:'🏫'},
+  {word:'ମିତ୍ର',parts:['ମି','ତ୍ର'],emoji:'🤝'},
+  {word:'ସୁନ୍ଦର',parts:['ସୁ','ନ୍ଦ','ର'],emoji:'🌸'}
+];
+
+var pickData=[
+  {emoji:'🐄',answer:'ଗୋରୁ',opts:['ଗୋରୁ','ବାଘ','ମାଛ','ଘର']},
+  {emoji:'💧',answer:'ପାଣି',opts:['ଫୁଲ','ପାଣି','ନଦୀ','ଚାଲ']},
+  {emoji:'🏞️',answer:'ନଦୀ',opts:['ନଦୀ','ପାଣି','ଆକାଶ','ଫୁଲ']},
+  {emoji:'🌸',answer:'ଫୁଲ',opts:['ଘର','ଫୁଲ','ଗୋରୁ','ମାଛ']},
+  {emoji:'🐯',answer:'ବାଘ',opts:['ମାଛ','ଗୋରୁ','ବାଘ','ପୁଅ']},
+  {emoji:'🏠',answer:'ଘର',opts:['ଘର','ନଦୀ','ଚାଲ','ଫୁଲ']},
+  {emoji:'🍌',answer:'କଦଳୀ',opts:['କମଳ','କଦଳୀ','ପାଣି','ଘର']},
+  {emoji:'🧠',answer:'ବୁଦ୍ଧି',opts:['ବିଦ୍ୟା','ବୁଦ୍ଧି','ଶିକ୍ଷା','ମିତ୍ର']}
+];
+
+var quizData=[
+  {q:'"ଗୋରୁ" ର ଅର୍ଥ କ\'ଣ?',opts:['Tiger','Cow','Fish','River'],ans:1},
+  {q:'"ପାଣି" ରେ କେତୋଟି ଅକ୍ଷର ଅଛି?',opts:['୨','୩','୪','୧'],ans:0},
+  {q:'ପ + ତା + କା = ?',opts:['ପତାକା','ପାତାଳ','ପାଣି','ପିଲା'],ans:0},
+  {q:'"ଆକାଶ" ର ଅର୍ଥ କ\'ଣ?',opts:['Water','Sky','River','House'],ans:1},
+  {q:'କେଉଁ ଶବ୍ଦରେ ଯୁକ୍ତାକ୍ଷର ଅଛି?',opts:['ଫୁଲ','ଘର','ଶିକ୍ଷା','ପାଣି'],ans:2},
+  {q:'ମା + ଛୁ + ଆ = ?',opts:['ମାଛୁଆ','ମାଛ','ମାଳା','ମାମୁ'],ans:0},
+  {q:'"ନଦୀ" ର ଅର୍ଥ କ\'ଣ?',opts:['Flower','Tiger','River','Sky'],ans:2},
+  {q:'ସୁ + ନ୍ଦ + ର = ?',opts:['ସୁନ୍ଦର','ସୁନା','ସୁଖ','ସୁଗମ'],ans:0},
+  {q:'"ବିଦ୍ୟା" ର ଅର୍ଥ କ\'ଣ?',opts:['Friend','Clean','Knowledge','Answer'],ans:2},
+  {q:'କେଉଁ ଶବ୍ଦଟି ତିନି ଅକ୍ଷରର?',opts:['ଘର','ଫୁଲ','ଆକାଶ','ନଦୀ'],ans:2}
+];
+
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStars(n,el){totalStars+=n;document.getElementById('starCount').textContent=totalStars;updateProgress();for(var i=0;i<n;i++){(function(idx){setTimeout(function(){var pop=document.createElement('div');pop.className='star-pop';pop.textContent='⭐';if(el){var r=el.getBoundingClientRect();pop.style.left=(r.left+r.width/2)+'px';pop.style.top=r.top+'px'}else{pop.style.left=(window.innerWidth/2)+'px';pop.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(pop);setTimeout(function(){pop.remove()},1000)},idx*150)})(i)}}
+function completeGame(){gamesCompleted++;updateProgress();if(gamesCompleted>=totalGames)showResults()}
+function updateProgress(){var pct=(gamesCompleted/totalGames)*100;document.getElementById('progressFill').style.width=pct+'%';document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done'}
+function showResults(){var maxStars=34;var banner=document.getElementById('resultsBanner');var pct=Math.round((totalStars/maxStars)*100);document.getElementById('resultsScore').textContent='You earned '+totalStars+' out of '+maxStars+' stars ('+pct+'%)';var s='';for(var i=0;i<Math.min(totalStars,10);i++)s+='⭐';if(totalStars>10)s+=' +'+(totalStars-10);document.getElementById('resultsStars').textContent=s;if(pct===100){document.getElementById('resultsEmoji').textContent='🏆';document.getElementById('resultsTitle').textContent='Perfect! ସମ୍ପୂର୍ଣ୍ଣ!'}else if(pct>=70){document.getElementById('resultsEmoji').textContent='🎉';document.getElementById('resultsTitle').textContent='ବହୁତ ଭଲ!'}else{document.getElementById('resultsEmoji').textContent='💪';document.getElementById('resultsTitle').textContent='ଆଉ ଥରେ ଚେଷ୍ଟା କର!'}banner.classList.add('show');if(pct>=70)launchConfetti()}
+function retryAll(){location.reload()}
+
+// GAME 1 — MATCH
+(function(){var data=matchData.slice();var shuffledM=data.map(function(d){return{meaning:d.meaning,word:d.word}});for(var i=shuffledM.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffledM[i];shuffledM[i]=shuffledM[j];shuffledM[j]=t}var wCol=document.getElementById('matchWords');var mCol=document.getElementById('matchMeanings');var sel=null,matched=0,done=false;
+data.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span class="match-letter">'+d.word+'</span>';el.dataset.word=d.word;el.dataset.side='word';el.onclick=function(){ck(el)};wCol.appendChild(el)});
+shuffledM.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-size:1rem">'+d.meaning+'</span>';el.dataset.word=d.word;el.dataset.side='meaning';el.onclick=function(){ck(el)};mCol.appendChild(el)});
+function ck(el){if(done||el.classList.contains('correct'))return;if(!sel){sel=el;el.classList.add('selected');return}if(sel===el){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===el.dataset.side){sel.classList.remove('selected');sel=el;el.classList.add('selected');return}var wEl=sel.dataset.side==='word'?sel:el;var mEl=sel.dataset.side==='meaning'?sel:el;if(wEl.dataset.word===mEl.dataset.word){wEl.classList.remove('selected');wEl.classList.add('correct');mEl.classList.add('correct');matched++;addStars(1,mEl);document.getElementById('matchStatus').textContent=matched+' / '+data.length+' matched';if(matched===data.length){done=true;document.getElementById('matchStatus').textContent='All matched! 🎉';completeGame()}}else{wEl.classList.remove('selected');wEl.classList.add('wrong');mEl.classList.add('wrong');setTimeout(function(){wEl.classList.remove('wrong');mEl.classList.remove('wrong')},500)}sel=null}})();
+
+// GAME 2 — SORT SYLLABLES
+var sortIdx=0,sortDone=false;
+function renderSort(){if(sortIdx>=sortData.length){sortDone=true;document.getElementById('sortNextBtn').style.display='none';completeGame();return}var d=sortData[sortIdx];var shuffled=d.parts.slice();for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t}var html='<div class="quiz-card"><div class="quiz-q-num">Word '+(sortIdx+1)+' of '+sortData.length+'</div><div style="font-size:2.5rem;margin-bottom:8px">'+d.emoji+'</div><div class="quiz-instruction">Tap syllables in order to spell the word</div><div class="sort-answer" id="sortAnswer"></div><div class="sort-container" id="sortPieces">';shuffled.forEach(function(p,i){html+='<div class="sort-item" onclick="pickSort(this,\''+p+'\','+i+')" data-idx="'+i+'">'+p+'</div>'});html+='</div><div class="quiz-feedback" id="sortFeedback"></div></div>';document.getElementById('sortContainer').innerHTML=html;document.getElementById('sortNextBtn').classList.remove('show');window._sortPicked=[];window._sortTarget=d.parts}
+function pickSort(el,val,idx){if(el.classList.contains('selected'))return;var target=window._sortTarget;var picked=window._sortPicked;picked.push(val);el.classList.add('selected');var ans=document.getElementById('sortAnswer');var sp=document.createElement('span');sp.className='sort-placed';sp.textContent=val;ans.appendChild(sp);if(picked.length===target.length){var correct=picked.join('')===target.join('');var fb=document.getElementById('sortFeedback');if(correct){fb.className='quiz-feedback show ok';fb.textContent='✅ Correct! '+target.join('')+' = '+sortData[sortIdx].word;addStars(1,el)}else{fb.className='quiz-feedback show bad';fb.textContent='❌ The correct order is '+target.join(' + ')}document.getElementById('sortNextBtn').classList.add('show')}}
+function nextSort(){sortIdx++;renderSort()}
+renderSort();
+
+// GAME 3 — PICK WORD FROM EMOJI
+var pickIdx=0;
+function renderPick(){if(pickIdx>=pickData.length){document.getElementById('pickNextBtn').style.display='none';completeGame();return}var d=pickData[pickIdx];var opts=d.opts.slice();for(var i=opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=opts[i];opts[i]=opts[j];opts[j]=t}var html='<div class="quiz-card"><div class="quiz-q-num">Question '+(pickIdx+1)+' of '+pickData.length+'</div><div style="font-size:4rem;margin-bottom:12px">'+d.emoji+'</div><div class="quiz-instruction">Which word matches this picture?</div><div class="quiz-options" id="pickOpts">';opts.forEach(function(o,i){html+='<button class="quiz-opt" onclick="pickAnswer(this,\''+o+'\')" data-val="'+o+'">'+o+'</button>'});html+='</div><div class="quiz-feedback" id="pickFeedback"></div></div>';document.getElementById('pickContainer').innerHTML=html;document.getElementById('pickNextBtn').classList.remove('show')}
+function pickAnswer(el,val){var d=pickData[pickIdx];var all=document.querySelectorAll('#pickOpts .quiz-opt');all.forEach(function(o){o.disabled=true});var fb=document.getElementById('pickFeedback');if(val===d.answer){el.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.classList.add('wrong');all.forEach(function(o){if(o.dataset.val===d.answer)o.classList.add('correct')});fb.className='quiz-feedback show bad';fb.textContent='❌ The answer is '+d.answer}document.getElementById('pickNextBtn').classList.add('show')}
+function nextPick(){pickIdx++;renderPick()}
+renderPick();
+
+// GAME 4 — QUIZ
+var quizIdx=0;
+function renderQuiz(){if(quizIdx>=quizData.length){document.getElementById('quizNextBtn').style.display='none';completeGame();return}var d=quizData[quizIdx];var html='<div class="quiz-card"><div class="quiz-q-num">Question '+(quizIdx+1)+' of '+quizData.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Pick the correct answer</div><div class="quiz-options" id="quizOpts">';d.opts.forEach(function(o,i){html+='<button class="quiz-opt" onclick="pickQuiz(this,'+i+')" data-idx="'+i+'">'+o+'</button>'});html+='</div><div class="quiz-feedback" id="quizFeedback"></div></div>';document.getElementById('quizContainer').innerHTML=html;document.getElementById('quizNextBtn').classList.remove('show')}
+function pickQuiz(el,idx){var d=quizData[quizIdx];var all=document.querySelectorAll('#quizOpts .quiz-opt');all.forEach(function(o){o.disabled=true});var fb=document.getElementById('quizFeedback');if(idx===d.ans){el.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.classList.add('wrong');all.forEach(function(o){if(parseInt(o.dataset.idx)===d.ans)o.classList.add('correct')});fb.className='quiz-feedback show bad';fb.textContent='❌ The correct answer is '+d.opts[d.ans]}document.getElementById('quizNextBtn').classList.add('show')}
+function nextQuiz(){quizIdx++;renderQuiz()}
+renderQuiz();
+
+function launchConfetti(){var canvas=document.getElementById('confetti');canvas.style.display='block';canvas.width=window.innerWidth;canvas.height=window.innerHeight;var ctx=canvas.getContext('2d');var pieces=[];var colors=['#FF6B6B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7'];for(var i=0;i<150;i++){pieces.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,w:Math.random()*10+5,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],vy:Math.random()*3+2,vx:(Math.random()-0.5)*2,rot:Math.random()*360,vr:(Math.random()-0.5)*8})}var frames=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});frames++;if(frames<200)requestAnimationFrame(draw);else canvas.style.display='none'}draw()}
+</script>
+</body>
+</html>

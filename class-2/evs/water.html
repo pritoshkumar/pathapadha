@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଜଳ — ପରିବେଶ ଅଧ୍ୟୟନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#3A86FF;--cbg:#EEF4FF;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:900px;margin:0 auto;padding:64px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:130px;height:130px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-games{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;padding:10px 22px;border-radius:12px;font-size:.88rem;font-weight:800;transition:opacity .15s}
+.btn-games:hover{opacity:.85}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+
+.section{max-width:900px;margin:0 auto;padding:48px}
+.section-label{font-size:.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.member-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px;text-align:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s}
+.member-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--c)}
+.member-emoji{font-size:3.5rem;margin-bottom:12px;display:block}
+.member-odia{font-family:var(--font-or);font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.member-eng{font-size:.85rem;font-weight:700;color:var(--light);margin-bottom:8px}
+.member-desc{font-size:.82rem;color:var(--soft);line-height:1.6}
+
+.group-box{background:var(--cbg);border-radius:24px;padding:36px;margin-top:20px}
+.group-title{font-family:var(--font-or);font-size:1.2rem;font-weight:700;margin-bottom:20px;text-align:center}
+.group-row{display:flex;justify-content:center;gap:20px;margin-bottom:16px;flex-wrap:wrap}
+.group-node{background:#fff;border:2px solid var(--border);border-radius:16px;padding:14px 20px;text-align:center;min-width:100px}
+.group-node-emoji{font-size:2rem;display:block;margin-bottom:4px}
+.group-node-label{font-family:var(--font-or);font-size:.9rem;font-weight:700}
+.group-node-sub{font-size:.72rem;color:var(--light);font-weight:600}
+
+.info-box{background:var(--off);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px}
+.info-title{font-size:.95rem;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.info-list li{font-size:.88rem;color:var(--soft);display:flex;align-items:center;gap:8px;font-weight:600}
+.info-list li span{font-size:1.2rem}
+
+.cycle-box{background:var(--cbg);border-radius:24px;padding:36px;text-align:center}
+.cycle-title{font-family:var(--font-or);font-size:1.2rem;font-weight:700;margin-bottom:20px}
+.cycle-steps{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.cycle-step{background:#fff;border:2px solid var(--border);border-radius:16px;padding:14px 18px;text-align:center}
+.cycle-step-emoji{font-size:2rem;display:block;margin-bottom:4px}
+.cycle-step-label{font-family:var(--font-or);font-size:.85rem;font-weight:700}
+.cycle-arrow{font-size:1.5rem;color:var(--c)}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:24px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.bottom-nav a{font-size:.85rem;font-weight:800;color:var(--c);transition:opacity .15s}
+.bottom-nav a:hover{opacity:.7}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .member-grid{grid-template-columns:1fr 1fr}
+  .bottom-nav{padding:20px}
+  footer{padding:20px}
+}
+@media(max-width:480px){
+  .member-grid{grid-template-columns:1fr}
+  .cycle-steps{flex-direction:column}
+  .cycle-arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଜଳ</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">💧 ଜଳ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଆମ ଚାରିପାଖରେ ଜଳ</h1>
+    <p class="hero-eng">Water Around Us · EVS · Class 2</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଜଳ କେଉଁଠୁ ଆସେ, ଆମେ କିପରି ବ୍ୟବହାର କରୁ ଓ ଜଳ ସଂରକ୍ଷଣ ବିଷୟରେ ଶିଖ ।</p>
+    <div class="hero-actions">
+      <a href="water-games.html" class="btn-games">🎮 Play Games</a>
+    </div>
+  </div>
+  <div class="hero-art">💧</div>
+</section>
+
+<hr class="divider">
+
+<!-- WATER SOURCES -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଜଳର ଉତ୍ସ — Sources of Water</div>
+  <div class="member-grid" id="sourceGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- USES OF WATER -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଜଳର ବ୍ୟବହାର — Uses of Water</div>
+  <div class="group-box">
+    <!-- REVIEW NEEDED -->
+    <div class="group-title">ଆମେ ଜଳ କେଉଁ କାମରେ ବ୍ୟବହାର କରୁ?</div>
+    <div class="group-row">
+      <div class="group-node">
+        <span class="group-node-emoji">🚰</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ପିଇବା</span>
+        <span class="group-node-sub">Drinking</span>
+      </div>
+      <div class="group-node">
+        <span class="group-node-emoji">🍳</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ରାନ୍ଧିବା</span>
+        <span class="group-node-sub">Cooking</span>
+      </div>
+      <div class="group-node">
+        <span class="group-node-emoji">🛁</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ଗାଧୋଇବା</span>
+        <span class="group-node-sub">Bathing</span>
+      </div>
+      <div class="group-node">
+        <span class="group-node-emoji">👕</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ଲୁଗା ଧୋଇବା</span>
+        <span class="group-node-sub">Washing clothes</span>
+      </div>
+      <div class="group-node">
+        <span class="group-node-emoji">🌱</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ଗଛ ପାଇଁ</span>
+        <span class="group-node-sub">Watering plants</span>
+      </div>
+      <div class="group-node">
+        <span class="group-node-emoji">🧹</span>
+        <!-- REVIEW NEEDED -->
+        <span class="group-node-label">ସଫା କରିବା</span>
+        <span class="group-node-sub">Cleaning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WATER CYCLE -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଜଳ ଚକ୍ର — Water Cycle</div>
+  <div class="cycle-box">
+    <!-- REVIEW NEEDED -->
+    <div class="cycle-title">ଜଳ ଚକ୍ର କିପରି କାମ କରେ?</div>
+    <div class="cycle-steps">
+      <div class="cycle-step">
+        <span class="cycle-step-emoji">☀️</span>
+        <!-- REVIEW NEEDED -->
+        <span class="cycle-step-label">ସୂର୍ଯ୍ୟ ଗରମ କରେ</span>
+      </div>
+      <span class="cycle-arrow">→</span>
+      <div class="cycle-step">
+        <span class="cycle-step-emoji">💨</span>
+        <!-- REVIEW NEEDED -->
+        <span class="cycle-step-label">ଜଳ ବାଷ୍ପ ହୁଏ</span>
+      </div>
+      <span class="cycle-arrow">→</span>
+      <div class="cycle-step">
+        <span class="cycle-step-emoji">☁️</span>
+        <!-- REVIEW NEEDED -->
+        <span class="cycle-step-label">ମେଘ ହୁଏ</span>
+      </div>
+      <span class="cycle-arrow">→</span>
+      <div class="cycle-step">
+        <span class="cycle-step-emoji">🌧️</span>
+        <!-- REVIEW NEEDED -->
+        <span class="cycle-step-label">ବର୍ଷା ହୁଏ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SAVE WATER -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଜଳ ସଂରକ୍ଷଣ — Save Water</div>
+  <div class="info-box">
+    <!-- REVIEW NEEDED -->
+    <div class="info-title">💧 ଜଳ ବଞ୍ଚାଅ — ଏହି ଅଭ୍ୟାସ ଶିଖ</div>
+    <ul class="info-list">
+      <!-- REVIEW NEEDED -->
+      <li><span>🚿</span> ଗାଧୋଇବା ସମୟରେ ନଳ ବନ୍ଦ ରଖ</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🪥</span> ଦାନ୍ତ ମାଜିବା ବେଳେ ନଳ ବନ୍ଦ ରଖ</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🪣</span> ବାଲ୍ଟିରେ ପାଣି ନେଇ ଗାଧୋଇ</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🌱</span> ଗଛକୁ ସନ୍ଧ୍ୟାରେ ପାଣି ଦିଅ</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🔧</span> ନଳ ଟପୁଟପୁ ହେଲେ ସାରିଦିଅ</li>
+    </ul>
+  </div>
+</section>
+
+<div class="bottom-nav">
+  <a href="food.html">← Prev: ଖାଦ୍ୟ</a>
+  <a href="shelter.html">Next: ଆଶ୍ରୟ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · EVS · Free forever</span>
+</footer>
+
+<script>
+var sources = [
+  { emoji:'🏞️', odia:'ନଦୀ', eng:'River', desc:'ନଦୀ ଏକ ବଡ଼ ଜଳ ଉତ୍ସ । ନଦୀ ପାହାଡ଼ରୁ ସମୁଦ୍ରକୁ ବହେ ।' },
+  { emoji:'🌊', odia:'ସମୁଦ୍ର', eng:'Sea / Ocean', desc:'ସମୁଦ୍ରରେ ଲୁଣିଆ ପାଣି ଥାଏ । ଏହା ସବୁଠାରୁ ବଡ଼ ଜଳ ଉତ୍ସ ।' },
+  { emoji:'💦', odia:'ନଳକୂପ', eng:'Tubewell', desc:'ନଳକୂପ ମାଟି ତଳୁ ପାଣି ଉଠାଏ । ଗାଁରେ ଏହା ବହୁତ ଦରକାରୀ ।' },
+  { emoji:'🪣', odia:'କୂଅ', eng:'Well', desc:'କୂଅରୁ ଦଉଡ଼ି ଓ ବାଲ୍ଟି ଦ୍ୱାରା ପାଣି ତୋଳାଯାଏ ।' },
+  { emoji:'🌧️', odia:'ବରଷା', eng:'Rain', desc:'ବରଷା ଆକାଶରୁ ପଡ଼େ । ଏହା ପୃଥିବୀକୁ ପାଣି ଦିଏ ।' },
+  { emoji:'🏔️', odia:'ବରଫ', eng:'Ice / Glacier', desc:'ପାହାଡ଼ ଉପରେ ବରଫ ଗଳି ନଦୀ ହୁଏ ।' },
+  { emoji:'🏊', odia:'ପୋଖରୀ', eng:'Pond', desc:'ପୋଖରୀରେ ମାଛ ରହନ୍ତି ଓ ଲୋକେ ଗାଧୁଅନ୍ତି ।' },
+  { emoji:'🚰', odia:'ନଳ ପାଣି', eng:'Tap Water', desc:'ଘରେ ନଳରୁ ସଫା ପାଣି ଆସେ ।' }
+];
+
+var grid = document.getElementById('sourceGrid');
+sources.forEach(function(m) {
+  var card = document.createElement('div');
+  card.className = 'member-card';
+  card.innerHTML =
+    '<span class="member-emoji">' + m.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="member-odia">' + m.odia + '</div>' +
+    '<div class="member-eng">' + m.eng + '</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="member-desc">' + m.desc + '</div>';
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

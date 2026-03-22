@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବାକ୍ୟ — Sentences | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #A3D9C5}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto;padding:0 48px}
+
+.sentence-list{max-width:900px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:16px}
+.sentence-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:24px 28px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.sentence-card:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 8px 24px rgba(67,170,139,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.sentence-odia{font-family:var(--font-or);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.6}
+.sentence-eng{font-size:0.9rem;font-weight:600;color:var(--light);margin-bottom:10px}
+.sentence-parts{display:flex;flex-wrap:wrap;gap:6px}
+.sentence-part{font-family:var(--font-or);font-size:0.85rem;font-weight:700;padding:4px 12px;border-radius:8px;background:var(--cbg);color:var(--c)}
+.sentence-emoji{font-size:1.5rem;float:right;margin-left:12px}
+
+.punct-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.punct-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.punct-card{background:#fff;border-radius:16px;border:2px solid var(--border);padding:20px;text-align:center;transition:transform .18s,border-color .18s}
+.punct-card:hover{transform:translateY(-3px);border-color:var(--c)}
+.punct-symbol{font-size:3rem;margin-bottom:8px}
+.punct-name{font-family:var(--font-or);font-size:1rem;font-weight:700;margin-bottom:4px}
+.punct-eng{font-size:0.8rem;font-weight:600;color:var(--light)}
+.punct-example{font-family:var(--font-or);font-size:0.85rem;color:var(--soft);margin-top:8px;background:var(--off);padding:6px 10px;border-radius:8px}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}
+.btn:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}
+.btn-primary{background:var(--c);color:#fff}
+.btn-forward{background:var(--ink);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.page-hero,.intro,.sentence-list,.punct-section,.bottom-nav,footer,.section-label{padding-left:20px;padding-right:20px}.punct-grid{grid-template-columns:1fr}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 2</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ବାକ୍ୟ</span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-emoji">📝</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ବାକ୍ୟ</h1>
+  <p class="subtitle">Bakya — Sentences</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୨ (SCERT Odisha)</span>
+</div>
+<hr class="divider">
+
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ଶବ୍ଦ ଯୋଡ଼ି ବାକ୍ୟ ତିଆରି ହୁଏ। ନିମ୍ନରେ ସରଳ ବାକ୍ୟ ପଢ଼ ଓ ବୁଝ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Words combine to form sentences. Read simple sentences below and understand their structure!</p>
+</div>
+
+<!-- REVIEW NEEDED -->
+<div class="section-label">ସରଳ ବାକ୍ୟ — Simple Sentences</div>
+<div class="sentence-list" id="sentenceList"></div>
+
+<!-- REVIEW NEEDED -->
+<div class="section-label" style="margin-top:40px">ବିରାମ ଚିହ୍ନ — Punctuation Marks</div>
+<div class="punct-section">
+  <div class="punct-grid" id="punctGrid"></div>
+</div>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="word-formation.html" class="btn btn-outline">← ଶବ୍ଦ ଗଠନ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="sentences-games.html" class="btn btn-primary">🎮 ବାକ୍ୟ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="stories.html" class="btn btn-forward">ଗଳ୍ପ →</a>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 2 · Odia · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED
+var sentences = [
+  { odia: 'ମୁଁ ବିଦ୍ୟାଳୟ ଯାଏ।', eng: 'I go to school.', emoji: '🏫', parts: ['ମୁଁ (I)', 'ବିଦ୍ୟାଳୟ (school)', 'ଯାଏ (go)'] },
+  { odia: 'ସେ ଫୁଲ ତୋଳେ।', eng: 'She picks flowers.', emoji: '🌸', parts: ['ସେ (She)', 'ଫୁଲ (flower)', 'ତୋଳେ (picks)'] },
+  { odia: 'ଗୋରୁ ଘାସ ଖାଏ।', eng: 'The cow eats grass.', emoji: '🐄', parts: ['ଗୋରୁ (cow)', 'ଘାସ (grass)', 'ଖାଏ (eats)'] },
+  { odia: 'ପିଲାମାନେ ଖେଳନ୍ତି।', eng: 'Children play.', emoji: '🤸', parts: ['ପିଲାମାନେ (children)', 'ଖେଳନ୍ତି (play)'] },
+  { odia: 'ସୂର୍ଯ୍ୟ ଉଦୟ ହୁଏ।', eng: 'The sun rises.', emoji: '🌅', parts: ['ସୂର୍ଯ୍ୟ (sun)', 'ଉଦୟ (rise)', 'ହୁଏ (happens)'] },
+  { odia: 'ପକ୍ଷୀ ଆକାଶରେ ଉଡ଼େ।', eng: 'Birds fly in the sky.', emoji: '🕊️', parts: ['ପକ୍ଷୀ (bird)', 'ଆକାଶରେ (in sky)', 'ଉଡ଼େ (flies)'] },
+  { odia: 'ମାଛ ପାଣିରେ ଚାଲେ।', eng: 'Fish swim in water.', emoji: '🐟', parts: ['ମାଛ (fish)', 'ପାଣିରେ (in water)', 'ଚାଲେ (moves)'] },
+  { odia: 'ବର୍ଷା ହେଉଛି।', eng: 'It is raining.', emoji: '🌧️', parts: ['ବର୍ଷା (rain)', 'ହେଉଛି (is happening)'] },
+  { odia: 'ମୋ ନାମ ରାମ।', eng: 'My name is Ram.', emoji: '👦', parts: ['ମୋ (my)', 'ନାମ (name)', 'ରାମ (Ram)'] },
+  { odia: 'ଏ ଆମ ଘର।', eng: 'This is our house.', emoji: '🏠', parts: ['ଏ (this)', 'ଆମ (our)', 'ଘର (house)'] }
+];
+
+var punctuation = [
+  { symbol: '।', name: 'ପୂର୍ଣ୍ଣଛେଦ', eng: 'Full Stop (Purna Chheda)', example: 'ମୁଁ ଯାଏ।' },
+  { symbol: ',', name: 'କମା', eng: 'Comma', example: 'ଫୁଲ, ଗଛ, ଓ ଫଳ' },
+  { symbol: '?', name: 'ପ୍ରଶ୍ନବୋଧକ ଚିହ୍ନ', eng: 'Question Mark', example: 'ତୁ କିଏ?' },
+  { symbol: '!', name: 'ବିସ୍ମୟସୂଚକ ଚିହ୍ନ', eng: 'Exclamation Mark', example: 'ବାହ!' }
+];
+
+var list = document.getElementById('sentenceList');
+sentences.forEach(function(s, i) {
+  var card = document.createElement('div');
+  card.className = 'sentence-card';
+  card.style.animationDelay = (i * 0.06) + 's';
+  var partsHTML = s.parts.map(function(p) {
+    return '<span class="sentence-part">' + p + '</span>';
+  }).join('');
+  card.innerHTML =
+    '<div class="sentence-emoji">' + s.emoji + '</div>' +
+    '<div class="sentence-odia">' + s.odia + '</div>' +
+    '<div class="sentence-eng">' + s.eng + '</div>' +
+    '<div class="sentence-parts">' + partsHTML + '</div>';
+  list.appendChild(card);
+});
+
+var pgrid = document.getElementById('punctGrid');
+punctuation.forEach(function(p) {
+  var card = document.createElement('div');
+  card.className = 'punct-card';
+  card.innerHTML =
+    '<div class="punct-symbol">' + p.symbol + '</div>' +
+    '<div class="punct-name">' + p.name + '</div>' +
+    '<div class="punct-eng">' + p.eng + '</div>' +
+    '<div class="punct-example">' + p.example + '</div>';
+  pgrid.appendChild(card);
+});
+</script>
+</body>
+</html>

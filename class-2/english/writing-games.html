@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Writing Games — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--green:#43AA8B;--greenbg:#EDFAF4;--red:#FF6B6B;--redbg:#FFF0F0;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.4rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.star-display{display:flex;align-items:center;gap:6px;}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1;}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light);}
+.progress-wrap{flex:1;min-width:160px;}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px;}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease;width:0%;}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light);}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.page-hero p{font-size:0.95rem;color:var(--soft);}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px;}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.game-icon{font-size:2rem;}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px;}
+.game-complete-badge{display:none;margin-left:auto;font-size:0.78rem;font-weight:800;background:var(--greenbg);color:var(--green);border:1px solid var(--green);padding:4px 12px;border-radius:50px;}
+.game-complete-badge.show{display:block;}
+
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.quiz-question{font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:16px;line-height:1.6;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;font-weight:700;transition:all .15s;text-align:left;}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green);}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red);}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s;}
+.quiz-next:hover{opacity:0.8;}
+.quiz-next.show{display:inline-block;}
+
+/* Word order game */
+.wo-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.wo-slots{display:flex;justify-content:center;gap:6px;margin-bottom:16px;min-height:52px;flex-wrap:wrap;}
+.wo-slot{min-width:50px;height:48px;border-radius:10px;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:0.95rem;font-weight:800;color:var(--c);background:#fff;cursor:pointer;padding:0 12px;transition:all .15s;}
+.wo-slot.filled{border-style:solid;border-color:var(--c);background:var(--cbg);}
+.wo-bank{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.wo-tile{min-width:40px;height:48px;border-radius:10px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.95rem;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 14px;transition:all .15s;}
+.wo-tile:hover{border-color:var(--c);background:var(--cbg);}
+.wo-tile.used{opacity:0.3;pointer-events:none;}
+.wo-check{background:var(--c);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;transition:opacity .15s;}
+.wo-check:hover{opacity:0.85;}
+.wo-slot.correct-slot{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.wo-slot.wrong-slot{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .3s;}
+
+/* Fill blank */
+.fb-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.fb-sentence{font-size:1.1rem;font-weight:700;line-height:1.8;color:var(--ink);margin-bottom:20px;}
+.fb-blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--c);color:var(--c);font-weight:800;padding:2px 8px;margin:0 4px;}
+.fb-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.fb-opt{padding:10px 20px;border-radius:12px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.95rem;font-weight:700;transition:all .15s;}
+.fb-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.fb-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.fb-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.fb-opt:disabled{cursor:default;}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+.trophy-banner{display:none;text-align:center;padding:48px 20px;background:linear-gradient(135deg,#FFFBEC,#F3EDFF);border-radius:24px;margin:32px auto;max-width:600px;}
+.trophy-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.trophy-emoji{font-size:4rem;margin-bottom:12px;}
+.trophy-title{font-size:1.8rem;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.trophy-sub{font-size:1rem;color:var(--soft);margin-bottom:20px;}
+.trophy-btn{background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s;}
+.trophy-btn:hover{opacity:0.85;}
+@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+.confetti-piece{position:fixed;width:10px;height:10px;top:-10px;z-index:9999;animation:confettiFall 3s ease-in forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotate(720deg);opacity:0;}}
+.star-pop{position:fixed;font-size:2rem;z-index:9999;pointer-events:none;animation:starFloat 1s ease-out forwards;}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-80px) scale(1.5);}}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .star-bar{padding:10px 20px;}
+  .page-hero{padding:32px 20px 24px;}
+  .game-section{padding:32px 20px;}
+  .quiz-options{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 2</a> ›
+    <a href="index.html">English</a> ›
+    <span>Writing Games</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span class="star-label">⭐ Stars</span></div>
+  <div class="progress-wrap"><div class="progress-label">Games completed</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 4 games</div>
+</div>
+
+<section class="page-hero">
+  <h1>🎮 Writing Games</h1>
+  <p>Play 4 fun games to practice your writing skills! Earn ⭐ for each correct answer.</p>
+</section>
+<hr class="divider">
+
+<!-- GAME 1: Make a Sentence -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">📐</div>
+    <div><div class="game-title">Make a Sentence</div><div class="game-subtitle">Arrange the words to form a correct sentence</div></div>
+    <div class="game-complete-badge" id="g1badge">✅ Done!</div>
+  </div>
+  <div id="g1Container"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 2: Fill the Story -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">📖</div>
+    <div><div class="game-title">Fill the Story</div><div class="game-subtitle">Pick the missing word to complete each sentence</div></div>
+    <div class="game-complete-badge" id="g2badge">✅ Done!</div>
+  </div>
+  <div id="g2Container"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 3: Punctuation Fix -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">❗</div>
+    <div><div class="game-title">Pick the Punctuation</div><div class="game-subtitle">What punctuation mark goes at the end?</div></div>
+    <div class="game-complete-badge" id="g3badge">✅ Done!</div>
+  </div>
+  <div id="g3Container"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 4: Writing Quiz -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div><div class="game-title">Writing Quiz</div><div class="game-subtitle">Answer 10 writing and sentence questions</div></div>
+    <div class="game-complete-badge" id="g4badge">✅ Done!</div>
+  </div>
+  <div id="g4Container"></div>
+</section>
+
+<div class="trophy-banner" id="trophy">
+  <div class="trophy-emoji">🏆</div>
+  <div class="trophy-title">All Games Complete!</div>
+  <div class="trophy-sub" id="trophySub">You earned 0 stars!</div>
+  <button class="trophy-btn" onclick="location.reload()">🔄 Play Again</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 2 · English · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStar(){totalStars++;document.getElementById('starCount').textContent=totalStars;popStar();}
+function popStar(){var s=document.createElement('div');s.className='star-pop';s.textContent='⭐';s.style.left=(Math.random()*60+20)+'%';s.style.top='50%';document.body.appendChild(s);setTimeout(function(){s.remove();},1000);}
+function completeGame(n){gamesCompleted++;document.getElementById('g'+n+'badge').classList.add('show');document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games';document.getElementById('progressFill').style.width=(gamesCompleted/totalGames*100)+'%';if(gamesCompleted===totalGames)showTrophy();}
+function showTrophy(){document.getElementById('trophySub').textContent='You earned '+totalStars+' stars!';document.getElementById('trophy').classList.add('show');launchConfetti();}
+function launchConfetti(){var colors=['#FF6B6B','#43AA8B','#3A86FF','#F9C74F','#7B5EA7','#FF9F43'];for(var i=0;i<60;i++){var c=document.createElement('div');c.className='confetti-piece';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=(Math.random()*2)+'s';c.style.borderRadius=Math.random()>0.5?'50%':'0';c.style.width=(Math.random()*8+6)+'px';c.style.height=(Math.random()*8+6)+'px';document.body.appendChild(c);setTimeout(function(el){el.remove();}.bind(null,c),5000);}}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ── GAME 1: MAKE A SENTENCE ── */
+var g1Data=shuffle([
+  {sentence:['The','cat','is','on','the','mat.']},
+  {sentence:['I','like','to','eat','mangoes.']},
+  {sentence:['My','mother','cooks','food.']},
+  {sentence:['Birds','fly','in','the','sky.']},
+  {sentence:['She','goes','to','school.']},
+  {sentence:['We','play','in','the','park.']},
+  {sentence:['He','reads','a','book.']},
+  {sentence:['The','sun','is','very','bright.']}
+]);
+var g1Idx=0;
+function renderG1(){
+  var cont=document.getElementById('g1Container');
+  if(g1Idx>=g1Data.length){completeGame(1);return;}
+  var d=g1Data[g1Idx];
+  var words=d.sentence;
+  var jumbled=shuffle(words.slice());
+  var placed=new Array(words.length);
+  var card=document.createElement('div');card.className='wo-card';
+  card.innerHTML='<div class="quiz-q-num">Sentence '+(g1Idx+1)+' of '+g1Data.length+'</div><div style="font-size:0.9rem;color:var(--soft);margin-bottom:16px;">Arrange the words to make a correct sentence:</div><div class="wo-slots" id="g1Slots"></div><div class="wo-bank" id="g1Bank"></div><button class="wo-check" id="g1Check">Check ✓</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var slotsDiv=document.getElementById('g1Slots');
+  var bankDiv=document.getElementById('g1Bank');
+
+  function renderSlots(){
+    slotsDiv.innerHTML='';
+    for(var i=0;i<words.length;i++){
+      var slot=document.createElement('div');slot.className='wo-slot'+(placed[i]?' filled':'');
+      slot.textContent=placed[i]||'';
+      (function(idx){
+        slot.onclick=function(){
+          if(placed[idx]){
+            bankDiv.querySelectorAll('.wo-tile').forEach(function(t){if(t.textContent===placed[idx]&&t.classList.contains('used')){t.classList.remove('used');}});
+            placed[idx]=undefined;
+            renderSlots();
+          }
+        };
+      })(i);
+      slotsDiv.appendChild(slot);
+    }
+  }
+  renderSlots();
+
+  jumbled.forEach(function(w){
+    var tile=document.createElement('div');tile.className='wo-tile';tile.textContent=w;
+    tile.onclick=function(){
+      if(tile.classList.contains('used'))return;
+      tile.classList.add('used');
+      for(var k=0;k<words.length;k++){if(!placed[k]){placed[k]=w;break;}}
+      renderSlots();
+    };
+    bankDiv.appendChild(tile);
+  });
+
+  document.getElementById('g1Check').onclick=function(){
+    var allFilled=true;
+    for(var k=0;k<words.length;k++){if(!placed[k]){allFilled=false;break;}}
+    if(!allFilled)return;
+    var correct=true;
+    var slots=slotsDiv.querySelectorAll('.wo-slot');
+    for(var i=0;i<words.length;i++){
+      if(placed[i]===words[i]){slots[i].classList.add('correct-slot');}
+      else{slots[i].classList.add('wrong-slot');correct=false;}
+    }
+    if(correct){addStar();setTimeout(function(){g1Idx++;renderG1();},800);}
+    else{setTimeout(function(){placed=new Array(words.length);renderSlots();bankDiv.querySelectorAll('.wo-tile').forEach(function(t){t.classList.remove('used');});},1000);}
+  };
+}
+renderG1();
+
+/* ── GAME 2: FILL THE STORY ── */
+var g2Data=shuffle([
+  {text:'I have a pet ___. His name is Tommy.',blank:'dog',opts:['cat','dog','bird','fish']},
+  {text:'My school has a big ___.',blank:'playground',opts:['playground','kitchen','garden','river']},
+  {text:'She ___ to school every day.',blank:'goes',opts:['goes','eats','sleeps','sings']},
+  {text:'The birds ___ in the sky.',blank:'fly',opts:['swim','fly','run','jump']},
+  {text:'We eat ___ for lunch.',blank:'rice',opts:['water','rice','stone','wood']},
+  {text:'My mother is very ___.',blank:'kind',opts:['kind','angry','tall','small']},
+  {text:'The sun is very ___.',blank:'bright',opts:['dark','cold','bright','wet']},
+  {text:'I ___ my homework every evening.',blank:'do',opts:['eat','do','throw','break']}
+]);
+var g2Idx=0;
+function renderG2(){
+  var cont=document.getElementById('g2Container');
+  if(g2Idx>=g2Data.length){completeGame(2);return;}
+  var d=g2Data[g2Idx];
+  var display=d.text.replace('___','<span class="fb-blank" id="g2Blank">___</span>');
+  var card=document.createElement('div');card.className='fb-card';
+  card.innerHTML='<div class="quiz-q-num">Sentence '+(g2Idx+1)+' of '+g2Data.length+'</div><div class="fb-sentence">'+display+'</div><div class="fb-options" id="g2Opts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('g2Opts');
+  shuffle(d.opts.slice()).forEach(function(o){
+    var btn=document.createElement('button');btn.className='fb-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.fb-opt').forEach(function(b){b.disabled=true;});
+      document.getElementById('g2Blank').textContent=o;
+      if(o===d.blank){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelectorAll('.fb-opt').forEach(function(b){if(b.textContent===d.blank)b.classList.add('correct');});document.getElementById('g2Blank').textContent=d.blank;}
+      setTimeout(function(){g2Idx++;renderG2();},900);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderG2();
+
+/* ── GAME 3: PUNCTUATION ── */
+var g3Data=shuffle([
+  {s:'The cat is sleeping',a:'.',type:'Statement'},
+  {s:'Where is my book',a:'?',type:'Question'},
+  {s:'What a beautiful day',a:'!',type:'Exclamation'},
+  {s:'I go to school every day',a:'.',type:'Statement'},
+  {s:'How old are you',a:'?',type:'Question'},
+  {s:'Wow, it is so big',a:'!',type:'Exclamation'},
+  {s:'She likes to read books',a:'.',type:'Statement'},
+  {s:'Can you help me',a:'?',type:'Question'},
+  {s:'What a great game',a:'!',type:'Exclamation'},
+  {s:'My name is Sita',a:'.',type:'Statement'}
+]);
+var g3Idx=0;
+function renderG3(){
+  var cont=document.getElementById('g3Container');
+  if(g3Idx>=g3Data.length){completeGame(3);return;}
+  var d=g3Data[g3Idx];
+  var card=document.createElement('div');card.className='fb-card';
+  card.innerHTML='<div class="quiz-q-num">Sentence '+(g3Idx+1)+' of '+g3Data.length+'</div><div class="fb-sentence">'+d.s+' <span class="fb-blank" id="g3Blank" style="min-width:40px;">?</span></div><div style="font-size:0.82rem;color:var(--soft);margin-bottom:16px;">What punctuation mark goes at the end?</div><div class="fb-options" id="g3Opts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('g3Opts');
+  ['.','?','!'].forEach(function(o){
+    var btn=document.createElement('button');btn.className='fb-opt';btn.textContent=o;btn.style.fontSize='1.5rem';btn.style.minWidth='60px';
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.fb-opt').forEach(function(b){b.disabled=true;});
+      document.getElementById('g3Blank').textContent=o;
+      if(o===d.a){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelectorAll('.fb-opt').forEach(function(b){if(b.textContent===d.a)b.classList.add('correct');});document.getElementById('g3Blank').textContent=d.a;}
+      setTimeout(function(){g3Idx++;renderG3();},800);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderG3();
+
+/* ── GAME 4: WRITING QUIZ ── */
+var g4Data=shuffle([
+  {q:'Every sentence starts with a:',a:'Capital letter',opts:['Small letter','Capital letter','Number','Punctuation']},
+  {q:'A statement ends with a:',a:'Full stop (.)',opts:['Full stop (.)','Question mark (?)','Exclamation mark (!)','Comma (,)']},
+  {q:'A question ends with a:',a:'Question mark (?)',opts:['Full stop (.)','Question mark (?)','Exclamation mark (!)','Comma (,)']},
+  {q:'Which is a correct sentence?',a:'The dog runs fast.',opts:['dog runs fast the','The dog runs fast.','runs fast dog The','fast runs The dog']},
+  {q:'In a letter, "Dear Raju" is the:',a:'Greeting',opts:['Address','Greeting','Closing','Body']},
+  {q:'A paragraph is about:',a:'One main topic',opts:['Many topics','One main topic','One word','Nothing']},
+  {q:'Which needs a question mark?',a:'Where is my pen',opts:['I like mangoes','Where is my pen','She is tall','The sun shines']},
+  {q:'A letter ends with:',a:'Your name',opts:['Your age','Your name','A question','A song']},
+  {q:'Which word should be capitalised?',a:'sita (a name)',opts:['dog','book','sita (a name)','tree']},
+  {q:'"Wow, what a big elephant!" — This is:',a:'An exclamation',opts:['A statement','A question','An exclamation','A letter']}
+]);
+var g4Idx=0;
+function renderG4(){
+  var cont=document.getElementById('g4Container');
+  if(g4Idx>=g4Data.length){completeGame(4);return;}
+  var d=g4Data[g4Idx];
+  var card=document.createElement('div');card.className='quiz-card';
+  card.innerHTML='<div class="quiz-q-num">Question '+(g4Idx+1)+' of '+g4Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-options" id="g4Opts"></div><div class="quiz-feedback" id="g4Fb"></div><button class="quiz-next" id="g4Next">Next →</button>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('g4Opts');
+  shuffle(d.opts.slice()).forEach(function(o){
+    var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;});
+      var fb=document.getElementById('g4Fb');
+      if(o===d.a){btn.classList.add('correct');fb.textContent='✅ Correct!';fb.className='quiz-feedback show ok';addStar();}
+      else{btn.classList.add('wrong');fb.textContent='❌ The answer is: '+d.a;fb.className='quiz-feedback show bad';optDiv.querySelectorAll('.quiz-opt').forEach(function(b){if(b.textContent===d.a)b.classList.add('correct');});}
+      document.getElementById('g4Next').classList.add('show');
+    };
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('g4Next').onclick=function(){g4Idx++;renderG4();};
+}
+renderG4();
+</script>
+</body>
+</html>

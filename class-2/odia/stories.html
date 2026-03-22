@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଗଳ୍ପ — Stories | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #D4C4EE}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+
+.story-list{max-width:900px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:32px}
+.story-card{background:#fff;border-radius:24px;border:2px solid var(--border);padding:32px;transition:border-color .18s,box-shadow .18s}
+.story-card:hover{border-color:var(--c);box-shadow:0 8px 24px rgba(123,94,167,0.1)}
+.story-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.story-emoji{font-size:2.5rem}
+.story-title{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--c)}
+.story-title-en{font-size:0.85rem;font-weight:600;color:var(--light);margin-top:2px}
+.story-body{font-family:var(--font-or);font-size:1.1rem;line-height:2;color:var(--ink);margin-bottom:20px;padding:20px;background:var(--off);border-radius:16px}
+.story-moral{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--cbg);border-radius:12px;font-size:0.9rem;font-weight:700;color:var(--c)}
+.story-moral-icon{font-size:1.4rem}
+.story-vocab{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.vocab-chip{font-family:var(--font-or);font-size:0.85rem;font-weight:700;padding:6px 14px;border-radius:10px;background:#fff;border:1px solid var(--border)}
+
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}
+.btn:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}
+.btn-primary{background:var(--c);color:#fff}
+.btn-forward{background:var(--ink);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.page-hero,.intro,.story-list,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 2</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ଗଳ୍ପ</span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-emoji">📖</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ଗଳ୍ପ</h1>
+  <p class="subtitle">Galpa — Simple Stories</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୨ (SCERT Odisha)</span>
+</div>
+<hr class="divider">
+
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ସରଳ ଓଡ଼ିଆ ଗଳ୍ପ ପଢ଼ ଓ ବୁଝ। ପ୍ରତ୍ୟେକ ଗଳ୍ପରେ ନୂଆ ଶବ୍ଦ ଓ ନୀତି ଶିଖ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Read simple Odia stories. Each story has new vocabulary and a moral lesson!</p>
+</div>
+
+<div class="story-list" id="storyList"></div>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="sentences.html" class="btn btn-outline">← ବାକ୍ୟ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="stories-games.html" class="btn btn-primary">🎮 ଗଳ୍ପ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="grammar.html" class="btn btn-forward">ବ୍ୟାକରଣ →</a>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 2 · Odia · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED
+var stories = [
+  {
+    title: 'କାଉ ଓ ପାଣି',
+    titleEn: 'The Crow and Water',
+    emoji: '🐦',
+    body: 'ଗୋଟିଏ କାଉ ବହୁତ ଖରା ଦିନେ ଉଡ଼ୁଥିଲା। ତା ବହୁତ ଶୁଖିଲା ଲାଗିଲା। ସେ ଗୋଟିଏ କୁଣ୍ଡ ଦେଖିଲା। କୁଣ୍ଡରେ ଅଳ୍ପ ପାଣି ଥିଲା। କାଉ ମୁହଁ ପହଞ୍ଚିଲା ନାହିଁ। ସେ ଗୋଟିଏ ଗୋଟିଏ ଗୁଣ୍ଡା ପଥର ପକାଇଲା। ପାଣି ଉପରକୁ ଆସିଲା। କାଉ ପାଣି ପିଇଲା।',
+    moral: 'ଚେଷ୍ଟା କଲେ ଉପାୟ ମିଳେ। (Where there is a will, there is a way.)',
+    vocab: ['କାଉ = crow', 'ଖରା = hot', 'ଶୁଖିଲା = thirsty', 'କୁଣ୍ଡ = pot', 'ଅଳ୍ପ = little', 'ଗୁଣ୍ଡା ପଥର = pebble']
+  },
+  {
+    title: 'ଲୋମଡ଼ୀ ଓ ଅଙ୍ଗୁର',
+    titleEn: 'The Fox and the Grapes',
+    emoji: '🦊',
+    body: 'ଗୋଟିଏ ଲୋମଡ଼ୀ ଅଙ୍ଗୁର ଗଛ ତଳେ ଗଲା। ସେ ଅଙ୍ଗୁର ଖାଇବାକୁ ଚାହିଁଲା। ସେ ବହୁତ ଡେଇଁଲା। କିନ୍ତୁ ଅଙ୍ଗୁର ବହୁତ ଉଚ୍ଚରେ ଥିଲା। ଲୋମଡ଼ୀ ପାଇ ପାରିଲା ନାହିଁ। ସେ କହିଲା, "ଅଙ୍ଗୁର ଆମ୍ବାଲିଆ।"',
+    moral: 'ନ ପାଇଲେ ଖରାପ କୁହ ନାହିଁ। (Do not blame what you cannot get.)',
+    vocab: ['ଲୋମଡ଼ୀ = fox', 'ଅଙ୍ଗୁର = grapes', 'ଡେଇଁଲା = jumped', 'ଉଚ୍ଚ = high', 'ଆମ୍ବାଲିଆ = sour']
+  },
+  {
+    title: 'ସୁନା ଅଣ୍ଡା',
+    titleEn: 'The Golden Egg',
+    emoji: '🥚',
+    body: 'ଗୋଟିଏ ଚାଷୀ ପାଖରେ ଗୋଟିଏ ହଂସୀ ଥିଲା। ହଂସୀ ପ୍ରତିଦିନ ଗୋଟିଏ ସୁନା ଅଣ୍ଡା ଦେଉଥିଲା। ଚାଷୀ ଧନୀ ହୋଇଗଲା। ତା ଲୋଭ ବଢ଼ିଗଲା। ସେ ଭାବିଲା ସବୁ ଅଣ୍ଡା ଏକାଥରେ ପାଇବି। ସେ ହଂସୀକୁ ମାରିଦେଲା। ଭିତରେ କିଛି ମିଳିଲା ନାହିଁ।',
+    moral: 'ଲୋଭରେ ସବୁ ନଷ୍ଟ ହୁଏ। (Greed leads to loss.)',
+    vocab: ['ଚାଷୀ = farmer', 'ହଂସୀ = goose', 'ସୁନା = gold', 'ଅଣ୍ଡା = egg', 'ଲୋଭ = greed', 'ଧନୀ = rich']
+  }
+];
+
+var list = document.getElementById('storyList');
+stories.forEach(function(s) {
+  var vocabHTML = s.vocab.map(function(v) {
+    return '<span class="vocab-chip">' + v + '</span>';
+  }).join('');
+
+  var card = document.createElement('div');
+  card.className = 'story-card';
+  card.innerHTML =
+    '<div class="story-header">' +
+      '<div class="story-emoji">' + s.emoji + '</div>' +
+      '<div><div class="story-title">' + s.title + '</div><div class="story-title-en">' + s.titleEn + '</div></div>' +
+    '</div>' +
+    '<div class="story-body">' + s.body + '</div>' +
+    '<div class="story-moral"><span class="story-moral-icon">💡</span> ' + s.moral + '</div>' +
+    '<div class="story-vocab">' + vocabHTML + '</div>';
+  list.appendChild(card);
+});
+</script>
+</body>
+</html>
