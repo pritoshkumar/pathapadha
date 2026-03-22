@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ପରିବାର — ପରିବେଶ ଅଧ୍ୟୟନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#FF6B6B;--cbg:#FFF0F0;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:900px;margin:0 auto;padding:64px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:130px;height:130px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-games{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;padding:10px 22px;border-radius:12px;font-size:.88rem;font-weight:800;transition:opacity .15s}
+.btn-games:hover{opacity:.85}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+
+.section{max-width:900px;margin:0 auto;padding:48px}
+.section-label{font-size:.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.member-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px;text-align:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s}
+.member-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--c)}
+.member-emoji{font-size:3.5rem;margin-bottom:12px;display:block}
+.member-odia{font-family:var(--font-or);font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.member-eng{font-size:.85rem;font-weight:700;color:var(--light);margin-bottom:8px}
+.member-desc{font-size:.82rem;color:var(--soft);line-height:1.6}
+
+.family-tree{background:var(--cbg);border-radius:24px;padding:36px;margin-top:20px}
+.tree-title{font-family:var(--font-or);font-size:1.2rem;font-weight:700;margin-bottom:20px;text-align:center}
+.tree-row{display:flex;justify-content:center;gap:20px;margin-bottom:16px;flex-wrap:wrap}
+.tree-node{background:#fff;border:2px solid var(--border);border-radius:16px;padding:14px 20px;text-align:center;min-width:100px}
+.tree-node-emoji{font-size:2rem;display:block;margin-bottom:4px}
+.tree-node-label{font-family:var(--font-or);font-size:.9rem;font-weight:700}
+.tree-connector{text-align:center;font-size:1.5rem;color:var(--c);margin-bottom:12px}
+
+.info-box{background:var(--off);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:24px}
+.info-title{font-size:.95rem;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.info-list li{font-size:.88rem;color:var(--soft);display:flex;align-items:center;gap:8px;font-weight:600}
+.info-list li span{font-size:1.2rem}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .member-grid{grid-template-columns:1fr 1fr}
+  footer{padding:20px}
+}
+@media(max-width:480px){
+  .member-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ପରିବାର</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">👨‍👩‍👧‍👦 ପରିବାର</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ମୋ ପରିବାର</h1>
+    <p class="hero-eng">My Family · EVS · Class 1</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଆମ ପରିବାର ବିଷୟରେ ଶିଖ — ବାପା, ମା, ଭାଇ, ଭଉଣୀ ଓ ବଡ଼ ବୟସ୍କ ସଦସ୍ୟ ।</p>
+    <div class="hero-actions">
+      <a href="family-games.html" class="btn-games">🎮 Play Games</a>
+    </div>
+  </div>
+  <div class="hero-art">👨‍👩‍👧‍👦</div>
+</section>
+
+<hr class="divider">
+
+<!-- FAMILY MEMBERS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ପରିବାରର ସଦସ୍ୟ — Family Members</div>
+  <div class="member-grid" id="memberGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- FAMILY TREE -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ପରିବାର ବୃକ୍ଷ — Family Tree</div>
+  <div class="family-tree">
+    <!-- REVIEW NEEDED -->
+    <div class="tree-title">ଆମର ପରିବାର ବୃକ୍ଷ</div>
+    <div class="tree-row">
+      <div class="tree-node">
+        <span class="tree-node-emoji">👴</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ଜେଜେ</span>
+      </div>
+      <div class="tree-node">
+        <span class="tree-node-emoji">👵</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ଆଈ</span>
+      </div>
+    </div>
+    <div class="tree-connector">⬇️</div>
+    <div class="tree-row">
+      <div class="tree-node">
+        <span class="tree-node-emoji">👨</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ବାପା</span>
+      </div>
+      <div class="tree-node">
+        <span class="tree-node-emoji">👩</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ମା</span>
+      </div>
+    </div>
+    <div class="tree-connector">⬇️</div>
+    <div class="tree-row">
+      <div class="tree-node">
+        <span class="tree-node-emoji">👦</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ଭାଇ</span>
+      </div>
+      <div class="tree-node">
+        <span class="tree-node-emoji">👧</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ଭଉଣୀ</span>
+      </div>
+      <div class="tree-node" style="border-color:var(--c);background:var(--cbg)">
+        <span class="tree-node-emoji">🧒</span>
+        <!-- REVIEW NEEDED -->
+        <span class="tree-node-label">ମୁଁ (Me)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LOVE IN FAMILY -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ପରିବାରରେ ସ୍ନେହ — Love in the Family</div>
+  <div class="info-box">
+    <!-- REVIEW NEEDED -->
+    <div class="info-title">❤️ ପରିବାରରେ ସମସ୍ତେ ପରସ୍ପରକୁ ଭଲ ପାଆନ୍ତି</div>
+    <ul class="info-list">
+      <!-- REVIEW NEEDED -->
+      <li><span>👨</span> ବାପା ଆମ ପାଇଁ କାମ କରନ୍ତି</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>👩</span> ମା ଆମକୁ ଖାଇବାକୁ ଦିଅନ୍ତି</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>👴</span> ଜେଜେ ଆମକୁ ଗପ କୁହନ୍ତି</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>👵</span> ଆଈ ଆମକୁ ଗୀତ ଗାଇ ଦିଅନ୍ତି</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>👦👧</span> ଭାଇ ଭଉଣୀ ସାଥିରେ ଖେଳନ୍ତି</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · EVS · Free forever</span>
+</footer>
+
+<script>
+var members = [
+  { emoji:'👨', odia:'ବାପା', eng:'Father', desc:'ବାପା ଆମ ପରିବାରର ମୁଖ୍ୟ ସଦସ୍ୟ । ସେ ଆମ ପାଇଁ କାମ କରନ୍ତି ଓ ଯତ୍ନ ନିଅନ୍ତି ।' },
+  { emoji:'👩', odia:'ମା', eng:'Mother', desc:'ମା ଆମକୁ ସବୁଠାରୁ ବେଶୀ ଭଲ ପାଆନ୍ତି । ସେ ଆମକୁ ଖାଇବାକୁ ଦିଅନ୍ତି ।' },
+  { emoji:'👦', odia:'ଭାଇ', eng:'Brother', desc:'ଭାଇ ଆମ ସାଥୀ । ସେ ଆମ ସହ ଖେଳେ ଓ ପଢ଼େ ।' },
+  { emoji:'👧', odia:'ଭଉଣୀ', eng:'Sister', desc:'ଭଉଣୀ ଆମର ବନ୍ଧୁ । ସେ ଆମ ସହ ଖେଳେ ଓ ଗପ କହେ ।' },
+  { emoji:'👴', odia:'ଜେଜେ', eng:'Grandfather', desc:'ଜେଜେ ବାପାଙ୍କ ବାପା । ସେ ଆମକୁ ଗପ କୁହନ୍ତି ।' },
+  { emoji:'👵', odia:'ଆଈ', eng:'Grandmother', desc:'ଆଈ ବାପାଙ୍କ ମା । ସେ ଆମକୁ ଗୀତ ଗାଇ ଦିଅନ୍ତି ।' }
+];
+
+var grid = document.getElementById('memberGrid');
+members.forEach(function(m) {
+  var card = document.createElement('div');
+  card.className = 'member-card';
+  card.innerHTML =
+    '<span class="member-emoji">' + m.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="member-odia">' + m.odia + '</div>' +
+    '<div class="member-eng">' + m.eng + '</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="member-desc">' + m.desc + '</div>';
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

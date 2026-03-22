@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶବ୍ଦ — ସରଳ ଶବ୍ଦ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #F9C74F;
+  --cbg:    #FFFBEC;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* HERO */
+.hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+}
+.hero-emoji { font-size: 3.5rem; margin-bottom: 12px; display: block; }
+.hero h1 {
+  font-family: var(--font-or);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--soft);
+  font-weight: 600;
+}
+.hero .intro {
+  font-size: 0.9rem;
+  color: var(--light);
+  margin-top: 10px;
+  max-width: 520px;
+  margin-left: auto; margin-right: auto;
+}
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* SECTION */
+.section {
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 48px 48px;
+}
+.section-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); border: 1px solid #FFE99A;
+  padding: 6px 16px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 800;
+  color: #B8860B;
+  margin-bottom: 20px;
+}
+
+/* WORD GRID */
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+.word-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 14px;
+  text-align: center;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+  cursor: default;
+}
+.word-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--c);
+  box-shadow: 0 8px 24px rgba(249,199,79,0.15);
+}
+.word-emoji { font-size: 2.2rem; margin-bottom: 8px; display: block; }
+.word-odia {
+  font-family: var(--font-or);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+.word-english {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 2px;
+}
+.word-pronounce {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--soft);
+  font-style: italic;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  max-width: 900px; margin: 0 auto;
+  padding: 24px 48px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.bottom-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 800;
+  border: 2px solid var(--border);
+  background: #fff;
+  transition: all .15s;
+}
+.bottom-link:hover {
+  border-color: var(--c);
+  background: var(--cbg);
+}
+.bottom-link.game {
+  background: var(--c);
+  color: #fff;
+  border-color: var(--c);
+}
+.bottom-link.game:hover { opacity: 0.85; background: var(--c); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .hero, .section, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .word-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .breadcrumb { display: none; }
+}
+@media (max-width: 400px) {
+  .word-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .word-card { padding: 14px 10px; }
+  .word-odia { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଶବ୍ଦ</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">💬</span>
+  <!-- REVIEW NEEDED -->
+  <h1>ଶବ୍ଦ</h1>
+  <div class="subtitle">Shabda — Simple Words</div>
+  <!-- REVIEW NEEDED -->
+  <div class="intro">ଅକ୍ଷରକୁ ଯୋଡ଼ି ଶବ୍ଦ ତିଆରି କର — Learn to form words by joining letters together!</div>
+</div>
+
+<hr class="divider">
+
+<!-- 2-LETTER WORDS -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">📗 ଦୁଇ ଅକ୍ଷର ଶବ୍ଦ — 2-Letter Words</div>
+  <div class="word-grid">
+
+    <div class="word-card">
+      <span class="word-emoji">🍌</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">କଳ</span>
+      <span class="word-english">Banana</span>
+      <span class="word-pronounce">kala</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🌳</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ଗଛ</span>
+      <span class="word-english">Tree</span>
+      <span class="word-pronounce">gachha</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🌸</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ଫୁଲ</span>
+      <span class="word-english">Flower</span>
+      <span class="word-pronounce">phula</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🍃</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ପତ</span>
+      <span class="word-english">Leaf</span>
+      <span class="word-pronounce">pata</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">😊</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ମୁଖ</span>
+      <span class="word-english">Face</span>
+      <span class="word-pronounce">mukha</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🏠</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ଘର</span>
+      <span class="word-english">House</span>
+      <span class="word-pronounce">ghara</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">💧</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ଜଳ</span>
+      <span class="word-english">Water</span>
+      <span class="word-pronounce">jala</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🌲</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ବନ</span>
+      <span class="word-english">Forest</span>
+      <span class="word-pronounce">bana</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🪵</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ହଳ</span>
+      <span class="word-english">Plough</span>
+      <span class="word-pronounce">hala</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">👥</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ସବ</span>
+      <span class="word-english">All</span>
+      <span class="word-pronounce">saba</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🏞️</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ନଦ</span>
+      <span class="word-english">River</span>
+      <span class="word-pronounce">nada</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🌅</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ଦିନ</span>
+      <span class="word-english">Day</span>
+      <span class="word-pronounce">dina</span>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 3-LETTER WORDS -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">📘 ତିନି ଅକ୍ଷର ଶବ୍ଦ — 3-Letter Words</div>
+  <div class="word-grid">
+
+    <div class="word-card">
+      <span class="word-emoji">🐊</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ମକର</span>
+      <span class="word-english">Crocodile</span>
+      <span class="word-pronounce">makara</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">💦</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ତରଳ</span>
+      <span class="word-english">Liquid</span>
+      <span class="word-pronounce">tarala</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🪷</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">କମଳ</span>
+      <span class="word-english">Lotus</span>
+      <span class="word-pronounce">kamala</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">👁️</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ନୟନ</span>
+      <span class="word-english">Eye</span>
+      <span class="word-pronounce">nayana</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">⏰</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ସମୟ</span>
+      <span class="word-english">Time</span>
+      <span class="word-pronounce">samaya</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🌬️</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ପବନ</span>
+      <span class="word-english">Wind</span>
+      <span class="word-pronounce">pabana</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">🏙️</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ନଗର</span>
+      <span class="word-english">City</span>
+      <span class="word-pronounce">nagara</span>
+    </div>
+
+    <div class="word-card">
+      <span class="word-emoji">✨</span>
+      <!-- REVIEW NEEDED -->
+      <span class="word-odia">ସରଳ</span>
+      <span class="word-english">Simple</span>
+      <span class="word-pronounce">sarala</span>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="matras.html" class="bottom-link">← ମାତ୍ରା</a>
+  <!-- REVIEW NEEDED -->
+  <a href="words-games.html" class="bottom-link game">🎮 ଶବ୍ଦ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="sentences.html" class="bottom-link">ବାକ୍ୟ →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 1 · ଓଡ଼ିଆ · ଶବ୍ଦ · Free forever</span>
+</footer>
+
+</body>
+</html>

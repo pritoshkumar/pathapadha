@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଆକୃତି ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#7B5EA7;--cbg:#F3EDFF;--green:#43AA8B;--greenbg:#EDFAF4;
+  --yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.4rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px}
+.page-hero p{font-size:0.95rem;color:var(--soft)}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.game-icon{font-size:2rem}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink)}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}
+.game-stars-possible{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+
+/* SHAPE DISPLAY */
+.shape-display{text-align:center;margin-bottom:20px}
+.shape-show{width:120px;height:120px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:var(--cbg);border-radius:20px}
+.shape-show .s-circle{width:80px;height:80px;border-radius:50%;border:4px solid var(--c);background:rgba(123,94,167,0.15)}
+.shape-show .s-square{width:70px;height:70px;border:4px solid var(--c);background:rgba(123,94,167,0.15);border-radius:4px}
+.shape-show .s-rect{width:90px;height:50px;border:4px solid var(--c);background:rgba(123,94,167,0.15);border-radius:4px}
+.shape-show .s-triangle{width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid var(--c)}
+.shape-show .s-oval{width:90px;height:54px;border-radius:50%;border:4px solid var(--c);background:rgba(123,94,167,0.15)}
+.shape-show .s-diamond{width:56px;height:56px;border:4px solid var(--c);background:rgba(123,94,167,0.15);transform:rotate(45deg);border-radius:4px}
+.shape-progress{font-size:0.8rem;color:var(--light);font-weight:700;margin-bottom:8px}
+
+/* OPTION BUTTONS */
+.opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:500px;margin:0 auto}
+.opt-btn{padding:14px;border-radius:14px;border:2px solid var(--border);background:#fff;font-family:var(--font-or);font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .15s;text-align:center}
+.opt-btn:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}
+.opt-btn.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.opt-btn.wrong{border-color:var(--c);background:rgba(255,107,107,0.1);color:var(--c);animation:shake .3s}
+.opt-btn:disabled{cursor:default}
+.game-feedback{text-align:center;margin-top:14px;font-weight:700;font-size:0.9rem;min-height:24px}
+
+/* MATCH GAME */
+.match-pairs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.match-col{display:flex;flex-direction:column;gap:10px}
+.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}
+.match-item.selected{border-color:var(--blue);background:var(--bluebg)}
+.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}
+.match-item.wrong{border-color:var(--c);background:rgba(255,107,107,0.1);animation:shake .3s}
+.match-item .item-emoji{font-size:1.6rem}
+.match-item .item-text{font-size:0.95rem}
+
+/* SIDES GAME */
+.sides-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px;margin-bottom:16px;text-align:center}
+.sides-opts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.sides-opt{width:64px;height:64px;border-radius:14px;border:2px solid var(--border);background:#fff;font-size:1.5rem;font-weight:900;display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.sides-opt:hover{border-color:var(--blue);background:var(--bluebg);transform:scale(1.05)}
+.sides-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.sides-opt.wrong{border-color:var(--c);background:rgba(255,107,107,0.1);color:var(--c);animation:shake .3s}
+
+/* MCQ */
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:20px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.05rem;font-weight:700;transition:all .15s;text-align:center}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--c);background:rgba(255,107,107,0.1);color:var(--c)}
+.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}
+.quiz-feedback.bad{background:rgba(255,107,107,0.1);color:var(--c)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none}
+.quiz-next.show{display:inline-block}
+
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}
+.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}
+.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}
+.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}
+.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800}
+.results-retry:hover{opacity:0.85}
+
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}
+  .opt-grid,.quiz-options{grid-template-columns:1fr 1fr}
+  .match-pairs{grid-template-columns:1fr}
+  .shape-show{width:100px;height:100px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଆକୃତି ଖେଳ</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display">
+    <span class="star-count" id="starCount">0</span>
+    <span style="font-size:1.4rem">⭐</span>
+    <span class="star-label">Stars earned</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Overall progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="games-done" id="gamesDone">0 / 4 games done</div>
+</div>
+
+<div class="page-hero">
+  <!-- REVIEW NEEDED -->
+  <h1>ଆକୃତି ଖେଳ 🎮</h1>
+  <p>4 fun games to learn shapes — earn ⭐ for every correct answer!</p>
+</div>
+<hr class="divider">
+
+<!-- GAME 1: NAME THE SHAPE -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🔷</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 1 — ଆକୃତି ଚିହ୍ନଟ କର</div>
+      <div class="game-subtitle">See the shape, pick its Odia name</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="nameContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 2: MATCH SHAPE TO OBJECT -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 2 — ଆକୃତି ଓ ଜିନିଷ ମିଳାଅ</div>
+      <div class="game-subtitle">Match each shape to a real-world object</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="matchContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 3: HOW MANY SIDES -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">📐</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 3 — କେତୋଟି ପାର୍ଶ୍ୱ?</div>
+      <div class="game-subtitle">Pick the number of sides for each shape</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="sidesContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 4: MCQ QUIZ -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div>
+      <div class="game-title">Game 4 — MCQ Quiz</div>
+      <div class="game-subtitle">10 questions about shapes</div>
+    </div>
+    <div class="game-stars-possible">Up to 10 ⭐</div>
+  </div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div>
+  <div class="results-title" id="resultsTitle">Fantastic!</div>
+  <div class="results-score" id="resultsScore"></div>
+  <div class="results-stars" id="resultsStars"></div>
+  <button class="results-retry" onclick="location.reload()">Play Again 🔄</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Math · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStar(n){totalStars+=(n||1);document.getElementById('starCount').textContent=totalStars;var p=document.createElement('div');p.className='star-pop';p.textContent='⭐';p.style.left=Math.random()*60+20+'%';p.style.top=Math.random()*40+30+'%';document.body.appendChild(p);setTimeout(function(){p.remove()},1000)}
+function markGameDone(){gamesCompleted++;document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done';document.getElementById('progressFill').style.width=(gamesCompleted/totalGames*100)+'%';if(gamesCompleted>=totalGames)showResults()}
+function showResults(){var b=document.getElementById('resultsBanner');b.classList.add('show');document.getElementById('resultsScore').textContent='You earned '+totalStars+' stars!';var s='';for(var i=0;i<Math.min(totalStars,20);i++)s+='⭐';document.getElementById('resultsStars').textContent=s;if(totalStars>=24){document.getElementById('resultsTitle').textContent='Superstar!';document.getElementById('resultsEmoji').textContent='🏆'}else if(totalStars>=16){document.getElementById('resultsTitle').textContent='Great Job!';document.getElementById('resultsEmoji').textContent='🌟'}else{document.getElementById('resultsTitle').textContent='Good Try!';document.getElementById('resultsEmoji').textContent='👍'}launchConfetti();b.scrollIntoView({behavior:'smooth'})}
+function launchConfetti(){var c=document.getElementById('confetti');c.style.display='block';var ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;var ps=[];var cols=['#7B5EA7','#F9C74F','#43AA8B','#3A86FF','#FF6B6B','#E63946'];for(var i=0;i<150;i++){ps.push({x:Math.random()*c.width,y:Math.random()*c.height-c.height,w:Math.random()*10+5,h:Math.random()*6+3,color:cols[Math.floor(Math.random()*cols.length)],vx:Math.random()*4-2,vy:Math.random()*3+2,rot:Math.random()*360,vr:Math.random()*10-5})}var f=0;function draw(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(function(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.vy+=0.05});f++;if(f<200)requestAnimationFrame(draw);else c.style.display='none'}draw()}
+function shuffle(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
+
+var shapes=[
+  {id:'circle',or:'ବୃତ୍ତ',en:'Circle',sides:0,css:'s-circle',emoji:'⭕'},
+  {id:'square',or:'ବର୍ଗ',en:'Square',sides:4,css:'s-square',emoji:'⬛'},
+  {id:'rectangle',or:'ଆୟତାକାର',en:'Rectangle',sides:4,css:'s-rect',emoji:'▬'},
+  {id:'triangle',or:'ତ୍ରିଭୁଜ',en:'Triangle',sides:3,css:'s-triangle',emoji:'🔺'},
+  {id:'oval',or:'ଅଣ୍ଡାକାର',en:'Oval',sides:0,css:'s-oval',emoji:'🥚'},
+  {id:'diamond',or:'ହୀରା',en:'Diamond',sides:4,css:'s-diamond',emoji:'🔷'}
+];
+
+function shapeHTML(css){
+  if(css==='s-triangle') return '<div style="width:0;height:0;border-left:35px solid transparent;border-right:35px solid transparent;border-bottom:60px solid var(--c)"></div>';
+  return '<div class="'+css+'"></div>';
+}
+
+/* ═══ GAME 1: NAME THE SHAPE ═══ */
+var nameOrder=shuffle([0,1,2,3,4,5]);
+var nameIdx=0,nameScore=0,nameDone=false;
+
+function renderName(){
+  if(nameIdx>=nameOrder.length){if(!nameDone){nameDone=true;markGameDone()}document.getElementById('nameContainer').innerHTML='<div style="text-align:center;padding:24px;font-weight:800;color:var(--green)">Game 1 complete! '+nameScore+' / '+nameOrder.length+' correct ✅</div>';return}
+  var s=shapes[nameOrder[nameIdx]];
+  var opts=shuffle(shapes.map(function(sh){return sh.or}));
+  // ensure no duplicates and answer is included
+  if(opts.indexOf(s.or)<0) opts[0]=s.or;
+  opts=shuffle(opts).slice(0,4);
+  if(opts.indexOf(s.or)<0){opts[0]=s.or;opts=shuffle(opts)}
+  var html='<div class="shape-display"><div class="shape-progress">'+(nameIdx+1)+' / '+nameOrder.length+'</div>'+
+    '<div class="shape-show">'+shapeHTML(s.css)+'</div></div>'+
+    '<div class="opt-grid">';
+  opts.forEach(function(o){
+    html+='<button class="opt-btn" onclick="checkName(this,\''+o+'\',\''+s.or+'\')">'+o+'</button>';
+  });
+  html+='</div><div class="game-feedback" id="nameFb"></div>';
+  document.getElementById('nameContainer').innerHTML=html;
+}
+function checkName(btn,pick,ans){
+  var btns=document.querySelectorAll('#game1 .opt-btn');btns.forEach(function(b){b.disabled=true});
+  if(pick===ans){btn.classList.add('correct');document.getElementById('nameFb').innerHTML='<span style="color:var(--green)">Correct! '+ans+' ✅</span>';nameScore++;addStar()}
+  else{btn.classList.add('wrong');btns.forEach(function(b){if(b.textContent===ans)b.classList.add('correct')});document.getElementById('nameFb').innerHTML='<span style="color:var(--c)">It\'s '+ans+' ❌</span>'}
+  nameIdx++;setTimeout(renderName,1200);
+}
+renderName();
+
+/* ═══ GAME 2: MATCH SHAPE TO OBJECT ═══ */
+var matchData=[
+  {shape:'ବୃତ୍ତ',obj:'🛞 Wheel',objEmoji:'🛞'},
+  {shape:'ବର୍ଗ',obj:'🪟 Window',objEmoji:'🪟'},
+  {shape:'ଆୟତାକାର',obj:'🚪 Door',objEmoji:'🚪'},
+  {shape:'ତ୍ରିଭୁଜ',obj:'⛰️ Mountain',objEmoji:'⛰️'},
+  {shape:'ଅଣ୍ଡାକାର',obj:'🥚 Egg',objEmoji:'🥚'},
+  {shape:'ହୀରା',obj:'🪁 Kite',objEmoji:'🪁'}
+];
+var matchSelected=null;
+var matchedCount=0;
+var matchDone=false;
+
+function renderMatch(){
+  var leftItems=shuffle(matchData.slice());
+  var rightItems=shuffle(matchData.slice());
+  var html='<div class="match-pairs"><div class="match-col"><div class="match-col-label">Shapes</div>';
+  leftItems.forEach(function(m,i){
+    html+='<div class="match-item" data-shape="'+m.shape+'" onclick="pickMatchLeft(this)"><span class="item-text" style="font-family:var(--font-or)">'+m.shape+'</span></div>';
+  });
+  html+='</div><div class="match-col"><div class="match-col-label">Objects</div>';
+  rightItems.forEach(function(m,i){
+    html+='<div class="match-item" data-shape="'+m.shape+'" onclick="pickMatchRight(this)"><span class="item-emoji">'+m.objEmoji+'</span><span class="item-text">'+m.obj+'</span></div>';
+  });
+  html+='</div></div><div class="game-feedback" id="matchFb"></div>';
+  document.getElementById('matchContainer').innerHTML=html;
+}
+function pickMatchLeft(el){
+  if(el.classList.contains('correct'))return;
+  document.querySelectorAll('#game2 .match-col:first-child .match-item').forEach(function(m){m.classList.remove('selected')});
+  el.classList.add('selected');
+  matchSelected=el.getAttribute('data-shape');
+}
+function pickMatchRight(el){
+  if(!matchSelected||el.classList.contains('correct'))return;
+  var rightShape=el.getAttribute('data-shape');
+  if(rightShape===matchSelected){
+    el.classList.add('correct');
+    document.querySelectorAll('#game2 .match-col:first-child .match-item').forEach(function(m){
+      if(m.getAttribute('data-shape')===matchSelected)m.classList.add('correct');
+      m.classList.remove('selected');
+    });
+    matchedCount++;addStar();
+    matchSelected=null;
+    if(matchedCount>=matchData.length&&!matchDone){matchDone=true;markGameDone();document.getElementById('matchFb').innerHTML='<span style="color:var(--green)">All matched! ✅</span>'}
+  } else {
+    el.classList.add('wrong');
+    setTimeout(function(){el.classList.remove('wrong')},400);
+  }
+}
+renderMatch();
+
+/* ═══ GAME 3: HOW MANY SIDES ═══ */
+var sidesOrder=shuffle([0,1,2,3,4,5]);
+var sidesIdx=0,sidesScore=0,sidesDone=false;
+
+function renderSides(){
+  if(sidesIdx>=sidesOrder.length){if(!sidesDone){sidesDone=true;markGameDone()}document.getElementById('sidesContainer').innerHTML='<div style="text-align:center;padding:24px;font-weight:800;color:var(--green)">Game 3 complete! '+sidesScore+' / '+sidesOrder.length+' correct ✅</div>';return}
+  var s=shapes[sidesOrder[sidesIdx]];
+  var html='<div class="sides-card"><div class="shape-progress">'+(sidesIdx+1)+' / '+sidesOrder.length+'</div>'+
+    '<div class="shape-show" style="margin:0 auto 16px">'+shapeHTML(s.css)+'</div>'+
+    '<div style="font-family:var(--font-or);font-size:1.2rem;font-weight:700;margin-bottom:4px">'+s.or+'</div>'+
+    '<div style="font-size:0.85rem;color:var(--light);font-weight:700;margin-bottom:16px">'+s.en+'</div>'+
+    '<div style="font-size:1rem;font-weight:800;margin-bottom:12px">How many sides?</div>'+
+    '<div class="sides-opts">';
+  [0,3,4].forEach(function(n){
+    html+='<button class="sides-opt" onclick="checkSides(this,'+n+','+s.sides+')">'+n+'</button>';
+  });
+  html+='</div><div class="game-feedback" id="sidesFb"></div></div>';
+  document.getElementById('sidesContainer').innerHTML=html;
+}
+function checkSides(btn,pick,ans){
+  var btns=document.querySelectorAll('.sides-opt');btns.forEach(function(b){b.disabled=true});
+  if(pick===ans){btn.classList.add('correct');document.getElementById('sidesFb').innerHTML='<span style="color:var(--green)">Correct! '+ans+' sides ✅</span>';sidesScore++;addStar()}
+  else{btn.classList.add('wrong');btns.forEach(function(b){if(parseInt(b.textContent)===ans)b.classList.add('correct')});document.getElementById('sidesFb').innerHTML='<span style="color:var(--c)">It has '+ans+' sides ❌</span>'}
+  sidesIdx++;setTimeout(renderSides,1200);
+}
+renderSides();
+
+/* ═══ GAME 4: MCQ QUIZ ═══ */
+var quizData=[
+  {q:'Which shape is round with no corners?',opts:['ବୃତ୍ତ (Circle)','ବର୍ଗ (Square)','ତ୍ରିଭୁଜ (Triangle)','ହୀରା (Diamond)'],ans:0},
+  {q:'A door is usually which shape?',opts:['ବୃତ୍ତ','ତ୍ରିଭୁଜ','ଆୟତାକାର (Rectangle)','ହୀରା'],ans:2},
+  {q:'How many sides does a triangle have?',opts:['4','2','0','3'],ans:3},
+  {q:'🪁 A kite looks like which shape?',opts:['ବୃତ୍ତ','ହୀରା (Diamond)','ବର୍ଗ','ଅଣ୍ଡାକାର'],ans:1},
+  {q:'Which shape has 4 equal sides?',opts:['ଆୟତାକାର','ତ୍ରିଭୁଜ','ବର୍ଗ (Square)','ଅଣ୍ଡାକାର'],ans:2},
+  {q:'An egg is which shape?',opts:['ବୃତ୍ତ','ବର୍ଗ','ତ୍ରିଭୁଜ','ଅଣ୍ଡାକାର (Oval)'],ans:3},
+  {q:'How many corners does a circle have?',opts:['1','4','0','3'],ans:2},
+  {q:'🛞 A wheel is which shape?',opts:['ବର୍ଗ','ବୃତ୍ତ (Circle)','ଆୟତାକାର','ତ୍ରିଭୁଜ'],ans:1},
+  {q:'Which shape has 3 corners?',opts:['ବର୍ଗ','ହୀରା','ଅଣ୍ଡାକାର','ତ୍ରିଭୁଜ (Triangle)'],ans:3},
+  {q:'📕 A book is which shape?',opts:['ବୃତ୍ତ','ତ୍ରିଭୁଜ','ଆୟତାକାର (Rectangle)','ହୀରା'],ans:2}
+];
+var quizIdx=0,quizScore=0,quizDone=false;
+
+function renderQuiz(){
+  if(quizIdx>=quizData.length){if(!quizDone){quizDone=true;markGameDone()}document.getElementById('quizContainer').innerHTML='<div style="text-align:center;padding:24px;font-weight:800;color:var(--green)">Quiz complete! '+quizScore+' / '+quizData.length+' correct ✅</div>';document.getElementById('quizNextBtn').style.display='none';return}
+  var d=quizData[quizIdx];
+  var html='<div class="quiz-card"><div class="quiz-q-num">Question '+(quizIdx+1)+' of '+quizData.length+'</div>'+
+    '<div class="quiz-question">'+d.q+'</div><div class="quiz-options">';
+  d.opts.forEach(function(o,i){html+='<button class="quiz-opt" onclick="checkQuiz(this,'+i+','+d.ans+')">'+o+'</button>'});
+  html+='</div><div class="quiz-feedback" id="quizFb"></div></div>';
+  document.getElementById('quizContainer').innerHTML=html;
+  document.getElementById('quizNextBtn').classList.remove('show');
+}
+function checkQuiz(btn,pick,correct){
+  var opts=document.querySelectorAll('#game4 .quiz-opt');opts.forEach(function(o){o.disabled=true});
+  var fb=document.getElementById('quizFb');
+  if(pick===correct){btn.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='Correct! ✅';quizScore++;addStar()}
+  else{btn.classList.add('wrong');opts[correct].classList.add('correct');fb.className='quiz-feedback show bad';fb.textContent='Not quite ❌ — '+quizData[quizIdx].opts[correct]}
+  document.getElementById('quizNextBtn').classList.add('show');
+}
+function nextQuiz(){quizIdx++;renderQuiz()}
+renderQuiz();
+</script>
+</body>
+</html>

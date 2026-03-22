@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>କ୍ରମ — Ordering Numbers — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #E63946;
+  --cbg:    #FFF0F1;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.5rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; }
+.logo-url  { font-size: 0.68rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 48px 56px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 48px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); color: var(--c);
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.hero-eng { font-size: 1rem; font-weight: 800; color: var(--light); margin-bottom: 12px; }
+.hero-desc { font-size: 0.9rem; color: var(--soft); max-width: 400px; line-height: 1.8; margin-bottom: 20px; }
+.hero-art {
+  width: 150px; height: 150px; border-radius: 28px;
+  background: var(--cbg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem; flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+hr.divider { border: none; border-top: 1px solid var(--border); }
+.section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
+.section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
+
+/* CONCEPT CARDS */
+.concept-card {
+  background: #fff; border: 2px solid var(--border); border-radius: 20px;
+  padding: 28px 32px; margin-bottom: 20px;
+  transition: border-color .15s;
+}
+.concept-card:hover { border-color: var(--c); }
+.concept-title {
+  font-family: var(--font-or); font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 4px; color: var(--c);
+}
+.concept-eng { font-size: 0.82rem; font-weight: 700; color: var(--light); margin-bottom: 12px; }
+.concept-body { font-size: 0.95rem; color: var(--soft); line-height: 1.8; }
+.concept-body .example {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); padding: 6px 14px; border-radius: 10px;
+  font-weight: 800; font-size: 1.1rem; margin: 6px 4px;
+  color: var(--c);
+}
+.concept-body .example-row {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0;
+}
+
+/* SYMBOLS */
+.symbol-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin: 24px 0;
+}
+.symbol-card {
+  text-align: center; background: var(--off); border-radius: 16px;
+  padding: 24px 16px; border: 2px solid var(--border);
+}
+.symbol-card .sym { font-size: 3rem; font-weight: 900; color: var(--c); margin-bottom: 8px; }
+.symbol-card .sym-or { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.symbol-card .sym-en { font-size: 0.8rem; color: var(--light); font-weight: 700; }
+
+/* EXAMPLES TABLE */
+.compare-table {
+  width: 100%; border-collapse: separate; border-spacing: 0 8px;
+  margin: 16px 0;
+}
+.compare-table td {
+  padding: 12px 16px; background: var(--off); font-weight: 700;
+  font-size: 1.2rem; text-align: center;
+}
+.compare-table td:first-child { border-radius: 10px 0 0 10px; }
+.compare-table td:last-child { border-radius: 0 10px 10px 0; }
+.compare-table .op { color: var(--c); font-size: 1.5rem; }
+
+/* ORDERING DEMO */
+.order-demo {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin: 12px 0;
+}
+.order-num {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--cbg); border: 2px solid var(--c);
+  display: grid; place-items: center;
+  font-size: 1.3rem; font-weight: 900; color: var(--c);
+}
+.order-arrow { font-size: 1.3rem; color: var(--light); }
+
+/* BOTTOM NAV */
+.bottom-nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 48px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.bottom-nav a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 800;
+  border: 2px solid var(--border);
+  transition: all .15s;
+}
+.bottom-nav a:hover { border-color: var(--c); background: var(--cbg); }
+.bottom-nav .game-link { background: var(--c); color: #fff; border-color: var(--c); }
+.bottom-nav .game-link:hover { opacity: 0.9; background: var(--c); }
+
+footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .hero { grid-template-columns: 1fr; padding: 40px 20px 32px; gap: 20px; }
+  .hero-art { width: 90px; height: 90px; font-size: 3rem; }
+  .section { padding: 36px 20px; }
+  .symbol-grid { grid-template-columns: 1fr; }
+  .bottom-nav { padding: 0 20px 36px; }
+  footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>କ୍ରମ</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">📊 କ୍ରମ — Krama</div>
+    <!-- REVIEW NEEDED -->
+    <h1>କ୍ରମ</h1>
+    <p class="hero-eng">Krama — Ordering Numbers</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ସଂଖ୍ୟାମାନଙ୍କୁ ଛୋଟରୁ ବଡ଼ ଓ ବଡ଼ରୁ ଛୋଟ କ୍ରମରେ ସଜାଇବା ଶିଖ। >, < ଓ = ଚିହ୍ନ ବ୍ୟବହାର କର।</p>
+  </div>
+  <div class="hero-art">📊</div>
+</section>
+
+<hr class="divider">
+
+<!-- SYMBOLS SECTION -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଚିହ୍ନ ଶିଖ — Learn the Symbols</div>
+
+  <div class="symbol-grid">
+    <div class="symbol-card">
+      <div class="sym">&gt;</div>
+      <!-- REVIEW NEEDED -->
+      <div class="sym-or">ବଡ଼</div>
+      <div class="sym-en">Greater than</div>
+    </div>
+    <div class="symbol-card">
+      <div class="sym">&lt;</div>
+      <!-- REVIEW NEEDED -->
+      <div class="sym-or">ଛୋଟ</div>
+      <div class="sym-en">Less than</div>
+    </div>
+    <div class="symbol-card">
+      <div class="sym">=</div>
+      <!-- REVIEW NEEDED -->
+      <div class="sym-or">ସମାନ</div>
+      <div class="sym-en">Equal to</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPARISON EXAMPLES -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ତୁଳନା କର — Compare Numbers</div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ବଡ଼ ସଂଖ୍ୟା ଚିହ୍ନଟ କର</div>
+    <div class="concept-eng">Identify the greater number</div>
+    <div class="concept-body">
+      <table class="compare-table">
+        <tr><td>5</td><td class="op">&gt;</td><td>3</td><td>🍎🍎🍎🍎🍎 &gt; 🍎🍎🍎</td></tr>
+        <tr><td>8</td><td class="op">&gt;</td><td>2</td><td>🌟🌟🌟🌟🌟🌟🌟🌟 &gt; 🌟🌟</td></tr>
+        <tr><td>10</td><td class="op">&gt;</td><td>7</td><td>🔵🔵🔵🔵🔵🔵🔵🔵🔵🔵 &gt; 🔵🔵🔵🔵🔵🔵🔵</td></tr>
+        <tr><td>6</td><td class="op">&gt;</td><td>1</td><td>🍌🍌🍌🍌🍌🍌 &gt; 🍌</td></tr>
+        <tr><td>9</td><td class="op">&gt;</td><td>4</td><td>⭐⭐⭐⭐⭐⭐⭐⭐⭐ &gt; ⭐⭐⭐⭐</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ଛୋଟ ସଂଖ୍ୟା ଚିହ୍ନଟ କର</div>
+    <div class="concept-eng">Identify the smaller number</div>
+    <div class="concept-body">
+      <table class="compare-table">
+        <tr><td>2</td><td class="op">&lt;</td><td>6</td><td>🍇🍇 &lt; 🍇🍇🍇🍇🍇🍇</td></tr>
+        <tr><td>4</td><td class="op">&lt;</td><td>9</td><td>🟢🟢🟢🟢 &lt; 🟢🟢🟢🟢🟢🟢🟢🟢🟢</td></tr>
+        <tr><td>1</td><td class="op">&lt;</td><td>5</td><td>🐟 &lt; 🐟🐟🐟🐟🐟</td></tr>
+        <tr><td>3</td><td class="op">&lt;</td><td>8</td><td>🌺🌺🌺 &lt; 🌺🌺🌺🌺🌺🌺🌺🌺</td></tr>
+        <tr><td>7</td><td class="op">&lt;</td><td>10</td><td>🔶🔶🔶🔶🔶🔶🔶 &lt; 🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ସମାନ ସଂଖ୍ୟା</div>
+    <div class="concept-eng">Equal numbers</div>
+    <div class="concept-body">
+      <table class="compare-table">
+        <tr><td>3</td><td class="op">=</td><td>3</td><td>🍎🍎🍎 = 🍎🍎🍎</td></tr>
+        <tr><td>5</td><td class="op">=</td><td>5</td><td>⭐⭐⭐⭐⭐ = ⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>7</td><td class="op">=</td><td>7</td><td>🔵🔵🔵🔵🔵🔵🔵 = 🔵🔵🔵🔵🔵🔵🔵</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ORDERING SECTION -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ସଜାଅ — Arrange in Order</div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ଛୋଟରୁ ବଡ଼ (ଆରୋହୀ କ୍ରମ)</div>
+    <div class="concept-eng">Ascending Order — Smallest to Biggest</div>
+    <div class="concept-body">
+      <div class="order-demo">
+        <div class="order-num">2</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">5</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">8</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">11</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">15</div>
+      </div>
+      <div class="order-demo">
+        <div class="order-num">1</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">3</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">6</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">9</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">12</div>
+      </div>
+      <div class="order-demo">
+        <div class="order-num">4</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">7</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">10</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">14</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">18</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ବଡ଼ରୁ ଛୋଟ (ଅବରୋହୀ କ୍ରମ)</div>
+    <div class="concept-eng">Descending Order — Biggest to Smallest</div>
+    <div class="concept-body">
+      <div class="order-demo">
+        <div class="order-num">15</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">11</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">8</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">5</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">2</div>
+      </div>
+      <div class="order-demo">
+        <div class="order-num">20</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">16</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">10</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">7</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">3</div>
+      </div>
+      <div class="order-demo">
+        <div class="order-num">19</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">14</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">9</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">6</div>
+        <div class="order-arrow">→</div>
+        <div class="order-num">1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="counting.html">← ଗଣତି</a>
+  <!-- REVIEW NEEDED -->
+  <a href="order-games.html" class="game-link">🎮 କ୍ରମ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="addsub.html">ଯୋଗ ବିୟୋଗ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Math · Free forever</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Rhyme Games — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--green:#43AA8B;--greenbg:#EDFAF4;--red:#FF6B6B;--redbg:#FFF0F0;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.4rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.star-display{display:flex;align-items:center;gap:6px;}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1;}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light);}
+.progress-wrap{flex:1;min-width:160px;}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px;}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease;width:0%;}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light);}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.page-hero p{font-size:0.95rem;color:var(--soft);}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px;}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.game-icon{font-size:2rem;}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px;}
+.game-complete-badge{display:none;margin-left:auto;font-size:0.78rem;font-weight:800;background:var(--greenbg);color:var(--green);border:1px solid var(--green);padding:4px 12px;border-radius:50px;}
+.game-complete-badge.show{display:block;}
+
+/* Generic card */
+.g-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.g-card-left{text-align:left;}
+.g-emoji{font-size:3rem;margin-bottom:10px;}
+.g-line{font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.8;margin-bottom:16px;white-space:pre-line;}
+.g-hint{font-size:0.85rem;color:var(--soft);margin-bottom:20px;}
+.g-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.g-opt{padding:12px 22px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.05rem;font-weight:800;transition:all .15s;}
+.g-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.g-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.g-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .3s;}
+.g-opt:disabled{cursor:default;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* Match game */
+.mt-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.mt-col{display:flex;flex-direction:column;gap:10px;}
+.mt-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.mt-item{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;font-weight:700;font-size:0.95rem;user-select:none;line-height:1.4;}
+.mt-item:hover{border-color:var(--c);background:var(--cbg);}
+.mt-item.selected{border-color:var(--blue);background:var(--bluebg);}
+.mt-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none;}
+.mt-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s;}
+
+/* MCQ quiz */
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.quiz-question{font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:20px;line-height:1.5;}
+.quiz-question .q-emoji{font-size:2rem;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.95rem;font-weight:700;transition:all .15s;text-align:left;}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green);}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red);}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s;}
+.quiz-next:hover{opacity:0.8;}
+.quiz-next.show{display:inline-block;}
+
+/* Trophy */
+.trophy-banner{display:none;text-align:center;padding:48px 20px;background:linear-gradient(135deg,#FFFBEC,#F3EDFF);border-radius:24px;margin:32px auto;max-width:600px;}
+.trophy-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.trophy-emoji{font-size:4rem;margin-bottom:12px;}
+.trophy-title{font-size:1.8rem;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.trophy-sub{font-size:1rem;color:var(--soft);margin-bottom:20px;}
+.trophy-btn{background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s;}
+.trophy-btn:hover{opacity:0.85;}
+@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+.confetti-piece{position:fixed;width:10px;height:10px;top:-10px;z-index:9999;animation:confettiFall 3s ease-in forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotate(720deg);opacity:0;}}
+.star-pop{position:fixed;font-size:2rem;z-index:9999;pointer-events:none;animation:starFloat 1s ease-out forwards;}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-80px) scale(1.5);}}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .star-bar{padding:10px 20px;}
+  .page-hero{padding:32px 20px 24px;}
+  .game-section{padding:32px 20px;}
+  .mt-grid{grid-template-columns:1fr;gap:16px;}
+  .quiz-options{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>Rhyme Games</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span class="star-label">⭐ Stars</span></div>
+  <div class="progress-wrap"><div class="progress-label">Games completed</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 4 games</div>
+</div>
+
+<section class="page-hero">
+  <h1>🎮 Rhyme Games</h1>
+  <p>Play 4 fun games about English rhymes! Earn ⭐ for each correct answer.</p>
+</section>
+<hr class="divider">
+
+<!-- GAME 1: Complete the Rhyme -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">✏️</div>
+    <div><div class="game-title">Complete the Rhyme</div><div class="game-subtitle">Fill in the missing word to complete the rhyme line</div></div>
+    <div class="game-complete-badge" id="g1badge">✅ Done!</div>
+  </div>
+  <div id="crContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 2: Match Rhyme to Topic -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div><div class="game-title">Match Rhyme to Topic</div><div class="game-subtitle">Match each rhyme title to what it is about</div></div>
+    <div class="game-complete-badge" id="g2badge">✅ Done!</div>
+  </div>
+  <div class="mt-grid" id="mtGrid"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 3: Rhyming Words -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">🎶</div>
+    <div><div class="game-title">Rhyming Words</div><div class="game-subtitle">Pick the word that rhymes with the given word</div></div>
+    <div class="game-complete-badge" id="g3badge">✅ Done!</div>
+  </div>
+  <div id="rwContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 4: MCQ Quiz -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div><div class="game-title">MCQ Quiz</div><div class="game-subtitle">Answer 10 questions about rhymes</div></div>
+    <div class="game-complete-badge" id="g4badge">✅ Done!</div>
+  </div>
+  <div id="quizContainer"></div>
+</section>
+
+<div class="trophy-banner" id="trophy">
+  <div class="trophy-emoji">🏆</div>
+  <div class="trophy-title">All Games Complete!</div>
+  <div class="trophy-sub" id="trophySub">You earned 0 stars!</div>
+  <button class="trophy-btn" onclick="location.reload()">🔄 Play Again</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStar(){totalStars++;document.getElementById('starCount').textContent=totalStars;popStar();}
+function popStar(){var s=document.createElement('div');s.className='star-pop';s.textContent='⭐';s.style.left=(Math.random()*60+20)+'%';s.style.top='50%';document.body.appendChild(s);setTimeout(function(){s.remove();},1000);}
+function completeGame(n){gamesCompleted++;document.getElementById('g'+n+'badge').classList.add('show');document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games';document.getElementById('progressFill').style.width=(gamesCompleted/totalGames*100)+'%';if(gamesCompleted===totalGames)showTrophy();}
+function showTrophy(){document.getElementById('trophySub').textContent='You earned '+totalStars+' stars!';document.getElementById('trophy').classList.add('show');launchConfetti();}
+function launchConfetti(){var colors=['#FF6B6B','#43AA8B','#3A86FF','#F9C74F','#7B5EA7','#FF9F43'];for(var i=0;i<60;i++){var c=document.createElement('div');c.className='confetti-piece';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=(Math.random()*2)+'s';c.style.borderRadius=Math.random()>0.5?'50%':'0';c.style.width=(Math.random()*8+6)+'px';c.style.height=(Math.random()*8+6)+'px';document.body.appendChild(c);setTimeout(function(el){el.remove();}.bind(null,c),5000);}}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ── GAME 1: COMPLETE THE RHYME ── */
+var crData=[
+  {line:'Rain, rain, falling ___,',answer:'down',opts:['down','up','out'],emoji:'🌧️'},
+  {line:'On the rooftops, on the ___.',answer:'ground',opts:['ground','wall','door'],emoji:'🌧️'},
+  {line:'Puddles here and puddles ___,',answer:'there',opts:['there','where','near'],emoji:'💧'},
+  {line:'Little star up in the ___,',answer:'sky',opts:['sky','sea','room'],emoji:'⭐'},
+  {line:'Shining bright and way up ___.',answer:'high',opts:['high','low','far'],emoji:'⭐'},
+  {line:'I have a little dog named ___,',answer:'Spot',opts:['Spot','Cat','Red'],emoji:'🐕'},
+  {line:'He runs and plays a ___.',answer:'lot',opts:['lot','bit','day'],emoji:'🐕'},
+  {line:'Pack my bag and tie my ___,',answer:'shoe',opts:['shoe','hat','belt'],emoji:'🏫'},
+  {line:'Apple red and banana ___,',answer:'long',opts:['long','short','big'],emoji:'🍎'},
+  {line:'Eating fruits will make me ___.',answer:'strong',opts:['strong','weak','tall'],emoji:'🍎'}
+];
+var crIdx=0;
+
+function renderCR(){
+  var cont=document.getElementById('crContainer');
+  if(crIdx>=crData.length){completeGame(1);return;}
+  var d=crData[crIdx];
+  var opts=shuffle(d.opts.slice());
+  var card=document.createElement('div');card.className='g-card';
+  card.innerHTML='<div class="g-emoji">'+d.emoji+'</div><div class="g-line">'+d.line+'</div><div class="g-hint">Pick the missing word</div><div class="g-options" id="crOpts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('crOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='g-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.g-opt').forEach(function(b){b.disabled=true;});
+      if(o===d.answer){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelectorAll('.g-opt').forEach(function(b){if(b.textContent===d.answer)b.classList.add('correct');});}
+      setTimeout(function(){crIdx++;renderCR();},800);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderCR();
+
+/* ── GAME 2: MATCH RHYME TO TOPIC ── */
+var mtData=[
+  {title:'🌧️ Rain, Rain',topic:'Rain and playing outside'},
+  {title:'⭐ Little Star',topic:'Stars shining in the sky'},
+  {title:'🐕 My Little Dog',topic:'A pet dog named Spot'},
+  {title:'🏫 Going to School',topic:'Learning at school'},
+  {title:'🍎 Fruits I Love',topic:'Eating different fruits'}
+];
+var mtTopics=shuffle(mtData.map(function(m){return{title:m.title,topic:m.topic};}));
+var mtSelected=null,mtDone=0;
+
+(function initMT(){
+  var grid=document.getElementById('mtGrid');
+  var colL=document.createElement('div');colL.className='mt-col';
+  var colR=document.createElement('div');colR.className='mt-col';
+  colL.innerHTML='<div class="mt-col-label">Rhyme Title</div>';
+  colR.innerHTML='<div class="mt-col-label">Topic</div>';
+  mtData.forEach(function(m){
+    var el=document.createElement('div');el.className='mt-item';el.dataset.key=m.title;el.dataset.side='title';
+    el.textContent=m.title;
+    el.onclick=function(){mtClick(el);};
+    colL.appendChild(el);
+  });
+  mtTopics.forEach(function(m){
+    var el=document.createElement('div');el.className='mt-item';el.dataset.key=m.title;el.dataset.side='topic';
+    el.textContent=m.topic;
+    el.onclick=function(){mtClick(el);};
+    colR.appendChild(el);
+  });
+  grid.appendChild(colL);grid.appendChild(colR);
+})();
+
+function mtClick(el){
+  if(el.classList.contains('correct'))return;
+  if(!mtSelected){mtSelected=el;el.classList.add('selected');}
+  else{
+    if(mtSelected.dataset.side===el.dataset.side){mtSelected.classList.remove('selected');mtSelected=el;el.classList.add('selected');return;}
+    if(mtSelected.dataset.key===el.dataset.key){
+      mtSelected.classList.remove('selected');mtSelected.classList.add('correct');el.classList.add('correct');
+      addStar();mtDone++;if(mtDone===mtData.length)completeGame(2);
+    } else {
+      el.classList.add('wrong');mtSelected.classList.add('wrong');
+      var s=mtSelected;setTimeout(function(){el.classList.remove('wrong');s.classList.remove('wrong','selected');},400);
+    }
+    mtSelected=null;
+  }
+}
+
+/* ── GAME 3: RHYMING WORDS ── */
+var rwData=[
+  {word:'cat',answer:'hat',opts:['hat','dog','cup'],emoji:'🐱'},
+  {word:'sun',answer:'fun',opts:['fun','cup','big'],emoji:'☀️'},
+  {word:'rain',answer:'train',opts:['train','cloud','wet'],emoji:'🌧️'},
+  {word:'star',answer:'far',opts:['far','moon','big'],emoji:'⭐'},
+  {word:'dog',answer:'log',opts:['log','cat','run'],emoji:'🐕'},
+  {word:'tree',answer:'bee',opts:['bee','leaf','big'],emoji:'🌳'},
+  {word:'ball',answer:'tall',opts:['tall','kick','red'],emoji:'⚽'},
+  {word:'night',answer:'light',opts:['light','dark','moon'],emoji:'🌙'},
+  {word:'red',answer:'bed',opts:['bed','blue','hat'],emoji:'🔴'},
+  {word:'play',answer:'day',opts:['day','run','toy'],emoji:'🎮'}
+];
+var rwIdx=0;
+
+function renderRW(){
+  var cont=document.getElementById('rwContainer');
+  if(rwIdx>=rwData.length){completeGame(3);return;}
+  var d=rwData[rwIdx];
+  var opts=shuffle(d.opts.slice());
+  var card=document.createElement('div');card.className='g-card';
+  card.innerHTML='<div class="g-emoji">'+d.emoji+'</div><div class="g-line" style="font-size:1.6rem;">Which word rhymes with "<strong>'+d.word+'</strong>"?</div><div class="g-options" id="rwOpts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('rwOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='g-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.g-opt').forEach(function(b){b.disabled=true;});
+      if(o===d.answer){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelectorAll('.g-opt').forEach(function(b){if(b.textContent===d.answer)b.classList.add('correct');});}
+      setTimeout(function(){rwIdx++;renderRW();},800);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderRW();
+
+/* ── GAME 4: MCQ QUIZ ── */
+var quizData=[
+  {q:'What falls down in the "Rain, Rain" rhyme?',a:'Rain',opts:['Rain','Snow','Leaves','Stones'],emoji:'🌧️'},
+  {q:'Where does the little star shine?',a:'In the sky',opts:['In the sky','In the sea','On the ground','In school'],emoji:'⭐'},
+  {q:'What is the dog\'s name in "My Little Dog"?',a:'Spot',opts:['Spot','Tommy','Rex','Max'],emoji:'🐕'},
+  {q:'What does the dog wag?',a:'His tail',opts:['His tail','His ear','His paw','His nose'],emoji:'🐕'},
+  {q:'In "Going to School", what do you tie?',a:'Shoe',opts:['Shoe','Hat','Belt','Bag'],emoji:'🏫'},
+  {q:'Which fruit is red in the "Fruits I Love" rhyme?',a:'Apple',opts:['Apple','Mango','Banana','Grape'],emoji:'🍎'},
+  {q:'Which fruit is long in the "Fruits I Love" rhyme?',a:'Banana',opts:['Banana','Apple','Orange','Grape'],emoji:'🍌'},
+  {q:'What comes out to play when stars appear?',a:'The moon',opts:['The moon','The sun','The rain','The wind'],emoji:'🌙'},
+  {q:'In "Rain, Rain", what forms on the ground?',a:'Puddles',opts:['Puddles','Rivers','Lakes','Snow'],emoji:'💧'},
+  {q:'What do children do at school in the rhyme?',a:'Read and write',opts:['Read and write','Sleep','Eat','Run'],emoji:'🏫'}
+];
+var quizIdx=0;
+
+function renderQuiz(){
+  var cont=document.getElementById('quizContainer');
+  if(quizIdx>=quizData.length){completeGame(4);return;}
+  var q=quizData[quizIdx];
+  var opts=shuffle(q.opts.slice());
+  var card=document.createElement('div');card.className='quiz-card';
+  card.innerHTML='<div class="quiz-q-num">Question '+(quizIdx+1)+' of 10</div><div class="quiz-question"><span class="q-emoji">'+q.emoji+'</span> '+q.q+'</div><div class="quiz-options" id="qOpts"></div><div class="quiz-feedback" id="qFb"></div><button class="quiz-next" id="qNext">Next →</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var optDiv=document.getElementById('qOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;});
+      var fb=document.getElementById('qFb');
+      if(o===q.a){btn.classList.add('correct');fb.textContent='✅ Correct!';fb.className='quiz-feedback show ok';addStar();}
+      else{btn.classList.add('wrong');fb.textContent='❌ The answer is '+q.a;fb.className='quiz-feedback show bad';optDiv.querySelectorAll('.quiz-opt').forEach(function(b){if(b.textContent===q.a)b.classList.add('correct');});}
+      document.getElementById('qNext').classList.add('show');
+    };
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('qNext').onclick=function(){quizIdx++;renderQuiz();};
+}
+renderQuiz();
+</script>
+</body>
+</html>

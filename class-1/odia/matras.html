@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ମାତ୍ରା — Vowel Signs | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #FFFDF9;
+  --off:    #F7F5F0;
+  --border: #EBEBEB;
+  --c:      #FF9F43;
+  --cbg:    #FFF5EC;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,253,249,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* HERO */
+.page-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+  position: relative;
+}
+.hero-emoji {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 12px;
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.page-hero h1 {
+  font-family: var(--font-or);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--c);
+  margin-bottom: 6px;
+}
+.page-hero .subtitle {
+  font-size: 1.05rem; color: var(--soft); font-weight: 600;
+}
+.page-hero .textbook-ref {
+  font-size: 0.78rem; color: var(--light); font-weight: 600;
+  margin-top: 10px;
+  display: inline-block;
+  background: var(--cbg);
+  padding: 4px 16px;
+  border-radius: 50px;
+  border: 1px solid #FFE0B2;
+}
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* INTRO */
+.intro {
+  max-width: 900px; margin: 0 auto;
+  padding: 36px 48px;
+  text-align: center;
+}
+.intro p {
+  font-size: 0.95rem; color: var(--soft);
+  max-width: 600px; margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* MATRA GRID */
+.matra-grid {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 48px 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.matra-card {
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 28px 24px;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+  animation: fadeUp .5s ease both;
+}
+.matra-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--c);
+  box-shadow: 0 8px 24px rgba(255,159,67,0.12);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.matra-card-top {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 16px;
+}
+.matra-symbol {
+  font-family: var(--font-or);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--c);
+  width: 72px; height: 72px;
+  display: grid; place-items: center;
+  background: var(--cbg);
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+.matra-info { flex: 1; }
+.matra-vowel {
+  font-family: var(--font-or);
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--light);
+  margin-bottom: 2px;
+}
+.matra-vowel .vowel-char {
+  font-size: 1.1rem; color: var(--ink);
+}
+.matra-name {
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--soft);
+  background: var(--off);
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+
+.matra-combo {
+  background: var(--off);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-or);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.matra-combo .plus { color: var(--light); font-family: var(--font); font-size: 1.2rem; }
+.matra-combo .equals { color: var(--light); font-family: var(--font); font-size: 1.2rem; }
+.matra-combo .result { color: var(--c); }
+
+.matra-examples {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.matra-example {
+  font-family: var(--font-or);
+  font-size: 0.95rem; font-weight: 700;
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.matra-example .ex-emoji { font-size: 1.1rem; }
+.matra-example .hl {
+  color: var(--c);
+  font-weight: 900;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 48px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 800;
+  transition: opacity .15s, transform .15s;
+  border: none; cursor: pointer;
+  font-family: var(--font);
+}
+.btn:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-outline {
+  background: #fff; color: var(--ink);
+  border: 2px solid var(--border);
+}
+.btn-primary {
+  background: var(--c); color: #fff;
+}
+.btn-forward {
+  background: var(--ink); color: #fff;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .page-hero, .intro, .matra-grid, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .matra-grid { grid-template-columns: 1fr; }
+  .bottom-nav { flex-direction: column; align-items: stretch; text-align: center; }
+  .btn { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .breadcrumb { display: none; }
+  .matra-combo { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ମାତ୍ରା</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-emoji">✍️</div>
+  <!-- REVIEW NEEDED -->
+  <h1>ମାତ୍ରା</h1>
+  <p class="subtitle">Matra — Vowel Signs</p>
+  <!-- REVIEW NEEDED -->
+  <span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୧ (SCERT Odisha)</span>
+</div>
+
+<hr class="divider">
+
+<!-- INTRO -->
+<div class="intro">
+  <!-- REVIEW NEEDED -->
+  <p>ସ୍ୱର ଅକ୍ଷର ବ୍ୟଞ୍ଜନ ସହ ଯୋଡ଼ି ହୋଇ ମାତ୍ରା ହୁଏ। ନିମ୍ନରେ ସବୁ ମାତ୍ରା ଦେଖ ଓ ଶିଖ!</p>
+  <p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Vowels combine with consonants as matras. Learn each one below!</p>
+</div>
+
+<!-- MATRA CARDS -->
+<div class="matra-grid" id="matraGrid"></div>
+
+<hr class="divider">
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="barnabodha.html" class="btn btn-outline">← ବର୍ଣ୍ଣବୋଧ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="matras-games.html" class="btn btn-primary">🎮 ମାତ୍ରା ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="words.html" class="btn btn-forward">ଶବ୍ଦ →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Odia · Free forever</span>
+</footer>
+
+<script>
+// ── MATRA DATA ──────────────────────────────────────────────────
+// REVIEW NEEDED (all Odia text in the data below)
+var matras = [
+  {
+    matra: 'ା', vowel: 'ଆ', name: 'aa', nameOdia: 'ଆ-କାର',
+    combo: ['କ', 'ା', 'କା'],
+    examples: [
+      { word: 'ମାଛ', hl: 'ା', emoji: '🐟' },
+      { word: 'ଚାନ୍ଦ', hl: 'ା', emoji: '🌙' },
+      { word: 'ବାଘ', hl: 'ା', emoji: '🐯' }
+    ]
+  },
+  {
+    matra: 'ି', vowel: 'ଇ', name: 'i', nameOdia: 'ଇ-କାର',
+    combo: ['କ', 'ି', 'କି'],
+    examples: [
+      { word: 'ଚିତା', hl: 'ି', emoji: '🐆' },
+      { word: 'ପିଲା', hl: 'ି', emoji: '👦' },
+      { word: 'ଦିନ', hl: 'ି', emoji: '☀️' }
+    ]
+  },
+  {
+    matra: 'ୀ', vowel: 'ଈ', name: 'ii', nameOdia: 'ଈ-କାର',
+    combo: ['କ', 'ୀ', 'କୀ'],
+    examples: [
+      { word: 'ନଦୀ', hl: 'ୀ', emoji: '🏞️' },
+      { word: 'ମୀନ', hl: 'ୀ', emoji: '🐟' },
+      { word: 'ଦୀପ', hl: 'ୀ', emoji: '🪔' }
+    ]
+  },
+  {
+    matra: 'ୁ', vowel: 'ଉ', name: 'u', nameOdia: 'ଉ-କାର',
+    combo: ['କ', 'ୁ', 'କୁ'],
+    examples: [
+      { word: 'ଫୁଲ', hl: 'ୁ', emoji: '🌸' },
+      { word: 'ଗୁଡ଼', hl: 'ୁ', emoji: '🍬' },
+      { word: 'ସୁନା', hl: 'ୁ', emoji: '✨' }
+    ]
+  },
+  {
+    matra: 'ୂ', vowel: 'ଊ', name: 'uu', nameOdia: 'ଊ-କାର',
+    combo: ['କ', 'ୂ', 'କୂ'],
+    examples: [
+      { word: 'ସୂର୍ଯ୍ୟ', hl: 'ୂ', emoji: '☀️' },
+      { word: 'ଝୂଲା', hl: 'ୂ', emoji: '🎠' },
+      { word: 'ଭୂତ', hl: 'ୂ', emoji: '👻' }
+    ]
+  },
+  {
+    matra: 'ୃ', vowel: 'ଋ', name: 'ru', nameOdia: 'ଋ-କାର',
+    combo: ['କ', 'ୃ', 'କୃ'],
+    examples: [
+      { word: 'କୃଷ୍ଣ', hl: 'ୃ', emoji: '🙏' },
+      { word: 'ଗୃହ', hl: 'ୃ', emoji: '🏠' },
+      { word: 'ତୃଣ', hl: 'ୃ', emoji: '🌱' }
+    ]
+  },
+  {
+    matra: 'େ', vowel: 'ଏ', name: 'e', nameOdia: 'ଏ-କାର',
+    combo: ['କ', 'େ', 'କେ'],
+    examples: [
+      { word: 'ଦେଶ', hl: 'େ', emoji: '🇮🇳' },
+      { word: 'ଖେଳ', hl: 'େ', emoji: '⚽' },
+      { word: 'ମେଘ', hl: 'େ', emoji: '☁️' }
+    ]
+  },
+  {
+    matra: 'ୈ', vowel: 'ଐ', name: 'ai', nameOdia: 'ଐ-କାର',
+    combo: ['କ', 'ୈ', 'କୈ'],
+    examples: [
+      { word: 'ବୈଦ୍ୟ', hl: 'ୈ', emoji: '👨‍⚕️' },
+      { word: 'ପୈସା', hl: 'ୈ', emoji: '💰' },
+      { word: 'ତୈଳ', hl: 'ୈ', emoji: '🫗' }
+    ]
+  },
+  {
+    matra: 'ୋ', vowel: 'ଓ', name: 'o', nameOdia: 'ଓ-କାର',
+    combo: ['କ', 'ୋ', 'କୋ'],
+    examples: [
+      { word: 'ଗୋଲା', hl: 'ୋ', emoji: '⚽' },
+      { word: 'କୋଇଲି', hl: 'ୋ', emoji: '🐦' },
+      { word: 'ରୋଟି', hl: 'ୋ', emoji: '🫓' }
+    ]
+  },
+  {
+    matra: 'ୌ', vowel: 'ଔ', name: 'au', nameOdia: 'ଔ-କାର',
+    combo: ['କ', 'ୌ', 'କୌ'],
+    examples: [
+      { word: 'ମୌସୀ', hl: 'ୌ', emoji: '👩' },
+      { word: 'ଗୌର', hl: 'ୌ', emoji: '🐂' },
+      { word: 'ଔଷଧ', hl: 'ୌ', emoji: '💊' }
+    ]
+  },
+  {
+    matra: 'ଂ', vowel: 'ଅଂ', name: 'anusvara', nameOdia: 'ଅନୁସ୍ୱାର',
+    combo: ['କ', 'ଂ', 'କଂ'],
+    examples: [
+      { word: 'ହଂସ', hl: 'ଂ', emoji: '🦢' },
+      { word: 'ବଂଶ', hl: 'ଂ', emoji: '🎋' },
+      { word: 'ସଂଖ୍ୟା', hl: 'ଂ', emoji: '🔢' }
+    ]
+  },
+  {
+    matra: 'ଃ', vowel: 'ଅଃ', name: 'visarga', nameOdia: 'ବିସର୍ଗ',
+    combo: ['କ', 'ଃ', 'କଃ'],
+    examples: [
+      { word: 'ଦୁଃଖ', hl: 'ଃ', emoji: '😢' },
+      { word: 'ପ୍ରାୟଃ', hl: 'ଃ', emoji: '📝' },
+      { word: 'ନମଃ', hl: 'ଃ', emoji: '🙏' }
+    ]
+  }
+];
+
+// Render cards
+var grid = document.getElementById('matraGrid');
+var colors = ['#FF6B6B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7','#00B894','#E17055','#74B9FF','#0984E3'];
+var bgColors = ['#FFF0F0','#FFF5EC','#FFFBEC','#E8F8FD','#EDFAF4','#F3F2FE','#FEF0F5','#F1EFFC','#EDFAF4','#FDF0ED','#EEF4FF','#E8F0FE'];
+
+matras.forEach(function(m, i) {
+  var col = colors[i % colors.length];
+  var bgCol = bgColors[i % bgColors.length];
+  var card = document.createElement('div');
+  card.className = 'matra-card';
+  card.style.animationDelay = (i * 0.06) + 's';
+
+  var exHTML = '';
+  m.examples.forEach(function(ex) {
+    exHTML += '<span class="matra-example"><span class="ex-emoji">' + ex.emoji + '</span> ' + ex.word + '</span>';
+  });
+
+  card.innerHTML =
+    '<div class="matra-card-top">' +
+      '<div class="matra-symbol" style="color:' + col + ';background:' + bgCol + '">' + m.matra + '</div>' +
+      '<div class="matra-info">' +
+        '<div class="matra-vowel"><span class="vowel-char">' + m.vowel + '</span> → ' + m.matra + '</div>' +
+        '<span class="matra-name">' + m.nameOdia + ' (' + m.name + ')</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="matra-combo">' +
+      '<span>' + m.combo[0] + '</span>' +
+      '<span class="plus">+</span>' +
+      '<span style="color:' + col + '">' + m.combo[1] + '</span>' +
+      '<span class="equals">=</span>' +
+      '<span class="result" style="color:' + col + '">' + m.combo[2] + '</span>' +
+    '</div>' +
+    '<div class="matra-examples">' + exHTML + '</div>';
+
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

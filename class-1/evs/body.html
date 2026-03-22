@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶରୀର — ପରିବେଶ ଅଧ୍ୟୟନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#43AA8B;--cbg:#EDFAF4;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:900px;margin:0 auto;padding:64px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:130px;height:130px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-games{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;padding:10px 22px;border-radius:12px;font-size:.88rem;font-weight:800;transition:opacity .15s}
+.btn-games:hover{opacity:.85}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:900px;margin:0 auto;padding:48px}
+.section-label{font-size:.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.part-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.part-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:22px;text-align:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s}
+.part-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--c)}
+.part-emoji{font-size:2.8rem;margin-bottom:8px;display:block}
+.part-odia{font-family:var(--font-or);font-size:1.15rem;font-weight:700;margin-bottom:2px}
+.part-eng{font-size:.78rem;font-weight:700;color:var(--light)}
+
+.sense-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.sense-card{background:var(--cbg);border:2px solid var(--border);border-radius:18px;padding:24px;text-align:center;transition:transform .15s}
+.sense-card:hover{transform:scale(1.03)}
+.sense-emoji{font-size:2.5rem;display:block;margin-bottom:8px}
+.sense-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.sense-eng{font-size:.8rem;color:var(--soft);font-weight:600}
+.sense-organ{font-family:var(--font-or);font-size:.85rem;font-weight:700;color:var(--c);margin-top:6px}
+
+.hygiene-box{background:var(--off);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:20px}
+.hygiene-title{font-size:1rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.hygiene-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.hygiene-list li{font-size:.9rem;color:var(--soft);display:flex;align-items:center;gap:10px;font-weight:600}
+.hygiene-list li span{font-size:1.4rem}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .part-grid{grid-template-columns:repeat(2,1fr)}
+  .sense-grid{grid-template-columns:1fr 1fr}
+  footer{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଶରୀର</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🧒 ଶରୀର</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ମୋ ଶରୀର</h1>
+    <p class="hero-eng">My Body · EVS · Class 1</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଆମ ଶରୀରର ବିଭିନ୍ନ ଅଙ୍ଗ, ପଞ୍ଚ ଇନ୍ଦ୍ରିୟ ଓ ସ୍ୱାସ୍ଥ୍ୟ ଅଭ୍ୟାସ ବିଷୟରେ ଶିଖ ।</p>
+    <div class="hero-actions">
+      <a href="body-games.html" class="btn-games">🎮 Play Games</a>
+    </div>
+  </div>
+  <div class="hero-art">🧒</div>
+</section>
+
+<hr class="divider">
+
+<!-- BODY PARTS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଶରୀରର ଅଙ୍ଗ — Body Parts</div>
+  <div class="part-grid" id="partGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- FIVE SENSES -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ପଞ୍ଚ ଇନ୍ଦ୍ରିୟ — Five Senses</div>
+  <div class="sense-grid" id="senseGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- HYGIENE -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଭଲ ଅଭ୍ୟାସ — Good Hygiene Habits</div>
+  <div class="hygiene-box">
+    <!-- REVIEW NEEDED -->
+    <div class="hygiene-title">🧼 ଆମେ ପ୍ରତିଦିନ ଏସବୁ କରିବା ଉଚିତ</div>
+    <ul class="hygiene-list">
+      <!-- REVIEW NEEDED -->
+      <li><span>🖐️</span> ହାତ ଧୋଇବା — Wash hands before eating</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🪥</span> ଦାନ୍ତ ଘଷିବା — Brush teeth morning & night</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🛁</span> ସ୍ନାନ କରିବା — Take a bath every day</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>💅</span> ନଖ କାଟିବା — Cut nails regularly</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>👕</span> ସଫା ପୋଷାକ ପିନ୍ଧିବା — Wear clean clothes</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>💇</span> ଚୁଟି ସଫା ରଖିବା — Keep hair clean</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · EVS · Free forever</span>
+</footer>
+
+<script>
+var parts = [
+  {emoji:'🧠', odia:'ମୁଣ୍ଡ', eng:'Head'},
+  {emoji:'👀', odia:'ଆଖି', eng:'Eyes'},
+  {emoji:'👂', odia:'କାନ', eng:'Ears'},
+  {emoji:'👃', odia:'ନାକ', eng:'Nose'},
+  {emoji:'👄', odia:'ମୁହଁ', eng:'Mouth'},
+  {emoji:'✋', odia:'ହାତ', eng:'Hands'},
+  {emoji:'🖐️', odia:'ଆଙ୍ଗୁଳି', eng:'Fingers'},
+  {emoji:'🦵', odia:'ଗୋଡ଼', eng:'Legs'},
+  {emoji:'🫁', odia:'ପେଟ', eng:'Stomach'},
+  {emoji:'🦶', odia:'ପାଦ', eng:'Feet'}
+];
+
+var pg = document.getElementById('partGrid');
+parts.forEach(function(p) {
+  var card = document.createElement('div');
+  card.className = 'part-card';
+  card.innerHTML =
+    '<span class="part-emoji">' + p.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="part-odia">' + p.odia + '</div>' +
+    '<div class="part-eng">' + p.eng + '</div>';
+  pg.appendChild(card);
+});
+
+var senses = [
+  {emoji:'👀', odia:'ଦେଖିବା', eng:'See (Sight)', organ:'ଆଖି — Eyes'},
+  {emoji:'👂', odia:'ଶୁଣିବା', eng:'Hear (Hearing)', organ:'କାନ — Ears'},
+  {emoji:'👃', odia:'ଶୁଙ୍ଘିବା', eng:'Smell', organ:'ନାକ — Nose'},
+  {emoji:'👅', odia:'ଚାଖିବା', eng:'Taste', organ:'ଜିଭ — Tongue'},
+  {emoji:'✋', odia:'ଛୁଇଁବା', eng:'Touch', organ:'ଚମଡ଼ା — Skin'}
+];
+
+var sg = document.getElementById('senseGrid');
+senses.forEach(function(s) {
+  var card = document.createElement('div');
+  card.className = 'sense-card';
+  card.innerHTML =
+    '<span class="sense-emoji">' + s.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="sense-odia">' + s.odia + '</div>' +
+    '<div class="sense-eng">' + s.eng + '</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="sense-organ">' + s.organ + '</div>';
+  sg.appendChild(card);
+});
+</script>
+</body>
+</html>

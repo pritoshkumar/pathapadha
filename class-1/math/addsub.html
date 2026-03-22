@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଯୋଗ ଓ ବିୟୋଗ — Addition & Subtraction — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #FF6B6B;
+  --cbg:    #FFF0F0;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.5rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; }
+.logo-url  { font-size: 0.68rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 48px 56px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 48px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); color: var(--c);
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.hero-eng { font-size: 1rem; font-weight: 800; color: var(--light); margin-bottom: 12px; }
+.hero-desc { font-size: 0.9rem; color: var(--soft); max-width: 400px; line-height: 1.8; margin-bottom: 20px; }
+.hero-art {
+  width: 150px; height: 150px; border-radius: 28px;
+  background: var(--cbg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem; flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+hr.divider { border: none; border-top: 1px solid var(--border); }
+.section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
+.section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
+
+.concept-card {
+  background: #fff; border: 2px solid var(--border); border-radius: 20px;
+  padding: 28px 32px; margin-bottom: 20px;
+  transition: border-color .15s;
+}
+.concept-card:hover { border-color: var(--c); }
+.concept-title {
+  font-family: var(--font-or); font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 4px; color: var(--c);
+}
+.concept-eng { font-size: 0.82rem; font-weight: 700; color: var(--light); margin-bottom: 12px; }
+
+/* EQUATION ROWS */
+.eq-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+}
+.eq-row:last-child { border-bottom: none; }
+.eq-emoji { font-size: 1.3rem; letter-spacing: 2px; }
+.eq-math {
+  font-size: 1.4rem; font-weight: 900; color: var(--c);
+  min-width: 140px;
+}
+.eq-op { color: var(--ink); }
+
+.bottom-nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 48px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.bottom-nav a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 800;
+  border: 2px solid var(--border); transition: all .15s;
+}
+.bottom-nav a:hover { border-color: var(--c); background: var(--cbg); }
+.bottom-nav .game-link { background: var(--c); color: #fff; border-color: var(--c); }
+.bottom-nav .game-link:hover { opacity: 0.9; background: var(--c); }
+
+footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .hero { grid-template-columns: 1fr; padding: 40px 20px 32px; gap: 20px; }
+  .hero-art { width: 90px; height: 90px; font-size: 3rem; }
+  .section { padding: 36px 20px; }
+  .bottom-nav { padding: 0 20px 36px; }
+  footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଯୋଗ ଓ ବିୟୋଗ</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">➕ ଯୋଗ ଓ ବିୟୋଗ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଯୋଗ ଓ ବିୟୋଗ</h1>
+    <p class="hero-eng">Addition & Subtraction</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଜିନିଷ ଯୋଗ କରିବା ଓ ବାଦ ଦେବା ଶିଖ। ୨୦ ମଧ୍ୟରେ ସରଳ ଯୋଗ ଓ ବିୟୋଗ ଅଭ୍ୟାସ କର।</p>
+  </div>
+  <div class="hero-art">➕</div>
+</section>
+
+<hr class="divider">
+
+<!-- ADDITION SECTION -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଯୋଗ — Addition (+)</div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ଯୋଗ ମାନେ ଏକାଠି ମିଶାଇବା</div>
+    <div class="concept-eng">Addition means putting together</div>
+    <div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍎🍎🍎 + 🍎🍎</span>
+        <span class="eq-math">3 + 2 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🌟🌟 + 🌟🌟🌟</span>
+        <span class="eq-math">2 + 3 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍌🍌🍌🍌 + 🍌🍌🍌</span>
+        <span class="eq-math">4 + 3 = 7</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🔵 + 🔵🔵🔵🔵</span>
+        <span class="eq-math">1 + 4 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🐟🐟🐟🐟🐟 + 🐟🐟</span>
+        <span class="eq-math">5 + 2 = 7</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍇🍇🍇 + 🍇🍇🍇🍇</span>
+        <span class="eq-math">3 + 4 = 7</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">⭐⭐⭐⭐⭐⭐ + ⭐⭐</span>
+        <span class="eq-math">6 + 2 = 8</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🟢🟢🟢🟢 + 🟢🟢🟢🟢🟢</span>
+        <span class="eq-math">4 + 5 = 9</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🌺🌺🌺🌺🌺🌺🌺 + 🌺🌺🌺</span>
+        <span class="eq-math">7 + 3 = 10</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🔶🔶🔶🔶🔶🔶🔶🔶 + 🔶🔶</span>
+        <span class="eq-math">8 + 2 = 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SUBTRACTION SECTION -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ବିୟୋଗ — Subtraction (−)</div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ବିୟୋଗ ମାନେ ବାଦ ଦେବା</div>
+    <div class="concept-eng">Subtraction means taking away</div>
+    <div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍎🍎🍎🍎🍎 − 🍎🍎</span>
+        <span class="eq-math">5 − 2 = 3</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🌟🌟🌟🌟 − 🌟</span>
+        <span class="eq-math">4 − 1 = 3</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍌🍌🍌🍌🍌🍌 − 🍌🍌🍌</span>
+        <span class="eq-math">6 − 3 = 3</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🔵🔵🔵🔵🔵🔵🔵 − 🔵🔵</span>
+        <span class="eq-math">7 − 2 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🐟🐟🐟🐟🐟🐟🐟🐟 − 🐟🐟🐟</span>
+        <span class="eq-math">8 − 3 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🍇🍇🍇🍇🍇🍇🍇🍇🍇 − 🍇🍇🍇🍇</span>
+        <span class="eq-math">9 − 4 = 5</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ − ⭐⭐⭐</span>
+        <span class="eq-math">10 − 3 = 7</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🟢🟢🟢🟢🟢🟢 − 🟢🟢🟢🟢</span>
+        <span class="eq-math">6 − 4 = 2</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🌺🌺🌺🌺🌺🌺🌺🌺🌺 − 🌺🌺🌺🌺🌺</span>
+        <span class="eq-math">9 − 5 = 4</span>
+      </div>
+      <div class="eq-row">
+        <span class="eq-emoji">🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶 − 🔶🔶🔶🔶🔶🔶</span>
+        <span class="eq-math">10 − 6 = 4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NUMBER SENTENCES -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ସଂଖ୍ୟା ବାକ୍ୟ — Number Sentences</div>
+
+  <div class="concept-card">
+    <!-- REVIEW NEEDED -->
+    <div class="concept-title">ସଂଖ୍ୟା ବାକ୍ୟ ଲେଖିବା ଶିଖ</div>
+    <div class="concept-eng">Learn to write number sentences</div>
+    <div>
+      <div class="eq-row">
+        <!-- REVIEW NEEDED -->
+        <span>ରାମ ପାଖରେ ୩ଟି ଆମ୍ବ ଅଛି। ସେ ଆଉ ୪ଟି କିଣିଲା।</span>
+        <span class="eq-math">3 + 4 = 7</span>
+      </div>
+      <div class="eq-row">
+        <!-- REVIEW NEEDED -->
+        <span>ସୀତା ପାଖରେ ୮ଟି ଫୁଲ ଥିଲା। ସେ ୩ଟି ଦେଇଦେଲା।</span>
+        <span class="eq-math">8 − 3 = 5</span>
+      </div>
+      <div class="eq-row">
+        <!-- REVIEW NEEDED -->
+        <span>ଗଛରେ ୫ଟି ପକ୍ଷୀ ବସିଥିଲେ। ଆଉ ୫ଟି ଆସିଲେ।</span>
+        <span class="eq-math">5 + 5 = 10</span>
+      </div>
+      <div class="eq-row">
+        <!-- REVIEW NEEDED -->
+        <span>ବାକ୍ସରେ ୧୦ଟି ବଲ ଥିଲା। ୬ଟି ବାହାରିଗଲା।</span>
+        <span class="eq-math">10 − 6 = 4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="order.html">← କ୍ରମ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="addsub-games.html" class="game-link">🎮 ଯୋଗ ବିୟୋଗ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="shapes.html">ଆକୃତି →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Math · Free forever</span>
+</footer>
+
+</body>
+</html>

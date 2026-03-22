@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Sentence Games — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--green:#43AA8B;--greenbg:#EDFAF4;--red:#FF6B6B;--redbg:#FFF0F0;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.4rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.star-display{display:flex;align-items:center;gap:6px;}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1;}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light);}
+.progress-wrap{flex:1;min-width:160px;}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px;}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease;width:0%;}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light);}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.page-hero p{font-size:0.95rem;color:var(--soft);}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px;}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.game-icon{font-size:2rem;}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px;}
+.game-complete-badge{display:none;margin-left:auto;font-size:0.78rem;font-weight:800;background:var(--greenbg);color:var(--green);border:1px solid var(--green);padding:4px 12px;border-radius:50px;}
+.game-complete-badge.show{display:block;}
+
+/* Sentence Builder */
+.sb-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.sb-emoji{font-size:3rem;margin-bottom:8px;}
+.sb-hint{font-size:0.85rem;color:var(--soft);margin-bottom:16px;}
+.sb-slots{display:flex;justify-content:center;gap:6px;margin-bottom:16px;min-height:48px;flex-wrap:wrap;border:2px dashed var(--border);border-radius:14px;padding:12px;}
+.sb-slot{padding:8px 14px;border-radius:10px;background:var(--cbg);border:2px solid var(--c);font-size:0.95rem;font-weight:800;color:var(--c);cursor:pointer;transition:all .15s;}
+.sb-slot:hover{background:var(--redbg);border-color:var(--red);color:var(--red);}
+.sb-bank{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.sb-tile{padding:8px 14px;border-radius:10px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.95rem;font-weight:800;transition:all .15s;}
+.sb-tile:hover{border-color:var(--c);background:var(--cbg);}
+.sb-tile.used{opacity:0.3;pointer-events:none;}
+.sb-check{background:var(--c);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;transition:opacity .15s;}
+.sb-check:hover{opacity:0.85;}
+.sb-result{margin-top:12px;padding:10px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.sb-result.show{display:block;}
+.sb-result.ok{background:var(--greenbg);color:var(--green);}
+.sb-result.bad{background:var(--redbg);color:var(--red);}
+
+/* Match to Odia */
+.mo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.mo-col{display:flex;flex-direction:column;gap:10px;}
+.mo-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.mo-item{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;font-weight:700;font-size:0.95rem;user-select:none;line-height:1.4;}
+.mo-item:hover{border-color:var(--c);background:var(--cbg);}
+.mo-item.selected{border-color:var(--blue);background:var(--bluebg);}
+.mo-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none;}
+.mo-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s;}
+.mo-odia{font-family:var(--font-or);}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* Fill the Blank */
+.fb-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.fb-emoji{font-size:2.5rem;margin-bottom:8px;}
+.fb-sentence{font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:16px;line-height:1.6;}
+.fb-blank{display:inline-block;width:80px;border-bottom:3px solid var(--ink);text-align:center;font-size:1.2rem;font-weight:800;color:var(--c);background:transparent;border-top:none;border-left:none;border-right:none;outline:none;padding:2px 4px;}
+.fb-blank:focus{border-color:var(--blue);}
+.fb-blank.correct{border-color:var(--green);color:var(--green);}
+.fb-blank.wrong{border-color:var(--red);color:var(--red);animation:shake .3s;}
+.fb-options{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.fb-opt{padding:10px 18px;border-radius:12px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;font-weight:800;transition:all .15s;}
+.fb-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.fb-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.fb-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.fb-opt:disabled{cursor:default;}
+
+/* MCQ */
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.quiz-question{font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:20px;display:flex;align-items:center;gap:12px;line-height:1.5;}
+.quiz-question .q-emoji{font-size:2rem;flex-shrink:0;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:0.95rem;font-weight:700;transition:all .15s;text-align:left;}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green);}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red);}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s;}
+.quiz-next:hover{opacity:0.8;}
+.quiz-next.show{display:inline-block;}
+
+/* Trophy */
+.trophy-banner{display:none;text-align:center;padding:48px 20px;background:linear-gradient(135deg,#FFFBEC,#EEF4FF);border-radius:24px;margin:32px auto;max-width:600px;}
+.trophy-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.trophy-emoji{font-size:4rem;margin-bottom:12px;}
+.trophy-title{font-size:1.8rem;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.trophy-sub{font-size:1rem;color:var(--soft);margin-bottom:20px;}
+.trophy-btn{background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s;}
+.trophy-btn:hover{opacity:0.85;}
+@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+.confetti-piece{position:fixed;width:10px;height:10px;top:-10px;z-index:9999;animation:confettiFall 3s ease-in forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotate(720deg);opacity:0;}}
+.star-pop{position:fixed;font-size:2rem;z-index:9999;pointer-events:none;animation:starFloat 1s ease-out forwards;}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-80px) scale(1.5);}}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .star-bar{padding:10px 20px;}
+  .page-hero{padding:32px 20px 24px;}
+  .game-section{padding:32px 20px;}
+  .mo-grid{grid-template-columns:1fr;gap:16px;}
+  .quiz-options{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>Sentence Games</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span class="star-label">⭐ Stars</span></div>
+  <div class="progress-wrap"><div class="progress-label">Games completed</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 4 games</div>
+</div>
+
+<section class="page-hero">
+  <h1>🎮 Sentence Games</h1>
+  <p>Play 4 fun games to master English sentences! Earn ⭐ for each correct answer.</p>
+</section>
+<hr class="divider">
+
+<!-- GAME 1: Sentence Builder -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🧩</div>
+    <div><div class="game-title">Sentence Builder</div><div class="game-subtitle">Arrange the words to form a correct sentence</div></div>
+    <div class="game-complete-badge" id="g1badge">✅ Done!</div>
+  </div>
+  <div id="sbContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 2: Match to Odia -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div><div class="game-title">Match to Odia</div><div class="game-subtitle">Match each English sentence to its Odia translation</div></div>
+    <div class="game-complete-badge" id="g2badge">✅ Done!</div>
+  </div>
+  <div class="mo-grid" id="moGrid"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 3: Fill the Blank -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">✏️</div>
+    <div><div class="game-title">Fill the Blank</div><div class="game-subtitle">Complete the sentence with the correct word</div></div>
+    <div class="game-complete-badge" id="g3badge">✅ Done!</div>
+  </div>
+  <div id="fbContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 4: MCQ Quiz -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div><div class="game-title">MCQ Quiz</div><div class="game-subtitle">Answer 10 sentence questions</div></div>
+    <div class="game-complete-badge" id="g4badge">✅ Done!</div>
+  </div>
+  <div id="quizContainer"></div>
+</section>
+
+<div class="trophy-banner" id="trophy">
+  <div class="trophy-emoji">🏆</div>
+  <div class="trophy-title">All Games Complete!</div>
+  <div class="trophy-sub" id="trophySub">You earned 0 stars!</div>
+  <button class="trophy-btn" onclick="location.reload()">🔄 Play Again</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStar(){totalStars++;document.getElementById('starCount').textContent=totalStars;popStar();}
+function popStar(){var s=document.createElement('div');s.className='star-pop';s.textContent='⭐';s.style.left=(Math.random()*60+20)+'%';s.style.top='50%';document.body.appendChild(s);setTimeout(function(){s.remove();},1000);}
+function completeGame(n){gamesCompleted++;document.getElementById('g'+n+'badge').classList.add('show');document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games';document.getElementById('progressFill').style.width=(gamesCompleted/totalGames*100)+'%';if(gamesCompleted===totalGames)showTrophy();}
+function showTrophy(){document.getElementById('trophySub').textContent='You earned '+totalStars+' stars!';document.getElementById('trophy').classList.add('show');launchConfetti();}
+function launchConfetti(){var colors=['#FF6B6B','#43AA8B','#3A86FF','#F9C74F','#7B5EA7','#FF9F43'];for(var i=0;i<60;i++){var c=document.createElement('div');c.className='confetti-piece';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=(Math.random()*2)+'s';c.style.borderRadius=Math.random()>0.5?'50%':'0';c.style.width=(Math.random()*8+6)+'px';c.style.height=(Math.random()*8+6)+'px';document.body.appendChild(c);setTimeout(function(el){el.remove();}.bind(null,c),5000);}}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* REVIEW NEEDED — all Odia translations below */
+var allSentences=[
+  {eng:'This is a cat.',odia:'ଏହା ଏକ ବିଲେଇ ।',e:'🐱'},
+  {eng:'I am happy.',odia:'ମୁଁ ଖୁସି ।',e:'😊'},
+  {eng:'The sun is hot.',odia:'ସୂର୍ଯ୍ୟ ଗରମ ।',e:'☀️'},
+  {eng:'I can see a bird.',odia:'ମୁଁ ଏକ ପକ୍ଷୀ ଦେଖୁଛି ।',e:'🐦'},
+  {eng:'The dog is big.',odia:'କୁକୁରଟି ବଡ଼ ।',e:'🐕'},
+  {eng:'I like mango.',odia:'ମୁଁ ଆମ୍ବ ପସନ୍ଦ କରେ ।',e:'🥭'},
+  {eng:'She is my mother.',odia:'ସେ ମୋ ମା ।',e:'👩'},
+  {eng:'He is my father.',odia:'ସେ ମୋ ବାପା ।',e:'👨'},
+  {eng:'The fish is in water.',odia:'ମାଛଟି ପାଣିରେ ଅଛି ।',e:'🐟'},
+  {eng:'I go to school.',odia:'ମୁଁ ବିଦ୍ୟାଳୟକୁ ଯାଏ ।',e:'🏫'},
+  {eng:'The cow gives milk.',odia:'ଗାଈ କ୍ଷୀର ଦିଏ ।',e:'🐄'},
+  {eng:'The ball is red.',odia:'ବଲ୍ ଟି ଲାଲ୍ ।',e:'🔴'},
+  {eng:'I have two eyes.',odia:'ମୋର ଦୁଇଟି ଆଖି ଅଛି ।',e:'👀'},
+  {eng:'The tree is green.',odia:'ଗଛଟି ସବୁଜ ।',e:'🌳'},
+  {eng:'I love my sister.',odia:'ମୁଁ ମୋ ଭଉଣୀକୁ ଭଲ ପାଏ ।',e:'👧'},
+  {eng:'The sky is blue.',odia:'ଆକାଶ ନୀଳ ।',e:'🔵'},
+  {eng:'I drink water.',odia:'ମୁଁ ପାଣି ପିଏ ।',e:'💧'},
+  {eng:'The flower is pretty.',odia:'ଫୁଲ ସୁନ୍ଦର ।',e:'🌸'},
+  {eng:'This is my hand.',odia:'ଏହା ମୋ ହାତ ।',e:'🤚'}
+];
+
+/* ── GAME 1: SENTENCE BUILDER ── */
+var sbData=shuffle(allSentences.slice()).slice(0,8);
+var sbIdx=0;
+
+function renderSB(){
+  var cont=document.getElementById('sbContainer');
+  if(sbIdx>=sbData.length){completeGame(1);return;}
+  var d=sbData[sbIdx];
+  var words=d.eng.replace('.','').split(' ');
+  var jumbled=shuffle(words.slice());
+  var placed=[];
+
+  var card=document.createElement('div');card.className='sb-card';
+  card.innerHTML='<div class="sb-emoji">'+d.e+'</div><div class="sb-hint">Arrange the words to make a sentence</div><div class="sb-slots" id="sbSlots"></div><div class="sb-bank" id="sbBank"></div><button class="sb-check" id="sbCheck">Check ✓</button><div class="sb-result" id="sbResult"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var slotsDiv=document.getElementById('sbSlots');
+  var bankDiv=document.getElementById('sbBank');
+
+  function renderSlots(){
+    slotsDiv.innerHTML='';
+    placed.forEach(function(w,i){
+      var slot=document.createElement('div');slot.className='sb-slot';slot.textContent=w;
+      slot.onclick=function(){
+        placed.splice(i,1);
+        bankDiv.querySelectorAll('.sb-tile').forEach(function(t){if(t.dataset.word===w&&t.classList.contains('used')){t.classList.remove('used');return;}});
+        renderSlots();
+      };
+      slotsDiv.appendChild(slot);
+    });
+  }
+
+  jumbled.forEach(function(w){
+    var tile=document.createElement('div');tile.className='sb-tile';tile.textContent=w;tile.dataset.word=w;
+    tile.onclick=function(){
+      if(tile.classList.contains('used'))return;
+      tile.classList.add('used');
+      placed.push(w);
+      renderSlots();
+    };
+    bankDiv.appendChild(tile);
+  });
+
+  document.getElementById('sbCheck').onclick=function(){
+    if(placed.length!==words.length)return;
+    var attempt=placed.join(' ')+'.';
+    var res=document.getElementById('sbResult');
+    if(attempt===d.eng){
+      res.textContent='✅ Correct! '+d.eng;res.className='sb-result show ok';addStar();
+      setTimeout(function(){sbIdx++;renderSB();},1000);
+    } else {
+      res.textContent='❌ Try again!';res.className='sb-result show bad';
+      setTimeout(function(){
+        placed=[];renderSlots();res.classList.remove('show');
+        bankDiv.querySelectorAll('.sb-tile').forEach(function(t){t.classList.remove('used');});
+      },1000);
+    }
+  };
+}
+renderSB();
+
+/* ── GAME 2: MATCH TO ODIA ── */
+var moData=shuffle(allSentences.slice()).slice(0,5);
+var moOdia=shuffle(moData.map(function(s){return{eng:s.eng,odia:s.odia};}));
+var moSelected=null,moDone=0;
+
+(function initMO(){
+  var grid=document.getElementById('moGrid');
+  var colL=document.createElement('div');colL.className='mo-col';
+  var colR=document.createElement('div');colR.className='mo-col';
+  colL.innerHTML='<div class="mo-col-label">English</div>';
+  colR.innerHTML='<div class="mo-col-label">Odia</div>';
+  moData.forEach(function(s){
+    var el=document.createElement('div');el.className='mo-item';el.dataset.key=s.eng;el.dataset.side='eng';
+    el.textContent=s.e+' '+s.eng;
+    el.onclick=function(){moClick(el);};
+    colL.appendChild(el);
+  });
+  moOdia.forEach(function(s){
+    var el=document.createElement('div');el.className='mo-item mo-odia';el.dataset.key=s.eng;el.dataset.side='odia';
+    el.textContent=s.odia;
+    el.onclick=function(){moClick(el);};
+    colR.appendChild(el);
+  });
+  grid.appendChild(colL);grid.appendChild(colR);
+})();
+
+function moClick(el){
+  if(el.classList.contains('correct'))return;
+  if(!moSelected){moSelected=el;el.classList.add('selected');}
+  else{
+    if(moSelected.dataset.side===el.dataset.side){moSelected.classList.remove('selected');moSelected=el;el.classList.add('selected');return;}
+    if(moSelected.dataset.key===el.dataset.key){
+      moSelected.classList.remove('selected');moSelected.classList.add('correct');el.classList.add('correct');
+      addStar();moDone++;if(moDone===moData.length)completeGame(2);
+    } else {
+      el.classList.add('wrong');moSelected.classList.add('wrong');
+      var s=moSelected;setTimeout(function(){el.classList.remove('wrong');s.classList.remove('wrong','selected');},400);
+    }
+    moSelected=null;
+  }
+}
+
+/* ── GAME 3: FILL THE BLANK ── */
+var fbData=[
+  {s:'This is a ___.',a:'cat',opts:['cat','dog','fish'],e:'🐱'},
+  {s:'The sun is ___.',a:'hot',opts:['hot','cold','big'],e:'☀️'},
+  {s:'I go to ___.',a:'school',opts:['school','water','tree'],e:'🏫'},
+  {s:'The cow gives ___.',a:'milk',opts:['milk','water','eggs'],e:'🐄'},
+  {s:'The sky is ___.',a:'blue',opts:['blue','red','green'],e:'🔵'},
+  {s:'I drink ___.',a:'water',opts:['water','milk','mango'],e:'💧'},
+  {s:'The tree is ___.',a:'green',opts:['green','red','blue'],e:'🌳'},
+  {s:'The ball is ___.',a:'red',opts:['red','blue','big'],e:'🔴'}
+];
+var fbIdx=0;
+
+function renderFB(){
+  var cont=document.getElementById('fbContainer');
+  if(fbIdx>=fbData.length){completeGame(3);return;}
+  var d=fbData[fbIdx];
+  var opts=shuffle(d.opts.slice());
+  var card=document.createElement('div');card.className='fb-card';
+  card.innerHTML='<div class="fb-emoji">'+d.e+'</div><div class="fb-sentence">'+d.s.replace('___','<span class="fb-blank-display">___</span>')+'</div><div class="fb-options" id="fbOpts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var optDiv=document.getElementById('fbOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='fb-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.fb-opt').forEach(function(b){b.disabled=true;});
+      var blankEl=card.querySelector('.fb-blank-display');
+      if(o===d.a){
+        btn.classList.add('correct');blankEl.textContent=o;blankEl.style.color='var(--green)';blankEl.style.fontWeight='900';
+        addStar();
+      } else {
+        btn.classList.add('wrong');blankEl.textContent=d.a;blankEl.style.color='var(--red)';blankEl.style.fontWeight='900';
+        optDiv.querySelectorAll('.fb-opt').forEach(function(b){if(b.textContent===d.a)b.classList.add('correct');});
+      }
+      setTimeout(function(){fbIdx++;renderFB();},1000);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderFB();
+
+/* ── GAME 4: MCQ QUIZ ── */
+var quizQs=shuffle(allSentences.slice()).slice(0,10);
+var quizIdx=0;
+
+function renderQuiz(){
+  var cont=document.getElementById('quizContainer');
+  if(quizIdx>=quizQs.length){completeGame(4);return;}
+  var q=quizQs[quizIdx];
+  var types=['engToOdia','odiaToEng'];
+  var type=types[Math.floor(Math.random()*types.length)];
+  var qText='',opts=[],answerVal='';
+
+  if(type==='engToOdia'){
+    qText='<span class="q-emoji">'+q.e+'</span> What is the Odia translation of "'+q.eng+'"?';
+    answerVal=q.odia;
+    var ww=[];while(ww.length<3){var r=allSentences[Math.floor(Math.random()*allSentences.length)];if(r.odia!==q.odia&&ww.indexOf(r.odia)===-1)ww.push(r.odia);}
+    opts=shuffle([q.odia].concat(ww));
+  } else {
+    qText='<span class="q-emoji">'+q.e+'</span> Which English sentence means "'+q.odia+'"?';
+    answerVal=q.eng;
+    var ew=[];while(ew.length<3){var r2=allSentences[Math.floor(Math.random()*allSentences.length)];if(r2.eng!==q.eng&&ew.indexOf(r2.eng)===-1)ew.push(r2.eng);}
+    opts=shuffle([q.eng].concat(ew));
+  }
+
+  var card=document.createElement('div');card.className='quiz-card';
+  card.innerHTML='<div class="quiz-q-num">Question '+(quizIdx+1)+' of 10</div><div class="quiz-question">'+qText+'</div><div class="quiz-options" id="qOpts"></div><div class="quiz-feedback" id="qFb"></div><button class="quiz-next" id="qNext">Next →</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var optDiv=document.getElementById('qOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;});
+      var fb=document.getElementById('qFb');
+      if(o===answerVal){btn.classList.add('correct');fb.textContent='✅ Correct!';fb.className='quiz-feedback show ok';addStar();}
+      else{btn.classList.add('wrong');fb.textContent='❌ Incorrect';fb.className='quiz-feedback show bad';optDiv.querySelectorAll('.quiz-opt').forEach(function(b){if(b.textContent===answerVal)b.classList.add('correct');});}
+      document.getElementById('qNext').classList.add('show');
+    };
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('qNext').onclick=function(){quizIdx++;renderQuiz();};
+}
+renderQuiz();
+</script>
+</body>
+</html>

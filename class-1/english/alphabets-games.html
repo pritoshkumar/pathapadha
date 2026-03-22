@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Alphabet Games — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--green:#43AA8B;--greenbg:#EDFAF4;--red:#FF6B6B;--redbg:#FFF0F0;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.4rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.star-display{display:flex;align-items:center;gap:6px;}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1;}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light);}
+.progress-wrap{flex:1;min-width:160px;}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px;}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease;width:0%;}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light);}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.page-hero p{font-size:0.95rem;color:var(--soft);}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px;}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.game-icon{font-size:2rem;}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px;}
+.game-complete-badge{display:none;margin-left:auto;font-size:0.78rem;font-weight:800;background:var(--greenbg);color:var(--green);border:1px solid var(--green);padding:4px 12px;border-radius:50px;}
+.game-complete-badge.show{display:block;}
+
+/* Match Game */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.match-col{display:flex;flex-direction:column;gap:10px;}
+.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.3rem;user-select:none;}
+.match-item:hover{border-color:var(--c);background:var(--cbg);}
+.match-item.selected{border-color:var(--blue);background:var(--bluebg);}
+.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none;}
+.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* MCQ */
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.quiz-question{font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.quiz-question .q-emoji{font-size:2.2rem;}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.1rem;font-weight:700;transition:all .15s;display:flex;align-items:center;gap:10px;}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green);}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red);}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s;}
+.quiz-next:hover{opacity:0.8;}
+.quiz-next.show{display:inline-block;}
+
+/* Order Game */
+.order-slots{display:flex;flex-wrap:wrap;gap:8px;min-height:52px;border:2px dashed var(--border);border-radius:14px;padding:14px;margin-bottom:16px;background:#fff;}
+.order-bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.order-tile{padding:10px 18px;border-radius:12px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.2rem;font-weight:800;transition:all .15s;user-select:none;}
+.order-tile:hover{border-color:var(--c);background:var(--cbg);}
+.order-tile.placed{background:var(--cbg);border-color:var(--c);color:var(--c);}
+.order-tile.correct-tile{background:var(--greenbg);border-color:var(--green);color:var(--green);}
+.order-tile.wrong-tile{background:var(--redbg);border-color:var(--red);color:var(--red);animation:shake .3s;}
+.order-check{background:var(--c);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;transition:opacity .15s;}
+.order-check:hover{opacity:0.85;}
+
+/* Starts With */
+.sw-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.sw-emoji{font-size:4rem;margin-bottom:8px;}
+.sw-word{font-size:1.1rem;font-weight:700;color:var(--soft);margin-bottom:20px;}
+.sw-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.sw-opt{width:56px;height:56px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.5rem;font-weight:900;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+.sw-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.sw-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.sw-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .3s;}
+.sw-opt:disabled{cursor:default;}
+
+/* Trophy */
+.trophy-banner{display:none;text-align:center;padding:48px 20px;background:linear-gradient(135deg,#FFFBEC,#EDFAF4);border-radius:24px;margin:32px auto;max-width:600px;}
+.trophy-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.trophy-emoji{font-size:4rem;margin-bottom:12px;}
+.trophy-title{font-size:1.8rem;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.trophy-sub{font-size:1rem;color:var(--soft);margin-bottom:20px;}
+.trophy-btn{background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s;}
+.trophy-btn:hover{opacity:0.85;}
+
+@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+/* Confetti */
+.confetti-piece{position:fixed;width:10px;height:10px;top:-10px;z-index:9999;animation:confettiFall 3s ease-in forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotate(720deg);opacity:0;}}
+
+/* Star pop */
+.star-pop{position:fixed;font-size:2rem;z-index:9999;pointer-events:none;animation:starFloat 1s ease-out forwards;}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-80px) scale(1.5);}}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .star-bar{padding:10px 20px;}
+  .page-hero{padding:32px 20px 24px;}
+  .game-section{padding:32px 20px;}
+  .match-grid{grid-template-columns:1fr;gap:16px;}
+  .quiz-options{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>Alphabet Games</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display">
+    <span class="star-count" id="starCount">0</span>
+    <span class="star-label">⭐ Stars</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Games completed</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+  <div class="games-done" id="gamesDone">0 / 4 games</div>
+</div>
+
+<section class="page-hero">
+  <h1>🎮 Alphabet Games</h1>
+  <p>Play 4 fun games to master the English alphabet! Earn ⭐ for each correct answer.</p>
+</section>
+
+<hr class="divider">
+
+<!-- GAME 1: Match Upper to Lower -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div>
+      <div class="game-title">Match Upper to Lower</div>
+      <div class="game-subtitle">Click an uppercase letter, then click its lowercase match</div>
+    </div>
+    <div class="game-complete-badge" id="g1badge">✅ Done!</div>
+  </div>
+  <div class="match-grid" id="matchGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- GAME 2: What Letter Starts? -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🖼️</div>
+    <div>
+      <div class="game-title">What Letter Starts?</div>
+      <div class="game-subtitle">Look at the picture and pick the starting letter</div>
+    </div>
+    <div class="game-complete-badge" id="g2badge">✅ Done!</div>
+  </div>
+  <div id="swContainer"></div>
+</section>
+
+<hr class="divider">
+
+<!-- GAME 3: ABC Order -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">🔢</div>
+    <div>
+      <div class="game-title">ABC Order</div>
+      <div class="game-subtitle">Arrange the letters in the correct alphabetical order</div>
+    </div>
+    <div class="game-complete-badge" id="g3badge">✅ Done!</div>
+  </div>
+  <div>
+    <div class="order-slots" id="orderSlots"></div>
+    <div class="order-bank" id="orderBank"></div>
+    <button class="order-check" id="orderCheck" onclick="checkOrder()">Check Order ✓</button>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- GAME 4: MCQ Quiz -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div>
+      <div class="game-title">MCQ Quiz</div>
+      <div class="game-subtitle">Answer 10 alphabet questions</div>
+    </div>
+    <div class="game-complete-badge" id="g4badge">✅ Done!</div>
+  </div>
+  <div id="quizContainer"></div>
+</section>
+
+<!-- TROPHY -->
+<div class="trophy-banner" id="trophy">
+  <div class="trophy-emoji">🏆</div>
+  <div class="trophy-title">All Games Complete!</div>
+  <div class="trophy-sub" id="trophySub">You earned 0 stars!</div>
+  <button class="trophy-btn" onclick="location.reload()">🔄 Play Again</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+var totalStars = 0;
+var gamesCompleted = 0;
+var totalGames = 4;
+
+function addStar() {
+  totalStars++;
+  document.getElementById('starCount').textContent = totalStars;
+  popStar();
+}
+function popStar() {
+  var s = document.createElement('div');
+  s.className = 'star-pop';
+  s.textContent = '⭐';
+  s.style.left = (Math.random()*60+20)+'%';
+  s.style.top = '50%';
+  document.body.appendChild(s);
+  setTimeout(function(){s.remove();},1000);
+}
+function completeGame(n) {
+  gamesCompleted++;
+  document.getElementById('g'+n+'badge').classList.add('show');
+  document.getElementById('gamesDone').textContent = gamesCompleted+' / '+totalGames+' games';
+  document.getElementById('progressFill').style.width = (gamesCompleted/totalGames*100)+'%';
+  if(gamesCompleted===totalGames){showTrophy();}
+}
+function showTrophy(){
+  document.getElementById('trophySub').textContent='You earned '+totalStars+' stars!';
+  document.getElementById('trophy').classList.add('show');
+  launchConfetti();
+}
+function launchConfetti(){
+  var colors=['#FF6B6B','#43AA8B','#3A86FF','#F9C74F','#7B5EA7','#FF9F43'];
+  for(var i=0;i<60;i++){
+    var c=document.createElement('div');
+    c.className='confetti-piece';
+    c.style.left=Math.random()*100+'%';
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDelay=(Math.random()*2)+'s';
+    c.style.borderRadius=Math.random()>0.5?'50%':'0';
+    c.style.width=(Math.random()*8+6)+'px';
+    c.style.height=(Math.random()*8+6)+'px';
+    document.body.appendChild(c);
+    setTimeout(function(el){el.remove();}.bind(null,c),5000);
+  }
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ── GAME 1: MATCH ── */
+var matchLetters = shuffle(['A','B','C','D','E','F','G','H']).slice(0,6);
+var matchLower = shuffle(matchLetters.map(function(l){return l.toLowerCase();}));
+var matchSelected = null;
+var matchDone = 0;
+var matchTotal = matchLetters.length;
+
+(function initMatch(){
+  var grid = document.getElementById('matchGrid');
+  var colL = document.createElement('div'); colL.className='match-col';
+  var colR = document.createElement('div'); colR.className='match-col';
+  colL.innerHTML='<div class="match-col-label">Uppercase</div>';
+  colR.innerHTML='<div class="match-col-label">Lowercase</div>';
+  matchLetters.forEach(function(l){
+    var el=document.createElement('div');
+    el.className='match-item';el.dataset.letter=l;el.dataset.side='upper';
+    el.innerHTML='<span style="font-size:1.8rem;font-weight:900;">'+l+'</span>';
+    el.onclick=function(){matchClick(el);};
+    colL.appendChild(el);
+  });
+  matchLower.forEach(function(l){
+    var el=document.createElement('div');
+    el.className='match-item';el.dataset.letter=l.toUpperCase();el.dataset.side='lower';
+    el.innerHTML='<span style="font-size:1.8rem;font-weight:900;">'+l+'</span>';
+    el.onclick=function(){matchClick(el);};
+    colR.appendChild(el);
+  });
+  grid.appendChild(colL);grid.appendChild(colR);
+})();
+
+function matchClick(el){
+  if(el.classList.contains('correct'))return;
+  if(!matchSelected){
+    matchSelected=el;el.classList.add('selected');
+  } else {
+    if(matchSelected.dataset.side===el.dataset.side){
+      matchSelected.classList.remove('selected');matchSelected=el;el.classList.add('selected');
+      return;
+    }
+    if(matchSelected.dataset.letter===el.dataset.letter){
+      matchSelected.classList.remove('selected');
+      matchSelected.classList.add('correct');el.classList.add('correct');
+      addStar();matchDone++;
+      if(matchDone===matchTotal)completeGame(1);
+    } else {
+      el.classList.add('wrong');matchSelected.classList.add('wrong');
+      var s=matchSelected;
+      setTimeout(function(){el.classList.remove('wrong');s.classList.remove('wrong','selected');},400);
+    }
+    matchSelected=null;
+  }
+}
+
+/* ── GAME 2: STARTS WITH ── */
+var swData=[
+  {e:'🍎',w:'Apple',a:'A'},{e:'🐕',w:'Dog',a:'D'},{e:'🐟',w:'Fish',a:'F'},
+  {e:'🏠',w:'House',a:'H'},{e:'🦁',w:'Lion',a:'L'},{e:'🥭',w:'Mango',a:'M'},
+  {e:'🍊',w:'Orange',a:'O'},{e:'🐰',w:'Rabbit',a:'R'},{e:'☀️',w:'Sun',a:'S'},
+  {e:'🌳',w:'Tree',a:'T'}
+];
+var swIndex=0;
+var swDone=0;
+
+function renderSW(){
+  var cont=document.getElementById('swContainer');
+  if(swIndex>=swData.length){completeGame(2);return;}
+  var d=swData[swIndex];
+  var wrong1,wrong2;
+  do{wrong1=String.fromCharCode(65+Math.floor(Math.random()*26));}while(wrong1===d.a);
+  do{wrong2=String.fromCharCode(65+Math.floor(Math.random()*26));}while(wrong2===d.a||wrong2===wrong1);
+  var opts=shuffle([d.a,wrong1,wrong2]);
+  var card=document.createElement('div');card.className='sw-card';
+  card.innerHTML='<div class="sw-emoji">'+d.e+'</div>'+
+    '<div class="sw-word">What letter does "'+d.w+'" start with?</div>'+
+    '<div class="sw-options" id="swOpts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('swOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='sw-opt';btn.textContent=o;
+    btn.onclick=function(){
+      var btns=optDiv.querySelectorAll('.sw-opt');
+      btns.forEach(function(b){b.disabled=true;});
+      if(o===d.a){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelector('.sw-opt:not(.wrong)').classList.add('correct');}
+      setTimeout(function(){swIndex++;renderSW();},800);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderSW();
+
+/* ── GAME 3: ABC ORDER ── */
+var orderStart=Math.floor(Math.random()*18);
+var orderLetters=[];
+for(var i=0;i<8;i++)orderLetters.push(String.fromCharCode(65+orderStart+i));
+var orderAnswer=orderLetters.slice();
+var orderShuffled=shuffle(orderLetters.slice());
+var orderPlaced=[];
+
+(function initOrder(){
+  var bank=document.getElementById('orderBank');
+  orderShuffled.forEach(function(l){
+    var tile=document.createElement('div');tile.className='order-tile';tile.textContent=l;tile.dataset.letter=l;
+    tile.onclick=function(){
+      if(tile.classList.contains('placed'))return;
+      tile.classList.add('placed');
+      orderPlaced.push(l);
+      renderOrderSlots();
+    };
+    bank.appendChild(tile);
+  });
+})();
+
+function renderOrderSlots(){
+  var slots=document.getElementById('orderSlots');
+  slots.innerHTML='';
+  orderPlaced.forEach(function(l,i){
+    var tile=document.createElement('div');tile.className='order-tile';tile.textContent=l;
+    tile.style.cursor='pointer';
+    tile.onclick=function(){
+      orderPlaced.splice(i,1);
+      var bankTiles=document.getElementById('orderBank').querySelectorAll('.order-tile');
+      bankTiles.forEach(function(bt){if(bt.dataset.letter===l&&bt.classList.contains('placed')){bt.classList.remove('placed');}});
+      renderOrderSlots();
+    };
+    slots.appendChild(tile);
+  });
+}
+
+function checkOrder(){
+  if(orderPlaced.length!==orderAnswer.length)return;
+  var allCorrect=true;
+  var slots=document.getElementById('orderSlots').querySelectorAll('.order-tile');
+  slots.forEach(function(tile,i){
+    if(orderPlaced[i]===orderAnswer[i]){tile.classList.add('correct-tile');}
+    else{tile.classList.add('wrong-tile');allCorrect=false;}
+  });
+  if(allCorrect){
+    for(var j=0;j<orderAnswer.length;j++)addStar();
+    completeGame(3);
+  } else {
+    setTimeout(function(){
+      orderPlaced=[];
+      renderOrderSlots();
+      var bankTiles=document.getElementById('orderBank').querySelectorAll('.order-tile');
+      bankTiles.forEach(function(bt){bt.classList.remove('placed');});
+    },1000);
+  }
+}
+
+/* ── GAME 4: MCQ QUIZ ── */
+var allLetters=[
+  {l:'A',w:'Apple',e:'🍎'},{l:'B',w:'Ball',e:'⚽'},{l:'C',w:'Cat',e:'🐱'},
+  {l:'D',w:'Dog',e:'🐕'},{l:'E',w:'Elephant',e:'🐘'},{l:'F',w:'Fish',e:'🐟'},
+  {l:'G',w:'Grapes',e:'🍇'},{l:'H',w:'House',e:'🏠'},{l:'I',w:'Ice cream',e:'🍦'},
+  {l:'J',w:'Jug',e:'🫗'},{l:'K',w:'Kite',e:'🪁'},{l:'L',w:'Lion',e:'🦁'},
+  {l:'M',w:'Mango',e:'🥭'},{l:'N',w:'Nest',e:'🪺'},{l:'O',w:'Orange',e:'🍊'},
+  {l:'P',w:'Parrot',e:'🦜'},{l:'Q',w:'Queen',e:'👑'},{l:'R',w:'Rabbit',e:'🐰'},
+  {l:'S',w:'Sun',e:'☀️'},{l:'T',w:'Tree',e:'🌳'},{l:'U',w:'Umbrella',e:'☂️'},
+  {l:'V',w:'Van',e:'🚐'},{l:'W',w:'Watch',e:'⌚'},{l:'X',w:'Xylophone',e:'🎵'},
+  {l:'Y',w:'Yak',e:'🐂'},{l:'Z',w:'Zebra',e:'🦓'}
+];
+
+var quizQs=shuffle(allLetters.slice()).slice(0,10);
+var quizIdx=0;
+
+function renderQuiz(){
+  var cont=document.getElementById('quizContainer');
+  if(quizIdx>=quizQs.length){completeGame(4);return;}
+  var q=quizQs[quizIdx];
+  var types=['whichLetter','whatWord','lowercase'];
+  var type=types[Math.floor(Math.random()*types.length)];
+  var card=document.createElement('div');card.className='quiz-card';
+  var qText='',opts=[],answerVal='';
+
+  if(type==='whichLetter'){
+    qText='<span class="q-emoji">'+q.e+'</span> Which letter does "'+q.w+'" start with?';
+    answerVal=q.l;
+    var wrongs=[];while(wrongs.length<3){var r=String.fromCharCode(65+Math.floor(Math.random()*26));if(r!==q.l&&wrongs.indexOf(r)===-1)wrongs.push(r);}
+    opts=shuffle([q.l].concat(wrongs));
+  } else if(type==='whatWord'){
+    qText='The letter <strong>'+q.l+'</strong> stands for which word?';
+    answerVal=q.w;
+    var ww=[];while(ww.length<3){var ri=Math.floor(Math.random()*allLetters.length);if(allLetters[ri].w!==q.w&&ww.indexOf(allLetters[ri].w)===-1)ww.push(allLetters[ri].w);}
+    opts=shuffle([q.w].concat(ww));
+  } else {
+    qText='What is the lowercase of <strong>'+q.l+'</strong>?';
+    answerVal=q.l.toLowerCase();
+    var lw=[];while(lw.length<3){var rl=String.fromCharCode(97+Math.floor(Math.random()*26));if(rl!==q.l.toLowerCase()&&lw.indexOf(rl)===-1)lw.push(rl);}
+    opts=shuffle([q.l.toLowerCase()].concat(lw));
+  }
+
+  card.innerHTML='<div class="quiz-q-num">Question '+(quizIdx+1)+' of 10</div>'+
+    '<div class="quiz-question">'+qText+'</div>'+
+    '<div class="quiz-options" id="qOpts"></div>'+
+    '<div class="quiz-feedback" id="qFb"></div>'+
+    '<button class="quiz-next" id="qNext">Next →</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var optDiv=document.getElementById('qOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;
+    btn.onclick=function(){
+      var btns=optDiv.querySelectorAll('.quiz-opt');
+      btns.forEach(function(b){b.disabled=true;});
+      var fb=document.getElementById('qFb');
+      if(o===answerVal){
+        btn.classList.add('correct');fb.textContent='✅ Correct!';fb.className='quiz-feedback show ok';addStar();
+      } else {
+        btn.classList.add('wrong');fb.textContent='❌ The answer is '+answerVal;fb.className='quiz-feedback show bad';
+        btns.forEach(function(b){if(b.textContent===answerVal)b.classList.add('correct');});
+      }
+      document.getElementById('qNext').classList.add('show');
+    };
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('qNext').onclick=function(){quizIdx++;renderQuiz();};
+}
+renderQuiz();
+</script>
+</body>
+</html>

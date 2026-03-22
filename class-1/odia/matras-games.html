@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ମାତ୍ରା ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #FFFDF9;
+  --off:    #F7F5F0;
+  --border: #EBEBEB;
+  --c:      #FF9F43;
+  --cbg:    #FFF5EC;
+  --green:  #43AA8B;
+  --greenbg:#EDFAF4;
+  --yellow: #F9C74F;
+  --blue:   #3A86FF;
+  --bluebg: #EEF4FF;
+  --red:    #FF6B6B;
+  --redbg:  #FFF0F0;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,253,249,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* STAR BAR */
+.star-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 48px;
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+}
+.star-display { display: flex; align-items: center; gap: 6px; }
+.star-count { font-size: 1.5rem; font-weight: 900; color: var(--yellow); line-height: 1; }
+.star-label { font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.progress-wrap { flex: 1; min-width: 160px; }
+.progress-label { font-size: 0.72rem; font-weight: 700; color: var(--light); margin-bottom: 4px; }
+.progress-bar { height: 8px; background: var(--off); border-radius: 50px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--yellow), var(--c)); border-radius: 50px; transition: width 0.5s ease; }
+.games-done { font-size: 0.78rem; font-weight: 700; color: var(--light); }
+
+/* PAGE HERO */
+.page-hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+}
+.page-hero h1 { font-family: var(--font-or); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 8px; color: var(--c); }
+.page-hero p { font-size: 0.95rem; color: var(--soft); }
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* GAME SECTION */
+.game-section {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 56px;
+}
+.game-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+}
+.game-icon { font-size: 2rem; }
+.game-title { font-size: 1.3rem; font-weight: 900; color: var(--ink); }
+.game-subtitle { font-size: 0.82rem; font-weight: 600; color: var(--light); margin-top: 2px; }
+.game-stars-possible {
+  margin-left: auto;
+  font-size: 0.78rem; font-weight: 800;
+  background: #FFFBEC; color: var(--yellow);
+  border: 1px solid #FFE99A;
+  padding: 4px 12px; border-radius: 50px;
+}
+
+/* ── GAME 1: MATCH THE MATRA ── */
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.match-col { display: flex; flex-direction: column; gap: 10px; }
+.match-col-label { font-size: 0.7rem; font-weight: 800; color: var(--light); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.match-item {
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .15s;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 700;
+  user-select: none;
+}
+.match-item:hover { border-color: var(--c); background: var(--cbg); }
+.match-item.selected { border-color: var(--blue); background: var(--bluebg); }
+.match-item.correct  { border-color: var(--green); background: var(--greenbg); pointer-events: none; }
+.match-item.wrong    { border-color: var(--red); background: var(--redbg); animation: shake .3s; }
+.match-letter { font-family: var(--font-or); font-size: 1.8rem; font-weight: 700; }
+
+/* ── GAME 2: BUILD THE WORD ── */
+.build-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 32px; margin-bottom: 16px;
+}
+.build-prompt {
+  font-family: var(--font-or);
+  font-size: 2rem; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.build-prompt .plus { color: var(--light); font-family: var(--font); font-size: 1.4rem; }
+.build-prompt .equals { color: var(--light); font-family: var(--font); font-size: 1.4rem; }
+.build-prompt .q-mark { color: var(--c); font-size: 2rem; }
+.build-instruction { font-size: 0.85rem; color: var(--soft); margin-bottom: 24px; }
+.build-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.build-opt {
+  padding: 16px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff; cursor: pointer;
+  font-family: var(--font-or); font-size: 1.4rem; font-weight: 700;
+  text-align: center;
+  transition: all .15s;
+}
+.build-opt:hover:not(:disabled) { border-color: var(--blue); background: var(--bluebg); }
+.build-opt.correct  { border-color: var(--green); background: var(--greenbg); color: var(--green); }
+.build-opt.wrong    { border-color: var(--red); background: var(--redbg); color: var(--red); }
+.build-opt:disabled { cursor: default; }
+.build-feedback {
+  margin-top: 14px; padding: 12px 16px;
+  border-radius: 12px; font-size: 0.88rem; font-weight: 700;
+  display: none;
+}
+.build-feedback.show { display: block; }
+.build-feedback.ok  { background: var(--greenbg); color: var(--green); }
+.build-feedback.bad { background: var(--redbg); color: var(--red); }
+.build-next {
+  margin-top: 16px;
+  background: var(--ink); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 800;
+  display: none; transition: opacity .15s;
+}
+.build-next:hover { opacity: 0.8; }
+.build-next.show { display: inline-block; }
+
+/* ── GAME 3: FILL IN THE MATRA ── */
+.fill-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 32px; margin-bottom: 16px;
+}
+.fill-prompt {
+  font-family: var(--font-or);
+  font-size: 2.2rem; font-weight: 700;
+  display: flex; align-items: center; gap: 4px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.fill-blank-slot {
+  display: inline-block;
+  width: 48px; height: 48px;
+  border-bottom: 3px solid var(--c);
+  text-align: center;
+  font-family: var(--font-or);
+  font-size: 2rem; font-weight: 700;
+  color: var(--c);
+  line-height: 48px;
+  margin: 0 2px;
+  transition: border-color .15s;
+}
+.fill-blank-slot.correct { border-color: var(--green); color: var(--green); }
+.fill-blank-slot.wrong { border-color: var(--red); color: var(--red); animation: shake .3s; }
+.fill-hint { font-size: 0.85rem; color: var(--soft); margin-bottom: 20px; }
+.fill-hint .hint-emoji { font-size: 1.4rem; }
+.fill-choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.fill-choice {
+  font-family: var(--font-or);
+  font-size: 1.4rem; font-weight: 700;
+  width: 56px; height: 56px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--off); cursor: pointer;
+  transition: all .15s;
+  display: grid; place-items: center;
+}
+.fill-choice:hover { border-color: var(--blue); background: var(--bluebg); }
+.fill-choice.used { opacity: 0.3; pointer-events: none; }
+.fill-feedback { margin-top: 12px; font-size: 0.88rem; font-weight: 700; display: none; }
+.fill-feedback.show { display: block; }
+.fill-feedback.ok  { color: var(--green); }
+.fill-feedback.bad { color: var(--red); }
+.fill-next {
+  margin-top: 12px;
+  background: var(--ink); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.85rem; font-weight: 800;
+  display: none;
+}
+.fill-next.show { display: inline-block; }
+
+/* ── GAME 4: MCQ QUIZ ── */
+.quiz-card {
+  background: #fff; border-radius: 20px;
+  border: 2px solid var(--border);
+  padding: 32px; margin-bottom: 16px;
+}
+.quiz-q-num { font-size: 0.72rem; font-weight: 800; color: var(--light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.quiz-question {
+  font-family: var(--font-or);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 8px;
+  line-height: 1.6;
+}
+.quiz-instruction { font-size: 0.85rem; color: var(--soft); margin-bottom: 24px; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quiz-opt {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff; cursor: pointer;
+  font-family: var(--font-or); font-size: 1.2rem; font-weight: 700;
+  transition: all .15s;
+  text-align: center;
+}
+.quiz-opt:hover:not(:disabled) { border-color: var(--blue); background: var(--bluebg); }
+.quiz-opt.correct  { border-color: var(--green); background: var(--greenbg); color: var(--green); }
+.quiz-opt.wrong    { border-color: var(--red); background: var(--redbg); color: var(--red); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-feedback {
+  margin-top: 14px; padding: 12px 16px;
+  border-radius: 12px; font-size: 0.88rem; font-weight: 700;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.ok  { background: var(--greenbg); color: var(--green); }
+.quiz-feedback.bad { background: var(--redbg); color: var(--red); }
+.quiz-next {
+  margin-top: 16px;
+  background: var(--ink); color: #fff;
+  padding: 10px 24px; border-radius: 10px;
+  font-size: 0.88rem; font-weight: 800;
+  display: none; transition: opacity .15s;
+}
+.quiz-next:hover { opacity: 0.8; }
+.quiz-next.show { display: inline-block; }
+
+/* RESULTS BANNER */
+.results-banner {
+  background: #fff; border: 2px solid var(--yellow);
+  border-radius: 24px; padding: 40px;
+  text-align: center; margin: 0 auto 40px;
+  max-width: 900px; display: none;
+}
+.results-banner.show { display: block; animation: popIn .5s cubic-bezier(.34,1.56,.64,1); }
+.results-emoji { font-size: 4rem; margin-bottom: 12px; }
+.results-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; }
+.results-score { font-size: 1.1rem; color: var(--soft); margin-bottom: 20px; }
+.results-stars { font-size: 2.5rem; letter-spacing: 4px; margin-bottom: 24px; }
+.results-retry {
+  background: var(--c); color: #fff;
+  padding: 12px 32px; border-radius: 12px;
+  font-size: 1rem; font-weight: 800;
+  transition: opacity .15s;
+}
+.results-retry:hover { opacity: 0.85; }
+
+/* CONFETTI CANVAS */
+#confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none; }
+
+/* COMMON */
+.game-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+.star-pop {
+  position: fixed; font-size: 2rem;
+  pointer-events: none; z-index: 999;
+  animation: starFloat 1s ease forwards;
+}
+@keyframes starFloat {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .star-bar, .page-hero, .game-section, footer { padding-left: 20px; padding-right: 20px; }
+  .match-grid, .quiz-options, .build-options { grid-template-columns: 1fr; }
+  .build-options { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .breadcrumb { display: none; }
+  .build-options { grid-template-columns: repeat(2, 1fr); }
+  .quiz-options { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ମାତ୍ରା ଖେଳ</span>
+  </div>
+</nav>
+
+<!-- STAR BAR -->
+<div class="star-bar">
+  <div class="star-display">
+    <span class="star-count" id="starCount">0</span>
+    <span style="font-size:1.4rem">⭐</span>
+    <span class="star-label">Stars earned</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Overall progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="games-done" id="gamesDone">0 / 4 games done</div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <!-- REVIEW NEEDED -->
+  <h1>ମାତ୍ରା ଖେଳ 🎮</h1>
+  <p>4 fun games to practise your Odia matras — earn ⭐ for every correct answer!</p>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 1 — MATCH THE MATRA
+════════════════════════════════════════════ -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 1 — ସ୍ୱର ଓ ମାତ୍ରା ମିଳାଅ</div>
+      <div class="game-subtitle">Match the vowel to its matra form. Click a vowel, then click the matching matra.</div>
+    </div>
+    <div class="game-stars-possible">Up to 8 ⭐</div>
+  </div>
+  <div class="match-grid">
+    <div class="match-col">
+      <!-- REVIEW NEEDED -->
+      <div class="match-col-label">ସ୍ୱର (Vowels)</div>
+      <div id="matchVowels"></div>
+    </div>
+    <div class="match-col">
+      <!-- REVIEW NEEDED -->
+      <div class="match-col-label">ମାତ୍ରା (Matras)</div>
+      <div id="matchMatras"></div>
+    </div>
+  </div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus"></div>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 2 — BUILD THE WORD
+════════════════════════════════════════════ -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🔨</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 2 — ଅକ୍ଷର ଗଢ଼</div>
+      <div class="game-subtitle">See the consonant + matra and pick the correct combined form.</div>
+    </div>
+    <div class="game-stars-possible">Up to 8 ⭐</div>
+  </div>
+  <div id="buildContainer"></div>
+  <button class="build-next show" id="buildNextBtn" onclick="nextBuild()">Next Question →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 3 — FILL IN THE MATRA
+════════════════════════════════════════════ -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">✏️</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 3 — ମାତ୍ରା ଭରଣା କର</div>
+      <div class="game-subtitle">Pick the correct matra to complete the word.</div>
+    </div>
+    <div class="game-stars-possible">Up to 8 ⭐</div>
+  </div>
+  <div id="fillContainer"></div>
+  <button class="fill-next show" id="fillNextBtn" onclick="nextFill()">Next Word →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- ═══════════════════════════════════════════
+     GAME 4 — MCQ QUIZ
+════════════════════════════════════════════ -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div>
+      <!-- REVIEW NEEDED -->
+      <div class="game-title">Game 4 — ମାତ୍ରା କୁଇଜ୍</div>
+      <div class="game-subtitle">10 questions to test your matra knowledge!</div>
+    </div>
+    <div class="game-stars-possible">Up to 10 ⭐</div>
+  </div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next show" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+
+<!-- RESULTS -->
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div>
+  <!-- REVIEW NEEDED -->
+  <div class="results-title" id="resultsTitle">ବହୁତ ଭଲ!</div>
+  <div class="results-score" id="resultsScore"></div>
+  <div class="results-stars" id="resultsStars"></div>
+  <!-- REVIEW NEEDED -->
+  <button class="results-retry" onclick="retryAll()">ପୁଣି ଖେଳ 🔄</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 1 · ଓଡ଼ିଆ · ମାତ୍ରା · Free forever</span>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// DATA — all Odia text below needs REVIEW
+// ══════════════════════════════════════════════════════════════
+// REVIEW NEEDED
+var matchData = [
+  { vowel: 'ଆ', matra: 'ା' },
+  { vowel: 'ଇ', matra: 'ି' },
+  { vowel: 'ଈ', matra: 'ୀ' },
+  { vowel: 'ଉ', matra: 'ୁ' },
+  { vowel: 'ଊ', matra: 'ୂ' },
+  { vowel: 'ଏ', matra: 'େ' },
+  { vowel: 'ଐ', matra: 'ୈ' },
+  { vowel: 'ଓ', matra: 'ୋ' }
+];
+
+// REVIEW NEEDED
+var buildData = [
+  { consonant: 'କ', matra: 'ା', answer: 'କା', distractors: ['କି','କୀ','କୁ'] },
+  { consonant: 'ଗ', matra: 'ି', answer: 'ଗି', distractors: ['ଗା','ଗୁ','ଗୋ'] },
+  { consonant: 'ଚ', matra: 'ୁ', answer: 'ଚୁ', distractors: ['ଚା','ଚି','ଚେ'] },
+  { consonant: 'ଟ', matra: 'େ', answer: 'ଟେ', distractors: ['ଟା','ଟି','ଟୁ'] },
+  { consonant: 'ପ', matra: 'ୋ', answer: 'ପୋ', distractors: ['ପା','ପି','ପେ'] },
+  { consonant: 'ମ', matra: 'ୀ', answer: 'ମୀ', distractors: ['ମା','ମୁ','ମେ'] },
+  { consonant: 'ସ', matra: 'ୂ', answer: 'ସୂ', distractors: ['ସା','ସି','ସେ'] },
+  { consonant: 'ଲ', matra: 'ୈ', answer: 'ଲୈ', distractors: ['ଲା','ଲି','ଲୋ'] }
+];
+
+// REVIEW NEEDED
+var fillData = [
+  { display: ['ମ','_','ଛ'], answer: 'ା', word: 'ମାଛ', emoji: '🐟', choices: ['ା','ି','ୁ','େ'] },
+  { display: ['ନ','ଦ','_'], answer: 'ୀ', word: 'ନଦୀ', emoji: '🏞️', choices: ['ା','ୀ','ୁ','ୋ'] },
+  { display: ['ଫ','_','ଲ'], answer: 'ୁ', word: 'ଫୁଲ', emoji: '🌸', choices: ['ା','ି','ୁ','େ'] },
+  { display: ['ଖ','_','ଳ'], answer: 'େ', word: 'ଖେଳ', emoji: '⚽', choices: ['ା','େ','ୋ','ୁ'] },
+  { display: ['ର','_','ଟି'], answer: 'ୋ', word: 'ରୋଟି', emoji: '🫓', choices: ['ା','ି','େ','ୋ'] },
+  { display: ['ଦ','_','ପ'], answer: 'ୀ', word: 'ଦୀପ', emoji: '🪔', choices: ['ା','ୀ','ୁ','େ'] },
+  { display: ['ସ','_','ନା'], answer: 'ୁ', word: 'ସୁନା', emoji: '✨', choices: ['ା','ି','ୁ','ୋ'] },
+  { display: ['ଚ','_','ନ୍ଦ'], answer: 'ା', word: 'ଚାନ୍ଦ', emoji: '🌙', choices: ['ା','ି','େ','ୋ'] }
+];
+
+// REVIEW NEEDED
+var quizData = [
+  { q: 'ଆ ର ମାତ୍ରା କ\'ଣ?', opts: ['ା','ି','ୁ','େ'], ans: 0 },
+  { q: 'କ + ି = ?', opts: ['କା','କି','କୁ','କେ'], ans: 1 },
+  { q: '"ଫୁଲ" ରେ କେଉଁ ମାତ୍ରା ଅଛି?', opts: ['ା','ି','ୁ','େ'], ans: 2 },
+  { q: 'ଓ ର ମାତ୍ରା କ\'ଣ?', opts: ['ୌ','ୋ','େ','ୈ'], ans: 1 },
+  { q: 'ଗ + ୀ = ?', opts: ['ଗି','ଗୀ','ଗା','ଗୁ'], ans: 1 },
+  { q: '"ଦେଶ" ରେ କେଉଁ ମାତ୍ରା ଅଛି?', opts: ['ା','ୀ','େ','ୋ'], ans: 2 },
+  { q: 'ଉ ର ମାତ୍ରା କ\'ଣ?', opts: ['ା','ି','ୁ','େ'], ans: 2 },
+  { q: 'ମ + ା = ?', opts: ['ମି','ମୁ','ମା','ମେ'], ans: 2 },
+  { q: '"ହଂସ" ରେ କେଉଁ ଚିହ୍ନ ଅଛି?', opts: ['ଂ','ଃ','ୃ','ୈ'], ans: 0 },
+  { q: 'ସ + ୂ = ?', opts: ['ସୁ','ସୂ','ସା','ସି'], ans: 1 }
+];
+
+// ══════════════════════════════════════════════════════════════
+// GLOBAL STATE
+// ══════════════════════════════════════════════════════════════
+var totalStars = 0;
+var gamesCompleted = 0;
+var totalGames = 4;
+
+function addStars(n, el) {
+  totalStars += n;
+  document.getElementById('starCount').textContent = totalStars;
+  updateProgress();
+  for (var i = 0; i < n; i++) {
+    (function(idx) {
+      setTimeout(function() {
+        var pop = document.createElement('div');
+        pop.className = 'star-pop';
+        pop.textContent = '⭐';
+        if (el) {
+          var r = el.getBoundingClientRect();
+          pop.style.left = (r.left + r.width / 2) + 'px';
+          pop.style.top = (r.top) + 'px';
+        } else {
+          pop.style.left = (window.innerWidth / 2) + 'px';
+          pop.style.top = (window.innerHeight / 2) + 'px';
+        }
+        document.body.appendChild(pop);
+        setTimeout(function() { pop.remove(); }, 1000);
+      }, idx * 150);
+    })(i);
+  }
+}
+
+function completeGame() {
+  gamesCompleted++;
+  updateProgress();
+  if (gamesCompleted >= totalGames) {
+    showResults();
+  }
+}
+
+function updateProgress() {
+  var pct = (gamesCompleted / totalGames) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('gamesDone').textContent = gamesCompleted + ' / ' + totalGames + ' games done';
+}
+
+function showResults() {
+  var maxStars = 34; // 8+8+8+10
+  var banner = document.getElementById('resultsBanner');
+  var pct = Math.round((totalStars / maxStars) * 100);
+  document.getElementById('resultsScore').textContent = 'You earned ' + totalStars + ' out of ' + maxStars + ' stars (' + pct + '%)';
+  var starStr = '';
+  for (var i = 0; i < Math.min(totalStars, 10); i++) starStr += '⭐';
+  if (totalStars > 10) starStr += ' +' + (totalStars - 10);
+  document.getElementById('resultsStars').textContent = starStr;
+  if (pct === 100) {
+    document.getElementById('resultsEmoji').textContent = '🏆';
+    document.getElementById('resultsTitle').textContent = 'Perfect! ସମ୍ପୂର୍ଣ୍ଣ!';
+  } else if (pct >= 70) {
+    document.getElementById('resultsEmoji').textContent = '🎉';
+    document.getElementById('resultsTitle').textContent = 'ବହୁତ ଭଲ!';
+  } else {
+    document.getElementById('resultsEmoji').textContent = '💪';
+    document.getElementById('resultsTitle').textContent = 'ଆଉ ଥରେ ଚେଷ୍ଟା କର!';
+  }
+  banner.classList.add('show');
+  if (pct >= 70) launchConfetti();
+}
+
+function retryAll() { location.reload(); }
+
+// ══════════════════════════════════════════════════════════════
+// GAME 1 — MATCH THE MATRA
+// ══════════════════════════════════════════════════════════════
+(function() {
+  var data = matchData.slice();
+  var shuffledMatras = data.map(function(d) { return { matra: d.matra, vowel: d.vowel }; });
+  // Shuffle matras side
+  for (var i = shuffledMatras.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = shuffledMatras[i];
+    shuffledMatras[i] = shuffledMatras[j];
+    shuffledMatras[j] = tmp;
+  }
+
+  var vowelCol = document.getElementById('matchVowels');
+  var matraCol = document.getElementById('matchMatras');
+  var selected = null;
+  var matched = 0;
+  var game1Done = false;
+
+  data.forEach(function(d, idx) {
+    var el = document.createElement('div');
+    el.className = 'match-item';
+    el.innerHTML = '<span class="match-letter">' + d.vowel + '</span>';
+    el.dataset.vowel = d.vowel;
+    el.dataset.side = 'vowel';
+    el.onclick = function() { clickMatch(el); };
+    vowelCol.appendChild(el);
+  });
+
+  shuffledMatras.forEach(function(d) {
+    var el = document.createElement('div');
+    el.className = 'match-item';
+    el.innerHTML = '<span class="match-letter">' + d.matra + '</span>';
+    el.dataset.matra = d.matra;
+    el.dataset.vowel = d.vowel;
+    el.dataset.side = 'matra';
+    el.onclick = function() { clickMatch(el); };
+    matraCol.appendChild(el);
+  });
+
+  function clickMatch(el) {
+    if (game1Done) return;
+    if (el.classList.contains('correct')) return;
+
+    if (!selected) {
+      selected = el;
+      el.classList.add('selected');
+      return;
+    }
+
+    if (selected === el) {
+      selected.classList.remove('selected');
+      selected = null;
+      return;
+    }
+
+    // Must pick one from each side
+    if (selected.dataset.side === el.dataset.side) {
+      selected.classList.remove('selected');
+      selected = el;
+      el.classList.add('selected');
+      return;
+    }
+
+    var vowelEl = selected.dataset.side === 'vowel' ? selected : el;
+    var matraEl = selected.dataset.side === 'matra' ? selected : el;
+
+    var correctVowel = matraEl.dataset.vowel;
+    if (vowelEl.dataset.vowel === correctVowel) {
+      vowelEl.classList.remove('selected');
+      vowelEl.classList.add('correct');
+      matraEl.classList.add('correct');
+      matched++;
+      addStars(1, matraEl);
+      document.getElementById('matchStatus').textContent = matched + ' / ' + data.length + ' matched';
+      if (matched === data.length) {
+        game1Done = true;
+        document.getElementById('matchStatus').textContent = 'All matched! Great job! 🎉';
+        completeGame();
+      }
+    } else {
+      vowelEl.classList.remove('selected');
+      vowelEl.classList.add('wrong');
+      matraEl.classList.add('wrong');
+      setTimeout(function() {
+        vowelEl.classList.remove('wrong');
+        matraEl.classList.remove('wrong');
+      }, 500);
+    }
+    selected = null;
+  }
+})();
+
+// ══════════════════════════════════════════════════════════════
+// GAME 2 — BUILD THE WORD
+// ══════════════════════════════════════════════════════════════
+var buildIdx = 0;
+var buildDone = false;
+var buildCorrect = 0;
+
+function renderBuild() {
+  if (buildIdx >= buildData.length) {
+    buildDone = true;
+    document.getElementById('buildNextBtn').style.display = 'none';
+    completeGame();
+    return;
+  }
+  var d = buildData[buildIdx];
+  var opts = d.distractors.concat([d.answer]);
+  // Shuffle
+  for (var i = opts.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = opts[i]; opts[i] = opts[j]; opts[j] = tmp;
+  }
+
+  var html = '<div class="build-card">' +
+    '<div class="quiz-q-num">Question ' + (buildIdx + 1) + ' of ' + buildData.length + '</div>' +
+    '<div class="build-prompt">' +
+      '<span>' + d.consonant + '</span>' +
+      '<span class="plus">+</span>' +
+      '<span style="color:var(--c)">' + d.matra + '</span>' +
+      '<span class="equals">=</span>' +
+      '<span class="q-mark">?</span>' +
+    '</div>' +
+    '<div class="build-instruction">Select the correct combined letter</div>' +
+    '<div class="build-options" id="buildOpts">';
+  opts.forEach(function(o, i) {
+    html += '<button class="build-opt" onclick="pickBuild(this,\'' + o + '\')" data-val="' + o + '">' + o + '</button>';
+  });
+  html += '</div>' +
+    '<div class="build-feedback" id="buildFeedback"></div>' +
+    '</div>';
+  document.getElementById('buildContainer').innerHTML = html;
+  document.getElementById('buildNextBtn').classList.remove('show');
+}
+
+function pickBuild(el, val) {
+  var d = buildData[buildIdx];
+  var allOpts = document.querySelectorAll('#buildOpts .build-opt');
+  allOpts.forEach(function(o) { o.disabled = true; });
+  var fb = document.getElementById('buildFeedback');
+
+  if (val === d.answer) {
+    el.classList.add('correct');
+    fb.className = 'build-feedback show ok';
+    fb.textContent = '✅ Correct! ' + d.consonant + ' + ' + d.matra + ' = ' + d.answer;
+    buildCorrect++;
+    addStars(1, el);
+  } else {
+    el.classList.add('wrong');
+    // Highlight correct
+    allOpts.forEach(function(o) { if (o.dataset.val === d.answer) o.classList.add('correct'); });
+    fb.className = 'build-feedback show bad';
+    fb.textContent = '❌ The answer is ' + d.answer;
+  }
+  document.getElementById('buildNextBtn').classList.add('show');
+}
+
+function nextBuild() {
+  buildIdx++;
+  renderBuild();
+}
+renderBuild();
+
+// ══════════════════════════════════════════════════════════════
+// GAME 3 — FILL IN THE MATRA
+// ══════════════════════════════════════════════════════════════
+var fillIdx = 0;
+var fillDone = false;
+var fillCorrect = 0;
+
+function renderFill() {
+  if (fillIdx >= fillData.length) {
+    fillDone = true;
+    document.getElementById('fillNextBtn').style.display = 'none';
+    completeGame();
+    return;
+  }
+  var d = fillData[fillIdx];
+  var displayHTML = '';
+  d.display.forEach(function(ch) {
+    if (ch === '_') {
+      displayHTML += '<span class="fill-blank-slot" id="fillSlot"></span>';
+    } else {
+      displayHTML += '<span>' + ch + '</span>';
+    }
+  });
+
+  var choicesHTML = '';
+  var shuffled = d.choices.slice();
+  for (var i = shuffled.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+  }
+  shuffled.forEach(function(c) {
+    choicesHTML += '<button class="fill-choice" onclick="pickFill(this,\'' + c + '\')">' + c + '</button>';
+  });
+
+  var html = '<div class="fill-card">' +
+    '<div class="quiz-q-num">Word ' + (fillIdx + 1) + ' of ' + fillData.length + '</div>' +
+    '<div class="fill-prompt">' + displayHTML + '</div>' +
+    '<div class="fill-hint"><span class="hint-emoji">' + d.emoji + '</span> Pick the correct matra to complete the word</div>' +
+    '<div class="fill-choices" id="fillChoices">' + choicesHTML + '</div>' +
+    '<div class="fill-feedback" id="fillFeedback"></div>' +
+    '</div>';
+  document.getElementById('fillContainer').innerHTML = html;
+  document.getElementById('fillNextBtn').classList.remove('show');
+}
+
+function pickFill(el, val) {
+  var d = fillData[fillIdx];
+  var slot = document.getElementById('fillSlot');
+  var fb = document.getElementById('fillFeedback');
+  var allChoices = document.querySelectorAll('#fillChoices .fill-choice');
+  allChoices.forEach(function(c) { c.style.pointerEvents = 'none'; });
+
+  slot.textContent = val;
+
+  if (val === d.answer) {
+    slot.classList.add('correct');
+    el.style.borderColor = 'var(--green)';
+    el.style.background = 'var(--greenbg)';
+    fb.className = 'fill-feedback show ok';
+    fb.textContent = '✅ Correct! The word is ' + d.word;
+    fillCorrect++;
+    addStars(1, el);
+  } else {
+    slot.classList.add('wrong');
+    el.style.borderColor = 'var(--red)';
+    el.style.background = 'var(--redbg)';
+    fb.className = 'fill-feedback show bad';
+    fb.textContent = '❌ The correct matra is ' + d.answer + ' → ' + d.word;
+  }
+  document.getElementById('fillNextBtn').classList.add('show');
+}
+
+function nextFill() {
+  fillIdx++;
+  renderFill();
+}
+renderFill();
+
+// ══════════════════════════════════════════════════════════════
+// GAME 4 — MCQ QUIZ
+// ══════════════════════════════════════════════════════════════
+var quizIdx = 0;
+var quizDone = false;
+var quizCorrect = 0;
+
+function renderQuiz() {
+  if (quizIdx >= quizData.length) {
+    quizDone = true;
+    document.getElementById('quizNextBtn').style.display = 'none';
+    completeGame();
+    return;
+  }
+  var d = quizData[quizIdx];
+  var html = '<div class="quiz-card">' +
+    '<div class="quiz-q-num">Question ' + (quizIdx + 1) + ' of ' + quizData.length + '</div>' +
+    '<div class="quiz-question">' + d.q + '</div>' +
+    '<div class="quiz-instruction">Pick the correct answer</div>' +
+    '<div class="quiz-options" id="quizOpts">';
+  d.opts.forEach(function(o, i) {
+    html += '<button class="quiz-opt" onclick="pickQuiz(this,' + i + ')" data-idx="' + i + '">' + o + '</button>';
+  });
+  html += '</div>' +
+    '<div class="quiz-feedback" id="quizFeedback"></div>' +
+    '</div>';
+  document.getElementById('quizContainer').innerHTML = html;
+  document.getElementById('quizNextBtn').classList.remove('show');
+}
+
+function pickQuiz(el, idx) {
+  var d = quizData[quizIdx];
+  var allOpts = document.querySelectorAll('#quizOpts .quiz-opt');
+  allOpts.forEach(function(o) { o.disabled = true; });
+  var fb = document.getElementById('quizFeedback');
+
+  if (idx === d.ans) {
+    el.classList.add('correct');
+    fb.className = 'quiz-feedback show ok';
+    fb.textContent = '✅ Correct!';
+    quizCorrect++;
+    addStars(1, el);
+  } else {
+    el.classList.add('wrong');
+    allOpts.forEach(function(o) { if (parseInt(o.dataset.idx) === d.ans) o.classList.add('correct'); });
+    fb.className = 'quiz-feedback show bad';
+    fb.textContent = '❌ The correct answer is ' + d.opts[d.ans];
+  }
+  document.getElementById('quizNextBtn').classList.add('show');
+}
+
+function nextQuiz() {
+  quizIdx++;
+  renderQuiz();
+}
+renderQuiz();
+
+// ══════════════════════════════════════════════════════════════
+// CONFETTI
+// ══════════════════════════════════════════════════════════════
+function launchConfetti() {
+  var canvas = document.getElementById('confetti');
+  canvas.style.display = 'block';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  var ctx = canvas.getContext('2d');
+  var pieces = [];
+  var colors = ['#FF6B6B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7'];
+
+  for (var i = 0; i < 150; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 6 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vy: Math.random() * 3 + 2,
+      vx: (Math.random() - 0.5) * 2,
+      rot: Math.random() * 360,
+      vr: (Math.random() - 0.5) * 8
+    });
+  }
+
+  var frames = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(function(p) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+    frames++;
+    if (frames < 200) {
+      requestAnimationFrame(draw);
+    } else {
+      canvas.style.display = 'none';
+    }
+  }
+  draw();
+}
+</script>
+</body>
+</html>

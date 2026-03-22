@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Rhymes — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.5rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.hero{max-width:1100px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:8px;}
+.hero p{font-size:0.95rem;color:var(--soft);max-width:500px;margin:0 auto;}
+
+hr.divider{border:none;border-top:1px solid var(--border);}
+
+.section{max-width:900px;margin:0 auto;padding:48px 48px 32px;}
+
+.rhyme-card{
+  background:#fff;border:2px solid var(--border);border-radius:24px;
+  padding:32px;margin-bottom:24px;position:relative;overflow:hidden;
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+  cursor:pointer;
+}
+.rhyme-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--rc,var(--c));}
+.rhyme-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.07);border-color:var(--rc,var(--c));}
+.rhyme-top{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.rhyme-emoji{font-size:3rem;}
+.rhyme-num{font-size:0.65rem;font-weight:800;color:var(--rc,var(--c));letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.rhyme-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.rhyme-topic{font-size:0.78rem;font-weight:700;color:var(--light);margin-top:2px;}
+.rhyme-body{
+  background:var(--rbg,var(--cbg));border-radius:16px;padding:24px;
+  margin-bottom:16px;font-size:1.05rem;font-weight:700;
+  line-height:2;color:var(--ink);white-space:pre-line;
+}
+.rhyme-odia-label{font-size:0.68rem;font-weight:800;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.rhyme-odia{font-family:var(--font-or);font-size:0.92rem;font-weight:700;color:var(--soft);line-height:1.8;}
+
+.games-cta{text-align:center;padding:32px 20px 48px;}
+.games-cta a{display:inline-flex;align-items:center;gap:10px;background:var(--c);color:#fff;font-size:1rem;font-weight:800;padding:14px 32px;border-radius:14px;transition:opacity .15s;}
+.games-cta a:hover{opacity:0.85;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .hero{padding:32px 20px 24px;}
+  .section{padding:32px 20px 24px;}
+  .rhyme-card{padding:24px 20px;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>Rhymes</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🎵 English Rhymes</div>
+  <h1>🎵 English Rhymes</h1>
+  <!-- REVIEW NEEDED -->
+  <p>ଇଂରାଜୀ ଛଡ଼ା ଓ ଗୀତ — Fun English rhymes for little learners! Click to hear them read aloud.</p>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="rhymeSection"></section>
+
+<div class="games-cta">
+  <a href="rhymes-games.html">🎮 Play Rhyme Games →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+/* REVIEW NEEDED — all Odia summaries below */
+var rhymes = [
+  {
+    title: 'Rain, Rain',
+    topic: 'About rain and playing',
+    emoji: '🌧️',
+    color: '#3A86FF',
+    bg: '#EEF4FF',
+    text: 'Rain, rain, falling down,\nOn the rooftops, on the ground.\nPuddles here and puddles there,\nSplashing water everywhere!\nWhen the rain has gone away,\nWe will go outside and play.',
+    odia: 'ଏହି ଛଡ଼ାଟି ବର୍ଷା ବିଷୟରେ । ବର୍ଷା ଛାତ ଉପରେ ଓ ମାଟିରେ ପଡ଼ୁଛି । ଯେତେବେଳେ ବର୍ଷା ବନ୍ଦ ହୁଏ, ପିଲାମାନେ ବାହାରେ ଖେଳିବାକୁ ଯାଆନ୍ତି ।'
+  },
+  {
+    title: 'Little Star',
+    topic: 'About stars in the sky',
+    emoji: '⭐',
+    color: '#F9C74F',
+    bg: '#FFFBEC',
+    text: 'Little star up in the sky,\nShining bright and way up high.\nWhen the moon comes out to play,\nAll the stars light up the way.\nOne by one they start to glow,\nWatching us down here below.',
+    odia: 'ଏହି ଛଡ଼ାଟି ଆକାଶର ତାରାମାନଙ୍କ ବିଷୟରେ । ଛୋଟ ତାରାଟି ଆକାଶରେ ଉଜ୍ଜ୍ୱଳ ଭାବରେ ଚମକୁଛି । ଚନ୍ଦ୍ର ବାହାରିଲେ ସବୁ ତାରା ଜଳି ଉଠନ୍ତି ।'
+  },
+  {
+    title: 'My Little Dog',
+    topic: 'About a pet dog',
+    emoji: '🐕',
+    color: '#FF9F43',
+    bg: '#FFF5EC',
+    text: 'I have a little dog named Spot,\nHe runs and plays a lot.\nHe wags his tail when I come home,\nHe does not like to be alone.\nWe play with balls and run around,\nThe happiest pup that can be found!',
+    odia: 'ଏହି ଛଡ଼ାଟି ଏକ ଛୋଟ କୁକୁର ବିଷୟରେ ଯାହାର ନାମ ସ୍ପଟ୍ । ସେ ବହୁତ ଖେଳେ ଓ ଦୌଡ଼େ । ମାଲିକ ଘରକୁ ଆସିଲେ ସେ ଲାଞ୍ଜ ହଲାଏ ।'
+  },
+  {
+    title: 'Going to School',
+    topic: 'About going to school',
+    emoji: '🏫',
+    color: '#43AA8B',
+    bg: '#EDFAF4',
+    text: 'Pack my bag and tie my shoe,\nOff to school, there is much to do!\nRead a book and write my name,\nLearn to count, it is a game.\nSing a song and draw with care,\nFun and learning everywhere!',
+    odia: 'ଏହି ଛଡ଼ାଟି ବିଦ୍ୟାଳୟ ଯିବା ବିଷୟରେ । ବ୍ୟାଗ୍ ପ୍ୟାକ୍ କରି ଜୋତା ବାନ୍ଧି ସ୍କୁଲ ଯିବା । ପଢ଼ିବା, ଲେଖିବା, ଗଣିବା ଓ ଗୀତ ଗାଇବା ।'
+  },
+  {
+    title: 'Fruits I Love',
+    topic: 'About delicious fruits',
+    emoji: '🍎',
+    color: '#FF6B6B',
+    bg: '#FFF0F0',
+    text: 'Apple red and banana long,\nEating fruits will make me strong.\nMango sweet and orange round,\nYummy fruits are all around!\nGrapes are small and watermelon big,\nI eat them all and dance a jig!',
+    odia: 'ଏହି ଛଡ଼ାଟି ଫଳ ବିଷୟରେ । ଲାଲ୍ ସେଓ, ଲମ୍ବା କଦଳୀ, ମିଠା ଆମ୍ବ ଓ ଗୋଲ କମଳା । ଫଳ ଖାଇଲେ ଶକ୍ତି ମିଳେ ।'
+  }
+];
+
+var section = document.getElementById('rhymeSection');
+rhymes.forEach(function(r, i) {
+  var card = document.createElement('div');
+  card.className = 'rhyme-card';
+  card.style.setProperty('--rc', r.color);
+  card.style.setProperty('--rbg', r.bg);
+  card.innerHTML =
+    '<div class="rhyme-top">' +
+      '<div class="rhyme-emoji">' + r.emoji + '</div>' +
+      '<div>' +
+        '<div class="rhyme-num">Rhyme ' + (i + 1) + '</div>' +
+        '<div class="rhyme-title">' + r.title + '</div>' +
+        '<div class="rhyme-topic">' + r.topic + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="rhyme-body">' + r.text + '</div>' +
+    '<div class="rhyme-odia-label">Odia Summary</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="rhyme-odia">' + r.odia + '</div>';
+  card.addEventListener('click', function() {
+    if ('speechSynthesis' in window) {
+      var utt = new SpeechSynthesisUtterance(r.text);
+      utt.lang = 'en-US'; utt.rate = 0.75;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utt);
+    }
+  });
+  section.appendChild(card);
+});
+</script>
+</body>
+</html>

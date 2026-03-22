@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ପ୍ୟାଟର୍ନ — Patterns — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#F9C74F;--cbg:#FFFBEC;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:#E07B00}
+
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:#E07B00;font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+/* PATTERN CARDS */
+.pattern-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px 32px;margin-bottom:20px;transition:border-color .15s}
+.pattern-card:hover{border-color:var(--c)}
+.pattern-type{font-size:0.75rem;font-weight:800;color:#E07B00;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.pattern-title{font-family:var(--font-or);font-size:1.2rem;font-weight:700;margin-bottom:4px;color:var(--ink)}
+.pattern-eng{font-size:0.82rem;font-weight:700;color:var(--light);margin-bottom:16px}
+
+.pattern-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:12px 16px;background:var(--off);border-radius:12px}
+.pattern-item{font-size:1.8rem;min-width:36px;text-align:center}
+.pattern-item.num{font-size:1.4rem;font-weight:900;width:40px;height:40px;border-radius:10px;background:var(--cbg);display:grid;place-items:center;color:#E07B00}
+.pattern-blank{width:40px;height:40px;border-radius:10px;border:2px dashed var(--c);display:grid;place-items:center;font-size:1.2rem;font-weight:900;color:var(--c)}
+.pattern-label{font-size:0.82rem;color:var(--soft);font-weight:700;margin-bottom:4px}
+
+/* SIZE PATTERN */
+.size-big{font-size:2.4rem}
+.size-small{font-size:1.2rem}
+
+.bottom-nav{max-width:1100px;margin:0 auto;padding:0 48px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.bottom-nav a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.88rem;font-weight:800;border:2px solid var(--border);transition:all .15s}
+.bottom-nav a:hover{border-color:var(--c);background:var(--cbg)}
+.bottom-nav .game-link{background:#E07B00;color:#fff;border-color:#E07B00}
+.bottom-nav .game-link:hover{opacity:0.9;background:#E07B00}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .bottom-nav{padding:0 20px 36px}
+  footer{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ପ୍ୟାଟର୍ନ</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🔁 ପ୍ୟାଟର୍ନ — Patterns</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ପ୍ୟାଟର୍ନ</h1>
+    <p class="hero-eng">Patterns</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ପ୍ୟାଟର୍ନ ଚିହ୍ନଟ କର ଓ ଆଗକୁ ବଢ଼ାଅ। ରଙ୍ଗ, ଆକୃତି, ସଂଖ୍ୟା ଓ ଆକାର ପ୍ୟାଟର୍ନ ଶିଖ।</p>
+  </div>
+  <div class="hero-art">🔁</div>
+</section>
+
+<hr class="divider">
+
+<!-- COLOR PATTERNS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ରଙ୍ଗ ପ୍ୟାଟର୍ନ — Colour Patterns</div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 1</div>
+    <!-- REVIEW NEEDED -->
+    <div class="pattern-title">ଦୁଇଟି ରଙ୍ଗ ବାରମ୍ବାର</div>
+    <div class="pattern-eng">Two colours repeating — AB AB AB</div>
+    <div class="pattern-row">
+      <div class="pattern-item">🔴</div><div class="pattern-item">🔵</div>
+      <div class="pattern-item">🔴</div><div class="pattern-item">🔵</div>
+      <div class="pattern-item">🔴</div><div class="pattern-item">🔵</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 🔴 🔵</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 2</div>
+    <!-- REVIEW NEEDED -->
+    <div class="pattern-title">ତିନୋଟି ରଙ୍ଗ ବାରମ୍ବାର</div>
+    <div class="pattern-eng">Three colours repeating — ABC ABC</div>
+    <div class="pattern-row">
+      <div class="pattern-item">🟡</div><div class="pattern-item">🟢</div><div class="pattern-item">🔴</div>
+      <div class="pattern-item">🟡</div><div class="pattern-item">🟢</div><div class="pattern-item">🔴</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 🟡 🟢 🔴</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 3</div>
+    <div class="pattern-eng">AAB AAB pattern</div>
+    <div class="pattern-row">
+      <div class="pattern-item">🔴</div><div class="pattern-item">🔴</div><div class="pattern-item">🔵</div>
+      <div class="pattern-item">🔴</div><div class="pattern-item">🔴</div><div class="pattern-item">🔵</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 🔴 🔴 🔵</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SHAPE PATTERNS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଆକୃତି ପ୍ୟାଟର୍ନ — Shape Patterns</div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 4</div>
+    <div class="pattern-eng">Two shapes repeating</div>
+    <div class="pattern-row">
+      <div class="pattern-item">⭕</div><div class="pattern-item">🔺</div>
+      <div class="pattern-item">⭕</div><div class="pattern-item">🔺</div>
+      <div class="pattern-item">⭕</div><div class="pattern-item">🔺</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: ⭕ 🔺</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 5</div>
+    <div class="pattern-eng">Three shapes repeating</div>
+    <div class="pattern-row">
+      <div class="pattern-item">⬛</div><div class="pattern-item">🔺</div><div class="pattern-item">⭕</div>
+      <div class="pattern-item">⬛</div><div class="pattern-item">🔺</div><div class="pattern-item">⭕</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: ⬛ 🔺 ⭕</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 6</div>
+    <div class="pattern-eng">ABB ABB pattern</div>
+    <div class="pattern-row">
+      <div class="pattern-item">🔷</div><div class="pattern-item">⭕</div><div class="pattern-item">⭕</div>
+      <div class="pattern-item">🔷</div><div class="pattern-item">⭕</div><div class="pattern-item">⭕</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 🔷 ⭕ ⭕</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NUMBER PATTERNS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ସଂଖ୍ୟା ପ୍ୟାଟର୍ନ — Number Patterns</div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 7</div>
+    <div class="pattern-eng">Count by 2s</div>
+    <div class="pattern-row">
+      <div class="pattern-item num">2</div><div class="pattern-item num">4</div>
+      <div class="pattern-item num">6</div><div class="pattern-item num">8</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 10, 12 (+2 each time)</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 8</div>
+    <div class="pattern-eng">Count by 3s</div>
+    <div class="pattern-row">
+      <div class="pattern-item num">3</div><div class="pattern-item num">6</div>
+      <div class="pattern-item num">9</div><div class="pattern-item num">12</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 15, 18 (+3 each time)</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 9</div>
+    <div class="pattern-eng">Count by 5s</div>
+    <div class="pattern-row">
+      <div class="pattern-item num">5</div><div class="pattern-item num">10</div>
+      <div class="pattern-item num">15</div><div class="pattern-item num">20</div>
+      <div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: 25 (+5 each time)</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SIZE PATTERNS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଆକାର ପ୍ୟାଟର୍ନ — Size Patterns</div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 10</div>
+    <!-- REVIEW NEEDED -->
+    <div class="pattern-title">ବଡ଼ ଛୋଟ ବଡ଼ ଛୋଟ</div>
+    <div class="pattern-eng">Big Small Big Small</div>
+    <div class="pattern-row">
+      <div class="pattern-item size-big">🌟</div><div class="pattern-item size-small">🌟</div>
+      <div class="pattern-item size-big">🌟</div><div class="pattern-item size-small">🌟</div>
+      <div class="pattern-item size-big">🌟</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: Small 🌟 (ଛୋଟ)</div>
+  </div>
+
+  <div class="pattern-card">
+    <div class="pattern-type">Pattern 11</div>
+    <div class="pattern-eng">Big Big Small — repeat</div>
+    <div class="pattern-row">
+      <div class="pattern-item size-big">🍎</div><div class="pattern-item size-big">🍎</div><div class="pattern-item size-small">🍎</div>
+      <div class="pattern-item size-big">🍎</div><div class="pattern-item size-big">🍎</div><div class="pattern-item size-small">🍎</div>
+      <div class="pattern-blank">?</div><div class="pattern-blank">?</div><div class="pattern-blank">?</div>
+    </div>
+    <div class="pattern-label">Answer: Big Big Small (ବଡ଼ ବଡ଼ ଛୋଟ)</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="shapes.html">← ଆକୃତି</a>
+  <!-- REVIEW NEEDED -->
+  <a href="patterns-games.html" class="game-link">🎮 ପ୍ୟାଟର୍ନ ଖେଳ</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Math · Free forever</span>
+</footer>
+
+</body>
+</html>

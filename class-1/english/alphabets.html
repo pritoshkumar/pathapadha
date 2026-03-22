@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>A-Z Alphabets — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#43AA8B;--cbg:#EDFAF4;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.5rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.hero{max-width:1100px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:8px;}
+.hero p{font-size:0.95rem;color:var(--soft);max-width:500px;margin:0 auto;}
+
+hr.divider{border:none;border-top:1px solid var(--border);}
+
+.section{max-width:1100px;margin:0 auto;padding:48px 48px 56px;}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px;text-align:center;}
+
+.alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;}
+.alpha-card{
+  background:#fff;border:2px solid var(--border);border-radius:20px;
+  padding:20px 14px 16px;text-align:center;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s;
+  cursor:pointer;position:relative;overflow:hidden;
+}
+.alpha-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c);}
+.alpha-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,0.08);border-color:var(--c);}
+.alpha-letter{font-size:3rem;font-weight:900;color:var(--c);line-height:1;margin-bottom:4px;}
+.alpha-lower{font-size:1.4rem;font-weight:700;color:var(--light);margin-bottom:8px;}
+.alpha-emoji{font-size:2.2rem;margin-bottom:6px;}
+.alpha-word{font-size:0.9rem;font-weight:800;color:var(--ink);margin-bottom:2px;}
+.alpha-odia{font-family:var(--font-or);font-size:0.82rem;font-weight:700;color:var(--soft);}
+
+.games-cta{text-align:center;padding:48px 20px;}
+.games-cta a{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--c);color:#fff;font-size:1rem;font-weight:800;
+  padding:14px 32px;border-radius:14px;transition:opacity .15s;
+}
+.games-cta a:hover{opacity:0.85;}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .hero{padding:32px 20px 24px;}
+  .section{padding:32px 20px;}
+  .alpha-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>A-Z Alphabets</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🔤 A-Z Alphabets</div>
+  <h1>🔤 A-Z English Alphabets</h1>
+  <!-- REVIEW NEEDED -->
+  <p>ଇଂରାଜୀ ବର୍ଣ୍ଣମାଳା ଶିଖନ୍ତୁ — Learn all 26 English letters with words and pictures!</p>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="section-label">All 26 Letters</div>
+  <div class="alpha-grid" id="alphaGrid"></div>
+</section>
+
+<div class="games-cta">
+  <a href="alphabets-games.html">🎮 Play Alphabet Games →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+var letters = [
+  {l:'A',w:'Apple',e:'🍎',o:'ସେଓ'},{l:'B',w:'Ball',e:'⚽',o:'ବଲ୍'},
+  {l:'C',w:'Cat',e:'🐱',o:'ବିଲେଇ'},{l:'D',w:'Dog',e:'🐕',o:'କୁକୁର'},
+  {l:'E',w:'Elephant',e:'🐘',o:'ହାତୀ'},{l:'F',w:'Fish',e:'🐟',o:'ମାଛ'},
+  {l:'G',w:'Grapes',e:'🍇',o:'ଅଙ୍ଗୁର'},{l:'H',w:'House',e:'🏠',o:'ଘର'},
+  {l:'I',w:'Ice cream',e:'🍦',o:'ଆଇସ୍ କ୍ରିମ୍'},{l:'J',w:'Jug',e:'🫗',o:'ଜଗ୍'},
+  {l:'K',w:'Kite',e:'🪁',o:'ଘୁଡ଼ି'},{l:'L',w:'Lion',e:'🦁',o:'ସିଂହ'},
+  {l:'M',w:'Mango',e:'🥭',o:'ଆମ୍ବ'},{l:'N',w:'Nest',e:'🪺',o:'ବସା'},
+  {l:'O',w:'Orange',e:'🍊',o:'କମଳା'},{l:'P',w:'Parrot',e:'🦜',o:'ଶୁଆ'},
+  {l:'Q',w:'Queen',e:'👑',o:'ରାଣୀ'},{l:'R',w:'Rabbit',e:'🐰',o:'ଖରଗୋଶ'},
+  {l:'S',w:'Sun',e:'☀️',o:'ସୂର୍ଯ୍ୟ'},{l:'T',w:'Tree',e:'🌳',o:'ଗଛ'},
+  {l:'U',w:'Umbrella',e:'☂️',o:'ଛତା'},{l:'V',w:'Van',e:'🚐',o:'ଭ୍ୟାନ୍'},
+  {l:'W',w:'Watch',e:'⌚',o:'ଘଣ୍ଟା'},{l:'X',w:'Xylophone',e:'🎵',o:'ଜାଇଲୋଫୋନ୍'},
+  {l:'Y',w:'Yak',e:'🐂',o:'ୟାକ୍'},{l:'Z',w:'Zebra',e:'🦓',o:'ଜେବ୍ରା'}
+];
+
+var grid = document.getElementById('alphaGrid');
+letters.forEach(function(item) {
+  var card = document.createElement('div');
+  card.className = 'alpha-card';
+  card.innerHTML =
+    '<div class="alpha-letter">' + item.l + '</div>' +
+    '<div class="alpha-lower">' + item.l.toLowerCase() + '</div>' +
+    '<div class="alpha-emoji">' + item.e + '</div>' +
+    '<div class="alpha-word">' + item.w + '</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="alpha-odia">' + item.o + '</div>';
+  card.addEventListener('click', function() {
+    if ('speechSynthesis' in window) {
+      var utt = new SpeechSynthesisUtterance(item.l + '. ' + item.w);
+      utt.lang = 'en-US';
+      utt.rate = 0.8;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utt);
+    }
+  });
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

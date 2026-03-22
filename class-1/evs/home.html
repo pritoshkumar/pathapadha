@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଘର — ପରିବେଶ ଅଧ୍ୟୟନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#3A86FF;--cbg:#EEF4FF;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:900px;margin:0 auto;padding:64px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:130px;height:130px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-games{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;padding:10px 22px;border-radius:12px;font-size:.88rem;font-weight:800;transition:opacity .15s}
+.btn-games:hover{opacity:.85}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:900px;margin:0 auto;padding:48px}
+.section-label{font-size:.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.room-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.room-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px;text-align:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s}
+.room-card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--c)}
+.room-emoji{font-size:3.5rem;margin-bottom:12px;display:block}
+.room-odia{font-family:var(--font-or);font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.room-eng{font-size:.85rem;font-weight:700;color:var(--light);margin-bottom:8px}
+.room-desc{font-size:.82rem;color:var(--soft);line-height:1.6}
+
+.items-section{background:var(--off);border-radius:24px;padding:36px;margin-top:20px}
+.items-title{font-family:var(--font-or);font-size:1.1rem;font-weight:700;margin-bottom:20px;text-align:center}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.item-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;text-align:center;transition:transform .15s}
+.item-card:hover{transform:scale(1.05)}
+.item-emoji{font-size:2.2rem;display:block;margin-bottom:6px}
+.item-odia{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.item-eng{font-size:.75rem;color:var(--light);font-weight:600}
+
+.parts-box{background:var(--cbg);border-radius:24px;padding:36px;margin-top:20px}
+.parts-title{font-family:var(--font-or);font-size:1.1rem;font-weight:700;margin-bottom:16px;text-align:center}
+.parts-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.part-tag{background:#fff;border:2px solid var(--border);border-radius:12px;padding:10px 18px;font-family:var(--font-or);font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:8px}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .room-grid{grid-template-columns:1fr 1fr}
+  .items-grid{grid-template-columns:repeat(2,1fr)}
+  footer{padding:20px}
+}
+@media(max-width:480px){
+  .room-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଘର</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🏠 ଘର</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ମୋ ଘର</h1>
+    <p class="hero-eng">My Home · EVS · Class 1</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଘରର ବିଭିନ୍ନ ଭାଗ, ଘର ଭିତରର ଜିନିଷ ଓ ପ୍ରତ୍ୟେକ ଘର ବିଷୟରେ ଶିଖ ।</p>
+    <div class="hero-actions">
+      <a href="home-games.html" class="btn-games">🎮 Play Games</a>
+    </div>
+  </div>
+  <div class="hero-art">🏠</div>
+</section>
+
+<hr class="divider">
+
+<!-- ROOMS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଘରର ବିଭିନ୍ନ ଘର — Rooms in a House</div>
+  <div class="room-grid" id="roomGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- PARTS OF A HOUSE -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଘରର ଅଂଶ — Parts of a House</div>
+  <div class="parts-box">
+    <!-- REVIEW NEEDED -->
+    <div class="parts-title">ଘରର ବିଭିନ୍ନ ଅଂଶ</div>
+    <div class="parts-list">
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🏠 ଛାତ (Roof)</div>
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🚪 ଦ୍ୱାର (Door)</div>
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🪟 ଝରକା (Window)</div>
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🧱 କାନ୍ଥ (Wall)</div>
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🏗️ ଭୂଇଁ (Floor)</div>
+      <!-- REVIEW NEEDED -->
+      <div class="part-tag">🪜 ସିଡ଼ି (Stairs)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOUSEHOLD ITEMS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଘରର ଜିନିଷ — Household Items</div>
+  <div class="items-section">
+    <!-- REVIEW NEEDED -->
+    <div class="items-title">ଆମ ଘରର ଜିନିଷ</div>
+    <div class="items-grid" id="itemsGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · EVS · Free forever</span>
+</footer>
+
+<script>
+var rooms = [
+  { emoji:'🍳', odia:'ରୋଷେଇ ଘର', eng:'Kitchen', desc:'ଏଠାରେ ଖାଣା ରାନ୍ଧା ଯାଏ । ଚୁଲା, ହାଣ୍ଡି ଓ ଥାଳି ଏଠି ରହେ ।' },
+  { emoji:'🛏️', odia:'ଶୋଇବା ଘର', eng:'Bedroom', desc:'ଏଠାରେ ଆମେ ଶୁଅ । ଖାଟ, ବାଲିସ ଓ ଚାଦର ଏଠି ରହେ ।' },
+  { emoji:'📚', odia:'ପାଠ ପଢ଼ିବା ଘର', eng:'Study Room', desc:'ଏଠାରେ ଆମେ ପଢ଼ । ଟେବୁଲ, ଚେୟାର ଓ ବହି ଏଠି ରହେ ।' },
+  { emoji:'🚿', odia:'ବାଥରୁମ', eng:'Bathroom', desc:'ଏଠାରେ ଆମେ ସ୍ନାନ କର ଓ ହାତ ଧୋଇ ।' },
+  { emoji:'🛋️', odia:'ବସିବା ଘର', eng:'Living Room', desc:'ଏଠାରେ ଆମେ ବସ, ଗପ କର ଓ ଟିଭି ଦେଖ ।' },
+  { emoji:'🏡', odia:'ବାରଣ୍ଡା', eng:'Verandah', desc:'ଘର ବାହାରେ ଖୋଲା ଜାଗା, ଏଠାରେ ଆମେ ବସ ।' }
+];
+
+var grid = document.getElementById('roomGrid');
+rooms.forEach(function(r) {
+  var card = document.createElement('div');
+  card.className = 'room-card';
+  card.innerHTML =
+    '<span class="room-emoji">' + r.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="room-odia">' + r.odia + '</div>' +
+    '<div class="room-eng">' + r.eng + '</div>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="room-desc">' + r.desc + '</div>';
+  grid.appendChild(card);
+});
+
+var items = [
+  { emoji:'🪑', odia:'ଚେୟାର', eng:'Chair' },
+  { emoji:'🪵', odia:'ଟେବୁଲ', eng:'Table' },
+  { emoji:'🛏️', odia:'ଖାଟ', eng:'Bed' },
+  { emoji:'🗄️', odia:'ଆଲମାରି', eng:'Almirah' },
+  { emoji:'🪭', odia:'ପଙ୍ଖା', eng:'Fan' },
+  { emoji:'💡', odia:'ବତୀ', eng:'Light' },
+  { emoji:'🪣', odia:'ବାଲଟି', eng:'Bucket' },
+  { emoji:'🫙', odia:'ହାଣ୍ଡି', eng:'Pot' }
+];
+
+var ig = document.getElementById('itemsGrid');
+items.forEach(function(it) {
+  var card = document.createElement('div');
+  card.className = 'item-card';
+  card.innerHTML =
+    '<span class="item-emoji">' + it.emoji + '</span>' +
+    '<!-- REVIEW NEEDED -->' +
+    '<div class="item-odia">' + it.odia + '</div>' +
+    '<div class="item-eng">' + it.eng + '</div>';
+  ig.appendChild(card);
+});
+</script>
+</body>
+</html>

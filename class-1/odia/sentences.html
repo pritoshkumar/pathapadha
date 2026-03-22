@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବାକ୍ୟ — ସରଳ ବାକ୍ୟ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #43AA8B;
+  --cbg:    #EDFAF4;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 200;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.4rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.05rem; font-weight: 700; }
+.logo-url  { font-size: 0.65rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+/* HERO */
+.hero {
+  max-width: 900px; margin: 0 auto;
+  padding: 48px 48px 36px;
+  text-align: center;
+}
+.hero-emoji { font-size: 3.5rem; margin-bottom: 12px; display: block; }
+.hero h1 {
+  font-family: var(--font-or);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--soft);
+  font-weight: 600;
+}
+.hero .intro {
+  font-size: 0.9rem;
+  color: var(--light);
+  margin-top: 10px;
+  max-width: 520px;
+  margin-left: auto; margin-right: auto;
+}
+
+hr.divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+/* SECTION */
+.section {
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 48px 48px;
+}
+.section-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); border: 1px solid #B5E8D5;
+  padding: 6px 16px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 800;
+  color: #2D7A5F;
+  margin-bottom: 20px;
+}
+
+/* SENTENCE CARDS */
+.sentence-list {
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.sentence-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: transform .18s, border-color .18s, box-shadow .18s;
+}
+.sentence-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--c);
+  box-shadow: 0 8px 24px rgba(67,170,139,0.12);
+}
+.sentence-odia {
+  font-family: var(--font-or);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  line-height: 1.6;
+}
+.sentence-odia .s-emoji { font-size: 1.6rem; }
+.sentence-odia .highlight {
+  color: var(--c);
+  border-bottom: 2px solid var(--c);
+  padding-bottom: 1px;
+}
+.sentence-english {
+  font-size: 0.88rem;
+  color: var(--soft);
+  font-weight: 600;
+  padding-left: 36px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  max-width: 900px; margin: 0 auto;
+  padding: 24px 48px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.bottom-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.88rem; font-weight: 800;
+  border: 2px solid var(--border);
+  background: #fff;
+  transition: all .15s;
+}
+.bottom-link:hover {
+  border-color: var(--c);
+  background: var(--cbg);
+}
+.bottom-link.game {
+  background: var(--c);
+  color: #fff;
+  border-color: var(--c);
+}
+.bottom-link.game:hover { opacity: 0.85; background: var(--c); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .hero, .section, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .breadcrumb { display: none; }
+  .sentence-odia { font-size: 1.2rem; }
+  .sentence-english { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ବାକ୍ୟ</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">📝</span>
+  <!-- REVIEW NEEDED -->
+  <h1>ବାକ୍ୟ</h1>
+  <div class="subtitle">Bakya — Simple Sentences</div>
+  <!-- REVIEW NEEDED -->
+  <div class="intro">ଶବ୍ଦକୁ ଯୋଡ଼ି ବାକ୍ୟ ତିଆରି କର — Learn to read and understand simple Odia sentences!</div>
+</div>
+
+<hr class="divider">
+
+<!-- FAMILY SENTENCES -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">👨‍👩‍👧 ପରିବାର — Family</div>
+  <div class="sentence-list">
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">👦</span>
+        ମୋ <span class="highlight">ନାମ</span> ରାମ ।
+      </div>
+      <div class="sentence-english">My name is Ram.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">👩</span>
+        ସେ ମୋ <span class="highlight">ମା</span> ।
+      </div>
+      <div class="sentence-english">She is my mother.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">👨</span>
+        ସେ ମୋ <span class="highlight">ବାପା</span> ।
+      </div>
+      <div class="sentence-english">He is my father.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">👧</span>
+        ସୀତା ମୋ <span class="highlight">ଭଉଣୀ</span> ।
+      </div>
+      <div class="sentence-english">Sita is my sister.</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SCHOOL SENTENCES -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">🏫 ବିଦ୍ୟାଳୟ — School</div>
+  <div class="sentence-list">
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🏫</span>
+        ମୁଁ <span class="highlight">ବିଦ୍ୟାଳୟ</span>କୁ ଯାଏ ।
+      </div>
+      <div class="sentence-english">I go to school.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">📖</span>
+        ମୁଁ <span class="highlight">ବହି</span> ପଢ଼େ ।
+      </div>
+      <div class="sentence-english">I read a book.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">✏️</span>
+        ସେ <span class="highlight">ଲେଖେ</span> ।
+      </div>
+      <div class="sentence-english">He/She writes.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">👩‍🏫</span>
+        ଗୁରୁ ମା <span class="highlight">ପଢ଼ାନ୍ତି</span> ।
+      </div>
+      <div class="sentence-english">The teacher teaches.</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- NATURE SENTENCES -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">🌿 ପ୍ରକୃତି — Nature</div>
+  <div class="sentence-list">
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🌳</span>
+        ଏହା ଏକ <span class="highlight">ଗଛ</span> ।
+      </div>
+      <div class="sentence-english">This is a tree.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🌸</span>
+        <span class="highlight">ଗଛ</span>ରେ ଫୁଲ ଅଛି ।
+      </div>
+      <div class="sentence-english">There are flowers on the tree.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">☀️</span>
+        <span class="highlight">ସୂର୍ଯ୍ୟ</span> ଉଠିଲା ।
+      </div>
+      <div class="sentence-english">The sun has risen.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🌧️</span>
+        ଆଜି <span class="highlight">ବର୍ଷା</span> ହେଉଛି ।
+      </div>
+      <div class="sentence-english">It is raining today.</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FOOD SENTENCES -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-badge">🍚 ଖାଦ୍ୟ — Food</div>
+  <div class="sentence-list">
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🍚</span>
+        ସେ <span class="highlight">ଭାତ</span> ଖାଏ ।
+      </div>
+      <div class="sentence-english">He eats rice.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">💧</span>
+        ମୁଁ <span class="highlight">ଜଳ</span> ପିଏ ।
+      </div>
+      <div class="sentence-english">I drink water.</div>
+    </div>
+
+    <div class="sentence-card">
+      <!-- REVIEW NEEDED -->
+      <div class="sentence-odia">
+        <span class="s-emoji">🥭</span>
+        <span class="highlight">ଆମ୍ବ</span> ମିଠା ।
+      </div>
+      <div class="sentence-english">The mango is sweet.</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="words.html" class="bottom-link">← ଶବ୍ଦ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="sentences-games.html" class="bottom-link game">🎮 ବାକ୍ୟ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="rhymes.html" class="bottom-link">ଛଡ଼ା →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 1 · ଓଡ଼ିଆ · ବାକ୍ୟ · Free forever</span>
+</footer>
+
+</body>
+</html>

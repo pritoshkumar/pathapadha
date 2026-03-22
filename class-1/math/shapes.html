@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଆକୃତି — Shapes — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#7B5EA7;--cbg:#F3EDFF;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+/* SHAPE CARDS */
+.shape-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.shape-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:28px;text-align:center;transition:all .2s}
+.shape-card:hover{border-color:var(--c);transform:translateY(-4px);box-shadow:0 8px 24px rgba(123,94,167,0.1)}
+.shape-visual{width:100px;height:100px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+.shape-visual .css-shape{display:block}
+/* Circle */
+.shape-circle{width:80px;height:80px;border-radius:50%;background:var(--cbg);border:3px solid var(--c)}
+/* Square */
+.shape-square{width:72px;height:72px;background:var(--cbg);border:3px solid var(--c);border-radius:4px}
+/* Rectangle */
+.shape-rect{width:90px;height:54px;background:var(--cbg);border:3px solid var(--c);border-radius:4px}
+/* Triangle */
+.shape-triangle{width:0;height:0;border-left:42px solid transparent;border-right:42px solid transparent;border-bottom:72px solid var(--cbg);position:relative}
+.shape-triangle::after{content:'';position:absolute;top:6px;left:-34px;width:0;height:0;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:60px solid #fff}
+/* We'll use a simpler approach for triangle with SVG-like border */
+.tri-wrap{width:84px;height:72px;position:relative}
+.tri-wrap .tri-border{width:0;height:0;border-left:42px solid transparent;border-right:42px solid transparent;border-bottom:72px solid var(--c)}
+.tri-wrap .tri-fill{position:absolute;left:6px;bottom:0;width:0;height:0;border-left:36px solid transparent;border-right:36px solid transparent;border-bottom:63px solid var(--cbg)}
+/* Oval */
+.shape-oval{width:90px;height:56px;border-radius:50%;background:var(--cbg);border:3px solid var(--c)}
+/* Diamond */
+.shape-diamond{width:60px;height:60px;background:var(--cbg);border:3px solid var(--c);transform:rotate(45deg);border-radius:4px}
+
+.shape-name-or{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--c);margin-bottom:4px}
+.shape-name-en{font-size:0.85rem;font-weight:700;color:var(--light);margin-bottom:8px}
+.shape-emoji{font-size:1.5rem;margin-bottom:8px}
+.shape-example{font-size:0.82rem;color:var(--soft);line-height:1.6}
+.shape-sides{display:inline-flex;align-items:center;gap:4px;background:var(--cbg);padding:3px 10px;border-radius:8px;font-size:0.75rem;font-weight:800;color:var(--c);margin-bottom:8px}
+
+.bottom-nav{max-width:1100px;margin:0 auto;padding:0 48px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.bottom-nav a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.88rem;font-weight:800;border:2px solid var(--border);transition:all .15s}
+.bottom-nav a:hover{border-color:var(--c);background:var(--cbg)}
+.bottom-nav .game-link{background:var(--c);color:#fff;border-color:var(--c)}
+.bottom-nav .game-link:hover{opacity:0.9;background:var(--c)}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}
+  .hero-art{width:90px;height:90px;font-size:3rem}
+  .section{padding:36px 20px}
+  .shape-grid{grid-template-columns:1fr 1fr}
+  .bottom-nav{padding:0 20px 36px}
+  footer{padding:20px}
+}
+@media(max-width:480px){
+  .shape-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଆକୃତି</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🔷 ଆକୃତି — Aakruti</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଆକୃତି</h1>
+    <p class="hero-eng">Aakruti — Shapes</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ବିଭିନ୍ନ ଆକୃତି ଚିହ୍ନଟ କର — ବୃତ୍ତ, ବର୍ଗ, ଆୟତାକାର, ତ୍ରିଭୁଜ, ଅଣ୍ଡାକାର ଓ ହୀରା। ଏମାନଙ୍କ ନାମ ଓଡ଼ିଆରେ ଶିଖ।</p>
+  </div>
+  <div class="hero-art">🔷</div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଆକୃତି ଶିଖ — Learn the Shapes</div>
+
+  <div class="shape-grid">
+
+    <!-- Circle -->
+    <div class="shape-card">
+      <div class="shape-visual"><div class="css-shape shape-circle"></div></div>
+      <div class="shape-emoji">⭕</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ବୃତ୍ତ</div>
+      <div class="shape-name-en">Circle</div>
+      <div class="shape-sides">0 sides · 0 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">ଚକ ଗୋଲ ଅଟେ 🛞<br>ବଲ ଗୋଲ ଅଟେ ⚽<br>ଥାଳି ଗୋଲ ଅଟେ 🍽️</div>
+    </div>
+
+    <!-- Square -->
+    <div class="shape-card">
+      <div class="shape-visual"><div class="css-shape shape-square"></div></div>
+      <div class="shape-emoji">⬛</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ବର୍ଗ</div>
+      <div class="shape-name-en">Square</div>
+      <div class="shape-sides">4 sides · 4 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">ରୁମାଲ ବର୍ଗ ଅଟେ 🟫<br>ବିସ୍କୁଟ ବର୍ଗ ଅଟେ 🍪<br>ଝରକା ବର୍ଗ ଅଟେ 🪟</div>
+    </div>
+
+    <!-- Rectangle -->
+    <div class="shape-card">
+      <div class="shape-visual"><div class="css-shape shape-rect"></div></div>
+      <div class="shape-emoji">▬</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ଆୟତାକାର</div>
+      <div class="shape-name-en">Rectangle</div>
+      <div class="shape-sides">4 sides · 4 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">କବାଟ ଆୟତାକାର ଅଟେ 🚪<br>ବହି ଆୟତାକାର ଅଟେ 📕<br>ଫୋନ ଆୟତାକାର ଅଟେ 📱</div>
+    </div>
+
+    <!-- Triangle -->
+    <div class="shape-card">
+      <div class="shape-visual">
+        <div class="tri-wrap"><div class="tri-border"></div><div class="tri-fill"></div></div>
+      </div>
+      <div class="shape-emoji">🔺</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ତ୍ରିଭୁଜ</div>
+      <div class="shape-name-en">Triangle</div>
+      <div class="shape-sides">3 sides · 3 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">ସାମୁକା ତ୍ରିଭୁଜ ଅଟେ 🔺<br>ଛାତ ତ୍ରିଭୁଜ ଅଟେ 🏠<br>ପର୍ବତ ତ୍ରିଭୁଜ ଅଟେ ⛰️</div>
+    </div>
+
+    <!-- Oval -->
+    <div class="shape-card">
+      <div class="shape-visual"><div class="css-shape shape-oval"></div></div>
+      <div class="shape-emoji">🥚</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ଅଣ୍ଡାକାର</div>
+      <div class="shape-name-en">Oval</div>
+      <div class="shape-sides">0 sides · 0 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">ଅଣ୍ଡା ଅଣ୍ଡାକାର ଅଟେ 🥚<br>ଆଖି ଅଣ୍ଡାକାର ଅଟେ 👁️<br>ଆଇନା ଅଣ୍ଡାକାର ଅଟେ 🪞</div>
+    </div>
+
+    <!-- Diamond -->
+    <div class="shape-card">
+      <div class="shape-visual"><div class="css-shape shape-diamond"></div></div>
+      <div class="shape-emoji">🔷</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-name-or">ହୀରା</div>
+      <div class="shape-name-en">Diamond</div>
+      <div class="shape-sides">4 sides · 4 corners</div>
+      <!-- REVIEW NEEDED -->
+      <div class="shape-example">ପତଙ୍ଗ ହୀରା ଆକୃତି 🪁<br>ହୀରା ଗହଣା 💎</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="addsub.html">← ଯୋଗ ବିୟୋଗ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="shapes-games.html" class="game-link">🎮 ଆକୃତି ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="patterns.html">ପ୍ୟାଟର୍ନ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · Math · Free forever</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ଗଣତି — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #06A77D;
+  --cbg:    #EDFDF7;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.5rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; }
+.logo-url  { font-size: 0.68rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 48px 56px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 48px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); color: var(--c);
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.hero-eng { font-size: 1rem; font-weight: 800; color: var(--light); margin-bottom: 12px; }
+.hero-desc { font-size: 0.9rem; color: var(--soft); max-width: 400px; line-height: 1.8; margin-bottom: 20px; }
+.hero-book {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--off); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 10px;
+  font-size: 0.8rem; font-weight: 700; color: var(--soft);
+}
+.hero-art {
+  width: 150px; height: 150px; border-radius: 28px;
+  background: var(--cbg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem; flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+hr.divider { border: none; border-top: 1px solid var(--border); }
+.section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
+.section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
+
+.count-card {
+  background: #fff; border: 2px solid var(--border);
+  border-radius: 20px; padding: 28px 32px;
+  margin-bottom: 20px;
+  transition: border-color .2s;
+}
+.count-card:hover { border-color: var(--c); }
+.count-label {
+  font-size: 0.72rem; font-weight: 800; color: var(--light);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.count-emojis {
+  font-size: 2rem; line-height: 1.8;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+.count-answer {
+  font-family: var(--font-or);
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--c);
+  background: var(--cbg);
+  display: inline-block;
+  padding: 6px 18px; border-radius: 10px;
+}
+.count-answer-hidden {
+  display: inline-block;
+  padding: 6px 18px; border-radius: 10px;
+  font-size: 0.9rem; font-weight: 800;
+  background: var(--off); color: var(--c);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all .15s;
+}
+.count-answer-hidden:hover { border-color: var(--c); background: var(--cbg); }
+
+.skip-section { margin-bottom: 40px; }
+.skip-title {
+  font-size: 1.1rem; font-weight: 900;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.skip-row {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 12px;
+}
+.skip-num {
+  width: 52px; height: 52px;
+  border-radius: 12px; border: 2px solid var(--border);
+  background: #fff;
+  display: grid; place-items: center;
+  font-family: var(--font-or); font-size: 1.3rem; font-weight: 700;
+}
+.skip-num.highlight {
+  background: var(--cbg); border-color: var(--c); color: var(--c);
+}
+
+.ba-card {
+  background: #fff; border: 2px solid var(--border);
+  border-radius: 18px; padding: 24px 28px;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.ba-label {
+  font-size: 0.78rem; font-weight: 800; color: var(--light);
+  letter-spacing: 1px; text-transform: uppercase;
+  min-width: 100px;
+}
+.ba-nums {
+  display: flex; gap: 8px; align-items: center;
+  font-family: var(--font-or); font-size: 1.4rem; font-weight: 700;
+}
+.ba-blank {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  border: 2px dashed var(--c);
+  background: var(--cbg);
+  display: grid; place-items: center;
+  color: var(--c);
+  cursor: pointer;
+  font-family: var(--font-or); font-size: 1.3rem; font-weight: 700;
+}
+
+.bottom-nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 56px;
+  display: flex; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.bottom-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 800;
+  border: 2px solid var(--border);
+  transition: all .15s;
+}
+.bottom-link:hover { border-color: var(--c); background: var(--cbg); }
+.bottom-link.primary { background: var(--c); color: #fff; border-color: var(--c); }
+.bottom-link.primary:hover { opacity: 0.85; }
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .hero, .section, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 20px 36px; }
+  .hero-art { margin: 0 auto; width: 120px; height: 120px; font-size: 3.5rem; }
+  .hero-desc { margin: 0 auto 20px; }
+  .breadcrumb { display: none; }
+  .count-card { padding: 20px; }
+  .count-emojis { font-size: 1.6rem; letter-spacing: 2px; }
+  .skip-num { width: 44px; height: 44px; font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଗଣିତ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଗଣତି</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🧮 ଗଣତି</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଗଣତି</h1>
+    <div class="hero-eng">Ganati — Counting Objects</div>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ବସ୍ତୁ ଗଣ, ସଂଖ୍ୟା ଶିଖ। ଗୋଟିଏ ଗୋଟିଏ ଗଣିବା, ୨ ଗୋଡ଼ାଏ, ୫ ଗୋଡ଼ାଏ ଏବଂ ୧୦ ଗୋଡ଼ାଏ ସଂଖ୍ୟା ଗଣ।</p>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-book">📘 ଗଣିତ ଖେଳ — Ganita Khela</div>
+  </div>
+  <div class="hero-art">🧮</div>
+</div>
+
+<hr class="divider">
+
+<!-- COUNT OBJECTS -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ବସ୍ତୁ ଗଣ — Count the Objects</div>
+  <div id="countCards"></div>
+</div>
+
+<hr class="divider">
+
+<!-- SKIP COUNTING -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଡେଇଁ ଡେଇଁ ଗଣ — Skip Counting</div>
+
+  <div class="skip-section">
+    <!-- REVIEW NEEDED -->
+    <div class="skip-title">🔵 ୨ ଗୋଡ଼ାଏ ଗଣ — Count by 2s</div>
+    <div class="skip-row" id="skip2"></div>
+  </div>
+
+  <div class="skip-section">
+    <!-- REVIEW NEEDED -->
+    <div class="skip-title">🟢 ୫ ଗୋଡ଼ାଏ ଗଣ — Count by 5s</div>
+    <div class="skip-row" id="skip5"></div>
+  </div>
+
+  <div class="skip-section">
+    <!-- REVIEW NEEDED -->
+    <div class="skip-title">🟠 ୧୦ ଗୋଡ଼ାଏ ଗଣ — Count by 10s</div>
+    <div class="skip-row" id="skip10"></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BEFORE / AFTER -->
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଆଗ ଓ ପଛ — Before &amp; After</div>
+  <div id="baCards"></div>
+</div>
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="numbers.html" class="bottom-link">← ସଂଖ୍ୟା</a>
+  <!-- REVIEW NEEDED -->
+  <a href="counting-games.html" class="bottom-link primary">🎮 ଗଣତି ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="addsub.html" class="bottom-link">ଯୋଗ ବିୟୋଗ →</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 1 · ଗଣିତ · Free forever</span>
+</footer>
+
+<script>
+var odNums = ['','୧','୨','୩','୪','୫','୬','୭','୮','୯','୧୦','୧୧','୧୨','୧୩','୧୪','୧୫','୧୬','୧୭','୧୮','୧୯','୨୦',
+'୨୧','୨୨','୨୩','୨୪','୨୫','୨୬','୨୭','୨୮','୨୯','୩୦','୩୧','୩୨','୩୩','୩୪','୩୫','୩୬','୩୭','୩୮','୩୯','୪୦',
+'୪୧','୪୨','୪୩','୪୪','୪୫','୪୬','୪୭','୪୮','୪୯','୫୦','୫୧','୫୨','୫୩','୫୪','୫୫','୫୬','୫୭','୫୮','୫୯','୬୦',
+'୬୧','୬୨','୬୩','୬୪','୬୫','୬୬','୬୭','୬୮','୬୯','୭୦','୭୧','୭୨','୭୩','୭୪','୭୫','୭୬','୭୭','୭୮','୭୯','୮୦',
+'୮୧','୮୨','୮୩','୮୪','୮୫','୮୬','୮୭','୮୮','୮୯','୯୦','୯୧','୯୨','୯୩','୯୪','୯୫','୯୬','୯୭','୯୮','୯୯','୧୦୦'];
+
+// Count objects section
+var countData = [
+  {emoji:'🍎', count:3},
+  {emoji:'🌟', count:5},
+  {emoji:'🐟', count:7},
+  {emoji:'🌸', count:4},
+  {emoji:'🦋', count:9},
+  {emoji:'🍌', count:6},
+  {emoji:'🐦', count:8},
+  {emoji:'🍊', count:12},
+  {emoji:'🌺', count:10},
+  {emoji:'🐝', count:15}
+];
+
+var countWrap = document.getElementById('countCards');
+countData.forEach(function(item, idx) {
+  var emojis = '';
+  for (var i = 0; i < item.count; i++) emojis += item.emoji;
+  var card = document.createElement('div');
+  card.className = 'count-card';
+  card.innerHTML =
+    '<div class="count-label">Question ' + (idx+1) + '</div>' +
+    '<div class="count-emojis">' + emojis + '</div>' +
+    '<span class="count-answer-hidden" onclick="revealCount(this, ' + item.count + ')">Show Answer</span>';
+  countWrap.appendChild(card);
+});
+
+function revealCount(el, count) {
+  var span = document.createElement('span');
+  span.className = 'count-answer';
+  span.textContent = odNums[count] + ' (' + count + ')';
+  el.replaceWith(span);
+}
+
+// Skip counting
+function buildSkip(containerId, step, max) {
+  var wrap = document.getElementById(containerId);
+  for (var i = step; i <= max; i += step) {
+    var d = document.createElement('div');
+    d.className = 'skip-num highlight';
+    d.textContent = odNums[i];
+    wrap.appendChild(d);
+  }
+}
+buildSkip('skip2', 2, 20);
+buildSkip('skip5', 5, 50);
+buildSkip('skip10', 10, 100);
+
+// Before & After
+var baData = [
+  {before: 4, num: 5, after: 6},
+  {before: 9, num: 10, after: 11},
+  {before: 14, num: 15, after: 16},
+  {before: 7, num: 8, after: 9},
+  {before: 11, num: 12, after: 13},
+  {before: 17, num: 18, after: 19}
+];
+
+var baWrap = document.getElementById('baCards');
+baData.forEach(function(item) {
+  var card = document.createElement('div');
+  card.className = 'ba-card';
+  card.innerHTML =
+    '<div class="ba-label">Before &amp; After</div>' +
+    '<div class="ba-nums">' +
+      '<div class="ba-blank" onclick="revealBA(this,\'' + odNums[item.before] + '\')">' + '?' + '</div>' +
+      '<span style="color:var(--c);font-size:1.6rem">' + odNums[item.num] + '</span>' +
+      '<div class="ba-blank" onclick="revealBA(this,\'' + odNums[item.after] + '\')">' + '?' + '</div>' +
+    '</div>';
+  baWrap.appendChild(card);
+});
+
+function revealBA(el, val) {
+  el.textContent = val;
+  el.style.borderStyle = 'solid';
+  el.style.cursor = 'default';
+}
+</script>
+
+</body>
+</html>

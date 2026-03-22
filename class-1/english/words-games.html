@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Word Games — ଇଂରାଜୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#FF9F43;--cbg:#FFF5EC;--green:#43AA8B;--greenbg:#EDFAF4;--red:#FF6B6B;--redbg:#FFF0F0;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-emoji{font-size:1.4rem;}
+.logo-text{display:flex;flex-direction:column;line-height:1.2;}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;}
+.logo-url{font-size:0.65rem;font-weight:600;color:var(--light);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light);}
+.breadcrumb a{color:var(--light);transition:color .15s;}
+.breadcrumb a:hover{color:var(--ink);}
+.breadcrumb span{color:var(--c);}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.star-display{display:flex;align-items:center;gap:6px;}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1;}
+.star-label{font-size:0.78rem;font-weight:700;color:var(--light);}
+.progress-wrap{flex:1;min-width:160px;}
+.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px;}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease;width:0%;}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light);}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center;}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:8px;}
+.page-hero p{font-size:0.95rem;color:var(--soft);}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto;}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px;}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.game-icon{font-size:2rem;}
+.game-title{font-size:1.3rem;font-weight:900;color:var(--ink);}
+.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px;}
+.game-complete-badge{display:none;margin-left:auto;font-size:0.78rem;font-weight:800;background:var(--greenbg);color:var(--green);border:1px solid var(--green);padding:4px 12px;border-radius:50px;}
+.game-complete-badge.show{display:block;}
+
+/* Match word to picture */
+.wp-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.wp-emoji{font-size:4rem;margin-bottom:12px;}
+.wp-hint{font-size:0.85rem;color:var(--soft);margin-bottom:20px;}
+.wp-options{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.wp-opt{padding:12px 22px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.05rem;font-weight:800;transition:all .15s;}
+.wp-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.wp-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.wp-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .3s;}
+.wp-opt:disabled{cursor:default;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* Spell game */
+.spell-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;text-align:center;}
+.spell-emoji{font-size:3.5rem;margin-bottom:8px;}
+.spell-clue{font-size:0.9rem;color:var(--soft);margin-bottom:16px;}
+.spell-slots{display:flex;justify-content:center;gap:6px;margin-bottom:16px;min-height:52px;flex-wrap:wrap;}
+.spell-slot{width:44px;height:48px;border-radius:10px;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:900;color:var(--c);background:#fff;cursor:pointer;transition:all .15s;}
+.spell-slot.filled{border-style:solid;border-color:var(--c);background:var(--cbg);}
+.spell-slot.correct-slot{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.spell-slot.wrong-slot{border-color:var(--red);background:var(--redbg);color:var(--red);animation:shake .3s;}
+.spell-bank{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.spell-tile{width:44px;height:48px;border-radius:10px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.3rem;font-weight:900;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.spell-tile:hover{border-color:var(--c);background:var(--cbg);}
+.spell-tile.used{opacity:0.3;pointer-events:none;}
+.spell-check{background:var(--c);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;transition:opacity .15s;}
+.spell-check:hover{opacity:0.85;}
+
+/* Match English to Odia */
+.eo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.eo-col{display:flex;flex-direction:column;gap:10px;}
+.eo-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.eo-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;font-weight:700;font-size:1.1rem;user-select:none;}
+.eo-item:hover{border-color:var(--c);background:var(--cbg);}
+.eo-item.selected{border-color:var(--blue);background:var(--bluebg);}
+.eo-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none;}
+.eo-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s;}
+.eo-odia{font-family:var(--font-or);}
+
+/* MCQ */
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px;}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.quiz-question{font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.quiz-question .q-emoji{font-size:2.2rem;}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px;}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1.05rem;font-weight:700;transition:all .15s;display:flex;align-items:center;gap:10px;}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg);}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green);}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green);}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red);}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s;}
+.quiz-next:hover{opacity:0.8;}
+.quiz-next.show{display:inline-block;}
+
+/* Trophy */
+.trophy-banner{display:none;text-align:center;padding:48px 20px;background:linear-gradient(135deg,#FFFBEC,#FFF5EC);border-radius:24px;margin:32px auto;max-width:600px;}
+.trophy-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1);}
+.trophy-emoji{font-size:4rem;margin-bottom:12px;}
+.trophy-title{font-size:1.8rem;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.trophy-sub{font-size:1rem;color:var(--soft);margin-bottom:20px;}
+.trophy-btn{background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s;}
+.trophy-btn:hover{opacity:0.85;}
+@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+
+.confetti-piece{position:fixed;width:10px;height:10px;top:-10px;z-index:9999;animation:confettiFall 3s ease-in forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotate(720deg);opacity:0;}}
+.star-pop{position:fixed;font-size:2rem;z-index:9999;pointer-events:none;animation:starFloat 1s ease-out forwards;}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-80px) scale(1.5);}}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700;}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600;}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .star-bar{padding:10px 20px;}
+  .page-hero{padding:32px 20px 24px;}
+  .game-section{padding:32px 20px;}
+  .eo-grid{grid-template-columns:1fr;gap:16px;}
+  .quiz-options{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <a href="index.html">English</a> ›
+    <span>Word Games</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span class="star-label">⭐ Stars</span></div>
+  <div class="progress-wrap"><div class="progress-label">Games completed</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 4 games</div>
+</div>
+
+<section class="page-hero">
+  <h1>🎮 Word Games</h1>
+  <p>Play 4 fun games to master English words! Earn ⭐ for each correct answer.</p>
+</section>
+<hr class="divider">
+
+<!-- GAME 1 -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🖼️</div>
+    <div><div class="game-title">Match Word to Picture</div><div class="game-subtitle">See the emoji, pick the correct English word</div></div>
+    <div class="game-complete-badge" id="g1badge">✅ Done!</div>
+  </div>
+  <div id="wpContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 2 -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🔠</div>
+    <div><div class="game-title">Spell the Word</div><div class="game-subtitle">Arrange jumbled letters to spell the word</div></div>
+    <div class="game-complete-badge" id="g2badge">✅ Done!</div>
+  </div>
+  <div id="spellContainer"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 3 -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div><div class="game-title">Match English to Odia</div><div class="game-subtitle">Click an English word, then click its Odia meaning</div></div>
+    <div class="game-complete-badge" id="g3badge">✅ Done!</div>
+  </div>
+  <div class="eo-grid" id="eoGrid"></div>
+</section>
+<hr class="divider">
+
+<!-- GAME 4 -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div><div class="game-title">MCQ Quiz</div><div class="game-subtitle">Answer 10 word questions</div></div>
+    <div class="game-complete-badge" id="g4badge">✅ Done!</div>
+  </div>
+  <div id="quizContainer"></div>
+</section>
+
+<div class="trophy-banner" id="trophy">
+  <div class="trophy-emoji">🏆</div>
+  <div class="trophy-title">All Games Complete!</div>
+  <div class="trophy-sub" id="trophySub">You earned 0 stars!</div>
+  <button class="trophy-btn" onclick="location.reload()">🔄 Play Again</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · English · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStar(){totalStars++;document.getElementById('starCount').textContent=totalStars;popStar();}
+function popStar(){var s=document.createElement('div');s.className='star-pop';s.textContent='⭐';s.style.left=(Math.random()*60+20)+'%';s.style.top='50%';document.body.appendChild(s);setTimeout(function(){s.remove();},1000);}
+function completeGame(n){gamesCompleted++;document.getElementById('g'+n+'badge').classList.add('show');document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games';document.getElementById('progressFill').style.width=(gamesCompleted/totalGames*100)+'%';if(gamesCompleted===totalGames)showTrophy();}
+function showTrophy(){document.getElementById('trophySub').textContent='You earned '+totalStars+' stars!';document.getElementById('trophy').classList.add('show');launchConfetti();}
+function launchConfetti(){var colors=['#FF6B6B','#43AA8B','#3A86FF','#F9C74F','#7B5EA7','#FF9F43'];for(var i=0;i<60;i++){var c=document.createElement('div');c.className='confetti-piece';c.style.left=Math.random()*100+'%';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=(Math.random()*2)+'s';c.style.borderRadius=Math.random()>0.5?'50%':'0';c.style.width=(Math.random()*8+6)+'px';c.style.height=(Math.random()*8+6)+'px';document.body.appendChild(c);setTimeout(function(el){el.remove();}.bind(null,c),5000);}}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+var allWords=[
+  {w:'Cat',o:'ବିଲେଇ',e:'🐱'},{w:'Dog',o:'କୁକୁର',e:'🐕'},{w:'Cow',o:'ଗାଈ',e:'🐄'},
+  {w:'Hen',o:'କୁକୁଡ଼ା',e:'🐔'},{w:'Fish',o:'ମାଛ',e:'🐟'},{w:'Bird',o:'ପକ୍ଷୀ',e:'🐦'},
+  {w:'Apple',o:'ସେଓ',e:'🍎'},{w:'Mango',o:'ଆମ୍ବ',e:'🥭'},{w:'Banana',o:'କଦଳୀ',e:'🍌'},
+  {w:'Grape',o:'ଅଙ୍ଗୁର',e:'🍇'},{w:'Orange',o:'କମଳା',e:'🍊'},{w:'Eye',o:'ଆଖି',e:'👁️'},
+  {w:'Ear',o:'କାନ',e:'👂'},{w:'Nose',o:'ନାକ',e:'👃'},{w:'Hand',o:'ହାତ',e:'🤚'},
+  {w:'Red',o:'ଲାଲ୍',e:'🔴'},{w:'Blue',o:'ନୀଳ',e:'🔵'},{w:'Green',o:'ସବୁଜ',e:'🟢'},
+  {w:'Mother',o:'ମା',e:'👩'},{w:'Father',o:'ବାପା',e:'👨'},{w:'Goat',o:'ଛେଳି',e:'🐐'},
+  {w:'Leg',o:'ଗୋଡ଼',e:'🦵'},{w:'Yellow',o:'ହଳଦିଆ',e:'🟡'},{w:'Sister',o:'ଭଉଣୀ',e:'👧'}
+];
+
+/* ── GAME 1: MATCH WORD TO PICTURE ── */
+var wpData=shuffle(allWords.slice()).slice(0,10);
+var wpIdx=0;
+function renderWP(){
+  var cont=document.getElementById('wpContainer');
+  if(wpIdx>=wpData.length){completeGame(1);return;}
+  var d=wpData[wpIdx];
+  var wrongs=[];while(wrongs.length<3){var r=allWords[Math.floor(Math.random()*allWords.length)];if(r.w!==d.w&&wrongs.indexOf(r.w)===-1)wrongs.push(r.w);}
+  var opts=shuffle([d.w].concat(wrongs));
+  var card=document.createElement('div');card.className='wp-card';
+  card.innerHTML='<div class="wp-emoji">'+d.e+'</div><div class="wp-hint">What is this called in English?</div><div class="wp-options" id="wpOpts"></div>';
+  cont.innerHTML='';cont.appendChild(card);
+  var optDiv=document.getElementById('wpOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='wp-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.wp-opt').forEach(function(b){b.disabled=true;});
+      if(o===d.w){btn.classList.add('correct');addStar();}
+      else{btn.classList.add('wrong');optDiv.querySelectorAll('.wp-opt').forEach(function(b){if(b.textContent===d.w)b.classList.add('correct');});}
+      setTimeout(function(){wpIdx++;renderWP();},800);
+    };
+    optDiv.appendChild(btn);
+  });
+}
+renderWP();
+
+/* ── GAME 2: SPELL THE WORD ── */
+var spellWords=shuffle(allWords.filter(function(w){return w.w.length<=6;})).slice(0,8);
+var spIdx=0;
+function renderSpell(){
+  var cont=document.getElementById('spellContainer');
+  if(spIdx>=spellWords.length){completeGame(2);return;}
+  var d=spellWords[spIdx];
+  var letters=d.w.toUpperCase().split('');
+  var jumbled=shuffle(letters.slice());
+  var placed=[];
+  var card=document.createElement('div');card.className='spell-card';
+  card.innerHTML='<div class="spell-emoji">'+d.e+'</div><div class="spell-clue">Spell: '+d.w+'</div><div class="spell-slots" id="spSlots"></div><div class="spell-bank" id="spBank"></div><button class="spell-check" id="spCheck">Check ✓</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var slotsDiv=document.getElementById('spSlots');
+  var bankDiv=document.getElementById('spBank');
+
+  function renderSlots(){
+    slotsDiv.innerHTML='';
+    for(var i=0;i<letters.length;i++){
+      var slot=document.createElement('div');slot.className='spell-slot'+(placed[i]?' filled':'');
+      slot.textContent=placed[i]||'';
+      (function(idx){
+        slot.onclick=function(){
+          if(placed[idx]){
+            var letter=placed[idx];
+            placed[idx]=undefined;
+            bankDiv.querySelectorAll('.spell-tile').forEach(function(t){if(t.dataset.letter===letter&&t.classList.contains('used')){t.classList.remove('used');return;}});
+            renderSlots();
+          }
+        };
+      })(i);
+      slotsDiv.appendChild(slot);
+    }
+  }
+  renderSlots();
+
+  jumbled.forEach(function(l,i){
+    var tile=document.createElement('div');tile.className='spell-tile';tile.textContent=l;tile.dataset.letter=l;tile.dataset.idx=i;
+    tile.onclick=function(){
+      if(tile.classList.contains('used'))return;
+      tile.classList.add('used');
+      for(var k=0;k<letters.length;k++){if(!placed[k]){placed[k]=l;break;}}
+      renderSlots();
+    };
+    bankDiv.appendChild(tile);
+  });
+
+  document.getElementById('spCheck').onclick=function(){
+    var allFilled=true;
+    for(var k=0;k<letters.length;k++){if(!placed[k]){allFilled=false;break;}}
+    if(!allFilled)return;
+    var correct=placed.join('')===letters.join('');
+    var slots=slotsDiv.querySelectorAll('.spell-slot');
+    slots.forEach(function(s,i){s.classList.add(placed[i]===letters[i]?'correct-slot':'wrong-slot');});
+    if(correct){addStar();setTimeout(function(){spIdx++;renderSpell();},800);}
+    else{setTimeout(function(){placed=[];renderSlots();bankDiv.querySelectorAll('.spell-tile').forEach(function(t){t.classList.remove('used');});},1000);}
+  };
+}
+renderSpell();
+
+/* ── GAME 3: MATCH ENGLISH TO ODIA ── */
+var eoWords=shuffle(allWords.slice()).slice(0,6);
+var eoOdia=shuffle(eoWords.map(function(w){return{w:w.w,o:w.o};}));
+var eoSelected=null,eoDone=0;
+
+(function initEO(){
+  var grid=document.getElementById('eoGrid');
+  var colL=document.createElement('div');colL.className='eo-col';
+  var colR=document.createElement('div');colR.className='eo-col';
+  colL.innerHTML='<div class="eo-col-label">English</div>';
+  colR.innerHTML='<div class="eo-col-label">Odia</div>';
+  eoWords.forEach(function(w){
+    var el=document.createElement('div');el.className='eo-item';el.dataset.word=w.w;el.dataset.side='eng';
+    el.textContent=w.e+' '+w.w;
+    el.onclick=function(){eoClick(el);};
+    colL.appendChild(el);
+  });
+  eoOdia.forEach(function(w){
+    var el=document.createElement('div');el.className='eo-item eo-odia';el.dataset.word=w.w;el.dataset.side='odia';
+    el.textContent=w.o;
+    el.onclick=function(){eoClick(el);};
+    colR.appendChild(el);
+  });
+  grid.appendChild(colL);grid.appendChild(colR);
+})();
+
+function eoClick(el){
+  if(el.classList.contains('correct'))return;
+  if(!eoSelected){eoSelected=el;el.classList.add('selected');}
+  else{
+    if(eoSelected.dataset.side===el.dataset.side){eoSelected.classList.remove('selected');eoSelected=el;el.classList.add('selected');return;}
+    if(eoSelected.dataset.word===el.dataset.word){
+      eoSelected.classList.remove('selected');eoSelected.classList.add('correct');el.classList.add('correct');
+      addStar();eoDone++;if(eoDone===eoWords.length)completeGame(3);
+    } else {
+      el.classList.add('wrong');eoSelected.classList.add('wrong');
+      var s=eoSelected;setTimeout(function(){el.classList.remove('wrong');s.classList.remove('wrong','selected');},400);
+    }
+    eoSelected=null;
+  }
+}
+
+/* ── GAME 4: MCQ QUIZ ── */
+var quizQs=shuffle(allWords.slice()).slice(0,10);
+var quizIdx=0;
+function renderQuiz(){
+  var cont=document.getElementById('quizContainer');
+  if(quizIdx>=quizQs.length){completeGame(4);return;}
+  var q=quizQs[quizIdx];
+  var types=['emojiToWord','wordToOdia','odiaToWord'];
+  var type=types[Math.floor(Math.random()*types.length)];
+  var qText='',opts=[],answerVal='';
+
+  if(type==='emojiToWord'){
+    qText='<span class="q-emoji">'+q.e+'</span> What is this?';
+    answerVal=q.w;
+    var ww=[];while(ww.length<3){var r=allWords[Math.floor(Math.random()*allWords.length)];if(r.w!==q.w&&ww.indexOf(r.w)===-1)ww.push(r.w);}
+    opts=shuffle([q.w].concat(ww));
+  } else if(type==='wordToOdia'){
+    qText='What is "'+q.w+'" '+q.e+' in Odia?';
+    answerVal=q.o;
+    var ow=[];while(ow.length<3){var r2=allWords[Math.floor(Math.random()*allWords.length)];if(r2.o!==q.o&&ow.indexOf(r2.o)===-1)ow.push(r2.o);}
+    opts=shuffle([q.o].concat(ow));
+  } else {
+    qText='Which English word means "'+q.o+'"?';
+    answerVal=q.w;
+    var ew=[];while(ew.length<3){var r3=allWords[Math.floor(Math.random()*allWords.length)];if(r3.w!==q.w&&ew.indexOf(r3.w)===-1)ew.push(r3.w);}
+    opts=shuffle([q.w].concat(ew));
+  }
+
+  var card=document.createElement('div');card.className='quiz-card';
+  card.innerHTML='<div class="quiz-q-num">Question '+(quizIdx+1)+' of 10</div><div class="quiz-question">'+qText+'</div><div class="quiz-options" id="qOpts"></div><div class="quiz-feedback" id="qFb"></div><button class="quiz-next" id="qNext">Next →</button>';
+  cont.innerHTML='';cont.appendChild(card);
+
+  var optDiv=document.getElementById('qOpts');
+  opts.forEach(function(o){
+    var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;
+    btn.onclick=function(){
+      optDiv.querySelectorAll('.quiz-opt').forEach(function(b){b.disabled=true;});
+      var fb=document.getElementById('qFb');
+      if(o===answerVal){btn.classList.add('correct');fb.textContent='✅ Correct!';fb.className='quiz-feedback show ok';addStar();}
+      else{btn.classList.add('wrong');fb.textContent='❌ The answer is '+answerVal;fb.className='quiz-feedback show bad';optDiv.querySelectorAll('.quiz-opt').forEach(function(b){if(b.textContent===answerVal)b.classList.add('correct');});}
+      document.getElementById('qNext').classList.add('show');
+    };
+    optDiv.appendChild(btn);
+  });
+  document.getElementById('qNext').onclick=function(){quizIdx++;renderQuiz();};
+}
+renderQuiz();
+</script>
+</body>
+</html>

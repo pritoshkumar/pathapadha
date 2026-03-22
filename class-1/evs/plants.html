@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଗଛ — ପରିବେଶ ଅଧ୍ୟୟନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#06A77D;--cbg:#E8F8F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.5rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}.logo-url{font-size:.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.hero{max-width:900px;margin:0 auto;padding:64px 48px 48px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:130px;height:130px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-games{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;padding:10px 22px;border-radius:12px;font-size:.88rem;font-weight:800;transition:opacity .15s}
+.btn-games:hover{opacity:.85}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:900px;margin:0 auto;padding:48px}
+.section-label{font-size:.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:22px;text-align:center;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,.08);border-color:var(--c)}
+.card-emoji{font-size:2.8rem;margin-bottom:8px;display:block}
+.card-odia{font-family:var(--font-or);font-size:1.15rem;font-weight:700;margin-bottom:2px}
+.card-eng{font-size:.78rem;font-weight:700;color:var(--light)}
+
+.type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.type-card{background:var(--cbg);border:2px solid var(--border);border-radius:18px;padding:24px;text-align:center;transition:transform .15s}
+.type-card:hover{transform:scale(1.03)}
+.type-emoji{font-size:2.5rem;display:block;margin-bottom:8px}
+.type-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.type-eng{font-size:.8rem;color:var(--soft);font-weight:600}
+.type-desc{font-size:.8rem;color:var(--soft);margin-top:6px;line-height:1.5}
+
+.tree-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.tree-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:22px;text-align:center;transition:transform .15s}
+.tree-card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.tree-emoji{font-size:2.5rem;display:block;margin-bottom:6px}
+.tree-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700;margin-bottom:2px}
+.tree-eng{font-size:.75rem;font-weight:600;color:var(--light)}
+
+.uses-box{background:var(--off);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:20px}
+.uses-title{font-size:1rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.uses-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.uses-list li{font-size:.9rem;color:var(--soft);display:flex;align-items:center;gap:10px;font-weight:600}
+.uses-list li span{font-size:1.4rem}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav{padding:14px 20px}.hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}.hero-art{width:90px;height:90px;font-size:3rem}.section{padding:36px 20px}.card-grid{grid-template-columns:repeat(2,1fr)}.type-grid,.tree-grid{grid-template-columns:1fr 1fr}footer{padding:20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଗଛ</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🌳 ଗଛ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଗଛ ଓ ଉଦ୍ଭିଦ</h1>
+    <p class="hero-eng">Plants · EVS · Class 1</p>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଗଛର ବିଭିନ୍ନ ଅଂଶ, ଗଛର ପ୍ରକାର, ଫଳ ଓ ଗଛର ଉପକାରିତା ବିଷୟରେ ଶିଖ ।</p>
+    <div class="hero-actions">
+      <a href="plants-games.html" class="btn-games">🎮 Play Games</a>
+    </div>
+  </div>
+  <div class="hero-art">🌳</div>
+</section>
+
+<hr class="divider">
+
+<!-- PARTS OF A PLANT -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଗଛର ଅଂଶ — Parts of a Plant</div>
+  <div class="card-grid" id="partGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- TYPES OF PLANTS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଗଛର ପ୍ରକାର — Types of Plants</div>
+  <div class="type-grid" id="typeGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- COMMON TREES -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ସାଧାରଣ ଗଛ — Common Trees</div>
+  <div class="tree-grid" id="treeGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- USES OF PLANTS -->
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଗଛର ଉପକାରିତା — Uses of Plants</div>
+  <div class="uses-box">
+    <!-- REVIEW NEEDED -->
+    <div class="uses-title">🌱 ଗଛ ଆମ ପାଇଁ ବହୁତ ଉପକାରୀ</div>
+    <ul class="uses-list">
+      <!-- REVIEW NEEDED -->
+      <li><span>🍎</span> ଗଛ ଆମକୁ ଫଳ ଦିଏ — Plants give us fruits</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🥬</span> ଗଛ ଆମକୁ ପନିପରିବା ଦିଏ — Plants give us vegetables</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🌬️</span> ଗଛ ଆମକୁ ଅମ୍ଳଜାନ ଦିଏ — Plants give us oxygen</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🌤️</span> ଗଛ ଆମକୁ ଛାଇ ଦିଏ — Plants give us shade</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>💊</span> ଗଛ ଆମକୁ ଔଷଧ ଦିଏ — Plants give us medicine</li>
+      <!-- REVIEW NEEDED -->
+      <li><span>🪵</span> ଗଛ ଆମକୁ କାଠ ଦିଏ — Plants give us wood</li>
+    </ul>
+  </div>
+</section>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 1 · EVS · Free forever</span></footer>
+
+<script>
+var parts=[
+  {emoji:'🌱',odia:'ଚେର',eng:'Root'},
+  {emoji:'🪵',odia:'ଡାଳ',eng:'Branch'},
+  {emoji:'🍃',odia:'ପତ୍ର',eng:'Leaf'},
+  {emoji:'🌸',odia:'ଫୁଲ',eng:'Flower'},
+  {emoji:'🍎',odia:'ଫଳ',eng:'Fruit'},
+  {emoji:'🫘',odia:'ମଞ୍ଜି',eng:'Seed'}
+];
+var pg=document.getElementById('partGrid');
+parts.forEach(function(p){var c=document.createElement('div');c.className='card';c.innerHTML='<span class="card-emoji">'+p.emoji+'</span><!-- REVIEW NEEDED --><div class="card-odia">'+p.odia+'</div><div class="card-eng">'+p.eng+'</div>';pg.appendChild(c);});
+
+var types=[
+  {emoji:'🌳',odia:'ଗଛ',eng:'Tree',desc:'ବଡ଼ ଓ ଉଚ୍ଚ, ମୋଟା ଡାଳ ଥାଏ'},
+  {emoji:'🌿',odia:'ଝାଉ',eng:'Shrub',desc:'ଛୋଟ ଗଛ, ଅନେକ ଡାଳ ଥାଏ'},
+  {emoji:'🌱',odia:'ଲତା',eng:'Creeper',desc:'ମାଟିରେ ବା କାନ୍ଥରେ ବଢ଼େ'}
+];
+var tg=document.getElementById('typeGrid');
+types.forEach(function(t){var c=document.createElement('div');c.className='type-card';c.innerHTML='<span class="type-emoji">'+t.emoji+'</span><!-- REVIEW NEEDED --><div class="type-odia">'+t.odia+'</div><div class="type-eng">'+t.eng+'</div><!-- REVIEW NEEDED --><div class="type-desc">'+t.desc+'</div>';tg.appendChild(c);});
+
+var trees=[
+  {emoji:'🥭',odia:'ଆମ୍ବ',eng:'Mango'},
+  {emoji:'🥥',odia:'ନଡ଼ିଆ',eng:'Coconut'},
+  {emoji:'🍌',odia:'କଦଳୀ',eng:'Banana'},
+  {emoji:'🍈',odia:'ଅଞ୍ଜୀର',eng:'Papaya'},
+  {emoji:'🌴',odia:'ତାଳ',eng:'Palm'},
+  {emoji:'🍋',odia:'ଲେମ୍ବୁ',eng:'Lemon'}
+];
+var trg=document.getElementById('treeGrid');
+trees.forEach(function(t){var c=document.createElement('div');c.className='tree-card';c.innerHTML='<span class="tree-emoji">'+t.emoji+'</span><!-- REVIEW NEEDED --><div class="tree-odia">'+t.odia+'</div><div class="tree-eng">'+t.eng+'</div>';trg.appendChild(c);});
+</script>
+</body>
+</html>

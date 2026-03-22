@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଘର ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;
+  --c:#3A86FF;--cbg:#EEF4FF;
+  --green:#43AA8B;--greenbg:#EDFAF4;
+  --yellow:#F9C74F;--red:#FF6B6B;--redbg:#FFF0F0;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.4rem}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}
+.logo-url{font-size:.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}
+.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}
+.star-label{font-size:.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}
+.progress-label{font-size:.72rem;font-weight:700;color:var(--light);margin-bottom:4px}
+.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width .5s ease}
+.games-done{font-size:.78rem;font-weight:700;color:var(--light)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px}
+.page-hero p{font-size:.95rem;color:var(--soft)}
+
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.game-icon{font-size:2rem}
+.game-title{font-size:1.3rem;font-weight:900}
+.game-subtitle{font-size:.82rem;font-weight:600;color:var(--light);margin-top:2px}
+.game-stars-possible{margin-left:auto;font-size:.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}
+.match-item.selected{border-color:var(--c);background:var(--cbg)}
+.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}
+.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.match-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.match-emoji{font-size:1.8rem}
+
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-family:var(--font-or);font-size:1.3rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.quiz-question .q-emoji{font-size:2.2rem}
+.quiz-instruction{font-size:.85rem;color:var(--soft);margin-bottom:24px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1.05rem;font-weight:700;transition:all .15s;display:flex;align-items:center;gap:10px}
+.quiz-opt:hover:not(:disabled){border-color:var(--c);background:var(--cbg)}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:.88rem;font-weight:700;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}
+.quiz-feedback.bad{background:var(--redbg);color:var(--red)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:.88rem;font-weight:800;display:none;transition:opacity .15s}
+.quiz-next:hover{opacity:.8}
+.quiz-next.show{display:inline-block}
+
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}
+.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}
+.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}
+.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}
+.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}
+.results-retry:hover{opacity:.85}
+
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){
+  nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}
+  .match-grid,.quiz-options{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ପରିବେଶ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଘର ଖେଳ</span>
+  </div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display">
+    <span class="star-count" id="starCount">0</span>
+    <span style="font-size:1.4rem">⭐</span>
+    <span class="star-label">Stars earned</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Overall progress</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+  <div class="games-done" id="gamesDone">0 / 4 games done</div>
+</div>
+
+<div class="page-hero">
+  <!-- REVIEW NEEDED -->
+  <h1>ଘର ଖେଳ 🎮</h1>
+  <p>4 fun games to learn about your home — earn ⭐ for every correct answer!</p>
+</div>
+<hr class="divider">
+
+<!-- GAME 1: MATCH ROOM TO ITEM -->
+<section class="game-section" id="game1">
+  <div class="game-header">
+    <div class="game-icon">🔗</div>
+    <div>
+      <div class="game-title">Game 1 — Match Room to Item</div>
+      <div class="game-subtitle">Which item belongs in which room?</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div class="match-grid" id="matchGrid"></div>
+  <div style="margin-top:16px;font-size:.85rem;font-weight:700;color:var(--light)" id="matchStatus"></div>
+</section>
+
+<hr class="game-divider">
+
+<!-- GAME 2: NAME THE ROOM -->
+<section class="game-section" id="game2">
+  <div class="game-header">
+    <div class="game-icon">🏷️</div>
+    <div>
+      <div class="game-title">Game 2 — Name the Room</div>
+      <div class="game-subtitle">Read the description and pick the correct room name</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="nameContainer"></div>
+  <button class="quiz-next" id="nameNextBtn" onclick="nextName()">Next Question →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- GAME 3: FIND IN THE HOUSE -->
+<section class="game-section" id="game3">
+  <div class="game-header">
+    <div class="game-icon">🔍</div>
+    <div>
+      <div class="game-title">Game 3 — Find in the House</div>
+      <div class="game-subtitle">Where do you find this item?</div>
+    </div>
+    <div class="game-stars-possible">Up to 6 ⭐</div>
+  </div>
+  <div id="findContainer"></div>
+  <button class="quiz-next" id="findNextBtn" onclick="nextFind()">Next Question →</button>
+</section>
+
+<hr class="game-divider">
+
+<!-- GAME 4: MCQ QUIZ -->
+<section class="game-section" id="game4">
+  <div class="game-header">
+    <div class="game-icon">❓</div>
+    <div>
+      <div class="game-title">Game 4 — Home Quiz</div>
+      <div class="game-subtitle">Answer 10 questions about your home</div>
+    </div>
+    <div class="game-stars-possible">Up to 10 ⭐</div>
+  </div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div>
+  <div class="results-title" id="resultsTitle">Fantastic!</div>
+  <div class="results-score" id="resultsScore"></div>
+  <div class="results-stars" id="resultsStars"></div>
+  <button class="results-retry" onclick="location.reload()">Play Again 🔄</button>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 1 · EVS · Free forever</span>
+</footer>
+
+<script>
+var totalStars=0, gamesCompleted=0, totalGames=4, maxStars=28;
+
+function addStars(n,evt){totalStars+=n;document.getElementById('starCount').textContent=totalStars;document.getElementById('progressFill').style.width=(totalStars/maxStars*100)+'%';if(evt)popStar(evt);}
+function completeGame(){gamesCompleted++;document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done';if(gamesCompleted>=totalGames)showResults();}
+function popStar(evt){var s=document.createElement('div');s.className='star-pop';s.textContent='⭐';s.style.left=(evt.clientX||200)+'px';s.style.top=(evt.clientY||300)+'px';document.body.appendChild(s);setTimeout(function(){s.remove();},1000);}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* GAME 1: MATCH ROOM TO ITEM */
+var matchData=[
+  {room:'ରୋଷେଇ ଘର',item:'🍳',itemName:'ଚୁଲା (Stove)'},
+  {room:'ଶୋଇବା ଘର',item:'🛏️',itemName:'ଖାଟ (Bed)'},
+  {room:'ପାଠ ପଢ଼ିବା ଘର',item:'📚',itemName:'ବହି (Books)'},
+  {room:'ବାଥରୁମ',item:'🚿',itemName:'ଶାୱାର (Shower)'},
+  {room:'ବସିବା ଘର',item:'🛋️',itemName:'ସୋଫା (Sofa)'},
+  {room:'ବାରଣ୍ଡା',item:'🪴',itemName:'ଗଛ (Plant)'}
+];
+var matchSelected=null,matchCorrect=0,game1Done=false;
+
+(function(){
+  var grid=document.getElementById('matchGrid');
+  var left=shuffle(matchData.map(function(m,i){return{type:'room',idx:i,room:m.room};}));
+  var right=shuffle(matchData.map(function(m,i){return{type:'item',idx:i,item:m.item,name:m.itemName};}));
+  left.forEach(function(l){
+    var el=document.createElement('div');el.className='match-item';el.setAttribute('data-idx',l.idx);el.setAttribute('data-type','room');
+    el.innerHTML='<span class="match-odia">'+l.room+'</span>';
+    el.onclick=function(e){matchClick(el,e);};grid.appendChild(el);
+  });
+  right.forEach(function(r){
+    var el=document.createElement('div');el.className='match-item';el.setAttribute('data-idx',r.idx);el.setAttribute('data-type','item');
+    el.innerHTML='<span class="match-emoji">'+r.item+'</span> <span style="font-size:.8rem;color:var(--light)">'+r.name+'</span>';
+    el.onclick=function(e){matchClick(el,e);};grid.appendChild(el);
+  });
+})();
+
+function matchClick(el,evt){
+  if(game1Done)return;
+  var type=el.getAttribute('data-type'),idx=el.getAttribute('data-idx');
+  if(!matchSelected){matchSelected={el:el,type:type,idx:idx};el.classList.add('selected');}
+  else{
+    if(matchSelected.type===type){matchSelected.el.classList.remove('selected');matchSelected={el:el,type:type,idx:idx};el.classList.add('selected');}
+    else{
+      if(matchSelected.idx===idx){matchSelected.el.classList.remove('selected');matchSelected.el.classList.add('correct');el.classList.add('correct');matchCorrect++;addStars(1,evt);document.getElementById('matchStatus').textContent=matchCorrect+' / '+matchData.length+' matched';if(matchCorrect>=matchData.length){game1Done=true;completeGame();}}
+      else{el.classList.add('wrong');matchSelected.el.classList.add('wrong');var prev=matchSelected.el;setTimeout(function(){el.classList.remove('wrong');prev.classList.remove('wrong','selected');},400);}
+      matchSelected=null;
+    }
+  }
+}
+
+/* GAME 2: NAME THE ROOM */
+var nameQs=[
+  {desc:'ଏଠାରେ ଖାଣା ରାନ୍ଧା ଯାଏ ।',ans:'ରୋଷେଇ ଘର',opts:['ରୋଷେଇ ଘର','ଶୋଇବା ଘର','ବାଥରୁମ','ବାରଣ୍ଡା'],emoji:'🍳'},
+  {desc:'ଏଠାରେ ଆମେ ଶୁଅ ।',ans:'ଶୋଇବା ଘର',opts:['ବସିବା ଘର','ଶୋଇବା ଘର','ରୋଷେଇ ଘର','ବାଥରୁମ'],emoji:'🛏️'},
+  {desc:'ଏଠାରେ ଆମେ ପଢ଼ ।',ans:'ପାଠ ପଢ଼ିବା ଘର',opts:['ବାଥରୁମ','ବାରଣ୍ଡା','ପାଠ ପଢ଼ିବା ଘର','ଶୋଇବା ଘର'],emoji:'📚'},
+  {desc:'ଏଠାରେ ଆମେ ସ୍ନାନ କର ।',ans:'ବାଥରୁମ',opts:['ରୋଷେଇ ଘର','ବାଥରୁମ','ବସିବା ଘର','ବାରଣ୍ଡା'],emoji:'🚿'},
+  {desc:'ଏଠାରେ ଆମେ ବସ ଓ ଟିଭି ଦେଖ ।',ans:'ବସିବା ଘର',opts:['ପାଠ ପଢ଼ିବା ଘର','ଶୋଇବା ଘର','ବସିବା ଘର','ରୋଷେଇ ଘର'],emoji:'🛋️'},
+  {desc:'ଘର ବାହାରେ ଖୋଲା ଜାଗା ।',ans:'ବାରଣ୍ଡା',opts:['ବାଥରୁମ','ବାରଣ୍ଡା','ଶୋଇବା ଘର','ରୋଷେଇ ଘର'],emoji:'🏡'}
+];
+var nameIdx=0,game2Done=false;
+
+function renderName(){
+  if(nameIdx>=nameQs.length){game2Done=true;completeGame();document.getElementById('nameNextBtn').style.display='none';return;}
+  var q=nameQs[nameIdx],c=document.getElementById('nameContainer');
+  c.innerHTML='<div class="quiz-card"><div class="quiz-q-num">Question '+(nameIdx+1)+' of '+nameQs.length+'</div><div class="quiz-question"><span class="q-emoji">'+q.emoji+'</span> '+q.desc+'</div><div class="quiz-instruction">Which room is this?</div><div class="quiz-options" id="nameOpts"></div><div class="quiz-feedback" id="nameFb"></div></div>';
+  var opts=document.getElementById('nameOpts');
+  shuffle(q.opts.slice()).forEach(function(o){var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;btn.onclick=function(e){nameAnswer(btn,o,q.ans,e);};opts.appendChild(btn);});
+  document.getElementById('nameNextBtn').classList.remove('show');
+}
+function nameAnswer(btn,picked,answer,evt){
+  document.querySelectorAll('#nameOpts .quiz-opt').forEach(function(o){o.disabled=true;});
+  var fb=document.getElementById('nameFb');
+  if(picked===answer){btn.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,evt);}
+  else{btn.classList.add('wrong');fb.className='quiz-feedback show bad';fb.textContent='❌ Answer: '+answer;document.querySelectorAll('#nameOpts .quiz-opt').forEach(function(o){if(o.textContent===answer)o.classList.add('correct');});}
+  document.getElementById('nameNextBtn').classList.add('show');
+}
+function nextName(){nameIdx++;renderName();}
+renderName();
+
+/* GAME 3: FIND IN THE HOUSE */
+var findQs=[
+  {item:'ଚୁଲା',emoji:'🍳',ans:'ରୋଷେଇ ଘର',opts:['ରୋଷେଇ ଘର','ବାଥରୁମ','ଶୋଇବା ଘର','ବାରଣ୍ଡା']},
+  {item:'ଖାଟ',emoji:'🛏️',ans:'ଶୋଇବା ଘର',opts:['ବସିବା ଘର','ଶୋଇବା ଘର','ରୋଷେଇ ଘର','ପାଠ ପଢ଼ିବା ଘର']},
+  {item:'ବହି',emoji:'📚',ans:'ପାଠ ପଢ଼ିବା ଘର',opts:['ବାଥରୁମ','ରୋଷେଇ ଘର','ପାଠ ପଢ଼ିବା ଘର','ବାରଣ୍ଡା']},
+  {item:'ବାଲଟି',emoji:'🪣',ans:'ବାଥରୁମ',opts:['ବାଥରୁମ','ଶୋଇବା ଘର','ବସିବା ଘର','ରୋଷେଇ ଘର']},
+  {item:'ସୋଫା',emoji:'🛋️',ans:'ବସିବା ଘର',opts:['ପାଠ ପଢ଼ିବା ଘର','ବସିବା ଘର','ବାଥରୁମ','ରୋଷେଇ ଘର']},
+  {item:'ଗଛ',emoji:'🪴',ans:'ବାରଣ୍ଡା',opts:['ଶୋଇବା ଘର','ରୋଷେଇ ଘର','ବାରଣ୍ଡା','ବାଥରୁମ']}
+];
+var findIdx=0,game3Done=false;
+
+function renderFind(){
+  if(findIdx>=findQs.length){game3Done=true;completeGame();document.getElementById('findNextBtn').style.display='none';return;}
+  var q=findQs[findIdx],c=document.getElementById('findContainer');
+  c.innerHTML='<div class="quiz-card"><div class="quiz-q-num">Question '+(findIdx+1)+' of '+findQs.length+'</div><div class="quiz-question"><span class="q-emoji">'+q.emoji+'</span> '+q.item+' କେଉଁଠି ମିଳେ?</div><div class="quiz-instruction">Where do you find this item?</div><div class="quiz-options" id="findOpts"></div><div class="quiz-feedback" id="findFb"></div></div>';
+  var opts=document.getElementById('findOpts');
+  shuffle(q.opts.slice()).forEach(function(o){var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;btn.onclick=function(e){findAnswer(btn,o,q.ans,e);};opts.appendChild(btn);});
+  document.getElementById('findNextBtn').classList.remove('show');
+}
+function findAnswer(btn,picked,answer,evt){
+  document.querySelectorAll('#findOpts .quiz-opt').forEach(function(o){o.disabled=true;});
+  var fb=document.getElementById('findFb');
+  if(picked===answer){btn.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,evt);}
+  else{btn.classList.add('wrong');fb.className='quiz-feedback show bad';fb.textContent='❌ Answer: '+answer;document.querySelectorAll('#findOpts .quiz-opt').forEach(function(o){if(o.textContent===answer)o.classList.add('correct');});}
+  document.getElementById('findNextBtn').classList.add('show');
+}
+function nextFind(){findIdx++;renderFind();}
+renderFind();
+
+/* GAME 4: MCQ QUIZ */
+var quizQs=[
+  {q:'ଘରର ଉପରେ କ\'ଣ ଥାଏ?',ans:'ଛାତ',opts:['ଛାତ','ଭୂଇଁ','ଦ୍ୱାର','ଝରକା']},
+  {q:'ଘରେ ବାୟୁ ଆସିବା ପାଇଁ କ\'ଣ ଥାଏ?',ans:'ଝରକା',opts:['ଛାତ','ଦ୍ୱାର','ଝରକା','କାନ୍ଥ']},
+  {q:'ଆମେ ଘରେ ପ୍ରବେଶ କରିବା ପାଇଁ କ\'ଣ ଖୋଲୁ?',ans:'ଦ୍ୱାର',opts:['ଝରକା','ଦ୍ୱାର','ଛାତ','ଭୂଇଁ']},
+  {q:'ରୋଷେଇ ଘରେ କ\'ଣ ଥାଏ?',ans:'ଚୁଲା',opts:['ଖାଟ','ଚୁଲା','ସୋଫା','ବହି']},
+  {q:'ଶୋଇବା ଘରେ କ\'ଣ ଥାଏ?',ans:'ଖାଟ',opts:['ଚୁଲା','ବାଲଟି','ଖାଟ','ଟେବୁଲ']},
+  {q:'ଆମେ କେଉଁ ଘରେ ସ୍ନାନ କର?',ans:'ବାଥରୁମ',opts:['ରୋଷେଇ ଘର','ବାଥରୁମ','ବସିବା ଘର','ଶୋଇବା ଘର']},
+  {q:'ଟେବୁଲ ଓ ଚେୟାର କେଉଁଠି ଥାଏ?',ans:'ପାଠ ପଢ଼ିବା ଘର',opts:['ବାଥରୁମ','ପାଠ ପଢ଼ିବା ଘର','ରୋଷେଇ ଘର','ବାରଣ୍ଡା']},
+  {q:'ଘରର ଚାରି ପଟେ କ\'ଣ ଥାଏ?',ans:'କାନ୍ଥ',opts:['ଛାତ','ଭୂଇଁ','ଦ୍ୱାର','କାନ୍ଥ']},
+  {q:'ପଙ୍ଖା କ\'ଣ କରେ?',ans:'ବାୟୁ ଦିଏ',opts:['ଆଲୁଅ ଦିଏ','ବାୟୁ ଦିଏ','ପାଣି ଦିଏ','ଖାଦ୍ୟ ଦିଏ']},
+  {q:'ବତୀ କ\'ଣ କରେ?',ans:'ଆଲୁଅ ଦିଏ',opts:['ବାୟୁ ଦିଏ','ଆଲୁଅ ଦିଏ','ଶବ୍ଦ କରେ','ପାଣି ଦିଏ']}
+];
+var quizIdx=0,game4Done=false;
+
+function renderQuiz(){
+  if(quizIdx>=quizQs.length){game4Done=true;completeGame();document.getElementById('quizNextBtn').style.display='none';return;}
+  var q=quizQs[quizIdx],c=document.getElementById('quizContainer');
+  c.innerHTML='<div class="quiz-card"><div class="quiz-q-num">Question '+(quizIdx+1)+' of '+quizQs.length+'</div><div class="quiz-question"><span class="q-emoji">❓</span> '+q.q+'</div><div class="quiz-options" id="quizOpts"></div><div class="quiz-feedback" id="quizFb"></div></div>';
+  var opts=document.getElementById('quizOpts');
+  shuffle(q.opts.slice()).forEach(function(o){var btn=document.createElement('button');btn.className='quiz-opt';btn.textContent=o;btn.onclick=function(e){quizAnswer(btn,o,q.ans,e);};opts.appendChild(btn);});
+  document.getElementById('quizNextBtn').classList.remove('show');
+}
+function quizAnswer(btn,picked,answer,evt){
+  document.querySelectorAll('#quizOpts .quiz-opt').forEach(function(o){o.disabled=true;});
+  var fb=document.getElementById('quizFb');
+  if(picked===answer){btn.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,evt);}
+  else{btn.classList.add('wrong');fb.className='quiz-feedback show bad';fb.textContent='❌ Answer: '+answer;document.querySelectorAll('#quizOpts .quiz-opt').forEach(function(o){if(o.textContent===answer)o.classList.add('correct');});}
+  document.getElementById('quizNextBtn').classList.add('show');
+}
+function nextQuiz(){quizIdx++;renderQuiz();}
+renderQuiz();
+
+/* RESULTS & CONFETTI */
+function showResults(){
+  var b=document.getElementById('resultsBanner');b.classList.add('show');
+  document.getElementById('resultsScore').textContent='You earned '+totalStars+' out of '+maxStars+' stars!';
+  var s='';for(var i=0;i<totalStars;i++)s+='⭐';
+  document.getElementById('resultsStars').textContent=s||'—';
+  if(totalStars>=maxStars*.8){document.getElementById('resultsEmoji').textContent='🏆';document.getElementById('resultsTitle').textContent='Fantastic!';}
+  else if(totalStars>=maxStars*.5){document.getElementById('resultsEmoji').textContent='🌟';document.getElementById('resultsTitle').textContent='Great job!';}
+  else{document.getElementById('resultsEmoji').textContent='💪';document.getElementById('resultsTitle').textContent='Keep practising!';}
+  launchConfetti();b.scrollIntoView({behavior:'smooth'});
+}
+function launchConfetti(){
+  var cv=document.getElementById('confetti');cv.style.display='block';cv.width=window.innerWidth;cv.height=window.innerHeight;
+  var ctx=cv.getContext('2d'),pcs=[],cols=['#FF6B6B','#F9C74F','#43AA8B','#3A86FF','#FF9F43','#7B5EA7'];
+  for(var i=0;i<120;i++)pcs.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,r:Math.random()*6+3,c:cols[Math.floor(Math.random()*cols.length)],vx:(Math.random()-.5)*4,vy:Math.random()*3+2,rot:Math.random()*360});
+  var fr=0;
+  function draw(){ctx.clearRect(0,0,cv.width,cv.height);pcs.forEach(function(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.c;ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);ctx.restore();p.x+=p.vx;p.y+=p.vy;p.rot+=3;if(p.y>cv.height)p.y=-10;});fr++;if(fr<180)requestAnimationFrame(draw);else cv.style.display='none';}
+  draw();
+}
+</script>
+</body>
+</html>

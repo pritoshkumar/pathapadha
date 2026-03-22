@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ଗଣିତ — ପ୍ରଥମ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
+<!-- REVIEW NEEDED -->
+<title>ପରିବେଶ ଅଧ୍ୟୟନ — ପ୍ରଥମ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -13,8 +14,8 @@
   --bg:     #ffffff;
   --off:    #F7F7F5;
   --border: #EBEBEB;
-  --c:      #3A86FF;
-  --cbg:    #EEF4FF;
+  --c:      #F9C74F;
+  --cbg:    #FFFBEC;
   --font:   'Nunito', sans-serif;
   --font-or:'Noto Sans Oriya', serif;
 }
@@ -22,6 +23,7 @@
 body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
 a { text-decoration: none; color: inherit; }
 
+/* NAV */
 nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 48px; border-bottom: 1px solid var(--border);
@@ -38,6 +40,7 @@ nav {
 .breadcrumb a:hover { color: var(--ink); }
 .breadcrumb span { color: var(--c); }
 
+/* HERO */
 .hero {
   max-width: 1100px; margin: 0 auto;
   padding: 64px 48px 56px;
@@ -46,10 +49,11 @@ nav {
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--cbg); color: var(--c);
+  background: var(--cbg); color: #b8860b;
   font-size: 0.78rem; font-weight: 800;
   padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
 }
+/* REVIEW NEEDED */
 .hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
 .hero-eng { font-size: 1rem; font-weight: 800; color: var(--light); margin-bottom: 12px; }
 .hero-desc { font-size: 0.9rem; color: var(--soft); max-width: 400px; line-height: 1.8; margin-bottom: 20px; }
@@ -69,16 +73,22 @@ nav {
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
 hr.divider { border: none; border-top: 1px solid var(--border); }
+
+/* SECTION */
 .section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
 .section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
 
+/* TOPIC GRID */
 .topic-grid { display: flex; flex-direction: column; gap: 16px; }
+
 .topic-card {
-  border-radius: 20px; border: 2px solid var(--border);
+  border-radius: 20px;
+  border: 2px solid var(--border);
   padding: 24px 28px;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 20px; background: #fff; position: relative; overflow: hidden;
+  gap: 20px; background: #fff;
   transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
 }
 .topic-card::before {
   content: ''; position: absolute;
@@ -86,21 +96,48 @@ hr.divider { border: none; border-top: 1px solid var(--border); }
   background: var(--tc);
 }
 .topic-card.live { cursor: pointer; }
-.topic-card.live:hover { transform: translateX(6px); box-shadow: 0 8px 28px rgba(0,0,0,0.08); border-color: var(--tc); }
+.topic-card.live:hover {
+  transform: translateX(6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  border-color: var(--tc);
+}
 .topic-card.soon { opacity: 0.45; }
+
 .topic-left { display: flex; align-items: center; gap: 20px; padding-left: 12px; }
 .topic-emoji { font-size: 2.2rem; flex-shrink: 0; }
 .topic-num { font-size: 0.72rem; font-weight: 800; color: var(--tc); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
 .topic-name-or { font-family: var(--font-or); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
 .topic-name-en { font-size: 0.8rem; font-weight: 700; color: var(--light); margin-top: 3px; }
 .topic-desc { font-size: 0.82rem; color: var(--soft); margin-top: 6px; line-height: 1.6; max-width: 380px; }
+
 .topic-right { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
 .topic-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
-.topic-tag { font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: 6px; background: var(--tcbg); color: var(--tc); letter-spacing: 0.3px; }
+.topic-tag {
+  font-size: 0.65rem; font-weight: 700;
+  padding: 3px 9px; border-radius: 6px;
+  background: var(--tcbg); color: var(--tc);
+  letter-spacing: 0.3px;
+}
 .topic-arrow { font-size: 1.1rem; color: var(--tc); transition: transform .18s; }
 .topic-card.live:hover .topic-arrow { transform: translateX(4px); }
 .topic-soon-tag { font-size: 0.65rem; font-weight: 700; color: #ccc; letter-spacing: 1px; text-transform: uppercase; }
+.topic-footer { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.topic-btn-learn {
+  font-size: 0.82rem; font-weight: 800; color: #fff;
+  background: var(--tc); padding: 8px 18px;
+  border-radius: 10px; transition: opacity .15s;
+}
+.topic-btn-learn:hover { opacity: 0.85; }
+.topic-btn-games {
+  font-size: 0.82rem; font-weight: 800;
+  color: var(--tc); background: var(--tcbg);
+  border: 2px solid var(--tc);
+  padding: 6px 16px; border-radius: 10px;
+  transition: all .15s;
+}
+.topic-btn-games:hover { background: var(--tc); color: #fff; }
 
+/* FOOTER */
 footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
 .footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
@@ -122,6 +159,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   <a href="../../index.html" class="logo">
     <div class="logo-emoji">📖</div>
     <div class="logo-text">
+      <!-- REVIEW NEEDED -->
       <span class="logo-odia">ପାଠପଢ଼ା</span>
       <span class="logo-url">pathapadha.com</span>
     </div>
@@ -129,105 +167,104 @@ footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex;
   <div class="breadcrumb">
     <a href="../../index.html">Home</a> ›
     <a href="../index.html">Class 1</a> ›
-    <span>ଗଣିତ</span>
+    <!-- REVIEW NEEDED -->
+    <span>ପରିବେଶ</span>
   </div>
 </nav>
 
 <section class="hero">
   <div>
-    <div class="hero-badge">📘 ଗଣିତ ଖେଳ — Ganita Khela</div>
-    <h1>ଗଣିତ</h1>
-    <p class="hero-eng">Mathematics · Class 1</p>
-    <p class="hero-desc">Learn numbers, counting, shapes and basic addition through fun activities from the Ganita Khela textbook.</p>
-    <div class="hero-book">📚 Textbook: ଗଣିତ ଖେଳ (SCERT Odisha)</div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">📗 ଆମ ଚାରିପାଖ — Our Surroundings</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ପରିବେଶ ଅଧ୍ୟୟନ</h1>
+    <p class="hero-eng">Environmental Studies · Class 1</p>
+    <p class="hero-desc">Learn about your family, home, body, plants and animals — everything around you!</p>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-book">📚 Textbook: ଆମ ଚାରିପାଖ (SCERT Odisha)</div>
   </div>
-  <div class="hero-art">📘</div>
+  <div class="hero-art">🌍</div>
 </section>
 
 <hr class="divider">
 
 <section class="section">
+  <!-- REVIEW NEEDED -->
   <div class="section-label">ଅଧ୍ୟାୟ ବାଛନ୍ତୁ — Choose a Topic</div>
   <div class="topic-grid" id="topicGrid"></div>
 </section>
 
 <footer>
+  <!-- REVIEW NEEDED -->
   <span class="footer-logo">ପାଠପଢ଼ା</span>
-  <span class="footer-copy">Class 1 · ଗଣିତ · Ganita Khela · Free forever</span>
+  <span class="footer-copy">Class 1 · EVS · Free forever</span>
 </footer>
 
 <script>
 var topics = [
   {
     num: '01',
-    name: 'ସଂଖ୍ୟା ୧ ରୁ ୨୦',
-    eng: 'Numbers 1 to 20',
-    desc: 'Recognise, read and write Odia numerals and Hindu-Arabic numbers from 1 to 20.',
-    emoji: '🔢',
-    color: '#3A86FF',
-    bg: '#EEF4FF',
-    tags: ['Recognition', 'Writing', 'Odia Numerals'],
-    href: 'numbers.html',
+    name: 'ପରିବାର',
+    eng: 'Family — My Family',
+    desc: 'Learn about family members — father, mother, brother, sister, grandparents and their roles.',
+    emoji: '👨‍👩‍👧‍👦',
+    color: '#FF6B6B',
+    bg: '#FFF0F0',
+    tags: ['Members', 'Relations', 'Family Tree'],
+    href: 'family.html',
+    gamesHref: 'family-games.html',
     live: true
   },
   {
     num: '02',
-    name: 'ଗଣତି',
-    eng: 'Counting with Objects',
-    desc: 'Count everyday objects — fruits, animals, toys — and match to numbers.',
-    emoji: '🍎',
-    color: '#FF6B6B',
-    bg: '#FFF0F0',
-    tags: ['Counting', 'Objects', 'Matching'],
-    href: 'counting.html',
+    name: 'ଘର',
+    eng: 'Home — My Home',
+    desc: 'Learn about parts of a house, rooms, and common household items.',
+    emoji: '🏠',
+    color: '#3A86FF',
+    bg: '#EEF4FF',
+    tags: ['Rooms', 'Items', 'Parts'],
+    href: 'home.html',
+    gamesHref: 'home-games.html',
     live: true
   },
   {
     num: '03',
-    name: 'ଆଗ, ପଛ, ମଝି',
-    eng: 'Before, After & Between',
-    desc: 'Understand which number comes before, after, and between other numbers.',
-    emoji: '↔️',
+    name: 'ଶରୀର',
+    eng: 'Body — My Body',
+    desc: 'Learn about body parts, five senses, and good hygiene habits.',
+    emoji: '🧒',
     color: '#43AA8B',
     bg: '#EDFAF4',
-    tags: ['Order', 'Sequence', 'Practice'],
-    href: 'order.html',
+    tags: ['Body Parts', 'Senses', 'Hygiene'],
+    href: 'body.html',
+    gamesHref: 'body-games.html',
     live: true
   },
   {
     num: '04',
-    name: 'ଯୋଗ ଓ ବିୟୋଗ',
-    eng: 'Addition & Subtraction',
-    desc: 'Simple addition and subtraction using pictures and number lines within 20.',
-    emoji: '➕',
-    color: '#F9C74F',
-    bg: '#FFFBEC',
-    tags: ['Addition', 'Subtraction', 'Number Line'],
-    href: 'addsub.html',
+    name: 'ଗଛ',
+    eng: 'Plants — Trees & Plants',
+    desc: 'Learn about parts of a plant, types of trees, fruits and uses of plants.',
+    emoji: '🌳',
+    color: '#06A77D',
+    bg: '#E8F8F0',
+    tags: ['Parts', 'Trees', 'Fruits', 'Uses'],
+    href: 'plants.html',
+    gamesHref: 'plants-games.html',
     live: true
   },
   {
     num: '05',
-    name: 'ଆକୃତି',
-    eng: 'Shapes',
-    desc: 'Learn the names of basic 2D shapes in Odia — circle, square, triangle, rectangle.',
-    emoji: '🔷',
-    color: '#7B5EA7',
-    bg: '#F3EDFF',
-    tags: ['2D Shapes', 'Names', 'Drawing'],
-    href: 'shapes.html',
-    live: true
-  },
-  {
-    num: '06',
-    name: 'ପ୍ୟାଟର୍ନ',
-    eng: 'Patterns',
-    desc: 'Identify and continue repeating patterns with colours, shapes and objects.',
-    emoji: '🔁',
-    color: '#E63946',
-    bg: '#FFF0F1',
-    tags: ['Patterns', 'Sequence', 'Predict'],
-    href: 'patterns.html',
+    name: 'ଜନ୍ତୁ',
+    eng: 'Animals — Animals Around Us',
+    desc: 'Learn about domestic and wild animals, birds, water animals — what they eat and where they live.',
+    emoji: '🐾',
+    color: '#FF9F43',
+    bg: '#FFF5EC',
+    tags: ['Domestic', 'Wild', 'Birds', 'Water'],
+    href: 'animals.html',
+    gamesHref: 'animals-games.html',
     live: true
   }
 ];
@@ -235,15 +272,10 @@ var topics = [
 var grid = document.getElementById('topicGrid');
 
 topics.forEach(function(t) {
-  var el = document.createElement(t.live ? 'a' : 'div');
-  if (t.live) el.href = t.href;
+  var el = document.createElement('div');
   el.className = 'topic-card ' + (t.live ? 'live' : 'soon');
   el.style.setProperty('--tc',   t.color);
   el.style.setProperty('--tcbg', t.bg);
-
-  var tagsHTML = t.tags.map(function(tag) {
-    return '<span class="topic-tag">' + tag + '</span>';
-  }).join('');
 
   el.innerHTML =
     '<div class="topic-left">' +
@@ -255,10 +287,10 @@ topics.forEach(function(t) {
         '<div class="topic-desc">' + t.desc + '</div>' +
       '</div>' +
     '</div>' +
-    '<div class="topic-right">' +
-      '<div class="topic-tags">' + tagsHTML + '</div>' +
+    '<div class="topic-footer">' +
       (t.live
-        ? '<div class="topic-arrow">→</div>'
+        ? '<a href="' + t.href + '" class="topic-btn-learn">Learn →</a>' +
+          (t.gamesHref ? '<a href="' + t.gamesHref + '" class="topic-btn-games">🎮 Play Games</a>' : '')
         : '<div class="topic-soon-tag">Soon</div>') +
     '</div>';
 

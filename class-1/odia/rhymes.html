@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ଛଡ଼ା ଓ ଗୀତ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c:      #7B5EA7;
+  --cbg:    #F3EDFF;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.5rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; }
+.logo-url  { font-size: 0.68rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c); }
+
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 48px 56px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 48px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cbg); color: var(--c);
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.hero h1 { font-family: var(--font-or); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.hero-eng { font-size: 1rem; font-weight: 800; color: var(--light); margin-bottom: 12px; }
+.hero-desc { font-size: 0.9rem; color: var(--soft); max-width: 400px; line-height: 1.8; margin-bottom: 20px; }
+.hero-book {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--off); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 10px;
+  font-size: 0.8rem; font-weight: 700; color: var(--soft);
+}
+.hero-art {
+  width: 150px; height: 150px; border-radius: 28px;
+  background: var(--cbg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4.5rem; flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+hr.divider { border: none; border-top: 1px solid var(--border); }
+.section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
+.section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
+
+.rhyme-card {
+  background: #fff; border: 2px solid var(--border);
+  border-radius: 20px; padding: 32px;
+  margin-bottom: 24px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.rhyme-card:hover {
+  border-color: var(--c);
+  box-shadow: 0 8px 32px rgba(123,94,167,0.08);
+}
+.rhyme-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.rhyme-emoji { font-size: 2.5rem; }
+.rhyme-title { font-family: var(--font-or); font-size: 1.4rem; font-weight: 700; }
+.rhyme-title-eng { font-size: 0.8rem; font-weight: 700; color: var(--light); margin-top: 2px; }
+.rhyme-body {
+  font-family: var(--font-or);
+  font-size: 1.15rem; font-weight: 400;
+  line-height: 2.2;
+  color: var(--ink);
+  background: var(--cbg);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  white-space: pre-line;
+}
+.rhyme-translation {
+  font-size: 0.85rem; color: var(--soft);
+  line-height: 1.8;
+  padding: 0 4px;
+}
+.rhyme-translation strong {
+  font-weight: 800; color: var(--light);
+  font-size: 0.72rem; letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.bottom-nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 56px;
+  display: flex; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.bottom-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 800;
+  border: 2px solid var(--border);
+  transition: all .15s;
+}
+.bottom-link:hover { border-color: var(--c); background: var(--cbg); }
+.bottom-link.primary { background: var(--c); color: #fff; border-color: var(--c); }
+.bottom-link.primary:hover { opacity: 0.85; }
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav, .hero, .section, .bottom-nav, footer { padding-left: 20px; padding-right: 20px; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 20px 36px; }
+  .hero-art { margin: 0 auto; width: 120px; height: 120px; font-size: 3.5rem; }
+  .hero-desc { margin: 0 auto 20px; }
+  .breadcrumb { display: none; }
+  .rhyme-card { padding: 24px 20px; }
+  .rhyme-body { padding: 20px; font-size: 1.05rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 1</a> ›
+    <!-- REVIEW NEEDED -->
+    <a href="index.html">ଓଡ଼ିଆ</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଛଡ଼ା</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🎵 ଛଡ଼ା ଓ ଗୀତ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଛଡ଼ା ଓ ଗୀତ</h1>
+    <div class="hero-eng">Chhada — Rhymes &amp; Songs</div>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ସରଳ ଓଡ଼ିଆ ଛଡ଼ା ପଢ଼ ଏବଂ ମନେ ରଖ। ପ୍ରତ୍ୟେକ ଛଡ଼ା ସହ ତାର ଇଂରାଜୀ ଅର୍ଥ ଦିଆଯାଇଛି।</p>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-book">📕 ଝୁଲଣ ଭାଗ ୧ — Jhulana Part 1</div>
+  </div>
+  <div class="hero-art">🎵</div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଛଡ଼ା — Rhymes (6)</div>
+
+  <!-- Rhyme 1 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🌙</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ଚାନ୍ଦ ମାମା</div>
+        <div class="rhyme-title-eng">Chanda Mama — Moon Uncle</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ଚାନ୍ଦ ମାମା ଆସ ଆସ
+ଆକାଶରେ ଦିଅ ହସ
+ରାତିରେ ଆଲୁଅ ଦିଅ
+ତାରା ସାଥୀ ହୋଇ ରିଅ</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> Moon uncle, come, come! Smile in the sky. Give us light at night, stay with the stars as friends.
+    </div>
+  </div>
+
+  <!-- Rhyme 2 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🐟</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ମାଛ ମାଛ</div>
+        <div class="rhyme-title-eng">Machha Machha — Fish Fish</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ମାଛ ମାଛ ଜଳରେ ଖେଳ
+ଏପଟ ସେପଟ ଯାଅ ମେଳ
+ଲାଞ୍ଜ ହଲାଇ ସୁଇଁ ସୁଇଁ
+ନଦୀ ସାରା ଘୁରି ଘୁରି</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> Fish, fish, play in the water! Go this way and that together. Wag your tail, swim and swim, roaming all over the river.
+    </div>
+  </div>
+
+  <!-- Rhyme 3 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🏫</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ଆମ ବିଦ୍ୟାଳୟ</div>
+        <div class="rhyme-title-eng">Aama Bidyalaya — Our School</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ଆମ ବିଦ୍ୟାଳୟ ବଡ଼ ସୁନ୍ଦର
+ଗୁରୁ ପଢ଼ାନ୍ତି ସବୁ ପିଲାଙ୍କର
+ବହି ଖାତା ହାତେ ଧରି
+ସବେ ପଢ଼ୁ ମନ ଭରି</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> Our school is very beautiful. The teacher teaches all the children. Holding books and notebooks in hand, we all study with full hearts.
+    </div>
+  </div>
+
+  <!-- Rhyme 4 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🌧️</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ବର୍ଷା</div>
+        <div class="rhyme-title-eng">Barsha — Rain</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ବର୍ଷା ଆସିଲା ଝମ ଝମ
+ପାଣି ପଡ଼ିଲା ଛମ ଛମ
+ବେଙ୍ଗ ଡାକୁଛି ଟର ଟର
+ମୋର ମନ ଖୁସି ଭର ଭର</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> The rain came, pitter-patter! Water falls, splash splash. The frog is calling, croak croak. My heart is full of happiness.
+    </div>
+  </div>
+
+  <!-- Rhyme 5 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🌸</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ଫୁଲ</div>
+        <div class="rhyme-title-eng">Phula — Flower</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ଫୁଲ ଫୁଟିଲା ବଗିଚାରେ
+ଲାଲ ହଳଦିଆ ଧଳା ସାରେ
+ପ୍ରଜାପତି ଆସି ବସେ
+ମହୁ ମାଛି ରସ ଶୋଷେ</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> Flowers bloom in the garden, red, yellow, and white in rows. The butterfly comes and sits, the bee sips the nectar.
+    </div>
+  </div>
+
+  <!-- Rhyme 6 -->
+  <div class="rhyme-card">
+    <div class="rhyme-header">
+      <div class="rhyme-emoji">🐦</div>
+      <div>
+        <!-- REVIEW NEEDED -->
+        <div class="rhyme-title">ଚଢ଼େଇ ପିଲା</div>
+        <div class="rhyme-title-eng">Chadei Pila — Little Sparrow</div>
+      </div>
+    </div>
+    <!-- REVIEW NEEDED -->
+    <div class="rhyme-body">ଚଢ଼େଇ ପିଲା ଚିଁ ଚିଁ ଚିଁ
+ଗଛ ଉପରେ ବସି ରହି
+ଡେଣା ମେଲି ଉଡ଼ି ଯାଏ
+ସନ୍ଧ୍ୟାରେ ବାସାକୁ ଆସେ</div>
+    <div class="rhyme-translation">
+      <strong>English meaning:</strong> Little sparrow chirps chi chi chi, sitting up in the tree. Spreading its wings, it flies away, and comes back to its nest in the evening.
+    </div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="sentences.html" class="bottom-link">← ବାକ୍ୟ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="rhymes-games.html" class="bottom-link primary">🎮 ଛଡ଼ା ଖେଳ</a>
+</div>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-copy">Class 1 · ଓଡ଼ିଆ · Free forever</span>
+</footer>
+
+</body>
+</html>
