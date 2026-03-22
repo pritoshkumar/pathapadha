@@ -303,7 +303,8 @@ var matchData = [
   { odia:'ଭାଇ', emoji:'👦', eng:'Brother' },
   { odia:'ଭଉଣୀ', emoji:'👧', eng:'Sister' },
   { odia:'ଜେଜେ', emoji:'👴', eng:'Grandfather' },
-  { odia:'ଆଈ', emoji:'👵', eng:'Grandmother' }
+  { odia:'ଜେଜେମା', emoji:'👵', eng:'Grandmother (Father\'s)' },
+  { odia:'ଆଈ', emoji:'👵', eng:'Grandmother (Mother\'s)' }
 ];
 var matchSelected = null;
 var matchCorrect = 0;
@@ -374,7 +375,8 @@ var whoQuestions = [
   { desc:'ମୁଁ ତୁମ ସାଥୀ, ମୁଁ ଛୁଆ ଅଟେ, ମୁଁ ପୁଅ ।', answer:'ଭାଇ', options:['ଭଉଣୀ','ଆଈ','ଭାଇ','ମା'], emoji:'👦' },
   { desc:'ମୁଁ ତୁମ ସାଥୀ, ମୁଁ ଛୁଆ ଅଟେ, ମୁଁ ଝିଅ ।', answer:'ଭଉଣୀ', options:['ମା','ଭଉଣୀ','ଭାଇ','ଆଈ'], emoji:'👧' },
   { desc:'ମୁଁ ତୁମ ବାପାଙ୍କ ବାପା, ମୁଁ ଗପ କୁହେ ।', answer:'ଜେଜେ', options:['ବାପା','ଆଈ','ଜେଜେ','ଭାଇ'], emoji:'👴' },
-  { desc:'ମୁଁ ତୁମ ବାପାଙ୍କ ମା, ମୁଁ ଗୀତ ଗାଏ ।', answer:'ଆଈ', options:['ମା','ଆଈ','ଭଉଣୀ','ଜେଜେ'], emoji:'👵' }
+  { desc:'ମୁଁ ତୁମ ବାପାଙ୍କ ମା, ମୁଁ ଗୀତ ଗାଏ ।', answer:'ଜେଜେମା', options:['ମା','ଜେଜେମା','ଭଉଣୀ','ଆଈ'], emoji:'👵' },
+  { desc:'ମୁଁ ତୁମ ମାଙ୍କ ମା, ମୁଁ ସ୍ନେହ ଦିଏ ।', answer:'ଆଈ', options:['ଜେଜେମା','ଆଈ','ମା','ଭଉଣୀ'], emoji:'👵' }
 ];
 var whoIdx = 0;
 var game2Done = false;
@@ -424,13 +426,13 @@ renderWho();
 /* ─── GAME 3: FAMILY TREE ─── */
 var treeSlotData = [
   { label:'Grandfather', expected:'ଜେଜେ', emoji:'👴' },
-  { label:'Grandmother', expected:'ଆଈ', emoji:'👵' },
+  { label:'Grandmother (Father\'s)', expected:'ଜେଜେମା', emoji:'👵' },
   { label:'Father', expected:'ବାପା', emoji:'👨' },
   { label:'Mother', expected:'ମା', emoji:'👩' },
   { label:'Brother', expected:'ଭାଇ', emoji:'👦' },
   { label:'Sister', expected:'ଭଉଣୀ', emoji:'👧' }
 ];
-var treeMembers = shuffle(['ବାପା','ମା','ଭାଇ','ଭଉଣୀ','ଜେଜେ','ଆଈ']);
+var treeMembers = shuffle(['ବାପା','ମା','ଭାଇ','ଭଉଣୀ','ଜେଜେ','ଜେଜେମା']);
 var treeFilled = {};
 var selectedTreeSlot = null;
 var game3Done = false;
@@ -506,7 +508,8 @@ var quizQuestions = [
   { q:'ଜେଜେ ଆମକୁ କ\'ଣ କୁହନ୍ତି?', opts:['ଗୀତ','ଗପ','ନାଚ','ଲେଖା'], ans:'ଗପ' },
   { q:'ପରିବାରରେ କେତେ ପିଢ଼ି ରହନ୍ତି?', opts:['ଗୋଟିଏ','ଦୁଇ','ତିନି','ଚାରି'], ans:'ତିନି' },
   { q:'ବାପା ଆମ ପାଇଁ କ\'ଣ କରନ୍ତି?', opts:['ଖେଳନ୍ତି','କାମ କରନ୍ତି','ଶୁଅନ୍ତି','ଗାଇନ୍ତି'], ans:'କାମ କରନ୍ତି' },
-  { q:'ଆଈ କିଏ?', opts:['ବାପାଙ୍କ ମା','ମାଙ୍କ ଭଉଣୀ','ଭାଇର ଝିଅ','ମାମୁଙ୍କ ମା'], ans:'ବାପାଙ୍କ ମା' },
+  { q:'ଆଈ କିଏ?', opts:['ମାଙ୍କ ମା','ବାପାଙ୍କ ମା','ଭାଇର ଝିଅ','ମାମୁଙ୍କ ମା'], ans:'ମାଙ୍କ ମା' },
+  { q:'ଜେଜେମା କିଏ?', opts:['ବାପାଙ୍କ ମା','ମାଙ୍କ ମା','ଭଉଣୀ','ମାଙ୍କ ଭଉଣୀ'], ans:'ବାପାଙ୍କ ମା' },
   { q:'ଭାଇ ଓ ଭଉଣୀ ସାଥିରେ କ\'ଣ କରନ୍ତି?', opts:['କାମ','ଖେଳ','ରାନ୍ଧ','ଧୋଇ'], ans:'ଖେଳ' },
   { q:'ପରିବାର ମାନେ କ\'ଣ?', opts:['ସ୍କୁଲ','ଘର ଲୋକ','ବଜାର','ଗାଁ'], ans:'ଘର ଲୋକ' },
   { q:'ପରିବାରରେ ସବୁଠୁ ବଡ଼ କିଏ?', opts:['ଭାଇ','ବାପା','ଜେଜେ','ମୁଁ'], ans:'ଜେଜେ' }
