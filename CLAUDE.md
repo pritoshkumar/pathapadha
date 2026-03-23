@@ -8,10 +8,25 @@
 ## ALWAYS READ THIS FIRST
 Before doing anything in this project:
 1. Read this entire file
-2. Never delete content files — move to `_review/` if replacing
-3. All Odia text must have `<!-- REVIEW NEEDED -->` above it
-4. Brand name is always **ପାଠପଢ଼ା** (with ା matra) — never ପଠପଢ଼ା
-5. Test every page at 375px mobile width before marking done
+2. Read `C:\Users\prito\Documents\Odia\CLAUDE.md` — the central Odia knowledge base
+3. Never delete content files — move to `_review/` if replacing
+4. All Odia text must have `<!-- REVIEW NEEDED -->` above it
+5. Brand name is always **ପାଠପଢ଼ା** (with ା matra) — never ପଠପଢ଼ା
+6. Test every page at 375px mobile width before marking done
+7. Verify ALL Odia words against central dictionary before publishing
+8. Log any corrections to `C:\Users\prito\Documents\Odia\knowledge\corrections_log.md`
+
+---
+
+## Odia Knowledge Base (Central Repository)
+All Odia language knowledge is stored centrally at: `C:\Users\prito\Documents\Odia\`
+- **Dictionary**: `Odia\dictionary\Odia_structured_wordlist_full.json` (81,909 words)
+- **Grammar**: `Odia\knowledge\grammar_rules.md`
+- **Corrections**: `Odia\knowledge\corrections_log.md`
+- **Verified words**: `Odia\knowledge\verified_words.md`
+- **Terminology**: `Odia\knowledge\` (math, science, history)
+
+Always read the corrections log and verified words before creating Odia content.
 
 ---
 
