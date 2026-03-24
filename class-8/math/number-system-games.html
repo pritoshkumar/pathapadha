@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ସଂଖ୍ୟା ପଦ୍ଧତି ଖେଳ — Class 8 — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#FF6B6B;--cbg:#FFF0F0;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.bc{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.bc a{color:var(--light);transition:color .15s}.bc a:hover{color:var(--ink)}.bc span{color:var(--c)}
+.sb{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.sd{display:flex;align-items:center;gap:6px}.sc{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.sl{font-size:0.78rem;font-weight:700;color:var(--light)}
+.pw{flex:1;min-width:160px}.pla{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.pb{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.pf{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.gd{font-size:0.78rem;font-weight:700;color:var(--light)}
+.ph{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.ph h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}
+.ph p{font-size:0.95rem;color:var(--soft)}
+hr.d{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.gs{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.gh{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.gi{font-size:2rem}.gt{font-size:1.3rem;font-weight:900;color:var(--ink)}.gst{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}
+.gsp{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+.qc{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.qn{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.qq{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.6}
+.qi{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.qo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qp{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1.1rem;font-weight:700;transition:all .15s;text-align:center}
+.qp:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}
+.qp.ok{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.qp.no{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.qp:disabled{cursor:default}
+.qf{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}
+.qf.sh{display:block}.qf.y{background:var(--greenbg);color:var(--green)}.qf.n{background:var(--redbg);color:var(--red)}
+.qx{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.qx:hover{opacity:0.8}.qx.sh{display:inline-block}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.mc{display:flex;flex-direction:column;gap:10px}
+.ml{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.mi{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none;font-family:var(--font-or);font-size:1rem}
+.mi:hover{border-color:var(--c);background:var(--cbg)}
+.mi.sel{border-color:var(--blue);background:var(--bluebg)}
+.mi.ok{border-color:var(--green);background:var(--greenbg);pointer-events:none}
+.mi.no{border-color:var(--red);background:var(--redbg);animation:sk .3s}
+.fc2{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.fh{font-size:0.85rem;color:var(--soft);margin-bottom:20px}
+.fcs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fci{font-family:var(--font-or);font-size:1.1rem;font-weight:700;padding:12px 18px;border-radius:12px;border:2px solid var(--border);background:var(--off);cursor:pointer;transition:all .15s}
+.fci:hover{border-color:var(--blue);background:var(--bluebg)}
+.ffb{margin-top:12px;font-size:0.88rem;font-weight:700;display:none}.ffb.sh{display:block}.ffb.y{color:var(--green)}.ffb.n{color:var(--red)}
+.fnx{margin-top:12px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.85rem;font-weight:800;display:none}.fnx.sh{display:inline-block}
+.rb{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}
+.rb.sh{display:block;animation:pi .5s cubic-bezier(.34,1.56,.64,1)}
+.re{font-size:4rem;margin-bottom:12px}.rt{font-size:1.8rem;font-weight:900;margin-bottom:8px}.rs{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.rst{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.rr{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}.rr:hover{opacity:0.85}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.gdv{border:none;border-top:1px solid var(--border);margin:48px 0}
+.sp{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:sf 1s ease forwards}
+@keyframes sf{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes sk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes pi{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.fl{font-family:var(--font-or);font-size:1rem;font-weight:700}.fc{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.sb,.ph,.gs,footer{padding-left:20px;padding-right:20px}.mg,.qo{grid-template-columns:1fr}}
+@media(max-width:480px){.bc{display:none}.qo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <!-- REVIEW NEEDED -->
+  <div class="bc"><a href="../../index.html">Home</a> › <a href="../index.html">Class 8</a> › <a href="index.html">ଗଣିତ</a> › <span>ସଂଖ୍ୟା ପଦ୍ଧତି ଖେଳ</span></div>
+</nav>
+<div class="sb"><div class="sd"><span class="sc" id="sC">0</span><span style="font-size:1.4rem">⭐</span><span class="sl">Stars</span></div><div class="pw"><div class="pla">Progress</div><div class="pb"><div class="pf" id="pF" style="width:0%"></div></div></div><div class="gd" id="gD">0 / 8 games done</div></div>
+<!-- REVIEW NEEDED -->
+<div class="ph"><h1>ସଂଖ୍ୟା ପଦ୍ଧତି ଖେଳ 🎮</h1><p>8 games to practise Number System — earn ⭐ for every correct answer!</p></div>
+<hr class="d">
+<section class="gs"><div class="gh"><div class="gi">🔗</div><div><!-- REVIEW NEEDED --><div class="gt">Game 1 — Match</div><div class="gst">Match items correctly.</div></div><div class="gsp">6 ⭐</div></div><div class="mg"><div class="mc"><div class="ml">Column A</div><div id="mL1"></div></div><div class="mc"><div class="ml">Column B</div><div id="mR1"></div></div></div><div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="mS1"></div></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">❓</div><div><!-- REVIEW NEEDED --><div class="gt">Game 2 — Quiz</div><div class="gst">Multiple choice questions.</div></div><div class="gsp">8 ⭐</div></div><div id="q2C"></div><button class="qx sh" id="q2B" onclick="next_q2()">Next →</button></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">✏️</div><div><!-- REVIEW NEEDED --><div class="gt">Game 3 — Fill Blank</div><div class="gst">Complete the sentence.</div></div><div class="gsp">6 ⭐</div></div><div id="f3C"></div><button class="fnx sh" id="f3B" onclick="nextF_f3()">Next →</button></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">✅</div><div><!-- REVIEW NEEDED --><div class="gt">Game 4 — True / False</div><div class="gst">Is this statement correct?</div></div><div class="gsp">8 ⭐</div></div><div id="t4C"></div><button class="qx sh" id="t4B" onclick="nextTF_t4()">Next →</button></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">🧠</div><div><!-- REVIEW NEEDED --><div class="gt">Game 5 — Advanced</div><div class="gst">Deeper questions.</div></div><div class="gsp">6 ⭐</div></div><div id="q5C"></div><button class="qx sh" id="q5B" onclick="next_q5()">Next →</button></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">🔤</div><div><!-- REVIEW NEEDED --><div class="gt">Game 6 — Word Match</div><div class="gst">Match words with meanings.</div></div><div class="gsp">6 ⭐</div></div><div class="mg"><div class="mc"><div class="ml">Word</div><div id="mL6"></div></div><div class="mc"><div class="ml">Meaning</div><div id="mR6"></div></div></div><div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="mS6"></div></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">📋</div><div><!-- REVIEW NEEDED --><div class="gt">Game 7 — Identify</div><div class="gst">Pick the correct category.</div></div><div class="gsp">6 ⭐</div></div><div id="q7C"></div><button class="qx sh" id="q7B" onclick="next_q7()">Next →</button></section>
+<hr class="gdv">
+<section class="gs"><div class="gh"><div class="gi">📖</div><div><!-- REVIEW NEEDED --><div class="gt">Game 8 — Concept Match</div><div class="gst">Match concepts with definitions.</div></div><div class="gsp">6 ⭐</div></div><div class="mg"><div class="mc"><div class="ml">Concept</div><div id="mL8"></div></div><div class="mc"><div class="ml">Definition</div><div id="mR8"></div></div></div><div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="mS8"></div></section>
+<div class="rb" id="rB"><div class="re" id="rE">🏆</div><!-- REVIEW NEEDED --><div class="rt" id="rT">ବହୁତ ଭଲ!</div><div class="rs" id="rS"></div><div class="rst" id="rSt"></div><button class="rr" onclick="location.reload()">ପୁଣି ଖେଳ 🔄</button></div>
+<footer><!-- REVIEW NEEDED --><span class="fl">ପାଠପଢ଼ା</span><span class="fc">Class 8 · ଗଣିତ · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var tS=0,gC=0,tG=8;
+function aS(n,el){tS+=n;document.getElementById('sC').textContent=tS;uP();for(var i=0;i<n;i++){(function(x){setTimeout(function(){var p=document.createElement('div');p.className='sp';p.textContent='⭐';if(el){var r=el.getBoundingClientRect();p.style.left=(r.left+r.width/2)+'px';p.style.top=r.top+'px'}else{p.style.left=(window.innerWidth/2)+'px';p.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(p);setTimeout(function(){p.remove()},1000)},x*150)})(i)}}
+function cG(){gC++;uP();if(gC>=tG)sR()}
+function uP(){var p=(gC/tG)*100;document.getElementById('pF').style.width=p+'%';document.getElementById('gD').textContent=gC+' / '+tG+' games done'}
+function sR(){var mx=52,b=document.getElementById('rB'),p=Math.round((tS/mx)*100);document.getElementById('rS').textContent='You earned '+tS+'/'+mx+' stars ('+p+'%)';var s='';for(var i=0;i<Math.min(tS,10);i++)s+='⭐';if(tS>10)s+=' +'+(tS-10);document.getElementById('rSt').textContent=s;if(p===100){document.getElementById('rE').textContent='🏆';document.getElementById('rT').textContent='Perfect! ସମ୍ପୂର୍ଣ୍ଣ!';}else if(p>=70){document.getElementById('rE').textContent='🎉';document.getElementById('rT').textContent='ବହୁତ ଭଲ!';}else{document.getElementById('rE').textContent='💪';document.getElementById('rT').textContent='ଆଉ ଥରେ ଚେଷ୍ଟା କର!';}b.classList.add('sh');if(p>=70)lC()}
+function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function bM(d,lI,rI,sI){var sr=sh(d.map(function(x){return{r:x.r,id:x.id}}));var lC=document.getElementById(lI),rC=document.getElementById(rI),sel=null,m=0,dn=false;d.forEach(function(x){var el=document.createElement('div');el.className='mi';el.textContent=x.l;el.dataset.id=x.id;el.dataset.s='l';el.onclick=function(){mc(el)};lC.appendChild(el)});sr.forEach(function(x){var el=document.createElement('div');el.className='mi';el.textContent=x.r;el.dataset.id=x.id;el.dataset.s='r';el.onclick=function(){mc(el)};rC.appendChild(el)});function mc(el){if(dn||el.classList.contains('ok'))return;if(!sel){sel=el;el.classList.add('sel');return}if(sel===el){sel.classList.remove('sel');sel=null;return}if(sel.dataset.s===el.dataset.s){sel.classList.remove('sel');sel=el;el.classList.add('sel');return}if(sel.dataset.id===el.dataset.id){sel.classList.remove('sel');sel.classList.add('ok');el.classList.add('ok');m++;aS(1,el);document.getElementById(sI).textContent=m+'/'+d.length;if(m===d.length){dn=true;document.getElementById(sI).textContent='All matched!';cG()}}else{var s2=sel;s2.classList.remove('sel');s2.classList.add('no');el.classList.add('no');setTimeout(function(){s2.classList.remove('no');el.classList.remove('no')},500)}sel=null}}
+function bQ(d,cI,bI,px){var ix=0;function rn(){if(ix>=d.length){document.getElementById(bI).style.display='none';cG();return}var x=d[ix],h='<div class="qc"><div class="qn">Q'+(ix+1)+'/'+d.length+'</div><div class="qq">'+x.q+'</div><div class="qi">Pick the correct answer</div><div class="qo" id="'+px+'O">';x.o.forEach(function(o,i){h+='<button class="qp" onclick="window.pk_'+px+'(this,'+i+')" data-i="'+i+'">'+o+'</button>'});h+='</div><div class="qf" id="'+px+'F"></div></div>';document.getElementById(cI).innerHTML=h;document.getElementById(bI).classList.remove('sh')}window['pk_'+px]=function(el,i){var x=d[ix],all=document.querySelectorAll('#'+px+'O .qp');all.forEach(function(o){o.disabled=true});var fb=document.getElementById(px+'F');if(i===x.a){el.classList.add('ok');fb.className='qf sh y';fb.textContent='✅ Correct!';aS(1,el)}else{el.classList.add('no');all[x.a].classList.add('ok');fb.className='qf sh n';fb.textContent='❌ Answer: '+x.o[x.a]}document.getElementById(bI).classList.add('sh')};window['next_'+px]=function(){ix++;rn()};rn()}
+function bF(d,cI,bI,px){var ix=0;function rn(){if(ix>=d.length){document.getElementById(bI).style.display='none';cG();return}var x=d[ix],cs=sh(x.ch.slice()),h='';cs.forEach(function(c){h+='<button class="fci" onclick="window.pkF_'+px+'(this)">'+c+'</button>'});document.getElementById(cI).innerHTML='<div class="fc2"><div class="qn">'+(ix+1)+'/'+d.length+'</div><div style="font-family:var(--font-or);font-size:1.3rem;font-weight:700;margin-bottom:8px">'+x.h+' '+x.s+'</div><div class="fh">Pick the correct answer</div><div class="fcs" id="'+px+'C">'+h+'</div><div class="ffb" id="'+px+'FB"></div></div>';document.getElementById(bI).classList.remove('sh')}window['pkF_'+px]=function(el){var x=d[ix],fb=document.getElementById(px+'FB');document.querySelectorAll('#'+px+'C .fci').forEach(function(c){c.style.pointerEvents='none'});if(el.textContent===x.a){el.style.borderColor='var(--green)';el.style.background='var(--greenbg)';fb.className='ffb sh y';fb.textContent='✅ Correct!';aS(1,el)}else{el.style.borderColor='var(--red)';el.style.background='var(--redbg)';fb.className='ffb sh n';fb.textContent='❌ Answer: '+x.a}document.getElementById(bI).classList.add('sh')};window['nextF_'+px]=function(){ix++;rn()};rn()}
+function bT(d,cI,bI,px){var ix=0;function rn(){if(ix>=d.length){document.getElementById(bI).style.display='none';cG();return}var x=d[ix];document.getElementById(cI).innerHTML='<div class="qc"><div class="qn">Q'+(ix+1)+'/'+d.length+'</div><div class="qq">'+x.q+'</div><div class="qi">True or False?</div><div class="qo" id="'+px+'O"><button class="qp" onclick="window.pkT_'+px+'(this,true)">✅ ଠିକ୍ (True)</button><button class="qp" onclick="window.pkT_'+px+'(this,false)">❌ ଭୁଲ (False)</button></div><div class="qf" id="'+px+'F"></div></div>';document.getElementById(bI).classList.remove('sh')}window['pkT_'+px]=function(el,v){var x=d[ix];document.querySelectorAll('#'+px+'O .qp').forEach(function(o){o.disabled=true});var fb=document.getElementById(px+'F');if(v===x.a){el.classList.add('ok');fb.className='qf sh y';fb.textContent='✅ Correct!';aS(1,el)}else{el.classList.add('no');fb.className='qf sh n';fb.textContent='❌ Answer: '+(x.a?'ଠିକ୍ (True)':'ଭୁଲ (False)')}document.getElementById(bI).classList.add('sh')};window['nextTF_'+px]=function(){ix++;rn()};rn()}
+bM([{"l":"√16","r":"4","id":"a"},{"l":"√25","r":"5","id":"b"},{"l":"∛27","r":"3","id":"c"},{"l":"5²","r":"25","id":"d"},{"l":"3³","r":"27","id":"e"},{"l":"∛64","r":"4","id":"f"}],'mL1','mR1','mS1');
+bQ([{"q":"√144 = ?","o":["୧୦","୧୧","୧୨","୧୪"],"a":2},{"q":"4³ = ?","o":["୧୨","୧୬","୩୨","୬୪"],"a":3},{"q":"½ କେଉଁ ପ୍ରକାର ସଂଖ୍ୟା?","o":["ପରିମେୟ","ଅପରିମେୟ","ପୂର୍ଣ୍ଣ","ସ୍ୱାଭାବିକ"],"a":0},{"q":"√2 କେଉଁ ପ୍ରକାର?","o":["ପରିମେୟ","ଅପରିମେୟ","ପୂର୍ଣ୍ଣ","ସ୍ୱାଭାବିକ"],"a":1},{"q":"7² = ?","o":["୧୪","୨୧","୪୭","୪୯"],"a":3},{"q":"∛125 = ?","o":["୩","୪","୫","୨୫"],"a":2},{"q":"କେଉଁଟି ପୂର୍ଣ୍ଣ ବର୍ଗ?","o":["୧୫","୧୬","୧୭","୧୮"],"a":1},{"q":"0 ପରିମେୟ ସଂଖ୍ୟା?","o":["ହଁ","ନା","ସମ୍ଭବ ନୁହେଁ","ଜଣା ନାହିଁ"],"a":0}],'q2C','q2B','q2');
+bF([{"s":"√81 = ___","a":"୯","ch":["୯","୮","୭","୬"],"h":"²"},{"s":"2³ = ___","a":"୮","ch":["୮","୬","୪","୧୬"],"h":"³"},{"s":"p/q ରୂପରେ ଥିବା ସଂଖ୍ୟା = ___","a":"ପରିମେୟ","ch":["ପରିମେୟ","ଅପରିମେୟ","ପୂର୍ଣ୍ଣ","ଶୂନ୍ୟ"],"h":"🔢"},{"s":"6² = ___","a":"୩୬","ch":["୩୬","୧୨","୧୮","୨୪"],"h":"²"},{"s":"∛8 = ___","a":"୨","ch":["୨","୪","୩","୮"],"h":"³"},{"s":"√100 = ___","a":"୧୦","ch":["୧୦","୨୦","୫୦","୧୦୦"],"h":"²"}],'f3C','f3B','f3');
+bT([{"q":"√2 ଏକ ଅପରିମେୟ ସଂଖ୍ୟା।","a":true},{"q":"0 ଏକ ପରିମେୟ ସଂଖ୍ୟା ନୁହେଁ।","a":false},{"q":"16 ଏକ ପୂର୍ଣ୍ଣ ବର୍ଗ।","a":true},{"q":"∛27 = 9","a":false},{"q":"ପ୍ରତ୍ୟେକ ପୂର୍ଣ୍ଣ ସଂଖ୍ୟା ପରିମେୟ।","a":true},{"q":"√(−4) ଏକ ବାସ୍ତବ ସଂଖ୍ୟା।","a":false},{"q":"1³ = 1","a":true},{"q":"ପୂର୍ଣ୍ଣ ବର୍ଗର ଏକକ ସ୍ଥାନରେ 2 ଆସିପାରେ।","a":false}],'t4C','t4B','t4');
+bQ([{"q":"√(49×4) = ?","o":["14","28","7","196"],"a":0},{"q":"Which is a perfect cube?","o":["12","27","15","20"],"a":1},{"q":"Between 1-100, how many perfect squares?","o":["8","9","10","11"],"a":2},{"q":"√169 = ?","o":["11","12","13","14"],"a":2},{"q":"10³ = ?","o":["30","100","1000","10000"],"a":2},{"q":"Which is irrational?","o":["½","0.5","√3","¾"],"a":2}],'q5C','q5B','q5');
+bM([{"l":"ପରିମେୟ","r":"Rational","id":"a"},{"l":"ଅପରିମେୟ","r":"Irrational","id":"b"},{"l":"ବର୍ଗମୂଳ","r":"Square root","id":"c"},{"l":"ଘନମୂଳ","r":"Cube root","id":"d"},{"l":"ପୂର୍ଣ୍ଣ ବର୍ଗ","r":"Perfect square","id":"e"},{"l":"ସ୍ୱାଭାବିକ ସଂଖ୍ୟା","r":"Natural number","id":"f"}],'mL6','mR6','mS6');
+bQ([{"q":"p/q form (q≠0) is?","o":["Rational","Irrational","Natural","Whole"],"a":0},{"q":"√5 is?","o":["Rational","Irrational","Integer","Whole"],"a":1},{"q":"1,4,9,16... are?","o":["Perfect squares","Cubes","Primes","Odd"],"a":0},{"q":"1,8,27,64... are?","o":["Squares","Perfect cubes","Primes","Even"],"a":1},{"q":"-3 is?","o":["Natural","Whole","Integer","Irrational"],"a":2},{"q":"0 is?","o":["Natural","Whole","Irrational","None"],"a":1}],'q7C','q7B','q7');
+bM([{"l":"Natural","r":"1, 2, 3, 4...","id":"a"},{"l":"Whole","r":"0, 1, 2, 3...","id":"b"},{"l":"Integer","r":"...-2,-1,0,1,2...","id":"c"},{"l":"Rational","r":"p/q, q≠0","id":"d"},{"l":"Irrational","r":"Cannot be p/q","id":"e"},{"l":"Real","r":"Rational + Irrational","id":"f"}],'mL8','mR8','mS8');
+function lC(){var cv=document.getElementById('confetti');cv.style.display='block';cv.width=window.innerWidth;cv.height=window.innerHeight;var cx=cv.getContext('2d'),ps=[],cs=['#FF6B6B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7'];for(var i=0;i<150;i++)ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:Math.random()*10+5,h:Math.random()*6+3,cl:cs[Math.floor(Math.random()*cs.length)],vy:Math.random()*3+2,vx:(Math.random()-0.5)*2,r:Math.random()*360,vr:(Math.random()-0.5)*8});var fr=0;function dr(){cx.clearRect(0,0,cv.width,cv.height);ps.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.cl;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});fr++;if(fr<200)requestAnimationFrame(dr);else cv.style.display='none'}dr()}
+</script>
+</body>
+</html>
