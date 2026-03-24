@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>English — Class 6 | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:float 3s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid var(--border)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}.section{max-width:900px;margin:0 auto;padding:48px}.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}.topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.topic-card{display:flex;align-items:center;gap:16px;padding:20px 24px;border-radius:16px;border:2px solid var(--border);background:#fff;transition:all .2s;cursor:pointer}.topic-card:hover{border-color:var(--c);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}.tc-emoji{font-size:2rem;flex-shrink:0}.tc-name{font-family:var(--font-or);font-size:1.1rem;font-weight:700}.tc-eng{font-size:0.78rem;font-weight:600;color:var(--light);margin-top:2px}.tc-arrow{margin-left:auto;font-size:1.2rem;color:var(--light);transition:transform .15s}.topic-card:hover .tc-arrow{transform:translateX(4px);color:var(--c)}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.section,footer{padding-left:20px;padding-right:20px}.topic-grid{grid-template-columns:1fr}}@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 6</a> › <!-- REVIEW NEEDED --><span>English</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">📗</div><h1>English</h1><p class="subtitle">English Language — Class 6</p><span class="textbook-ref">📘 Honeysuckle & A Pact with the Sun (NCERT)</span></div>
+<hr class="divider">
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ବିଷୟ ବାଛନ୍ତୁ — Choose a Topic</div>
+  <div class="topic-grid" id="topicGrid"></div>
+</div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 6 · English · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var topics=[
+  {"emoji":"📖","name":"Reading Comprehension","eng":"Reading & Understanding","href":"reading.html"},
+  {"emoji":"✍️","name":"Grammar","eng":"English Grammar","href":"grammar.html"},
+  {"emoji":"📚","name":"Vocabulary","eng":"Word Power","href":"vocabulary.html"},
+  {"emoji":"📝","name":"Writing","eng":"Creative Writing","href":"writing.html"}
+];
+var grid=document.getElementById('topicGrid');
+topics.forEach(function(t){
+  var a=document.createElement('a');a.href=t.href;a.className='topic-card';
+  a.innerHTML='<div class="tc-emoji">'+t.emoji+'</div><div><div class="tc-name">'+t.name+'</div><div class="tc-eng">'+t.eng+'</div></div><div class="tc-arrow">→</div>';
+  grid.appendChild(a);
+});
+</script>
+</body>
+</html>
