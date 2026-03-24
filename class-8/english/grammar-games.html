@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>Grammar ଖେଳ — ଅଷ୍ଟମ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}
+.page-hero p{font-size:0.95rem;color:var(--soft)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.gs{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.gh{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.gi{font-size:2rem}.gt{font-size:1.3rem;font-weight:900}.gsu{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}
+.gsp{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+.qc{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.qn{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.qq{font-family:var(--font-or);font-size:1.4rem;font-weight:700;margin-bottom:8px;line-height:1.6}
+.qi{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.qo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qb{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1.1rem;font-weight:700;transition:all .15s;text-align:center}
+.qb:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}
+.qb.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.qb.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.qb:disabled{cursor:default}
+.qf{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}
+.qf.show{display:block}.qf.ok{background:var(--greenbg);color:var(--green)}.qf.bad{background:var(--redbg);color:var(--red)}
+.nb{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.nb:hover{opacity:0.8}.nb.show{display:inline-block}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.mc{display:flex;flex-direction:column;gap:10px}
+.ml{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.mi{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.mi:hover{border-color:var(--c);background:var(--cbg)}
+.mi.selected{border-color:var(--blue);background:var(--bluebg)}
+.mi.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}
+.mi.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.ml2{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.fc{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.fp{font-family:var(--font-or);font-size:1.3rem;font-weight:700;margin-bottom:8px;flex-wrap:wrap}
+.fh{font-size:0.85rem;color:var(--soft);margin-bottom:20px}
+.fcs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fb{font-family:var(--font-or);font-size:1.1rem;font-weight:700;padding:12px 18px;border-radius:12px;border:2px solid var(--border);background:var(--off);cursor:pointer;transition:all .15s}
+.fb:hover{border-color:var(--blue);background:var(--bluebg)}
+.ff{margin-top:12px;font-size:0.88rem;font-weight:700;display:none}.ff.show{display:block}.ff.ok{color:var(--green)}.ff.bad{color:var(--red)}
+.fn{margin-top:12px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.85rem;font-weight:800;display:none}.fn.show{display:inline-block}
+.sc{display:flex;flex-direction:column;gap:10px}
+.si{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:grab;transition:all .15s;font-family:var(--font-or);font-size:1.05rem;font-weight:700;user-select:none;display:flex;align-items:center;gap:12px}
+.si:hover{border-color:var(--c);background:var(--cbg)}
+.si.correct{border-color:var(--green);background:var(--greenbg)}.si.wrong{border-color:var(--red);background:var(--redbg)}
+.sh{color:var(--light);font-size:1.2rem}
+.sb{margin-top:16px;background:var(--c);color:#fff;padding:12px 28px;border-radius:12px;font-size:0.9rem;font-weight:800}
+.rb{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}
+.rb.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.re{font-size:4rem;margin-bottom:12px}.rt{font-size:1.8rem;font-weight:900;margin-bottom:8px}.rs{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.rss{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.rr{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800}.rr:hover{opacity:0.85}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.gd{border:none;border-top:1px solid var(--border);margin:48px 0}
+.sp{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:sf 1s ease forwards}
+@keyframes sf{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.star-bar,.page-hero,.gs,footer{padding-left:20px;padding-right:20px}.mg,.qo{grid-template-columns:1fr}}
+@media(max-width:480px){.breadcrumb{display:none}.qo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<nav><a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a><!-- REVIEW NEEDED --><div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 8</a> › <a href="index.html">ଇଂରାଜୀ</a> › <span>Grammar ଖେଳ</span></div></nav>
+<div class="star-bar"><div class="star-display"><span class="star-count" id="starCount">0</span><span style="font-size:1.4rem">⭐</span><span class="star-label">Stars earned</span></div><div class="progress-wrap"><div class="progress-label">Overall progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div></div><div class="games-done" id="gamesDone">0 / 8 games done</div></div>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><h1>Grammar ଖେଳ 🎮</h1><p>8 fun games on Tenses, Voice & Narration — earn ⭐ for every correct answer!</p></div>
+<hr class="divider">
+<section class="gs" id="game1"><div class="gh"><div class="gi">🔗</div><div><!-- REVIEW NEEDED --><div class="gt">Game 1 — ମିଳାଅ</div><div class="gsu">Match correctly.</div></div><div class="gsp">Up to 6 ⭐</div></div><div class="mg"><div class="mc"><div class="ml">Term</div><div id="mL"></div></div><div class="mc"><div class="ml">Match</div><div id="mR"></div></div></div><div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="mS"></div></section>
+<hr class="gd">
+<section class="gs" id="game2"><div class="gh"><div class="gi">❓</div><div><!-- REVIEW NEEDED --><div class="gt">Game 2 — କୁଇଜ୍</div><div class="gsu">Answer questions.</div></div><div class="gsp">Up to 8 ⭐</div></div><div id="qC"></div><button class="nb show" id="qN" onclick="nQ()">Next →</button></section>
+<hr class="gd">
+<section class="gs" id="game3"><div class="gh"><div class="gi">✏️</div><div><!-- REVIEW NEEDED --><div class="gt">Game 3 — ଶବ୍ଦ ଭରଣା</div><div class="gsu">Fill the blank.</div></div><div class="gsp">Up to 6 ⭐</div></div><div id="fC"></div><button class="fn show" id="fN" onclick="nF()">Next →</button></section>
+<hr class="gd">
+<section class="gs" id="game4"><div class="gh"><div class="gi">✅</div><div><!-- REVIEW NEEDED --><div class="gt">Game 4 — ଠିକ୍ କି ଭୁଲ</div><div class="gsu">True or false?</div></div><div class="gsp">Up to 8 ⭐</div></div><div id="tC"></div><button class="nb show" id="tN" onclick="nT()">Next →</button></section>
+<hr class="gd">
+<section class="gs" id="game5"><div class="gh"><div class="gi">🧠</div><div><!-- REVIEW NEEDED --><div class="gt">Game 5 — ଗଭୀର ପ୍ରଶ୍ନ</div><div class="gsu">Advanced questions.</div></div><div class="gsp">Up to 6 ⭐</div></div><div id="aC"></div><button class="nb show" id="aN" onclick="nA()">Next →</button></section>
+<hr class="gd">
+<section class="gs" id="game6"><div class="gh"><div class="gi">🔤</div><div><!-- REVIEW NEEDED --><div class="gt">Game 6 — ଶବ୍ଦ ଗଠନ</div><div class="gsu">Build the word.</div></div><div class="gsp">Up to 6 ⭐</div></div><div id="wC"></div><button class="fn show" id="wN" onclick="nW()">Next →</button></section>
+<hr class="gd">
+<section class="gs" id="game7"><div class="gh"><div class="gi">📋</div><div><!-- REVIEW NEEDED --><div class="gt">Game 7 — କ୍ରମ ସଜାଅ</div><div class="gsu">Arrange in order.</div></div><div class="gsp">Up to 5 ⭐</div></div><div id="sC"></div><button class="sb" id="sB" onclick="cS()">Check ✓</button></section>
+<hr class="gd">
+<section class="gs" id="game8"><div class="gh"><div class="gi">📖</div><div><!-- REVIEW NEEDED --><div class="gt">Game 8 — ଅର୍ଥ ମିଳାଅ</div><div class="gsu">Match meanings.</div></div><div class="gsp">Up to 6 ⭐</div></div><div class="mg"><div class="mc"><div class="ml">Term</div><div id="mL2"></div></div><div class="mc"><div class="ml">Meaning</div><div id="mR2"></div></div></div><div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="mS2"></div></section>
+<div class="rb" id="rB"><div class="re" id="rE">🏆</div><!-- REVIEW NEEDED --><div class="rt" id="rT">Great!</div><div class="rs" id="rSc"></div><div class="rss" id="rSt"></div><button class="rr" onclick="location.reload()">Play Again 🔄</button></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 8 · ଇଂରାଜୀ · Grammar · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var ts=0,gc=0,tg=8;
+function aS(n,el){ts+=n;document.getElementById('starCount').textContent=ts;uP();for(var i=0;i<n;i++){(function(x){setTimeout(function(){var p=document.createElement('div');p.className='sp';p.textContent='⭐';if(el){var r=el.getBoundingClientRect();p.style.left=(r.left+r.width/2)+'px';p.style.top=r.top+'px'}else{p.style.left=(window.innerWidth/2)+'px';p.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(p);setTimeout(function(){p.remove()},1000)},x*150)})(i)}}
+function cG(){gc++;uP();if(gc>=tg)sR()}
+function uP(){var p=(gc/tg)*100;document.getElementById('progressFill').style.width=p+'%';document.getElementById('gamesDone').textContent=gc+' / '+tg+' games done'}
+function sR(){var mx=51;var b=document.getElementById('rB');var p=Math.round((ts/mx)*100);document.getElementById('rSc').textContent='You earned '+ts+' / '+mx+' stars ('+p+'%)';var s='';for(var i=0;i<Math.min(ts,10);i++)s+='⭐';if(ts>10)s+=' +'+(ts-10);document.getElementById('rSt').textContent=s;if(p===100){document.getElementById('rE').textContent='🏆';document.getElementById('rT').textContent='Perfect!'}else if(p>=70){document.getElementById('rE').textContent='🎉';document.getElementById('rT').textContent='Great!'}else{document.getElementById('rE').textContent='💪';document.getElementById('rT').textContent='Try again!'}b.classList.add('show');if(p>=70)lC()}
+function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+// G1
+var md=[{l:'I am eating',r:'Present Continuous',id:'a'},{l:'She wrote',r:'Simple Past',id:'b'},{l:'They will come',r:'Simple Future',id:'c'},{l:'He has gone',r:'Present Perfect',id:'d'},{l:'We were playing',r:'Past Continuous',id:'e'},{l:'I had finished',r:'Past Perfect',id:'f'}];
+(function(){var d=md.slice();var sr=sh(d.map(function(x){return{r:x.r,id:x.id}}));var lc=document.getElementById('mL');var rc=document.getElementById('mR');var sel=null,m=0,dn=false;
+d.forEach(function(x){var e=document.createElement('div');e.className='mi';e.innerHTML='<span class="ml2">'+x.l+'</span>';e.dataset.id=x.id;e.dataset.side='l';e.onclick=function(){mc(e)};lc.appendChild(e)});
+sr.forEach(function(x){var e=document.createElement('div');e.className='mi';e.innerHTML='<span class="ml2">'+x.r+'</span>';e.dataset.id=x.id;e.dataset.side='r';e.onclick=function(){mc(e)};rc.appendChild(e)});
+function mc(e){if(dn||e.classList.contains('correct'))return;if(!sel){sel=e;e.classList.add('selected');return}if(sel===e){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===e.dataset.side){sel.classList.remove('selected');sel=e;e.classList.add('selected');return}if(sel.dataset.id===e.dataset.id){sel.classList.remove('selected');sel.classList.add('correct');e.classList.add('correct');m++;aS(1,e);document.getElementById('mS').textContent=m+'/'+d.length;if(m===d.length){dn=true;document.getElementById('mS').textContent='All matched! 🎉';cG()}}else{var s=sel;s.classList.remove('selected');s.classList.add('wrong');e.classList.add('wrong');setTimeout(function(){s.classList.remove('wrong');e.classList.remove('wrong')},500)}sel=null}})();
+// G2
+var qd=[{q:'"She is reading" — which tense?',o:['Present Continuous','Simple Present','Past','Future'],a:0},{q:'Passive of "She writes a letter"?',o:['A letter is written by her','A letter was written','A letter will be written','A letter has been written'],a:0},{q:'Indirect: He said, "I am tired."',o:['He said that he was tired','He said I am tired','He said he is tired','He said I was tired'],a:0},{q:'Present Perfect example?',o:['I have eaten','I eat','I ate','I am eating'],a:0},{q:'"Will" indicates?',o:['Future','Past','Present','None'],a:0},{q:'Past participle of "go"?',o:['gone','went','going','goes'],a:0},{q:'Passive voice uses?',o:['Past participle','Present tense','Gerund','Infinitive'],a:0},{q:'"Had" is used in?',o:['Past Perfect','Simple Past','Present','Future'],a:0}];
+var qi=0;
+function rQ(){if(qi>=qd.length){document.getElementById('qN').style.display='none';cG();return}var d=qd[qi];var h='<div class="qc"><div class="qn">Q '+(qi+1)+'/'+qd.length+'</div><div class="qq">'+d.q+'</div><div class="qi">Pick the correct answer</div><div class="qo" id="qO">';d.o.forEach(function(o,i){h+='<button class="qb" onclick="pQ(this,'+i+')">'+o+'</button>'});h+='</div><div class="qf" id="qF"></div></div>';document.getElementById('qC').innerHTML=h;document.getElementById('qN').classList.remove('show')}
+function pQ(e,i){var d=qd[qi];var a=document.querySelectorAll('#qO .qb');a.forEach(function(o){o.disabled=true});var f=document.getElementById('qF');if(i===d.a){e.classList.add('correct');f.className='qf show ok';f.textContent='✅ Correct!';aS(1,e)}else{e.classList.add('wrong');a[d.a].classList.add('correct');f.className='qf show bad';f.textContent='❌ '+d.o[d.a]}document.getElementById('qN').classList.add('show')}
+function nQ(){qi++;rQ()}rQ();
+// G3
+var fd=[{s:'"She is reading" — which tense?',a:'Present Continuous',c:['Present Continuous','Simple Present','Past','Future'],h:'📝'},{s:'Passive of "She writes a letter"?',a:'A letter is written by her',c:['A letter is written by her','A letter was written','A letter will be written','A letter has been written'],h:'📝'},{s:'Indirect: He said, "I am tired."',a:'He said that he was tired',c:['He said that he was tired','He said I am tired','He said he is tired','He said I was tired'],h:'📝'},{s:'Present Perfect example?',a:'I have eaten',c:['I have eaten','I eat','I ate','I am eating'],h:'📝'},{s:'"Will" indicates?',a:'Future',c:['Future','Past','Present','None'],h:'📝'},{s:'Past participle of "go"?',a:'gone',c:['gone','went','going','goes'],h:'📝'}];
+var fi=0;
+function rF(){if(fi>=fd.length){document.getElementById('fN').style.display='none';cG();return}var d=fd[fi];var s=sh(d.c.slice());var c='';s.forEach(function(x){c+='<button class="fb" onclick="pF(this)">'+x+'</button>'});var h='<div class="fc"><div class="qn">Fill '+(fi+1)+'/'+fd.length+'</div><div class="fp">'+d.h+' '+d.s+'</div><div class="fh">Pick the correct word</div><div class="fcs" id="fO">'+c+'</div><div class="ff" id="fF"></div></div>';document.getElementById('fC').innerHTML=h;document.getElementById('fN').classList.remove('show')}
+function pF(e){var d=fd[fi];var f=document.getElementById('fF');document.querySelectorAll('#fO .fb').forEach(function(c){c.style.pointerEvents='none'});if(e.textContent===d.a){e.style.borderColor='var(--green)';e.style.background='var(--greenbg)';f.className='ff show ok';f.textContent='✅ Correct!';aS(1,e)}else{e.style.borderColor='var(--red)';e.style.background='var(--redbg)';f.className='ff show bad';f.textContent='❌ '+d.a}document.getElementById('fN').classList.add('show')}
+function nF(){fi++;rF()}rF();
+// G4
+var td=[{q:'"She is reading" — which tense — Present Continuous.',a:true},{q:'Passive of "She writes a letter" — A letter is written by her.',a:true},{q:'Indirect: He said, "I am tired." — He said that he was tired.',a:true},{q:'Present Perfect example — I have eaten.',a:true},{q:'"Will" indicates — Past.',a:false},{q:'Past participle of "go" — went.',a:false},{q:'Passive voice uses — Present tense.',a:false},{q:'"Had" is used in — Simple Past.',a:false}];
+var ti=0;
+function rT(){if(ti>=td.length){document.getElementById('tN').style.display='none';cG();return}var d=td[ti];var h='<div class="qc"><div class="qn">Q '+(ti+1)+'/'+td.length+'</div><div class="qq">'+d.q+'</div><div class="qi">True or false?</div><div class="qo" id="tO"><button class="qb" onclick="pT(this,true)">✅ True</button><button class="qb" onclick="pT(this,false)">❌ False</button></div><div class="qf" id="tF"></div></div>';document.getElementById('tC').innerHTML=h;document.getElementById('tN').classList.remove('show')}
+function pT(e,v){var d=td[ti];var a=document.querySelectorAll('#tO .qb');a.forEach(function(o){o.disabled=true});var f=document.getElementById('tF');if(v===d.a){e.classList.add('correct');f.className='qf show ok';f.textContent='✅ Correct!';aS(1,e)}else{e.classList.add('wrong');f.className='qf show bad';f.textContent='❌ Wrong!'}document.getElementById('tN').classList.add('show')}
+function nT(){ti++;rT()}rT();
+// G5
+var ad=[{q:'"She is reading" — which tense?',o:['Present Continuous','Simple Present','Past','Future'],a:0},{q:'Passive of "She writes a letter"?',o:['A letter is written by her','A letter was written','A letter will be written','A letter has been written'],a:0},{q:'Indirect: He said, "I am tired."',o:['He said that he was tired','He said I am tired','He said he is tired','He said I was tired'],a:0},{q:'Present Perfect example?',o:['I have eaten','I eat','I ate','I am eating'],a:0},{q:'"Will" indicates?',o:['Future','Past','Present','None'],a:0},{q:'Past participle of "go"?',o:['gone','went','going','goes'],a:0}];
+var ai=0;
+function rA(){if(ai>=ad.length){document.getElementById('aN').style.display='none';cG();return}var d=ad[ai];var h='<div class="qc"><div class="qn">Q '+(ai+1)+'/'+ad.length+'</div><div class="qq">'+d.q+'</div><div class="qi">Pick the correct answer</div><div class="qo" id="aO">';d.o.forEach(function(o,i){h+='<button class="qb" onclick="pA(this,'+i+')">'+o+'</button>'});h+='</div><div class="qf" id="aF"></div></div>';document.getElementById('aC').innerHTML=h;document.getElementById('aN').classList.remove('show')}
+function pA(e,i){var d=ad[ai];var a=document.querySelectorAll('#aO .qb');a.forEach(function(o){o.disabled=true});var f=document.getElementById('aF');if(i===d.a){e.classList.add('correct');f.className='qf show ok';f.textContent='✅ Correct!';aS(1,e)}else{e.classList.add('wrong');a[d.a].classList.add('correct');f.className='qf show bad';f.textContent='❌ '+d.o[d.a]}document.getElementById('aN').classList.add('show')}
+function nA(){ai++;rA()}rA();
+// G6
+var wd=[{w:'I am eating',h:'Present Continuous'},{w:'She wrote',h:'Simple Past'},{w:'They will come',h:'Simple Future'},{w:'He has gone',h:'Present Perfect'},{w:'We were playing',h:'Past Continuous'},{w:'I had finished',h:'Past Perfect'}];
+var wi=0;
+function rW(){if(wi>=wd.length){document.getElementById('wN').style.display='none';cG();return}var d=wd[wi];var ch=d.w.split('');var s=sh(ch.slice());var h='<div class="fc"><div class="qn">Word '+(wi+1)+'/'+wd.length+'</div><div class="fh">Hint: '+d.h+'</div><div id="wA" style="min-height:50px;padding:12px;border:2px dashed var(--border);border-radius:12px;margin-bottom:16px;font-family:var(--font-or);font-size:1.4rem;font-weight:700;display:flex;gap:4px;flex-wrap:wrap"></div><div class="fcs" id="wO">';s.forEach(function(c){h+='<button class="fb" onclick="pW(this)" data-c="'+c+'">'+c+'</button>'});h+='</div><div class="ff" id="wF"></div></div>';document.getElementById('wC').innerHTML=h;document.getElementById('wN').classList.remove('show')}
+function pW(e){e.style.display='none';var a=document.getElementById('wA');var s=document.createElement('span');s.textContent=e.dataset.c;s.style.cssText='padding:4px 8px;background:var(--bluebg);border-radius:6px;cursor:pointer';s.onclick=function(){s.remove();e.style.display='';cW()};a.appendChild(s);cW()}
+function cW(){var d=wd[wi];var a=document.getElementById('wA');var sp=a.querySelectorAll('span');if(sp.length===d.w.length){var b='';sp.forEach(function(s){b+=s.textContent});var f=document.getElementById('wF');if(b===d.w){f.className='ff show ok';f.textContent='✅ '+d.w;aS(1,a);document.querySelectorAll('#wO .fb').forEach(function(c){c.style.pointerEvents='none'})}else{f.className='ff show bad';f.textContent='❌ Try again!';return}document.getElementById('wN').classList.add('show')}}
+function nW(){wi++;rW()}rW();
+// G7
+var sc=['I am eating','She wrote','They will come','He has gone','We were playing'];
+(function(){var it=sh(sc.slice());var ct=document.getElementById('sC');it.forEach(function(t,i){var e=document.createElement('div');e.className='si';e.draggable=true;e.innerHTML='<span class="sh">☰</span><span>'+t+'</span>';e.dataset.text=t;e.addEventListener('dragstart',function(ev){ev.dataTransfer.setData('text/plain',i);e.classList.add('dragging')});e.addEventListener('dragend',function(){e.classList.remove('dragging')});e.addEventListener('dragover',function(ev){ev.preventDefault()});e.addEventListener('drop',function(ev){ev.preventDefault();var fi=parseInt(ev.dataTransfer.getData('text/plain'));var ai=Array.from(ct.children);var ti=Array.from(ct.children).indexOf(e);if(fi!==ti){var dr=ai[fi];if(fi<ti)e.after(dr);else e.before(dr)}});ct.appendChild(e)})})();
+function cS(){var it=document.querySelectorAll('#sC .si');var c=0;it.forEach(function(e,i){if(e.dataset.text===sc[i]){e.classList.add('correct');e.classList.remove('wrong');c++}else{e.classList.add('wrong');e.classList.remove('correct')}});aS(c,document.getElementById('sC'));document.getElementById('sB').disabled=true;document.getElementById('sB').textContent=c+'/'+sc.length+' correct!';cG()}
+// G8
+var md2=[{l:'Ram eats rice',r:'Rice is eaten by Ram',id:'a'},{l:'She wrote a poem',r:'A poem was written by her',id:'b'},{l:'They play cricket',r:'Cricket is played by them',id:'c'},{l:'He broke the glass',r:'The glass was broken by him',id:'d'},{l:'I will do it',r:'It will be done by me',id:'e'},{l:'We sang a song',r:'A song was sung by us',id:'f'}];
+(function(){var d=md2.slice();var sr=sh(d.map(function(x){return{r:x.r,id:x.id}}));var lc=document.getElementById('mL2');var rc=document.getElementById('mR2');var sel=null,m=0,dn=false;
+d.forEach(function(x){var e=document.createElement('div');e.className='mi';e.innerHTML='<span class="ml2">'+x.l+'</span>';e.dataset.id=x.id;e.dataset.side='l';e.onclick=function(){m2c(e)};lc.appendChild(e)});
+sr.forEach(function(x){var e=document.createElement('div');e.className='mi';e.innerHTML='<span class="ml2">'+x.r+'</span>';e.dataset.id=x.id;e.dataset.side='r';e.onclick=function(){m2c(e)};rc.appendChild(e)});
+function m2c(e){if(dn||e.classList.contains('correct'))return;if(!sel){sel=e;e.classList.add('selected');return}if(sel===e){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===e.dataset.side){sel.classList.remove('selected');sel=e;e.classList.add('selected');return}if(sel.dataset.id===e.dataset.id){sel.classList.remove('selected');sel.classList.add('correct');e.classList.add('correct');m++;aS(1,e);document.getElementById('mS2').textContent=m+'/'+d.length;if(m===d.length){dn=true;document.getElementById('mS2').textContent='All matched! 🎉';cG()}}else{var s=sel;s.classList.remove('selected');s.classList.add('wrong');e.classList.add('wrong');setTimeout(function(){s.classList.remove('wrong');e.classList.remove('wrong')},500)}sel=null}})();
+function lC(){var cv=document.getElementById('confetti');cv.style.display='block';cv.width=window.innerWidth;cv.height=window.innerHeight;var ctx=cv.getContext('2d');var pc=[];var cl=['#3A86FF','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7'];for(var i=0;i<150;i++){pc.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:Math.random()*10+5,h:Math.random()*6+3,c:cl[Math.floor(Math.random()*cl.length)],vy:Math.random()*3+2,vx:(Math.random()-0.5)*2,r:Math.random()*360,vr:(Math.random()-0.5)*8})}var fr=0;function dr(){ctx.clearRect(0,0,cv.width,cv.height);pc.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r*Math.PI/180);ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});fr++;if(fr<200)requestAnimationFrame(dr);else cv.style.display='none'}dr()}
+</script>
+</body></html>
