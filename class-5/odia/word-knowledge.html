@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶବ୍ଦ ଜ୍ଞାନ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#FF9F43;--cbg:#FFF5EC;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.5rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.content-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:28px;transition:border-color .2s,box-shadow .2s}
+.content-card:hover{border-color:var(--c);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
+.content-card h3{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--c);margin-bottom:8px}
+.content-card p{font-size:0.88rem;color:var(--soft);line-height:1.8}
+.content-card .card-emoji{font-size:2rem;margin-bottom:12px}
+.word-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:0.9rem}
+.word-table th{text-align:left;font-weight:800;color:var(--c);padding:8px 12px;border-bottom:2px solid var(--border)}
+.word-table td{padding:8px 12px;border-bottom:1px solid var(--border);font-family:var(--font-or)}
+.word-table td:first-child{font-weight:700;color:var(--ink)}
+.word-table td:last-child{color:var(--soft)}
+.tip-box{background:var(--cbg);border:2px solid var(--c);border-radius:16px;padding:24px 28px;margin-top:32px}
+.tip-title{font-size:1rem;font-weight:800;color:var(--c);margin-bottom:8px}
+.tip-text{font-size:0.88rem;color:var(--soft);line-height:1.8}
+.tip-text ul{margin:8px 0 0 20px}.tip-text li{margin-bottom:4px}
+.bottom-nav{max-width:1100px;margin:0 auto;padding:0 48px 56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bottom-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;border:2px solid var(--border);transition:all .15s}
+.bottom-link:hover{border-color:var(--c);background:var(--cbg)}
+.bottom-link.primary{background:var(--c);color:#fff;border-color:var(--c)}.bottom-link.primary:hover{opacity:0.85}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.hero,.section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.hero{grid-template-columns:1fr;text-align:center;padding:40px 20px 36px}.hero-art{margin:0 auto;width:120px;height:120px;font-size:3.5rem}.hero-desc{margin:0 auto 20px}.breadcrumb{display:none}.content-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 5</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ଶବ୍ଦ ଜ୍ଞାନ</span></div>
+</nav>
+<div class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🔤 ଶବ୍ଦ ଜ୍ଞାନ</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଶବ୍ଦ ଜ୍ଞାନ</h1>
+    <div class="hero-eng">Word Knowledge — Roots & Derivations</div>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଓଡ଼ିଆ ଶବ୍ଦର ମୂଳ, ସମାର୍ଥକ, ବିପରୀତ ଓ ଅନେକାର୍ଥୀ ଶବ୍ଦ ଶିଖ।</p>
+  </div>
+  <div class="hero-art">🔤</div>
+</div>
+<hr class="divider">
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଶବ୍ଦ ଭଣ୍ଡାର — Vocabulary</div>
+  <div class="content-grid">
+    <div class="content-card">
+      <div class="card-emoji">🔄</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ସମାର୍ଥକ ଶବ୍ଦ</h3>
+      <p>ଏକା ଅର୍ଥ ବିଶିଷ୍ଟ ଭିନ୍ନ ଭିନ୍ନ ଶବ୍ଦ ଶିଖ।</p>
+      <!-- REVIEW NEEDED -->
+      <table class="word-table">
+        <tr><th>ଶବ୍ଦ</th><th>ସମାର୍ଥକ</th></tr>
+        <tr><td>ଜଳ</td><td>ପାଣି, ନୀର, ଅମ୍ବୁ</td></tr>
+        <tr><td>ସୂର୍ଯ୍ୟ</td><td>ରବି, ଦିନକର, ଭାସ୍କର</td></tr>
+        <tr><td>ପୃଥିବୀ</td><td>ଧରା, ବସୁନ୍ଧରା, ଅବନୀ</td></tr>
+        <tr><td>ଫୁଲ</td><td>ପୁଷ୍ପ, କୁସୁମ, ସୁମନ</td></tr>
+      </table>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">↔️</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ବିପରୀତ ଶବ୍ଦ</h3>
+      <p>ବିପରୀତ ଅର୍ଥ ବିଶିଷ୍ଟ ଶବ୍ଦ ଶିଖ।</p>
+      <!-- REVIEW NEEDED -->
+      <table class="word-table">
+        <tr><th>ଶବ୍ଦ</th><th>ବିପରୀତ</th></tr>
+        <tr><td>ଦିନ</td><td>ରାତି</td></tr>
+        <tr><td>ଉଚ୍ଚ</td><td>ନୀଚ</td></tr>
+        <tr><td>ସୁଖ</td><td>ଦୁଃଖ</td></tr>
+        <tr><td>ଆଲୋକ</td><td>ଅନ୍ଧାର</td></tr>
+      </table>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">🎯</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ଅନେକାର୍ଥୀ ଶବ୍ଦ</h3>
+      <p>ଏକ ଶବ୍ଦର ଅନେକ ଅର୍ଥ ଶିଖ।</p>
+      <!-- REVIEW NEEDED -->
+      <table class="word-table">
+        <tr><th>ଶବ୍ଦ</th><th>ଅର୍ଥ</th></tr>
+        <tr><td>କାଳ</td><td>ସମୟ / ଯମ / କଳା ରଙ୍ଗ</td></tr>
+        <tr><td>ପତ୍ର</td><td>ପାତ / ଚିଠି</td></tr>
+        <tr><td>ଅର୍ଥ</td><td>ମାନେ / ଧନ</td></tr>
+        <tr><td>ଫଳ</td><td>ଫଳ (ଗଛର) / ପରିଣାମ</td></tr>
+      </table>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">🏷️</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ଉପସର୍ଗ ଓ ପ୍ରତ୍ୟୟ</h3>
+      <p>ଶବ୍ଦ ଆଗରେ ଉପସର୍ଗ ଓ ପଛରେ ପ୍ରତ୍ୟୟ ଯୋଡ଼ି ନୂଆ ଶବ୍ଦ ତିଆରି ହୁଏ।</p>
+      <!-- REVIEW NEEDED -->
+      <table class="word-table">
+        <tr><th>ମୂଳ</th><th>ନୂଆ ଶବ୍ଦ</th></tr>
+        <tr><td>ପ୍ର + ହାର</td><td>ପ୍ରହାର</td></tr>
+        <tr><td>ଅ + ନ୍ୟାୟ</td><td>ଅନ୍ୟାୟ</td></tr>
+        <tr><td>ସୁନ୍ଦର + ତା</td><td>ସୁନ୍ଦରତା</td></tr>
+        <tr><td>ଜ୍ଞାନ + ୀ</td><td>ଜ୍ଞାନୀ</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="tip-box">
+    <!-- REVIEW NEEDED -->
+    <div class="tip-title">💡 ଶବ୍ଦ ଜ୍ଞାନ ବୃଦ୍ଧି ପାଇଁ</div>
+    <!-- REVIEW NEEDED -->
+    <div class="tip-text">
+      <ul>
+        <li>ପ୍ରତିଦିନ ୫ ଟି ନୂଆ ଶବ୍ଦ ଶିଖ</li>
+        <li>ଶବ୍ଦଟିର ବାକ୍ୟରେ ପ୍ରୟୋଗ କର</li>
+        <li>ସମାର୍ଥକ ଓ ବିପରୀତ ଶବ୍ଦ ଯୋଡ଼ିକରି ଶିଖ</li>
+        <li>ଓଡ଼ିଆ ଗଳ୍ପ ପଢ଼ିଲେ ଶବ୍ଦ ଜ୍ଞାନ ବଢ଼େ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="poetry.html" class="bottom-link">← ପଦ୍ୟ</a>
+  <a href="word-knowledge-games.html" class="bottom-link primary">🎮 ଶବ୍ଦ ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="index.html" class="bottom-link">ଓଡ଼ିଆ ହୋମ →</a>
+</div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><!-- REVIEW NEEDED --><span class="footer-copy">Class 5 · ଓଡ଼ିଆ · Free forever</span></footer>
+</body>
+</html>

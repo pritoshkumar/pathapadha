@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଏକାଦଶ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #111111;
+  --soft:   #555555;
+  --light:  #888888;
+  --bg:     #ffffff;
+  --off:    #F7F7F5;
+  --border: #EBEBEB;
+  --c11:    #118AB2;
+  --c11bg:  #E8F6FB;
+  --arts-c: #7B5EA7; --arts-bg: #F3EDFF;
+  --sci-c:  #3A86FF; --sci-bg:  #EEF4FF;
+  --com-c:  #43AA8B; --com-bg:  #EDFAF4;
+  --font:   'Nunito', sans-serif;
+  --font-or:'Noto Sans Oriya', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px; border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-emoji { font-size: 1.5rem; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-odia { font-family: var(--font-or); font-size: 1.1rem; font-weight: 700; }
+.logo-url  { font-size: 0.68rem; font-weight: 600; color: var(--light); }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: var(--light); }
+.breadcrumb a { color: var(--light); transition: color .15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb span { color: var(--c11); }
+
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 64px 48px 56px;
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: center; gap: 48px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--c11bg); color: var(--c11);
+  font-size: 0.78rem; font-weight: 800;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.hero h1 { font-family: var(--font-or); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 8px; }
+.hero-eng { font-size: 1.1rem; font-weight: 800; color: var(--light); margin-bottom: 16px; }
+.hero-desc { font-size: 0.95rem; color: var(--soft); max-width: 440px; line-height: 1.8; }
+.hero-art {
+  width: 160px; height: 160px; border-radius: 32px;
+  background: var(--c11bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+hr.divider { border: none; border-top: 1px solid var(--border); }
+
+.section { max-width: 1100px; margin: 0 auto; padding: 56px 48px; }
+.section-label { font-size: 0.7rem; font-weight: 700; color: #bbb; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 28px; }
+
+.stream-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.stream-card {
+  border-radius: 24px; border: 2px solid var(--border);
+  padding: 32px 28px 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  background: #fff; position: relative; overflow: hidden;
+  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.stream-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 5px;
+  background: var(--sc);
+}
+.stream-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: var(--sc);
+}
+
+.stream-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.stream-emoji { font-size: 2.8rem; line-height: 1; }
+.stream-badge {
+  font-size: 0.68rem; font-weight: 800;
+  padding: 4px 12px; border-radius: 50px;
+  background: var(--scbg); color: var(--sc);
+  letter-spacing: 0.5px;
+}
+.stream-name-or { font-family: var(--font-or); font-size: 1.4rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.stream-name-en { font-size: 0.82rem; font-weight: 700; color: var(--light); margin-top: 4px; }
+.stream-desc { font-size: 0.82rem; color: var(--soft); line-height: 1.7; }
+.stream-subjects { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.stream-subj-tag {
+  font-size: 0.68rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 8px;
+  background: var(--scbg); color: var(--sc);
+  letter-spacing: 0.3px;
+}
+.stream-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.stream-go {
+  font-size: 0.82rem; font-weight: 800; color: var(--sc);
+  display: flex; align-items: center; gap: 5px;
+  transition: gap .15s;
+}
+.stream-card:hover .stream-go { gap: 10px; }
+.stream-count { font-size: 0.72rem; font-weight: 700; color: var(--sc); }
+
+footer {
+  border-top: 1px solid var(--border); padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-family: var(--font-or); font-size: 1rem; font-weight: 700; }
+.footer-copy { font-size: 0.78rem; color: var(--light); font-weight: 600; }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .hero { grid-template-columns: 1fr; padding: 40px 20px 32px; gap: 24px; }
+  .hero-art { width: 100px; height: 100px; font-size: 3rem; border-radius: 20px; }
+  .section { padding: 40px 20px; }
+  .stream-grid { grid-template-columns: 1fr; }
+  footer { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a> › <span>Class 11</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-badge">🎓 CHSE Odisha · +2 System</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଏକାଦଶ ଶ୍ରେଣୀ</h1>
+    <p class="hero-eng">Class 11 — Higher Secondary (+2 First Year)</p>
+    <p class="hero-desc">Choose your stream below. Each stream follows the official CHSE Odisha syllabus for Class 11 (+2 First Year).</p>
+  </div>
+  <div class="hero-art">🎓</div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଶାଖା ବାଛନ୍ତୁ — Choose a Stream</div>
+  <div class="stream-grid" id="streamGrid"></div>
+</section>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 11 · CHSE Odisha · Free forever</span>
+</footer>
+
+<script>
+// REVIEW NEEDED
+var streams = [
+  {
+    name: 'କଳା',
+    eng: 'Arts Stream',
+    emoji: '🎨',
+    color: '#7B5EA7',
+    bg: '#F3EDFF',
+    desc: 'Odia Literature, English, History, Political Science, and Economics — following CHSE Odisha Arts syllabus.',
+    subjects: ['ଓଡ଼ିଆ','English','ଇତିହାସ','ରାଜନୀତି ବିଜ୍ଞାନ','ଅର୍ଥନୀତି'],
+    href: 'arts/index.html',
+    count: '5 subjects · 15 topics'
+  },
+  {
+    name: 'ବିଜ୍ଞାନ',
+    eng: 'Science Stream',
+    emoji: '🔬',
+    color: '#3A86FF',
+    bg: '#EEF4FF',
+    desc: 'Physics, Chemistry, Mathematics, Biology, and English — following CHSE Odisha Science syllabus.',
+    subjects: ['ପଦାର୍ଥ ବିଜ୍ଞାନ','ରସାୟନ ବିଜ୍ଞାନ','ଗଣିତ','ଜୀବ ବିଜ୍ଞାନ','English'],
+    href: 'science/index.html',
+    count: '5 subjects · 15 topics'
+  },
+  {
+    name: 'ବାଣିଜ୍ୟ',
+    eng: 'Commerce Stream',
+    emoji: '💼',
+    color: '#43AA8B',
+    bg: '#EDFAF4',
+    desc: 'Accountancy, Business Studies, Economics, and English — following CHSE Odisha Commerce syllabus.',
+    subjects: ['ହିସାବ ରକ୍ଷା','ବ୍ୟବସାୟ ଅଧ୍ୟୟନ','ଅର୍ଥନୀତି','English'],
+    href: 'commerce/index.html',
+    count: '4 subjects · 12 topics'
+  }
+];
+
+var grid = document.getElementById('streamGrid');
+
+streams.forEach(function(s) {
+  var el = document.createElement('a');
+  el.href = s.href;
+  el.className = 'stream-card';
+  el.style.setProperty('--sc', s.color);
+  el.style.setProperty('--scbg', s.bg);
+
+  var subjHTML = s.subjects.map(function(sub) {
+    return '<span class="stream-subj-tag">' + sub + '</span>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="stream-top">' +
+      '<div class="stream-emoji">' + s.emoji + '</div>' +
+      '<div class="stream-badge">Available</div>' +
+    '</div>' +
+    '<div>' +
+      '<div class="stream-name-or">' + s.name + '</div>' +
+      '<div class="stream-name-en">' + s.eng + '</div>' +
+    '</div>' +
+    '<div class="stream-desc">' + s.desc + '</div>' +
+    '<div class="stream-subjects">' + subjHTML + '</div>' +
+    '<div class="stream-footer">' +
+      '<span class="stream-go">Explore stream →</span>' +
+      '<span class="stream-count">' + s.count + '</span>' +
+    '</div>';
+
+  grid.appendChild(el);
+});
+</script>
+</body>
+</html>

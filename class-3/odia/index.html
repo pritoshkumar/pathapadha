@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଓଡ଼ିଆ — ତୃତୀୟ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#FF6B6B;--cbg:#FFF0F0;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.5rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-book{display:inline-flex;align-items:center;gap:8px;background:var(--off);border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-size:0.8rem;font-weight:700;color:var(--soft)}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+.topic-grid{display:flex;flex-direction:column;gap:16px}
+.topic-card{border-radius:20px;border:2px solid var(--border);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#fff;transition:transform 0.18s cubic-bezier(.34,1.56,.64,1),box-shadow 0.18s,border-color 0.18s;position:relative;overflow:hidden}
+.topic-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--tc)}
+.topic-card.live{cursor:pointer}.topic-card.live:hover{transform:translateX(6px);box-shadow:0 8px 28px rgba(0,0,0,0.08);border-color:var(--tc)}
+.topic-left{display:flex;align-items:center;gap:20px;padding-left:12px}
+.topic-emoji{font-size:2.2rem;flex-shrink:0}
+.topic-num{font-size:0.72rem;font-weight:800;color:var(--tc);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.topic-name-or{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--ink);line-height:1.2}
+.topic-name-en{font-size:0.8rem;font-weight:700;color:var(--light);margin-top:3px}
+.topic-desc{font-size:0.82rem;color:var(--soft);margin-top:6px;line-height:1.6;max-width:380px}
+.topic-footer{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.topic-btn-learn{font-size:0.82rem;font-weight:800;color:#fff;background:var(--tc);padding:8px 18px;border-radius:10px;transition:opacity .15s}.topic-btn-learn:hover{opacity:0.85}
+.topic-btn-games{font-size:0.82rem;font-weight:800;color:var(--tc);background:var(--tcbg);border:2px solid var(--tc);padding:6px 16px;border-radius:10px;transition:all .15s}.topic-btn-games:hover{background:var(--tc);color:#fff}
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav{padding:14px 20px}.hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:20px}.hero-art{width:90px;height:90px;font-size:3rem}.section{padding:36px 20px}.topic-card{flex-direction:column;align-items:flex-start}footer{padding:20px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 3</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>ଓଡ଼ିଆ</span>
+  </div>
+</nav>
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">📗 ଝୁଲଣ ଭାଗ ୩ — Jhulana Part 3</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ଓଡ଼ିଆ ଭାଷା</h1>
+    <p class="hero-eng">Odia Language · Class 3</p>
+    <p class="hero-desc">Read longer stories, explore poetry, build vocabulary with synonyms and antonyms, and learn grammar fundamentals like sandhi and samasa.</p>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-book">📚 Textbook: ଝୁଲଣ ଭାଗ ୩ (SCERT Odisha)</div>
+  </div>
+  <div class="hero-art">📗</div>
+</section>
+<hr class="divider">
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ଅଧ୍ୟାୟ ବାଛନ୍ତୁ — Choose a Topic</div>
+  <div class="topic-grid" id="topicGrid"></div>
+</section>
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 3 · Odia · Jhulana Part 3 · Free forever</span>
+</footer>
+<script>
+// REVIEW NEEDED
+var topics = [
+  {num:'01',name:'ଗଳ୍ପ',eng:'Galpa — Stories',desc:'Read longer Odia narratives with comprehension questions and moral lessons.',emoji:'📖',color:'#FF6B6B',bg:'#FFF0F0',href:'stories.html',gamesHref:'stories-games.html',live:true},
+  {num:'02',name:'ବ୍ୟାକରଣ',eng:'Byakarana — Grammar',desc:'Learn sandhi, samasa basics, and sentence structure in Odia.',emoji:'📐',color:'#3A86FF',bg:'#EEF4FF',href:'grammar.html',gamesHref:'grammar-games.html',live:true},
+  {num:'03',name:'ପଦ୍ୟ',eng:'Padya — Poetry',desc:'Read and analyze Odia poems — rhythm, rhyme, and meaning.',emoji:'🎵',color:'#7B5EA7',bg:'#F3EDFF',href:'poetry.html',gamesHref:'poetry-games.html',live:true},
+  {num:'04',name:'ଅନୁଚ୍ଛେଦ',eng:'Anucheda — Paragraphs',desc:'Read passages and answer comprehension questions to build reading skills.',emoji:'📝',color:'#43AA8B',bg:'#EDFAF4',href:'paragraphs.html',gamesHref:'paragraphs-games.html',live:true},
+  {num:'05',name:'ଶବ୍ଦକୋଷ',eng:'Shabdakosha — Vocabulary',desc:'Learn synonyms, antonyms, and expand your Odia word power.',emoji:'📚',color:'#FF9F43',bg:'#FFF5EC',href:'vocabulary.html',gamesHref:'vocabulary-games.html',live:true}
+];
+var grid=document.getElementById('topicGrid');
+topics.forEach(function(t){
+  var el=document.createElement('div');
+  el.className='topic-card live';
+  el.style.setProperty('--tc',t.color);
+  el.style.setProperty('--tcbg',t.bg);
+  el.innerHTML=
+    '<div class="topic-left"><div class="topic-emoji">'+t.emoji+'</div><div><div class="topic-num">Topic '+t.num+'</div><div class="topic-name-or">'+t.name+'</div><div class="topic-name-en">'+t.eng+'</div><div class="topic-desc">'+t.desc+'</div></div></div>'+
+    '<div class="topic-footer"><a href="'+t.href+'" class="topic-btn-learn">Learn →</a><a href="'+t.gamesHref+'" class="topic-btn-games">🎮 Play Games</a></div>';
+  grid.appendChild(el);
+});
+</script>
+</body>
+</html>

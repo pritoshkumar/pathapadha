@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ରଚନା — ଦଶମ ଶ୍ରେଣୀ | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #A8D5C2}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 40px}
+.content-card{background:#fff;border-radius:24px;border:2px solid var(--border);padding:32px;margin-bottom:24px;transition:border-color .18s}.content-card:hover{border-color:var(--c)}
+.content-card-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.content-card-emoji{font-size:2.5rem}.content-card-title{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--c)}.content-card-title-en{font-size:0.85rem;font-weight:600;color:var(--light);margin-top:2px}
+.content-card-desc{font-size:0.92rem;color:var(--soft);margin-bottom:20px;line-height:1.8}
+.example-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.example-table th{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:8px 12px;border-bottom:2px solid var(--border)}
+.example-table td{font-family:var(--font-or);font-size:1.05rem;font-weight:700;padding:10px 12px;border-bottom:1px solid var(--off)}
+.example-table td.eng{font-family:var(--font);font-size:0.85rem;font-weight:600;color:var(--light)}
+.example-table tr:hover td{background:var(--cbg)}
+.key-point{background:var(--cbg);border-left:4px solid var(--c);padding:16px 20px;border-radius:0 12px 12px 0;margin:16px 0;font-size:0.9rem;color:var(--soft);line-height:1.8}.key-point strong{color:var(--c)}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 10</a> › <a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ରଚନା</span></div>
+</nav>
+<div class="page-hero"><div class="hero-emoji">✍️</div><!-- REVIEW NEEDED --><h1>ରଚନା</h1><p class="subtitle">Rachana — Composition for Board Exams</p><span class="textbook-ref">📘 BSE Odisha ଓଡ଼ିଆ ରଚନା</span></div>
+<hr class="divider">
+<div class="intro"><!-- REVIEW NEEDED --><p>ପ୍ରବନ୍ଧ, ଆବେଦନ ପତ୍ର, ପ୍ରତିବେଦନ, ବିଜ୍ଞପ୍ତି ଓ ଅନୁଚ୍ଛେଦ — ବୋର୍ଡ ପରୀକ୍ଷା ପାଇଁ ସମ୍ପୂର୍ଣ୍ଣ ରଚନା।</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Essay, application, report, notice & paragraph — complete composition for board exams.</p></div>
+<div class="content-section" id="contentSection"></div>
+<hr class="divider">
+<div class="bottom-nav"><!-- REVIEW NEEDED --><a href="byakarana.html" class="btn btn-outline">← ବ୍ୟାକରଣ</a><a href="rachana-games.html" class="btn btn-primary">🎮 ରଚନା ଖେଳ</a><a href="padya.html" class="btn btn-forward">ପଦ୍ୟ →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 10 · Odia · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var topics=[
+  {emoji:'📝',title:'ପ୍ରବନ୍ଧ',titleEn:'Prabandha — Essay Writing',desc:'Board exam essay topics with outlines and key points. Learn the correct format and structure.',items:[
+    {odia:'ବିଜ୍ଞାନ ଓ ପ୍ରଯୁକ୍ତି',eng:'Science and Technology'},
+    {odia:'ପରିବେଶ ସୁରକ୍ଷା',eng:'Environmental Protection'},
+    {odia:'ଶିକ୍ଷାର ଗୁରୁତ୍ୱ',eng:'Importance of Education'},
+    {odia:'ସ୍ୱାଧୀନତା ଦିବସ',eng:'Independence Day'},
+    {odia:'ଓଡ଼ିଶାର ସଂସ୍କୃତି',eng:'Culture of Odisha'}
+  ]},
+  {emoji:'✉️',title:'ଆବେଦନ ପତ୍ର',titleEn:'Abedan Patra — Application/Letter',desc:'Formal and informal letter formats for board exams — leave application, complaint, request letters.',items:[
+    {odia:'ଛୁଟି ଆବେଦନ ପତ୍ର',eng:'Leave Application'},
+    {odia:'ପ୍ରଧାନ ଶିକ୍ଷକଙ୍କୁ ପତ୍ର',eng:'Letter to Headmaster'},
+    {odia:'ସମ୍ପାଦକଙ୍କୁ ପତ୍ର',eng:'Letter to Editor'},
+    {odia:'ବନ୍ଧୁକୁ ପତ୍ର',eng:'Letter to Friend'}
+  ]},
+  {emoji:'📊',title:'ପ୍ରତିବେଦନ',titleEn:'Pratibedan — Report Writing',desc:'School event reports, news reports — format and examples for board exams.',items:[
+    {odia:'ବିଦ୍ୟାଳୟ ବାର୍ଷିକୋତ୍ସବ',eng:'School Annual Function Report'},
+    {odia:'କ୍ରୀଡ଼ା ପ୍ରତିଯୋଗିତା',eng:'Sports Competition Report'},
+    {odia:'ସ୍ୱଚ୍ଛତା ଅଭିଯାନ',eng:'Cleanliness Campaign Report'},
+    {odia:'ବୃକ୍ଷ ରୋପଣ',eng:'Tree Planting Report'}
+  ]},
+  {emoji:'📢',title:'ବିଜ୍ଞପ୍ତି',titleEn:'Bijnapti — Notice Writing',desc:'Official notice format for school events, meetings, and announcements.',items:[
+    {odia:'ବିଦ୍ୟାଳୟ ସଭା ବିଜ୍ଞପ୍ତି',eng:'School Meeting Notice'},
+    {odia:'ପରୀକ୍ଷା ବିଜ୍ଞପ୍ତି',eng:'Exam Notice'},
+    {odia:'ସାଂସ୍କୃତିକ କାର୍ଯ୍ୟକ୍ରମ',eng:'Cultural Program Notice'},
+    {odia:'ବକ୍ତୃତା ପ୍ରତିଯୋଗିତା',eng:'Speech Competition Notice'}
+  ]},
+  {emoji:'📄',title:'ଅନୁଚ୍ଛେଦ ଲେଖନ',titleEn:'Anuchchheda — Paragraph Writing',desc:'Short paragraph writing on important topics — concise and structured answers.',items:[
+    {odia:'ମୋ ଜୀବନର ଲକ୍ଷ୍ୟ',eng:'My Aim in Life'},
+    {odia:'ଏକ ସ୍ମରଣୀୟ ଦିନ',eng:'A Memorable Day'},
+    {odia:'ପୁସ୍ତକ ପଢ଼ିବାର ଲାଭ',eng:'Benefits of Reading Books'},
+    {odia:'ସମୟର ମୂଲ୍ୟ',eng:'Value of Time'}
+  ]}
+];
+var section=document.getElementById('contentSection');
+topics.forEach(function(ch){var rows=ch.items.map(function(i){return '<tr><td>'+i.odia+'</td><td class="eng">'+i.eng+'</td></tr>'}).join('');section.innerHTML+='<div class="content-card"><div class="content-card-header"><div class="content-card-emoji">'+ch.emoji+'</div><div><div class="content-card-title">'+ch.title+'</div><div class="content-card-title-en">'+ch.titleEn+'</div></div></div><div class="content-card-desc">'+ch.desc+'</div><table class="example-table"><thead><tr><th>ବିଷୟ</th><th>English</th></tr></thead><tbody>'+rows+'</tbody></table></div>'});
+</script>
+</body>
+</html>

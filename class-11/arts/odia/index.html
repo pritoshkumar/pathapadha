@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଓଡ଼ିଆ ସାହିତ୍ୟ — କଳା ଶାଖା — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #D8CCF0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.topic-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.topic-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(123,94,167,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topic-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.topic-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.topic-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.topic-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.topic-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px}
+.topic-key{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block}
+.topic-points{margin-top:14px}
+.topic-points h4{font-size:0.8rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.topic-points ul{font-family:var(--font-or);font-size:0.9rem;color:var(--soft);padding-left:20px;line-height:2}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../../index.html">Home</a> › <a href="../../index.html">Class 11</a> › <a href="../index.html">କଳା</a> › <!-- REVIEW NEEDED --><span>ଓଡ଼ିଆ ସାହିତ୍ୟ</span></div>
+</nav>
+<div class="page-hero"><div class="hero-emoji">📗</div><!-- REVIEW NEEDED --><h1>ଓଡ଼ିଆ ସାହିତ୍ୟ</h1><p class="subtitle">Odia Literature — Arts Stream</p><span class="textbook-ref">📘 CHSE Odisha +2 First Year Odia</span></div>
+<hr class="divider">
+<div class="intro"><!-- REVIEW NEEDED --><p>ଏକାଦଶ ଶ୍ରେଣୀ ଓଡ଼ିଆ ସାହିତ୍ୟ ପଢ଼ — ଗଦ୍ୟ, ପଦ୍ୟ ଏବଂ ବ୍ୟାକରଣ। ପ୍ରତ୍ୟେକ ବିଷୟ ପରେ ଖେଳ ଖେଳ!</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Study Class 11 Odia Literature — Prose, Poetry, and Grammar with interactive games!</p></div>
+<div class="content-section" id="topicsContainer"></div>
+<hr class="divider">
+<div class="bottom-nav"><!-- REVIEW NEEDED --><a href="../index.html" class="btn btn-outline">← କଳା ଶାଖା</a><a href="odia-games.html" class="btn btn-primary">🎮 ଓଡ଼ିଆ ଖେଳ</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 11 · Arts · Odia Literature · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var topics=[
+  {title:'ଗଦ୍ୟ',titleEn:'Prose',emoji:'📄',
+   body:'ଗଦ୍ୟ ହେଉଛି ସାହିତ୍ୟର ଏକ ପ୍ରମୁଖ ଅଂଶ। ଏହା ସାଧାରଣ ଭାଷାରେ ଲେଖାଯାଏ ଏବଂ ଏଥିରେ ଛନ୍ଦ କିମ୍ବା ଅଳଙ୍କାରର ବାଧ୍ୟତା ନଥାଏ। ଗଳ୍ପ, ଉପନ୍ୟାସ, ପ୍ରବନ୍ଧ, ନାଟକ ଇତ୍ୟାଦି ଗଦ୍ୟ ସାହିତ୍ୟର ବିଭିନ୍ନ ରୂପ। ଏକାଦଶ ଶ୍ରେଣୀରେ ଫକୀରମୋହନ ସେନାପତି, ଗୋପାଳ ଚନ୍ଦ୍ର ପ୍ରହରାଜ ଓ ଅନ୍ୟାନ୍ୟ ପ୍ରସିଦ୍ଧ ଲେଖକଙ୍କ ରଚନା ପଢ଼ାଯାଏ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: ଗଳ୍ପ, ପ୍ରବନ୍ଧ ଓ ଅନୁଚ୍ଛେଦ',
+   points:['ଗଳ୍ପର ମୂଳ ଭାବ ବୁଝିବା','ଲେଖକଙ୍କ ଜୀବନୀ ଜାଣିବା','ପ୍ରଶ୍ନ ଉତ୍ତର ଅଭ୍ୟାସ','ଶବ୍ଦାର୍ଥ ଓ ବାକ୍ୟ ରଚନା']},
+  {title:'ପଦ୍ୟ',titleEn:'Poetry',emoji:'📜',
+   body:'ପଦ୍ୟ ହେଉଛି ଛନ୍ଦୋବଦ୍ଧ ରଚନା। ଓଡ଼ିଆ ପଦ୍ୟ ସାହିତ୍ୟ ବହୁ ସମୃଦ୍ଧ। ଏକାଦଶ ଶ୍ରେଣୀରେ ରାଧାନାଥ ରାୟ, ମଧୁସୂଦନ ରାଓ, ଗଙ୍ଗାଧର ମେହେର ଓ ଅନ୍ୟାନ୍ୟ ମହାନ କବିଙ୍କ ରଚନା ପଢ଼ାଯାଏ। କବିତାର ଛନ୍ଦ, ଅଳଙ୍କାର, ରସ ଓ ଭାବ ବୁଝିବା ଜରୁରୀ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: କବିତା, ଛନ୍ଦ ଓ ରସ',
+   points:['କବିତାର ଭାବ ବୁଝିବା','ଛନ୍ଦ ଚିହ୍ନଟ କରିବା','ଅଳଙ୍କାର ଚିହ୍ନଟ','କବିଙ୍କ ବିଷୟରେ ଜାଣିବା']},
+  {title:'ବ୍ୟାକରଣ',titleEn:'Grammar',emoji:'📝',
+   body:'ଓଡ଼ିଆ ବ୍ୟାକରଣ ଏକ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ବିଷୟ। ଏଥିରେ ସନ୍ଧି, ସମାସ, ପ୍ରତ୍ୟୟ, ଉପସର୍ଗ, ବିଭକ୍ତି, କାରକ, ବାଚ୍ୟ ପରିବର୍ତ୍ତନ, ବାକ୍ୟ ପରିବର୍ତ୍ତନ ଇତ୍ୟାଦି ଶିଖାଯାଏ। ଶୁଦ୍ଧ ଓଡ଼ିଆ ଲେଖିବା ପାଇଁ ବ୍ୟାକରଣ ଜ୍ଞାନ ଅତ୍ୟନ୍ତ ଆବଶ୍ୟକ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: ସନ୍ଧି, ସମାସ ଓ ପ୍ରତ୍ୟୟ',
+   points:['ସନ୍ଧି ବିଚ୍ଛେଦ ଓ ସନ୍ଧି ସ୍ଥାପନ','ସମାସ ଚିହ୍ନଟ ଓ ବିଗ୍ରହ','ଶୁଦ୍ଧ ବନାନ ଅଭ୍ୟାସ','ବାକ୍ୟ ରଚନା ଓ ପରିବର୍ତ୍ତନ']}
+];
+var container=document.getElementById('topicsContainer');
+topics.forEach(function(s,i){
+  var pHTML='';s.points.forEach(function(p){pHTML+='<li>'+p+'</li>'});
+  var card=document.createElement('div');card.className='topic-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="topic-header"><span style="font-size:2.5rem">'+s.emoji+'</span><div><div class="topic-num">Topic '+(i+1)+'</div><div class="topic-title">'+s.title+'</div><div class="topic-title-en">'+s.titleEn+'</div></div></div><div class="topic-body">'+s.body+'</div><div class="topic-key">'+s.key+'</div><div class="topic-points"><h4>ଶିଖିବାର ଲକ୍ଷ୍ୟ — Learning Objectives</h4><ul>'+pHTML+'</ul></div>';
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

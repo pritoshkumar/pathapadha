@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ପଦ୍ୟ — Poetry | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#7B5EA7;--cbg:#F3EDFF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #D4C5F0}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.poem-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.poem-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(123,94,167,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.poem-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.poem-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.poem-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.poem-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.poem-body{font-family:var(--font-or);font-size:1.1rem;line-height:2.2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center;white-space:pre-line}
+.poem-meaning{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block;font-family:var(--font-or)}
+.poem-questions{margin-top:14px}
+.poem-questions h4{font-size:0.8rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.poem-questions ol{font-family:var(--font-or);font-size:0.9rem;color:var(--soft);padding-left:20px;line-height:2}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 9</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <span>ପଦ୍ୟ</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">🎭</div><h1>ପଦ୍ୟ</h1><p class="subtitle">Padya — Poetry</p><span class="textbook-ref">📘 ସାହିତ୍ୟ ମଞ୍ଜରୀ (BSE Odisha)</span></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="intro"><p>ନବମ ଶ୍ରେଣୀ ପଦ୍ୟ — ଛନ୍ଦ, ଅଲଙ୍କାର ଓ ରସ ବୁଝି ପଦ୍ୟ ଆସ୍ୱାଦନ କର।</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Study classical and modern Odia poetry — metre, rhyme, figures of speech, and interpretation.</p></div>
+<div class="content-section" id="poemsContainer"></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="bottom-nav"><a href="rachana.html" class="btn btn-outline">← ରଚନା</a><a href="padya-games.html" class="btn btn-primary">🎮 ପଦ୍ୟ ଖେଳ</a><a href="anubada.html" class="btn btn-forward">ଅନୁବାଦ →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 9 · Odia · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var poems=[
+  {title:'ଉତ୍କଳ ସନ୍ତାନ',titleEn:'Utkala Santana (by Laxmikanta Mohapatra)',emoji:'🏛️',
+   body:'ଉତ୍କଳ ମାତା ତୁ ଧନ୍ୟ ଧନ୍ୟ\nତୁ ସନ୍ତାନ ମାନଙ୍କ ଜୀବନ ଧନ୍ୟ\nତୁ ନାମେ ଜାଗେ ହୃଦୟ ମମ\nତୁ ସ୍ମରଣେ ଆଖି ସଜଳ',
+   meaning:'ଉତ୍କଳ ମାତୃଭୂମି ପ୍ରତି ସ୍ନେହ ଓ ଗର୍ବ ବ୍ୟକ୍ତ ହୋଇଛି',
+   questions:['କବିଙ୍କ ଉତ୍କଳ ପ୍ରତି ଭାବନା କଣ?','ଏହି ପଦ୍ୟର ଅଳଙ୍କାର ଚିହ୍ନଟ କର।','ଉତ୍କଳ ସନ୍ତାନ ପଦ୍ୟର ମୂଳ ବାର୍ତ୍ତା କଣ?']},
+  {title:'ବନ୍ଦେ ଉତ୍କଳ ଜନନୀ',titleEn:'Bande Utkala Janani (by Kantakabi Laxmikanta)',emoji:'🇮🇳',
+   body:'ବନ୍ଦେ ଉତ୍କଳ ଜନନୀ\nଚଳ ବଳ ତେଜ ପୂର୍ଣ୍ଣ ଜନନୀ\nସୁଫଳା ସୁଶୀଳା\nଦୟାମୟୀ ମମ ଜନନୀ',
+   meaning:'ଓଡ଼ିଶା ମାତୃଭୂମିର ବନ୍ଦନା ଗାନ — ରାଜ୍ୟ ସଂଗୀତ',
+   questions:['ବନ୍ଦେ ଉତ୍କଳ ଜନନୀ ଓଡ଼ିଶାର କଣ?','କବି ଜନନୀକୁ କିପରି ବର୍ଣ୍ଣନା କରିଛନ୍ତି?','ଏହି କବିତାର ଛନ୍ଦ ବିଶ୍ଳେଷଣ କର।']},
+  {title:'ଜୀବନ ସଂଗୀତ',titleEn:'Jibana Sangita (Life\'s Music)',emoji:'🎵',
+   body:'ଜୀବନ ଏକ ସଂଗୀତ\nସୁର ଓ ତାଳ ମିଶି ଯାଏ\nସୁଖ ଦୁଃଖର ମିଶ୍ରଣ ଏ\nଜୀବନ ସଂଗୀତ ଗାଏ',
+   meaning:'ଜୀବନ ସୁଖ ଓ ଦୁଃଖର ମିଶ୍ରଣ — ସଂଗୀତ ଭଳି ସୁନ୍ଦର',
+   questions:['କବି ଜୀବନକୁ କାହାସହ ତୁଳନା କରିଛନ୍ତି?','ଏଠାରେ କେଉଁ ଅଳଙ୍କାର ବ୍ୟବହାର ହୋଇଛି?','ଜୀବନ ସଂଗୀତର ମୂଳ ଭାବ କଣ?']}
+];
+var container=document.getElementById('poemsContainer');
+poems.forEach(function(p,i){
+  var qHTML='';p.questions.forEach(function(q){qHTML+='<li>'+q+'</li>'});
+  var card=document.createElement('div');card.className='poem-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="poem-header"><span style="font-size:2.5rem">'+p.emoji+'</span><div><div class="poem-num">Poem '+(i+1)+'</div><div class="poem-title">'+p.title+'</div><div class="poem-title-en">'+p.titleEn+'</div></div></div><div class="poem-body">'+p.body+'</div><div class="poem-meaning">💡 '+p.meaning+'</div><div class="poem-questions"><h4>ପ୍ରଶ୍ନ — Questions</h4><ol>'+qHTML+'</ol></div>';
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

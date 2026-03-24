@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ସାହିତ୍ୟ ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#D62828;--cbg:#FFF0F0;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}.page-hero p{font-size:0.95rem;color:var(--soft)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}.game-icon{font-size:2rem}.game-title{font-size:1.3rem;font-weight:900;color:var(--ink)}.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}.game-stars-possible{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.6}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1rem;font-weight:700;transition:all .15s;text-align:center}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}.quiz-feedback.show{display:block}.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}.quiz-feedback.bad{background:var(--redbg);color:var(--red)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.quiz-next:hover{opacity:0.8}.quiz-next.show{display:inline-block}
+
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}.match-col{display:flex;flex-direction:column;gap:10px}.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}.match-item.selected{border-color:var(--blue);background:var(--bluebg)}.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+
+.sort-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.sort-item{padding:12px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1rem;font-weight:700;transition:all .15s;user-select:none}
+.sort-item:hover{border-color:var(--c);background:var(--cbg)}.sort-item.placed{opacity:0.3;pointer-events:none}
+.sort-bins{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.sort-bin{min-height:80px;border:2px dashed var(--border);border-radius:14px;padding:12px;cursor:pointer;transition:border-color .15s,background .15s}
+.sort-bin:hover{border-color:var(--c);background:var(--cbg)}
+.sort-bin-label{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.sort-bin-items{display:flex;flex-wrap:wrap;gap:6px}
+.sort-bin-item{font-family:var(--font-or);font-size:0.9rem;font-weight:700;padding:6px 12px;border-radius:8px}
+.sort-bin-item.ok{background:var(--greenbg);color:var(--green)}.sort-bin-item.bad{background:var(--redbg);color:var(--red)}
+
+.fill-blank{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.fill-sentence{font-family:var(--font-or);font-size:1.15rem;font-weight:700;line-height:2;margin-bottom:16px}
+.fill-input{font-family:var(--font-or);font-size:1rem;font-weight:700;border:2px solid var(--border);border-radius:10px;padding:8px 16px;width:180px;outline:none;transition:border-color .15s}
+.fill-input:focus{border-color:var(--c)}
+.fill-input.correct{border-color:var(--green);background:var(--greenbg)}.fill-input.wrong{border-color:var(--red);background:var(--redbg)}
+.fill-check{background:var(--c);color:#fff;padding:8px 20px;border-radius:10px;font-size:0.88rem;font-weight:800;margin-left:8px;transition:opacity .15s}.fill-check:hover{opacity:0.85}
+
+.tf-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tf-statement{font-family:var(--font-or);font-size:1.05rem;font-weight:700;flex:1;line-height:1.6}
+.tf-btns{display:flex;gap:8px}
+.tf-btn{padding:8px 20px;border-radius:10px;border:2px solid var(--border);background:#fff;font-size:0.88rem;font-weight:800;transition:all .15s;cursor:pointer}
+.tf-btn:hover{border-color:var(--c);background:var(--cbg)}
+.tf-btn.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.tf-btn.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.tf-btn:disabled{cursor:default}
+
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}.results-retry:hover{opacity:0.85}
+
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}.match-grid,.quiz-options,.sort-bins{grid-template-columns:1fr}.tf-card{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.breadcrumb{display:none}.quiz-options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 10</a> › <a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ସାହିତ୍ୟ ଖେଳ</span></div>
+</nav>
+
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span style="font-size:1.4rem">⭐</span><span class="star-label">Stars earned</span></div>
+  <div class="progress-wrap"><div class="progress-label">Overall progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 8 games done</div>
+</div>
+
+<div class="page-hero"><!-- REVIEW NEEDED --><h1>ସାହିତ୍ୟ ଖେଳ 🎮</h1><p>8 board-level games to master prose chapters — earn ⭐ for every correct answer!</p></div>
+<hr class="divider">
+
+<!-- GAME 1: MCQ QUIZ - Chapter Comprehension -->
+<section class="game-section" id="game1">
+  <div class="game-header"><div class="game-icon">❓</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 1 — ଗଳ୍ପ ବୋଧ</div><div class="game-subtitle">Prose comprehension — answer questions about the chapters.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="quiz1Container"></div>
+  <button class="quiz-next" id="quiz1Next" onclick="nextQ(1)">Next Question →</button>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 2: MATCH - Characters to Stories -->
+<section class="game-section" id="game2">
+  <div class="game-header"><div class="game-icon">🔗</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 2 — ଚରିତ୍ର ମିଳାଅ</div><div class="game-subtitle">Match each character to their story.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div class="match-grid"><div class="match-col"><!-- REVIEW NEEDED --><div class="match-col-label">ଚରିତ୍ର</div><div id="matchA2"></div></div><div class="match-col"><div class="match-col-label">ଗଳ୍ପ</div><div id="matchB2"></div></div></div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus2"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 3: FILL IN THE BLANK -->
+<section class="game-section" id="game3">
+  <div class="game-header"><div class="game-icon">✏️</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 3 — ଶୂନ୍ୟସ୍ଥାନ ପୂରଣ</div><div class="game-subtitle">Fill in the missing word from the chapter.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div id="fillContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 4: TRUE OR FALSE -->
+<section class="game-section" id="game4">
+  <div class="game-header"><div class="game-icon">✅</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 4 — ଠିକ୍ ବା ଭୁଲ</div><div class="game-subtitle">Decide if each statement is true or false.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="tfContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 5: SORT INTO CATEGORIES -->
+<section class="game-section" id="game5">
+  <div class="game-header"><div class="game-icon">🗂️</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 5 — ଶ୍ରେଣୀ ବିଭାଗ</div><div class="game-subtitle">Sort words into the correct chapter category.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div class="sort-container" id="sortWords5"></div>
+  <!-- REVIEW NEEDED -->
+  <div class="sort-bins" id="sortBins5">
+    <div class="sort-bin" data-cat="prose" onclick="pickBin5('prose')"><div class="sort-bin-label">📖 ଗଦ୍ୟ (Prose)</div><div class="sort-bin-items" id="bin5A"></div></div>
+    <div class="sort-bin" data-cat="poetry" onclick="pickBin5('poetry')"><div class="sort-bin-label">🎭 ପଦ୍ୟ (Poetry)</div><div class="sort-bin-items" id="bin5B"></div></div>
+  </div>
+  <div style="font-size:0.85rem;font-weight:700;color:var(--light)" id="sortStatus5"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 6: WORD MEANING MATCH -->
+<section class="game-section" id="game6">
+  <div class="game-header"><div class="game-icon">📚</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 6 — ଶବ୍ଦାର୍ଥ ମିଳାଅ</div><div class="game-subtitle">Match difficult words from chapters to their meanings.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div class="match-grid"><div class="match-col"><!-- REVIEW NEEDED --><div class="match-col-label">ଶବ୍ଦ</div><div id="matchA6"></div></div><div class="match-col"><div class="match-col-label">ଅର୍ଥ</div><div id="matchB6"></div></div></div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus6"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 7: SEQUENCE EVENTS -->
+<section class="game-section" id="game7">
+  <div class="game-header"><div class="game-icon">🔢</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 7 — ଘଟଣାକ୍ରମ ସଜାଅ</div><div class="game-subtitle">Arrange story events in the correct order.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div id="seqContainer"></div>
+  <div style="font-size:0.85rem;font-weight:700;color:var(--light);margin-top:12px" id="seqStatus"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 8: BOARD EXAM MCQ -->
+<section class="game-section" id="game8">
+  <div class="game-header"><div class="game-icon">🎯</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 8 — ବୋର୍ଡ ପରୀକ୍ଷା ପ୍ରସ୍ତୁତି</div><div class="game-subtitle">Board exam pattern questions — test yourself!</div></div><div class="game-stars-possible">Up to 10 ⭐</div></div>
+  <div id="quiz8Container"></div>
+  <button class="quiz-next" id="quiz8Next" onclick="nextQ(8)">Next Question →</button>
+</section>
+
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div><!-- REVIEW NEEDED --><div class="results-title" id="resultsTitle">ବହୁତ ଭଲ!</div><div class="results-score" id="resultsScore"></div><div class="results-stars" id="resultsStars"></div><button class="results-retry" onclick="location.reload()"><!-- REVIEW NEEDED -->ପୁଣି ଖେଳ 🔄</button>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 10 · ଓଡ଼ିଆ · ସାହିତ୍ୟ · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED — All Odia content below needs native speaker verification
+var totalStars=0,gamesCompleted=0,totalGames=8,maxStars=57;
+
+function addStars(n,el){totalStars+=n;document.getElementById('starCount').textContent=totalStars;for(var i=0;i<n;i++){(function(idx){setTimeout(function(){var pop=document.createElement('div');pop.className='star-pop';pop.textContent='⭐';if(el){var r=el.getBoundingClientRect();pop.style.left=(r.left+r.width/2)+'px';pop.style.top=r.top+'px'}else{pop.style.left=(window.innerWidth/2)+'px';pop.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(pop);setTimeout(function(){pop.remove()},1000)},idx*150)})(i)}}
+function completeGame(){gamesCompleted++;updateProgress();if(gamesCompleted>=totalGames)showResults()}
+function updateProgress(){var pct=(gamesCompleted/totalGames)*100;document.getElementById('progressFill').style.width=pct+'%';document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done'}
+function showResults(){var banner=document.getElementById('resultsBanner');var pct=Math.round((totalStars/maxStars)*100);document.getElementById('resultsScore').textContent='You earned '+totalStars+' out of '+maxStars+' stars ('+pct+'%)';var s='';for(var i=0;i<Math.min(totalStars,10);i++)s+='⭐';if(totalStars>10)s+=' +'+(totalStars-10);document.getElementById('resultsStars').textContent=s;if(pct===100){document.getElementById('resultsEmoji').textContent='🏆';document.getElementById('resultsTitle').textContent='Perfect! ସମ୍ପୂର୍ଣ୍ଣ!'}else if(pct>=70){document.getElementById('resultsEmoji').textContent='🎉';document.getElementById('resultsTitle').textContent='ବହୁତ ଭଲ!'}else{document.getElementById('resultsEmoji').textContent='💪';document.getElementById('resultsTitle').textContent='ଆଉ ଥରେ ଚେଷ୍ଟା କର!'}banner.classList.add('show');if(pct>=70)launchConfetti()}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+// GAME 1 — MCQ Comprehension
+var q1Data=[
+  {q:'ବାଜି ରାଉତ କେଉଁ ରାଜ୍ୟର?',opts:['ଓଡ଼ିଶା','ବିହାର','ବଙ୍ଗ','ଝାଡ଼ଖଣ୍ଡ'],ans:0},
+  {q:'ଲକ୍ଷ୍ମୀପୁରାଣ କେଉଁ ବିଷୟ ଉପରେ?',opts:['ଯୁଦ୍ଧ','ଭକ୍ତି ଓ ସମାନତା','ବିଜ୍ଞାନ','ଭୂଗୋଳ'],ans:1},
+  {q:'ଜୀବନ ସଂଗ୍ରାମ ଗଳ୍ପର ମୂଳ ବିଷୟ କ\'ଣ?',opts:['ସଂଗ୍ରାମ ଓ ଅଧ୍ୟବସାୟ','ପ୍ରେମ','ହାସ୍ୟ','ଭ୍ରମଣ'],ans:0},
+  {q:'ବାଜି ରାଉତ ଭାରତର ସର୍ବ କନିଷ୍ଠ ___ ଥିଲେ।',opts:['ବୈଜ୍ଞାନିକ','ସ୍ୱାଧୀନତା ସଂଗ୍ରାମୀ','ଶିକ୍ଷକ','ଡାକ୍ତର'],ans:1},
+  {q:'ନୀତିଶିକ୍ଷା ଗଳ୍ପରୁ ଆମେ କ\'ଣ ଶିଖୁ?',opts:['ଗଣିତ','ନୈତିକ ମୂଲ୍ୟବୋଧ','ବିଜ୍ଞାନ','ଇତିହାସ'],ans:1},
+  {q:'ସ୍ୱାଧୀନତା ସଂଗ୍ରାମ ଗଳ୍ପ କେଉଁ ଆନ୍ଦୋଳନ ବିଷୟରେ?',opts:['ଭାରତ ଛାଡ଼','ଅସହଯୋଗ','ସ୍ୱାଧୀନତା ଆନ୍ଦୋଳନ','ଲୁଣ ସତ୍ୟାଗ୍ରହ'],ans:2},
+  {q:'ସାହିତ୍ୟ ପାଠରେ ସାରାଂଶ ଲେଖିବା ଦରକାର କାହିଁକି?',opts:['ବୋର୍ଡ ପରୀକ୍ଷାରେ ଆସେ','ମଜାଦାର','ସହଜ','କଠିନ'],ans:0},
+  {q:'ପ୍ରସଙ୍ଗ ସହ ବ୍ୟାଖ୍ୟା ମାନେ କ\'ଣ?',opts:['ଗଳ୍ପ ଲେଖିବା','ଉଦ୍ଧୃତିର ସନ୍ଦର୍ଭ ବ୍ୟାଖ୍ୟା','ଅନୁବାଦ','ଶବ୍ଦାର୍ଥ'],ans:1}
+];
+var q1Idx=0;
+function renderQ1(){if(q1Idx>=q1Data.length){document.getElementById('quiz1Next').style.display='none';completeGame();return}var d=q1Data[q1Idx];var h='<div class="quiz-card"><div class="quiz-q-num">Question '+(q1Idx+1)+' of '+q1Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Pick the correct answer</div><div class="quiz-options" id="q1Opts">';d.opts.forEach(function(o,i){h+='<button class="quiz-opt" onclick="pickQ(1,this,'+i+')" data-idx="'+i+'">'+o+'</button>'});h+='</div><div class="quiz-feedback" id="q1Fb"></div></div>';document.getElementById('quiz1Container').innerHTML=h;document.getElementById('quiz1Next').classList.remove('show')}
+function nextQ(g){if(g===1){q1Idx++;renderQ1()}else if(g===8){q8Idx++;renderQ8()}}
+function pickQ(g,el,idx){var data=g===1?q1Data:q8Data;var i=g===1?q1Idx:q8Idx;var d=data[i];var all=document.querySelectorAll('#q'+g+'Opts .quiz-opt');all.forEach(function(o){o.disabled=true});var fb=document.getElementById('q'+g+'Fb');if(idx===d.ans){el.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.classList.add('wrong');all.forEach(function(o){if(parseInt(o.dataset.idx)===d.ans)o.classList.add('correct')});fb.className='quiz-feedback show bad';fb.textContent='❌ Correct: '+d.opts[d.ans]}document.getElementById('quiz'+g+'Next').classList.add('show')}
+renderQ1();
+
+// GAME 2 — Match Characters to Stories
+(function(){var data=[
+  {a:'ବାଜି ରାଉତ',b:'ସ୍ୱାଧୀନତା ସଂଗ୍ରାମ'},{a:'ଲକ୍ଷ୍ମୀ',b:'ଲକ୍ଷ୍ମୀପୁରାଣ'},
+  {a:'ସଂଗ୍ରାମୀ ନାୟକ',b:'ଜୀବନ ସଂଗ୍ରାମ'},{a:'ଗୁରୁ',b:'ନୀତିଶିକ୍ଷା'},
+  {a:'ମହାତ୍ମା ଗାନ୍ଧୀ',b:'ଭାରତ ଛାଡ଼ ଆନ୍ଦୋଳନ'},{a:'ନେତାଜୀ',b:'ଆଜାଦ ହିନ୍ଦ ଫୌଜ'}
+];
+var sA=data.slice(),sB=data.slice();shuffle(sA);shuffle(sB);
+var colA=document.getElementById('matchA2'),colB=document.getElementById('matchB2');
+var sel=null,matched=0,done=false;
+sA.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1.1rem;font-weight:700">'+d.a+'</span>';el.dataset.key=d.a;el.dataset.side='a';el.onclick=function(){ck(el)};colA.appendChild(el)});
+sB.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1rem">'+d.b+'</span>';el.dataset.key=d.a;el.dataset.side='b';el.onclick=function(){ck(el)};colB.appendChild(el)});
+function ck(el){if(done||el.classList.contains('correct'))return;if(!sel){sel=el;el.classList.add('selected');return}if(sel===el){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===el.dataset.side){sel.classList.remove('selected');sel=el;el.classList.add('selected');return}if(sel.dataset.key===el.dataset.key){sel.classList.remove('selected');sel.classList.add('correct');el.classList.add('correct');matched++;addStars(1,el);document.getElementById('matchStatus2').textContent=matched+'/'+data.length+' matched';if(matched===data.length){done=true;completeGame()}}else{sel.classList.remove('selected');sel.classList.add('wrong');el.classList.add('wrong');setTimeout(function(){sel.classList.remove('wrong');el.classList.remove('wrong');sel=null},500);return}sel=null}})();
+
+// GAME 3 — Fill in the Blank
+(function(){var data=[
+  {sentence:'ବାଜି ରାଉତ ଭାରତର ସର୍ବ କନିଷ୍ଠ ___ ଥିଲେ।',answer:'ସ୍ୱାଧୀନତା ସଂଗ୍ରାମୀ',hint:'freedom fighter'},
+  {sentence:'ଲକ୍ଷ୍ମୀପୁରାଣ ___ ଓ ସମାନତା ବିଷୟରେ।',answer:'ଭକ୍ତି',hint:'devotion'},
+  {sentence:'ଜୀବନ ସଂଗ୍ରାମ ଗଳ୍ପ ___ ଓ ଅଧ୍ୟବସାୟ ଶିଖାଏ।',answer:'ସଂଘର୍ଷ',hint:'struggle'},
+  {sentence:'ବୋର୍ଡ ପରୀକ୍ଷାରେ ପ୍ରସଙ୍ଗ ସହ ___ ଲେଖିବାକୁ ହୁଏ।',answer:'ବ୍ୟାଖ୍ୟା',hint:'explanation'},
+  {sentence:'ସାରାଂଶ ଲେଖିବା ସମୟରେ ମୂଳ ___ ରଖିବା ଦରକାର।',answer:'ଭାବ',hint:'idea/theme'},
+  {sentence:'ଗଳ୍ପର ମୁଖ୍ୟ ___ ଚିହ୍ନଟ କରିବା ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ।',answer:'ଚରିତ୍ର',hint:'character'}
+];
+var container=document.getElementById('fillContainer');var done=0;
+data.forEach(function(d,idx){
+  var div=document.createElement('div');div.className='fill-blank';div.id='fill'+idx;
+  div.innerHTML='<div class="quiz-q-num">Question '+(idx+1)+' of '+data.length+'</div><div class="fill-sentence">'+d.sentence.replace('___','<input class="fill-input" id="fillIn'+idx+'" placeholder="'+d.hint+'">')+'</div><button class="fill-check" onclick="checkFill('+idx+')">Check ✓</button><div class="quiz-feedback" id="fillFb'+idx+'"></div>';
+  container.appendChild(div);
+});
+window.checkFill=function(idx){var inp=document.getElementById('fillIn'+idx);var fb=document.getElementById('fillFb'+idx);var val=inp.value.trim();if(!val)return;if(val===data[idx].answer){inp.classList.add('correct');inp.disabled=true;fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,inp);done++;if(done>=data.length)completeGame()}else{inp.classList.add('wrong');fb.className='quiz-feedback show bad';fb.textContent='❌ Correct: '+data[idx].answer;inp.disabled=true;done++;if(done>=data.length)completeGame()}}})();
+
+// GAME 4 — True or False
+(function(){var data=[
+  {s:'ବାଜି ରାଉତ ଓଡ଼ିଶାର ଥିଲେ।',ans:true},
+  {s:'ଲକ୍ଷ୍ମୀପୁରାଣ ଏକ ବିଜ୍ଞାନ ପୁସ୍ତକ।',ans:false},
+  {s:'ସାରାଂଶ ଲେଖିବା ବୋର୍ଡ ପରୀକ୍ଷାରେ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ।',ans:true},
+  {s:'ପ୍ରସଙ୍ଗ ସହ ବ୍ୟାଖ୍ୟାରେ ଉଦ୍ଧୃତି ଆବଶ୍ୟକ ନୁହେଁ।',ans:false},
+  {s:'ଜୀବନ ସଂଗ୍ରାମ ଗଳ୍ପ ଅଧ୍ୟବସାୟ ଶିଖାଏ।',ans:true},
+  {s:'ବୋର୍ଡ ପରୀକ୍ଷାରେ ଚରିତ୍ର ବିଶ୍ଳେଷଣ ଆସେ ନାହିଁ।',ans:false},
+  {s:'ନୀତିଶିକ୍ଷା ଗଳ୍ପ ନୈତିକ ମୂଲ୍ୟବୋଧ ଶିଖାଏ।',ans:true},
+  {s:'ସ୍ୱାଧୀନତା ସଂଗ୍ରାମ ଗଳ୍ପ ବ୍ରିଟିଶ ଶାସନ ବିରୁଦ୍ଧରେ।',ans:true}
+];
+var container=document.getElementById('tfContainer');var done=0;
+data.forEach(function(d,idx){
+  var div=document.createElement('div');div.className='tf-card';div.id='tf'+idx;
+  div.innerHTML='<div class="tf-statement">'+d.s+'</div><div class="tf-btns"><button class="tf-btn" onclick="pickTF('+idx+',true)">ଠିକ୍ ✅</button><button class="tf-btn" onclick="pickTF('+idx+',false)">ଭୁଲ ❌</button></div>';
+  container.appendChild(div);
+});
+window.pickTF=function(idx,val){var btns=document.querySelectorAll('#tf'+idx+' .tf-btn');btns.forEach(function(b){b.disabled=true});if(val===data[idx].ans){btns.forEach(function(b){if((val&&b.textContent.includes('ଠିକ୍'))||(!val&&b.textContent.includes('ଭୁଲ')))b.classList.add('correct')});addStars(1,btns[0])}else{btns.forEach(function(b){if((val&&b.textContent.includes('ଠିକ୍'))||(!val&&b.textContent.includes('ଭୁଲ')))b.classList.add('wrong');if((data[idx].ans&&b.textContent.includes('ଠିକ୍'))||(!data[idx].ans&&b.textContent.includes('ଭୁଲ')))b.classList.add('correct')})}done++;if(done>=data.length)completeGame()}})();
+
+// GAME 5 — Sort into Categories
+(function(){var data=[
+  {word:'ବାଜି ରାଉତ',cat:'prose'},{word:'ଲକ୍ଷ୍ମୀପୁରାଣ',cat:'prose'},
+  {word:'ସ୍ୱାଧୀନତା ସଂଗ୍ରାମ',cat:'prose'},{word:'ନୀତିଶିକ୍ଷା',cat:'prose'},
+  {word:'ପ୍ରାର୍ଥନା',cat:'poetry'},{word:'ମାତୃଭୂମି',cat:'poetry'},
+  {word:'ଶ୍ରମ',cat:'poetry'},{word:'ପ୍ରକୃତି',cat:'poetry'}
+];
+shuffle(data);var container=document.getElementById('sortWords5');var selWord=null,sorted=0,done=false;
+data.forEach(function(d,idx){var el=document.createElement('div');el.className='sort-item';el.textContent=d.word;el.dataset.cat=d.cat;el.dataset.idx=idx;el.onclick=function(){if(done||el.classList.contains('placed'))return;document.querySelectorAll('#sortWords5 .sort-item').forEach(function(s){s.style.borderColor=''});selWord=el;el.style.borderColor='var(--blue)'};container.appendChild(el)});
+window.pickBin5=function(cat){if(done||!selWord)return;var correct=selWord.dataset.cat===cat;var binId=cat==='prose'?'bin5A':'bin5B';var bin=document.getElementById(binId);var chip=document.createElement('span');chip.className='sort-bin-item '+(correct?'ok':'bad');chip.textContent=selWord.textContent;bin.appendChild(chip);if(correct){addStars(1,selWord);sorted++}selWord.classList.add('placed');selWord.style.borderColor='';selWord=null;document.getElementById('sortStatus5').textContent=sorted+'/'+data.length+' sorted';if(document.querySelectorAll('#sortWords5 .sort-item.placed').length===data.length){done=true;completeGame()}}})();
+
+// GAME 6 — Word Meaning Match
+(function(){var data=[
+  {a:'ଅଧ୍ୟବସାୟ',b:'ପରିଶ୍ରମ ଓ ଲାଗି ରହିବା'},{a:'ସ୍ୱାଧୀନତା',b:'ମୁକ୍ତି, ସ୍ୱତନ୍ତ୍ରତା'},
+  {a:'ସଂଗ୍ରାମ',b:'ଯୁଦ୍ଧ, ଲଢ଼େଇ'},{a:'ଭକ୍ତି',b:'ଶ୍ରଦ୍ଧା ଓ ପ୍ରେମ'},
+  {a:'ସମାନତା',b:'ସମସ୍ତଙ୍କ ସମାନ ଅଧିକାର'},{a:'ନୈତିକ',b:'ଧର୍ମ ଓ ଆଦର୍ଶ ସମ୍ବନ୍ଧୀୟ'}
+];
+var sA=data.slice(),sB=data.slice();shuffle(sA);shuffle(sB);
+var colA=document.getElementById('matchA6'),colB=document.getElementById('matchB6');
+var sel=null,matched=0,done=false;
+sA.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1.1rem;font-weight:700">'+d.a+'</span>';el.dataset.key=d.a;el.dataset.side='a';el.onclick=function(){ck6(el)};colA.appendChild(el)});
+sB.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:0.95rem">'+d.b+'</span>';el.dataset.key=d.a;el.dataset.side='b';el.onclick=function(){ck6(el)};colB.appendChild(el)});
+function ck6(el){if(done||el.classList.contains('correct'))return;if(!sel){sel=el;el.classList.add('selected');return}if(sel===el){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===el.dataset.side){sel.classList.remove('selected');sel=el;el.classList.add('selected');return}if(sel.dataset.key===el.dataset.key){sel.classList.remove('selected');sel.classList.add('correct');el.classList.add('correct');matched++;addStars(1,el);document.getElementById('matchStatus6').textContent=matched+'/'+data.length;if(matched===data.length){done=true;completeGame()}}else{sel.classList.remove('selected');sel.classList.add('wrong');el.classList.add('wrong');setTimeout(function(){if(sel)sel.classList.remove('wrong');el.classList.remove('wrong');sel=null},500);return}sel=null}})();
+
+// GAME 7 — Sequence Events
+(function(){var correctOrder=['ବ୍ରିଟିଶ ଭାରତରେ ଆସିଲେ','ଜନତା ସ୍ୱାଧୀନତା ଚାହିଲେ','ଆନ୍ଦୋଳନ ଆରମ୍ଭ ହେଲା','ବାଜି ରାଉତ ଲଢ଼ିଲେ','ଭାରତ ସ୍ୱାଧୀନ ହେଲା'];
+var items=shuffle(correctOrder.slice());var container=document.getElementById('seqContainer');var placed=[];
+function renderSeq(){container.innerHTML='';items.forEach(function(item,idx){if(placed.indexOf(item)>-1)return;var el=document.createElement('div');el.className='sort-item';el.textContent=item;el.style.marginBottom='8px';el.onclick=function(){placed.push(item);addStars(1,el);renderSeq();document.getElementById('seqStatus').textContent=placed.length+'/'+correctOrder.length+' placed';if(placed.length===correctOrder.length){var correct=true;for(var i=0;i<correctOrder.length;i++){if(placed[i]!==correctOrder[i]){correct=false;break}}if(!correct){document.getElementById('seqStatus').textContent='Order placed! Check your sequence.'}completeGame()}};container.appendChild(el)});
+if(placed.length>0){var orderedDiv=document.createElement('div');orderedDiv.style.cssText='margin-top:16px;padding:16px;background:#fff;border-radius:12px;border:2px solid var(--border)';placed.forEach(function(p,i){var chip=document.createElement('div');chip.style.cssText='font-family:var(--font-or);font-size:1rem;font-weight:700;padding:8px 16px;background:'+(p===correctOrder[i]?'var(--greenbg)':'var(--redbg)')+';color:'+(p===correctOrder[i]?'var(--green)':'var(--red)')+';border-radius:8px;margin-bottom:4px';chip.textContent=(i+1)+'. '+p;orderedDiv.appendChild(chip)});container.appendChild(orderedDiv)}}
+renderSeq()})();
+
+// GAME 8 — Board Exam MCQ
+var q8Data=[
+  {q:'ବୋର୍ଡ ପରୀକ୍ଷାରେ ସଂକ୍ଷିପ୍ତ ଉତ୍ତର କେତେ ମାର୍କ?',opts:['୧','୨','୩','୫'],ans:1},
+  {q:'ପ୍ରସଙ୍ଗ ସହ ବ୍ୟାଖ୍ୟାରେ କ\'ଣ ଲେଖିବା ଆବଶ୍ୟକ?',opts:['କବିଙ୍କ ନାମ','ଉଦ୍ଧୃତିର ସନ୍ଦର୍ଭ','ଶବ୍ଦାର୍ଥ','ସମାର୍ଥକ ଶବ୍ଦ'],ans:1},
+  {q:'ସାରାଂଶ ଲେଖିବାର ସଠିକ ପଦ୍ଧତି?',opts:['ସମ୍ପୂର୍ଣ୍ଣ ନକଲ','ମୂଳ ଭାବ ସଂକ୍ଷିପ୍ତରେ','କେବଳ ପ୍ରଥମ ବାକ୍ୟ','ଶେଷ ବାକ୍ୟ ମାତ୍ର'],ans:1},
+  {q:'ଚରିତ୍ର ବିଶ୍ଳେଷଣରେ କ\'ଣ ଲେଖିବା?',opts:['ଚରିତ୍ରର ଗୁଣ ଓ ଭୂମିକା','କେବଳ ନାମ','ତାରିଖ','ସ୍ଥାନ'],ans:0},
+  {q:'ବିସ୍ତୃତ ଉତ୍ତର କେତେ ମାର୍କ?',opts:['୨','୩','୫','୧୦'],ans:2},
+  {q:'ସମାର୍ଥକ ଶବ୍ଦ ମାନେ?',opts:['ବିପରୀତ ଅର୍ଥ','ସମାନ ଅର୍ଥ','ଅନେକ ଅର୍ଥ','ଅର୍ଥ ନାହିଁ'],ans:1},
+  {q:'ବିପରୀତ ଶବ୍ଦ ମାନେ?',opts:['ସମାନ ଅର୍ଥ','ଉଲଟା ଅର୍ଥ','ଅନେକ ଅର୍ଥ','ସଂକ୍ଷିପ୍ତ ଅର୍ଥ'],ans:1},
+  {q:'ବାକ୍ୟରେ ପ୍ରୟୋଗ ମାନେ?',opts:['ଶବ୍ଦ ଲେଖିବା','ଶବ୍ଦକୁ ବାକ୍ୟରେ ବ୍ୟବହାର','ଅନୁବାଦ','ସଂକ୍ଷିପ୍ତ ଅର୍ଥ'],ans:1},
+  {q:'ବୋର୍ଡ ପରୀକ୍ଷାରେ ସମୟ ପରିଚାଳନା କାହିଁକି ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ?',opts:['ସବୁ ପ୍ରଶ୍ନ ଉତ୍ତର ଦେଇ ହେବ','ଜଲ୍ଦି ଯାଇ ହେବ','ସହଜ ଲାଗିବ','ଦରକାର ନାହିଁ'],ans:0},
+  {q:'ଗଳ୍ପ ପଢ଼ିବା ସମୟରେ ନୋଟ ନେବା ଉଚିତ?',opts:['ହଁ, ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ','ନା, ଦରକାର ନାହିଁ','ମାଝେ ମଧ୍ୟରେ','ଶେଷରେ'],ans:0}
+];
+var q8Idx=0;
+function renderQ8(){if(q8Idx>=q8Data.length){document.getElementById('quiz8Next').style.display='none';completeGame();return}var d=q8Data[q8Idx];var h='<div class="quiz-card"><div class="quiz-q-num">Question '+(q8Idx+1)+' of '+q8Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Board exam pattern question</div><div class="quiz-options" id="q8Opts">';d.opts.forEach(function(o,i){h+='<button class="quiz-opt" onclick="pickQ(8,this,'+i+')" data-idx="'+i+'">'+o+'</button>'});h+='</div><div class="quiz-feedback" id="q8Fb"></div></div>';document.getElementById('quiz8Container').innerHTML=h;document.getElementById('quiz8Next').classList.remove('show')}
+renderQ8();
+
+// CONFETTI
+function launchConfetti(){var canvas=document.getElementById('confetti');canvas.style.display='block';var ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;var pieces=[];var colors=['#D62828','#F9C74F','#43AA8B','#3A86FF','#FF6B6B','#7B2FF7'];for(var i=0;i<150;i++){pieces.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,w:Math.random()*10+5,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],vy:Math.random()*3+2,vx:Math.random()*2-1,rot:Math.random()*360,vr:Math.random()*6-3})}var frame=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(function(p){p.y+=p.vy;p.x+=p.vx;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});frame++;if(frame<180)requestAnimationFrame(draw);else canvas.style.display='none'}draw()}
+</script>
+</body>
+</html>

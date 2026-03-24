@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ରଚନା — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.5rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1rem;font-weight:800;color:var(--light);margin-bottom:12px}
+.hero-desc{font-size:0.9rem;color:var(--soft);max-width:400px;line-height:1.8;margin-bottom:20px}
+.hero-art{width:150px;height:150px;border-radius:28px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:4.5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+hr.divider{border:none;border-top:1px solid var(--border)}
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.content-card{background:#fff;border:2px solid var(--border);border-radius:18px;padding:28px;transition:border-color .2s,box-shadow .2s}
+.content-card:hover{border-color:var(--c);box-shadow:0 6px 24px rgba(0,0,0,0.06)}
+.content-card h3{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--c);margin-bottom:8px}
+.content-card p{font-size:0.88rem;color:var(--soft);line-height:1.8}
+.content-card .card-emoji{font-size:2rem;margin-bottom:12px}
+.example-box{background:var(--off);border-radius:12px;padding:16px 20px;margin-top:12px;font-family:var(--font-or);font-size:0.95rem;line-height:2;color:var(--soft)}
+.example-box strong{color:var(--c)}
+.tip-box{background:var(--cbg);border:2px solid var(--c);border-radius:16px;padding:24px 28px;margin-top:32px}
+.tip-title{font-size:1rem;font-weight:800;color:var(--c);margin-bottom:8px}
+.tip-text{font-size:0.88rem;color:var(--soft);line-height:1.8}
+.tip-text ul{margin:8px 0 0 20px}.tip-text li{margin-bottom:4px}
+.bottom-nav{max-width:1100px;margin:0 auto;padding:0 48px 56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bottom-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;border:2px solid var(--border);transition:all .15s}
+.bottom-link:hover{border-color:var(--c);background:var(--cbg)}
+.bottom-link.primary{background:var(--c);color:#fff;border-color:var(--c)}.bottom-link.primary:hover{opacity:0.85}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.hero,.section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.hero{grid-template-columns:1fr;text-align:center;padding:40px 20px 36px}.hero-art{margin:0 auto;width:120px;height:120px;font-size:3.5rem}.hero-desc{margin:0 auto 20px}.breadcrumb{display:none}.content-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 5</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ରଚନା</span></div>
+</nav>
+<div class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">✍️ ରଚନା</div>
+    <!-- REVIEW NEEDED -->
+    <h1>ରଚନା</h1>
+    <div class="hero-eng">Composition — Essay & Application Writing</div>
+    <!-- REVIEW NEEDED -->
+    <p class="hero-desc">ଓଡ଼ିଆରେ ପ୍ରବନ୍ଧ, ଆବେଦନ ପତ୍ର ଓ ଚିଠି ଲେଖିବା ଶିଖ। ବାକ୍ୟ ଗଠନ ଓ ଅନୁଚ୍ଛେଦ ଲେଖନ ଅଭ୍ୟାସ କର।</p>
+  </div>
+  <div class="hero-art">✍️</div>
+</div>
+<hr class="divider">
+<div class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ରଚନା ବିଷୟ — Composition Topics</div>
+  <div class="content-grid">
+    <div class="content-card">
+      <div class="card-emoji">📄</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ପ୍ରବନ୍ଧ ଲେଖନ</h3>
+      <p>ଗାଈ, ଆମ ବିଦ୍ୟାଳୟ, ସ୍ୱାଧୀନତା ଦିବସ ଆଦି ବିଷୟରେ ପ୍ରବନ୍ଧ ଲେଖିବା ଶିଖ।</p>
+      <!-- REVIEW NEEDED -->
+      <div class="example-box"><strong>ପ୍ରବନ୍ଧ: ଆମ ବିଦ୍ୟାଳୟ</strong><br>ଭୂମିକା → ବର୍ଣ୍ଣନା → ଶିକ୍ଷକ → ବନ୍ଧୁ → ଉପସଂହାର</div>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">📬</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ଆବେଦନ ପତ୍ର</h3>
+      <p>ପ୍ରଧାନ ଶିକ୍ଷକଙ୍କ ନିକଟରେ ଛୁଟି ପାଇଁ ଆବେଦନ ପତ୍ର ଲେଖିବା ଶିଖ।</p>
+      <!-- REVIEW NEEDED -->
+      <div class="example-box"><strong>ଠିକଣା → ତାରିଖ → ସେବାରେ → ବିଷୟ → ମୂଳ ଅଂଶ → ଧନ୍ୟବାଦ → ନାମ</strong></div>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">💌</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ଚିଠି ଲେଖନ</h3>
+      <p>ବନ୍ଧୁ ବା ସମ୍ପର୍କୀୟଙ୍କୁ ଚିଠି ଲେଖିବା ଶିଖ। ଅନୌପଚାରିକ ଚିଠିର ନିୟମ।</p>
+      <!-- REVIEW NEEDED -->
+      <div class="example-box"><strong>ପ୍ରିୟ ବନ୍ଧୁ...</strong><br>ତୁମ ସ୍ୱାସ୍ଥ୍ୟ ଭଲ ଥିବ ଆଶା କରୁଛି...</div>
+    </div>
+    <div class="content-card">
+      <div class="card-emoji">📝</div>
+      <!-- REVIEW NEEDED -->
+      <h3>ଅନୁଚ୍ଛେଦ ଲେଖନ</h3>
+      <p>ଗୋଟିଏ ବିଷୟରେ ୫-୬ ବାକ୍ୟରେ ଅନୁଚ୍ଛେଦ ଲେଖିବା ଅଭ୍ୟାସ କର।</p>
+      <!-- REVIEW NEEDED -->
+      <div class="example-box"><strong>ନିୟମ:</strong> ମୁଖ୍ୟ ବାକ୍ୟ → ବିସ୍ତାର → ଉଦାହରଣ → ସମାପ୍ତି</div>
+    </div>
+  </div>
+  <div class="tip-box">
+    <!-- REVIEW NEEDED -->
+    <div class="tip-title">💡 ଭଲ ରଚନା ଲେଖିବାର ନିୟମ</div>
+    <!-- REVIEW NEEDED -->
+    <div class="tip-text">
+      <ul>
+        <li>ପ୍ରଥମେ ବିଷୟ ବାରେ ଭାବ — ଯାହା ଲେଖିବ ତାହାର ଏକ ପ୍ରାରୂପ ତିଆରି କର</li>
+        <li>ଭୂମିକା, ମୂଳ ଅଂଶ ଓ ଉପସଂହାର ରଖ</li>
+        <li>ସରଳ ଓ ସ୍ପଷ୍ଟ ବାକ୍ୟ ଲେଖ</li>
+        <li>ବାନାନ ଓ ବିରାମ ଚିହ୍ନ ଠିକ୍ ରଖ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="bottom-nav">
+  <!-- REVIEW NEEDED -->
+  <a href="grammar.html" class="bottom-link">← ବ୍ୟାକରଣ</a>
+  <a href="composition-games.html" class="bottom-link primary">🎮 ରଚନା ଖେଳ</a>
+  <!-- REVIEW NEEDED -->
+  <a href="poetry.html" class="bottom-link">ପଦ୍ୟ →</a>
+</div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><!-- REVIEW NEEDED --><span class="footer-copy">Class 5 · ଓଡ଼ିଆ · Free forever</span></footer>
+</body>
+</html>

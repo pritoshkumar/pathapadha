@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ତଥ୍ୟ | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#F9C74F;--cbg:#FFFBEC;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid var(--border)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}.card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.card-title{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.card-subtitle{font-size:0.8rem;font-weight:600;color:var(--light);margin-bottom:12px}
+.card-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:12px}
+.table-wrap{overflow-x:auto;margin-top:12px}
+.data-table{width:100%;border-collapse:collapse;font-family:var(--font-or);font-size:0.95rem}
+.data-table th{background:var(--cbg);color:var(--ink);font-weight:700;padding:10px 14px;border:2px solid var(--border);text-align:center}
+.data-table td{background:#fff;padding:10px 14px;border:2px solid var(--border);text-align:center;font-weight:600}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 3</a> › <!-- REVIEW NEEDED --><a href="index.html">ଗଣିତ</a> › <span>ତଥ୍ୟ</span></div>
+</nav>
+<div class="page-hero"><div class="hero-emoji">📊</div><!-- REVIEW NEEDED --><h1>ତଥ୍ୟ</h1><p class="subtitle">Data Handling</p><span class="textbook-ref">📘 ଗଣିତ ଖେଳ ଭାଗ ୩ (SCERT Odisha)</span></div>
+<hr class="divider">
+<div class="intro"><!-- REVIEW NEEDED --><p>ତଥ୍ୟ ସଂଗ୍ରହ, ସଂଗଠନ ଏବଂ ସାରଣୀ ଓ ଚିତ୍ରରୁ ତଥ୍ୟ ପଢ଼ିବା ଶିଖ!</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Collect, organize, and read data from tables and pictographs!</p></div>
+<div class="content-section" id="contentContainer">
+<!-- REVIEW NEEDED -->
+<div class="card" style="animation-delay:0s">
+<div class="card-title">ସାରଣୀ — Tally Marks & Tables</div>
+<div class="card-subtitle">Counting and recording data</div>
+<div class="card-body" style="white-space:pre-line">ତଥ୍ୟ ଗଣନା ପାଇଁ ଟ୍ୟାଲି ଚିହ୍ନ ବ୍ୟବହାର ହୁଏ।
+
+| = ୧
+|| = ୨
+||| = ୩
+|||| = ୪
+𝍸 = ୫
+
+ଉଦାହରଣ: ଶ୍ରେଣୀରେ ପ୍ରିୟ ଫଳ ଜରିପ</div>
+<div class="table-wrap">
+<table class="data-table">
+<tr><th>ଫଳ</th><th>ଟ୍ୟାଲି</th><th>ସଂଖ୍ୟା</th></tr>
+<tr><td>🍎 ସେଓ</td><td>𝍸 ||</td><td>୭</td></tr>
+<tr><td>🍌 କଦଳୀ</td><td>𝍸 ||||</td><td>୯</td></tr>
+<tr><td>🍇 ଅଙ୍ଗୁର</td><td>||||</td><td>୪</td></tr>
+<tr><td>🥭 ଆମ୍ବ</td><td>𝍸 𝍸 |||</td><td>୧୩</td></tr>
+</table>
+</div>
+</div>
+
+<div class="card" style="animation-delay:0.1s">
+<div class="card-title">ଚିତ୍ର ଲେଖ — Pictograph</div>
+<div class="card-subtitle">Reading data from pictures</div>
+<div class="card-body" style="white-space:pre-line">ଚିତ୍ର ଲେଖରେ ଚିତ୍ର ଦ୍ୱାରା ତଥ୍ୟ ଦେଖାଯାଏ।
+ପ୍ରତ୍ୟେକ ଚିତ୍ର ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ସଂଖ୍ୟା ପ୍ରତିନିଧିତ୍ୱ କରେ।
+
+ଉଦାହରଣ: ପ୍ରତି 🌟 = ୨ ଜଣ ଛାତ୍ର
+ଗଣିତ ପସନ୍ଦ: 🌟🌟🌟 = ୬ ଜଣ
+ବିଜ୍ଞାନ ପସନ୍ଦ: 🌟🌟🌟🌟 = ୮ ଜଣ
+ଇଂରାଜୀ ପସନ୍ଦ: 🌟🌟 = ୪ ଜଣ</div>
+</div>
+
+<div class="card" style="animation-delay:0.2s">
+<div class="card-title">ତଥ୍ୟରୁ ପ୍ରଶ୍ନ — Questions from Data</div>
+<div class="card-subtitle">Analyzing and answering</div>
+<div class="card-body" style="white-space:pre-line">ଉପର ସାରଣୀରୁ ଉତ୍ତର ଦିଅ:
+
+୧. ସବୁଠୁ ଅଧିକ ଛାତ୍ର କେଉଁ ଫଳ ପସନ୍ଦ କରନ୍ତି? → ଆମ୍ବ (୧୩)
+୨. ସବୁଠୁ କମ୍ ଛାତ୍ର କେଉଁ ଫଳ ପସନ୍ଦ କରନ୍ତି? → ଅଙ୍ଗୁର (୪)
+୩. ସେଓ ଓ କଦଳୀ ପସନ୍ଦ କରୁଥିବା ଛାତ୍ର ସଂଖ୍ୟା = ୭ + ୯ = ୧୬
+୪. ମୋଟ ଛାତ୍ର ସଂଖ୍ୟା = ୭ + ୯ + ୪ + ୧୩ = ୩୩</div>
+</div>
+</div>
+<hr class="divider">
+<div class="bottom-nav"><!-- REVIEW NEEDED --><a href="index.html" class="btn btn-outline">← ଗଣିତ</a><a href="data-games.html" class="btn btn-primary">🎮 ଖେଳ</a><a href="measurement.html" class="btn btn-forward">ପରିମାପ →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 3 · ଗଣିତ · Free forever</span></footer>
+</body>
+</html>

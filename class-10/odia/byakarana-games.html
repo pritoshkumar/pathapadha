@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବ୍ୟାକରଣ ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}.page-hero p{font-size:0.95rem;color:var(--soft)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}.game-icon{font-size:2rem}.game-title{font-size:1.3rem;font-weight:900;color:var(--ink)}.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}.game-stars-possible{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-family:var(--font-or);font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.6}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1rem;font-weight:700;transition:all .15s;text-align:center}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}.quiz-feedback.show{display:block}.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}.quiz-feedback.bad{background:var(--redbg);color:var(--red)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.quiz-next:hover{opacity:0.8}.quiz-next.show{display:inline-block}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}.match-col{display:flex;flex-direction:column;gap:10px}.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}.match-item.selected{border-color:var(--blue);background:var(--bluebg)}.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.sort-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.sort-item{padding:12px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font-or);font-size:1rem;font-weight:700;transition:all .15s;user-select:none}
+.sort-item:hover{border-color:var(--c);background:var(--cbg)}.sort-item.placed{opacity:0.3;pointer-events:none}
+.sort-bins{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.sort-bin{min-height:80px;border:2px dashed var(--border);border-radius:14px;padding:12px;cursor:pointer;transition:border-color .15s,background .15s}
+.sort-bin:hover{border-color:var(--c);background:var(--cbg)}
+.sort-bin-label{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.sort-bin-items{display:flex;flex-wrap:wrap;gap:6px}
+.sort-bin-item{font-family:var(--font-or);font-size:0.9rem;font-weight:700;padding:6px 12px;border-radius:8px}
+.sort-bin-item.ok{background:var(--greenbg);color:var(--green)}.sort-bin-item.bad{background:var(--redbg);color:var(--red)}
+.fill-blank{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.fill-sentence{font-family:var(--font-or);font-size:1.15rem;font-weight:700;line-height:2;margin-bottom:16px}
+.fill-input{font-family:var(--font-or);font-size:1rem;font-weight:700;border:2px solid var(--border);border-radius:10px;padding:8px 16px;width:180px;outline:none;transition:border-color .15s}
+.fill-input:focus{border-color:var(--c)}
+.fill-input.correct{border-color:var(--green);background:var(--greenbg)}.fill-input.wrong{border-color:var(--red);background:var(--redbg)}
+.fill-check{background:var(--c);color:#fff;padding:8px 20px;border-radius:10px;font-size:0.88rem;font-weight:800;margin-left:8px;transition:opacity .15s}.fill-check:hover{opacity:0.85}
+.tf-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tf-statement{font-family:var(--font-or);font-size:1.05rem;font-weight:700;flex:1;line-height:1.6}
+.tf-btns{display:flex;gap:8px}
+.tf-btn{padding:8px 20px;border-radius:10px;border:2px solid var(--border);background:#fff;font-size:0.88rem;font-weight:800;transition:all .15s;cursor:pointer}
+.tf-btn:hover{border-color:var(--c);background:var(--cbg)}
+.tf-btn.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.tf-btn.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.tf-btn:disabled{cursor:default}
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}.results-retry:hover{opacity:0.85}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}.match-grid,.quiz-options,.sort-bins{grid-template-columns:1fr}.tf-card{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.breadcrumb{display:none}.quiz-options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 10</a> › <a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ବ୍ୟାକରଣ ଖେଳ</span></div>
+</nav>
+<div class="star-bar">
+  <div class="star-display"><span class="star-count" id="starCount">0</span><span style="font-size:1.4rem">⭐</span><span class="star-label">Stars earned</span></div>
+  <div class="progress-wrap"><div class="progress-label">Overall progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div></div>
+  <div class="games-done" id="gamesDone">0 / 8 games done</div>
+</div>
+<div class="page-hero"><!-- REVIEW NEEDED --><h1>ବ୍ୟାକରଣ ଖେଳ 🎮</h1><p>8 grammar games to master Sandhi, Samasa, Pratyaya & more — earn ⭐ for every correct answer!</p></div>
+<hr class="divider">
+
+<!-- GAME 1: MCQ - Sandhi -->
+<section class="game-section" id="game1">
+  <div class="game-header"><div class="game-icon">🔗</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 1 — ସନ୍ଧି ପ୍ରଶ୍ନ</div><div class="game-subtitle">Identify the correct sandhi type or result.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="quiz1Container"></div>
+  <button class="quiz-next" id="quiz1Next" onclick="nextQ(1)">Next Question →</button>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 2: MATCH - Samasa -->
+<section class="game-section" id="game2">
+  <div class="game-header"><div class="game-icon">🧩</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 2 — ସମାସ ମିଳାଅ</div><div class="game-subtitle">Match the compound word to its type.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div class="match-grid"><div class="match-col"><!-- REVIEW NEEDED --><div class="match-col-label">ସମାସ</div><div id="matchA2"></div></div><div class="match-col"><div class="match-col-label">ପ୍ରକାର</div><div id="matchB2"></div></div></div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus2"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 3: FILL IN THE BLANK - Pratyaya -->
+<section class="game-section" id="game3">
+  <div class="game-header"><div class="game-icon">✏️</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 3 — ପ୍ରତ୍ୟୟ ପୂରଣ</div><div class="game-subtitle">Fill in the correct suffix to form the word.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div id="fillContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 4: TRUE OR FALSE - Grammar Rules -->
+<section class="game-section" id="game4">
+  <div class="game-header"><div class="game-icon">✅</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 4 — ଠିକ୍ ବା ଭୁଲ</div><div class="game-subtitle">Decide if each grammar statement is true or false.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div id="tfContainer"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 5: SORT - Kaaraka Types -->
+<section class="game-section" id="game5">
+  <div class="game-header"><div class="game-icon">🗂️</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 5 — କାରକ ଶ୍ରେଣୀ</div><div class="game-subtitle">Sort sentences into the correct Kaaraka type.</div></div><div class="game-stars-possible">Up to 8 ⭐</div></div>
+  <div class="sort-container" id="sortWords5"></div>
+  <!-- REVIEW NEEDED -->
+  <div class="sort-bins" id="sortBins5">
+    <div class="sort-bin" data-cat="kartta" onclick="pickBin5('kartta')"><div class="sort-bin-label">📌 କର୍ତ୍ତା (Nominative)</div><div class="sort-bin-items" id="bin5A"></div></div>
+    <div class="sort-bin" data-cat="karma" onclick="pickBin5('karma')"><div class="sort-bin-label">📌 କର୍ମ (Accusative)</div><div class="sort-bin-items" id="bin5B"></div></div>
+  </div>
+  <div style="font-size:0.85rem;font-weight:700;color:var(--light)" id="sortStatus5"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 6: MATCH - Vibhakti -->
+<section class="game-section" id="game6">
+  <div class="game-header"><div class="game-icon">📚</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 6 — ବିଭକ୍ତି ମିଳାଅ</div><div class="game-subtitle">Match the vibhakti to its kaaraka name.</div></div><div class="game-stars-possible">Up to 6 ⭐</div></div>
+  <div class="match-grid"><div class="match-col"><!-- REVIEW NEEDED --><div class="match-col-label">ବିଭକ୍ତି</div><div id="matchA6"></div></div><div class="match-col"><div class="match-col-label">କାରକ</div><div id="matchB6"></div></div></div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus6"></div>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 7: MCQ - Sentence Transformation -->
+<section class="game-section" id="game7">
+  <div class="game-header"><div class="game-icon">📝</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 7 — ବାକ୍ୟ ରୂପାନ୍ତର</div><div class="game-subtitle">Transform sentences — active to passive, affirmative to negative.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div id="quiz7Container"></div>
+  <button class="quiz-next" id="quiz7Next" onclick="nextQ(7)">Next Question →</button>
+</section>
+<hr class="game-divider">
+
+<!-- GAME 8: BOARD EXAM MCQ -->
+<section class="game-section" id="game8">
+  <div class="game-header"><div class="game-icon">🎯</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 8 — ବୋର୍ଡ ପରୀକ୍ଷା ବ୍ୟାକରଣ</div><div class="game-subtitle">Board exam pattern grammar questions!</div></div><div class="game-stars-possible">Up to 10 ⭐</div></div>
+  <div id="quiz8Container"></div>
+  <button class="quiz-next" id="quiz8Next" onclick="nextQ(8)">Next Question →</button>
+</section>
+
+<div class="results-banner" id="resultsBanner">
+  <div class="results-emoji" id="resultsEmoji">🏆</div><!-- REVIEW NEEDED --><div class="results-title" id="resultsTitle">ବହୁତ ଭଲ!</div><div class="results-score" id="resultsScore"></div><div class="results-stars" id="resultsStars"></div><button class="results-retry" onclick="location.reload()"><!-- REVIEW NEEDED -->ପୁଣି ଖେଳ 🔄</button>
+</div>
+
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 10 · ଓଡ଼ିଆ · ବ୍ୟାକରଣ · Free forever</span></footer>
+
+<script>
+// REVIEW NEEDED — All Odia content below needs native speaker verification
+var totalStars=0,gamesCompleted=0,totalGames=8,maxStars=57;
+function addStars(n,el){totalStars+=n;document.getElementById('starCount').textContent=totalStars;for(var i=0;i<n;i++){(function(idx){setTimeout(function(){var pop=document.createElement('div');pop.className='star-pop';pop.textContent='⭐';if(el){var r=el.getBoundingClientRect();pop.style.left=(r.left+r.width/2)+'px';pop.style.top=r.top+'px'}else{pop.style.left=(window.innerWidth/2)+'px';pop.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(pop);setTimeout(function(){pop.remove()},1000)},idx*150)})(i)}}
+function completeGame(){gamesCompleted++;updateProgress();if(gamesCompleted>=totalGames)showResults()}
+function updateProgress(){var pct=(gamesCompleted/totalGames)*100;document.getElementById('progressFill').style.width=pct+'%';document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done'}
+function showResults(){var banner=document.getElementById('resultsBanner');var pct=Math.round((totalStars/maxStars)*100);document.getElementById('resultsScore').textContent='You earned '+totalStars+' out of '+maxStars+' stars ('+pct+'%)';var s='';for(var i=0;i<Math.min(totalStars,10);i++)s+='⭐';if(totalStars>10)s+=' +'+(totalStars-10);document.getElementById('resultsStars').textContent=s;if(pct===100){document.getElementById('resultsEmoji').textContent='🏆';document.getElementById('resultsTitle').textContent='Perfect! ସମ୍ପୂର୍ଣ୍ଣ!'}else if(pct>=70){document.getElementById('resultsEmoji').textContent='🎉';document.getElementById('resultsTitle').textContent='ବହୁତ ଭଲ!'}else{document.getElementById('resultsEmoji').textContent='💪';document.getElementById('resultsTitle').textContent='ଆଉ ଥରେ ଚେଷ୍ଟା କର!'}banner.classList.add('show');if(pct>=70)launchConfetti()}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+// GAME 1 — MCQ Sandhi
+var q1Data=[
+  {q:'ସୂର୍ଯ୍ୟ + ଉଦୟ = ?',opts:['ସୂର୍ଯ୍ୟୋଦୟ','ସୂର୍ଯ୍ୟଉଦୟ','ସୂର୍ଯ୍ୟୁଦୟ','ସୂର୍ଯ୍ୟାଦୟ'],ans:0},
+  {q:'ଉତ୍ + ଲାସ = ?',opts:['ଉତ୍ଲାସ','ଉଲ୍ଲାସ','ଉଲାସ','ଉତ୍ତଲାସ'],ans:1},
+  {q:'ନିଃ + ଶେଷ = ?',opts:['ନିଶେଷ','ନିଶ୍ଶେଷ','ନିସ୍ଶେଷ','ନିରଶେଷ'],ans:1},
+  {q:'ସୂର୍ଯ୍ୟୋଦୟ କେଉଁ ସନ୍ଧି?',opts:['ସ୍ୱର ସନ୍ଧି','ବ୍ୟଞ୍ଜନ ସନ୍ଧି','ବିସର୍ଗ ସନ୍ଧି','ଆଗମ ସନ୍ଧି'],ans:0},
+  {q:'ମହା + ଈଶ୍ୱର = ?',opts:['ମହାଈଶ୍ୱର','ମହେଶ୍ୱର','ମହିଶ୍ୱର','ମାହେଶ୍ୱର'],ans:1},
+  {q:'ଉଲ୍ଲାସ କେଉଁ ସନ୍ଧି?',opts:['ସ୍ୱର ସନ୍ଧି','ବ୍ୟଞ୍ଜନ ସନ୍ଧି','ବିସର୍ଗ ସନ୍ଧି','ଆଗମ ସନ୍ଧି'],ans:1},
+  {q:'ବିଦ୍ୟା + ଆଳୟ = ?',opts:['ବିଦ୍ୟାଳୟ','ବିଦ୍ୟାଆଳୟ','ବିଦ୍ୟଳୟ','ବିଦ୍ୟାଲୟ'],ans:0},
+  {q:'ଦେବ + ଆଳୟ = ?',opts:['ଦେବଆଳୟ','ଦେବାଳୟ','ଦେବଳୟ','ଦେବାଲୟ'],ans:1}
+];
+var q1Idx=0;
+function renderQ1(){if(q1Idx>=q1Data.length){document.getElementById('quiz1Next').style.display='none';completeGame();return}var d=q1Data[q1Idx];var h='<div class="quiz-card"><div class="quiz-q-num">Question '+(q1Idx+1)+' of '+q1Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Pick the correct answer</div><div class="quiz-options" id="q1Opts">';d.opts.forEach(function(o,i){h+='<button class="quiz-opt" onclick="pickQ(1,this,'+i+')" data-idx="'+i+'">'+o+'</button>'});h+='</div><div class="quiz-feedback" id="q1Fb"></div></div>';document.getElementById('quiz1Container').innerHTML=h;document.getElementById('quiz1Next').classList.remove('show')}
+function nextQ(g){if(g===1){q1Idx++;renderQ1()}else if(g===7){q7Idx++;renderQ7()}else if(g===8){q8Idx++;renderQ8()}}
+function pickQ(g,el,idx){var data=g===1?q1Data:g===7?q7Data:q8Data;var i=g===1?q1Idx:g===7?q7Idx:q8Idx;var d=data[i];var all=document.querySelectorAll('#q'+g+'Opts .quiz-opt');all.forEach(function(o){o.disabled=true});var fb=document.getElementById('q'+g+'Fb');if(idx===d.ans){el.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.classList.add('wrong');all.forEach(function(o){if(parseInt(o.dataset.idx)===d.ans)o.classList.add('correct')});fb.className='quiz-feedback show bad';fb.textContent='❌ Correct: '+d.opts[d.ans]}document.getElementById('quiz'+g+'Next').classList.add('show')}
+renderQ1();
+
+// GAME 2 — Match Samasa
+(function(){var data=[
+  {a:'ମାତା-ପିତା',b:'ଦ୍ୱନ୍ଦ୍ୱ'},{a:'ରାଜପୁତ୍ର',b:'ତତ୍ପୁରୁଷ'},
+  {a:'ଚକ୍ରପାଣି',b:'ବହୁବ୍ରୀହି'},{a:'ଯଥାଶକ୍ତି',b:'ଅବ୍ୟୟୀଭାବ'},
+  {a:'ସୁଖ-ଦୁଃଖ',b:'ଦ୍ୱନ୍ଦ୍ୱ ସମାସ'},{a:'ନୀଳକଣ୍ଠ',b:'ବହୁବ୍ରୀହି ସମାସ'}
+];
+var sA=data.slice(),sB=data.slice();shuffle(sA);shuffle(sB);
+var colA=document.getElementById('matchA2'),colB=document.getElementById('matchB2');
+var sel=null,matched=0,done=false;
+sA.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1.1rem;font-weight:700">'+d.a+'</span>';el.dataset.key=d.a;el.dataset.side='a';el.onclick=function(){ck(el)};colA.appendChild(el)});
+sB.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1rem">'+d.b+'</span>';el.dataset.key=d.a;el.dataset.side='b';el.onclick=function(){ck(el)};colB.appendChild(el)});
+function ck(el){if(done||el.classList.contains('correct'))return;if(!sel){sel=el;el.classList.add('selected');return}if(sel===el){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===el.dataset.side){sel.classList.remove('selected');sel=el;el.classList.add('selected');return}if(sel.dataset.key===el.dataset.key){sel.classList.remove('selected');sel.classList.add('correct');el.classList.add('correct');matched++;addStars(1,el);document.getElementById('matchStatus2').textContent=matched+'/'+data.length+' matched';if(matched===data.length){done=true;completeGame()}}else{sel.classList.remove('selected');sel.classList.add('wrong');el.classList.add('wrong');setTimeout(function(){sel.classList.remove('wrong');el.classList.remove('wrong');sel=null},500);return}sel=null}})();
+
+// GAME 3 — Fill in Blank Pratyaya
+(function(){var data=[
+  {sentence:'ପଢ଼ + ___ = ପଢ଼ା (reading)',answer:'ଆ',hint:'suffix'},
+  {sentence:'ସୁନ୍ଦର + ___ = ସୁନ୍ଦରତା (beauty)',answer:'ତା',hint:'suffix'},
+  {sentence:'ଦେବ + ___ = ଦେବୀ (goddess)',answer:'ଈ',hint:'feminine suffix'},
+  {sentence:'ସୁଖ + ___ = ସୁଖୀ (happy person)',answer:'ଈ',hint:'adjective suffix'},
+  {sentence:'ଲେଖ + ___ = ଲେଖକ (writer)',answer:'କ',hint:'doer suffix'},
+  {sentence:'ଗାୟ + ___ = ଗାୟକ (singer)',answer:'କ',hint:'doer suffix'}
+];
+var container=document.getElementById('fillContainer');var done=0;
+data.forEach(function(d,idx){
+  var div=document.createElement('div');div.className='fill-blank';div.id='fill'+idx;
+  div.innerHTML='<div class="quiz-q-num">Question '+(idx+1)+' of '+data.length+'</div><div class="fill-sentence">'+d.sentence.replace('___','<input class="fill-input" id="fillIn'+idx+'" placeholder="'+d.hint+'">')+'</div><button class="fill-check" onclick="checkFill('+idx+')">Check ✓</button><div class="quiz-feedback" id="fillFb'+idx+'"></div>';
+  container.appendChild(div);
+});
+window.checkFill=function(idx){var inp=document.getElementById('fillIn'+idx);var fb=document.getElementById('fillFb'+idx);var val=inp.value.trim();if(!val)return;if(val===data[idx].answer){inp.classList.add('correct');inp.disabled=true;fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,inp);done++;if(done>=data.length)completeGame()}else{inp.classList.add('wrong');fb.className='quiz-feedback show bad';fb.textContent='❌ Correct: '+data[idx].answer;inp.disabled=true;done++;if(done>=data.length)completeGame()}}})();
+
+// GAME 4 — True or False
+(function(){var data=[
+  {s:'ସ୍ୱର ସନ୍ଧିରେ ଦୁଇଟି ସ୍ୱର ମିଳିତ ହୁଏ।',ans:true},
+  {s:'ସମାସ ମାନେ ଶବ୍ଦ ଭାଙ୍ଗିବା।',ans:false},
+  {s:'କୃତ୍ ପ୍ରତ୍ୟୟ ଧାତୁରେ ଯୋଡ଼ା ହୁଏ।',ans:true},
+  {s:'କର୍ତ୍ତା କାରକ ପ୍ରଥମା ବିଭକ୍ତିରେ ଥାଏ।',ans:true},
+  {s:'ବିସର୍ଗ ସନ୍ଧିରେ ବ୍ୟଞ୍ଜନ ମିଳିତ ହୁଏ।',ans:false},
+  {s:'ଦ୍ୱନ୍ଦ୍ୱ ସମାସରେ ଦୁଇଟି ସମାନ ଶବ୍ଦ ଯୋଡ଼ା ହୁଏ।',ans:true},
+  {s:'ତଦ୍ଧିତ ପ୍ରତ୍ୟୟ ନାମ ଶବ୍ଦରେ ଯୋଡ଼ା ହୁଏ।',ans:true},
+  {s:'ଅପାଦାନ କାରକ ସପ୍ତମୀ ବିଭକ୍ତି।',ans:false}
+];
+var container=document.getElementById('tfContainer');var done=0;
+data.forEach(function(d,idx){
+  var div=document.createElement('div');div.className='tf-card';div.id='tf'+idx;
+  div.innerHTML='<div class="tf-statement">'+d.s+'</div><div class="tf-btns"><button class="tf-btn" onclick="pickTF('+idx+',true)">ଠିକ୍ ✅</button><button class="tf-btn" onclick="pickTF('+idx+',false)">ଭୁଲ ❌</button></div>';
+  container.appendChild(div);
+});
+window.pickTF=function(idx,val){var btns=document.querySelectorAll('#tf'+idx+' .tf-btn');btns.forEach(function(b){b.disabled=true});if(val===data[idx].ans){btns.forEach(function(b){if((val&&b.textContent.includes('ଠିକ୍'))||(!val&&b.textContent.includes('ଭୁଲ')))b.classList.add('correct')});addStars(1,btns[0])}else{btns.forEach(function(b){if((val&&b.textContent.includes('ଠିକ୍'))||(!val&&b.textContent.includes('ଭୁଲ')))b.classList.add('wrong');if((data[idx].ans&&b.textContent.includes('ଠିକ୍'))||(!data[idx].ans&&b.textContent.includes('ଭୁଲ')))b.classList.add('correct')})}done++;if(done>=data.length)completeGame()}})();
+
+// GAME 5 — Sort Kaaraka
+(function(){var data=[
+  {word:'ରାମ ପଢ଼େ',cat:'kartta'},{word:'ସେ ଲେଖେ',cat:'kartta'},
+  {word:'ସୀତା ଗାଏ',cat:'kartta'},{word:'ମୁଁ ଖେଳେ',cat:'kartta'},
+  {word:'ରାମ ବହି ପଢ଼େ',cat:'karma'},{word:'ସେ ଭାତ ଖାଏ',cat:'karma'},
+  {word:'ସୀତା ଗୀତ ଗାଏ',cat:'karma'},{word:'ମୁଁ ଫୁଟବଲ ଖେଳେ',cat:'karma'}
+];
+shuffle(data);var container=document.getElementById('sortWords5');var selWord=null,sorted=0,done=false;
+data.forEach(function(d,idx){var el=document.createElement('div');el.className='sort-item';el.textContent=d.word;el.dataset.cat=d.cat;el.dataset.idx=idx;el.onclick=function(){if(done||el.classList.contains('placed'))return;document.querySelectorAll('#sortWords5 .sort-item').forEach(function(s){s.style.borderColor=''});selWord=el;el.style.borderColor='var(--blue)'};container.appendChild(el)});
+window.pickBin5=function(cat){if(done||!selWord)return;var correct=selWord.dataset.cat===cat;var binId=cat==='kartta'?'bin5A':'bin5B';var bin=document.getElementById(binId);var chip=document.createElement('span');chip.className='sort-bin-item '+(correct?'ok':'bad');chip.textContent=selWord.textContent;bin.appendChild(chip);if(correct){addStars(1,selWord);sorted++}selWord.classList.add('placed');selWord.style.borderColor='';selWord=null;document.getElementById('sortStatus5').textContent=sorted+'/'+data.length+' sorted';if(document.querySelectorAll('#sortWords5 .sort-item.placed').length===data.length){done=true;completeGame()}}})();
+
+// GAME 6 — Match Vibhakti
+(function(){var data=[
+  {a:'ପ୍ରଥମା',b:'କର୍ତ୍ତା'},{a:'ଦ୍ୱିତୀୟା',b:'କର୍ମ'},
+  {a:'ତୃତୀୟା',b:'କରଣ'},{a:'ଚତୁର୍ଥୀ',b:'ସମ୍ପ୍ରଦାନ'},
+  {a:'ପଞ୍ଚମୀ',b:'ଅପାଦାନ'},{a:'ସପ୍ତମୀ',b:'ଅଧିକରଣ'}
+];
+var sA=data.slice(),sB=data.slice();shuffle(sA);shuffle(sB);
+var colA=document.getElementById('matchA6'),colB=document.getElementById('matchB6');
+var sel=null,matched=0,done=false;
+sA.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:1.1rem;font-weight:700">'+d.a+'</span>';el.dataset.key=d.a;el.dataset.side='a';el.onclick=function(){ck6(el)};colA.appendChild(el)});
+sB.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span style="font-family:var(--font-or);font-size:0.95rem">'+d.b+'</span>';el.dataset.key=d.a;el.dataset.side='b';el.onclick=function(){ck6(el)};colB.appendChild(el)});
+function ck6(el){if(done||el.classList.contains('correct'))return;if(!sel){sel=el;el.classList.add('selected');return}if(sel===el){sel.classList.remove('selected');sel=null;return}if(sel.dataset.side===el.dataset.side){sel.classList.remove('selected');sel=el;el.classList.add('selected');return}if(sel.dataset.key===el.dataset.key){sel.classList.remove('selected');sel.classList.add('correct');el.classList.add('correct');matched++;addStars(1,el);document.getElementById('matchStatus6').textContent=matched+'/'+data.length;if(matched===data.length){done=true;completeGame()}}else{sel.classList.remove('selected');sel.classList.add('wrong');el.classList.add('wrong');setTimeout(function(){if(sel)sel.classList.remove('wrong');el.classList.remove('wrong');sel=null},500);return}sel=null}})();
+
+// GAME 7 — Sentence Transformation MCQ
+var q7Data=[
+  {q:'ରାମ ବହି ପଢ଼େ → କର୍ମବାଚ୍ୟ?',opts:['ରାମ ଦ୍ୱାରା ବହି ପଢ଼ାଗଲା','ବହି ରାମ ପଢ଼େ','ରାମ ପଢ଼େ ବହି','ବହି ପଢ଼ାଯାଏ'],ans:0},
+  {q:'ସେ ଯାଉଛି → ନକାରାତ୍ମକ?',opts:['ସେ ଯାଉଛି','ସେ ଯାଉନାହିଁ','ସେ ଗଲା','ସେ ଆସିଲା'],ans:1},
+  {q:'ମୁଁ ଖେଳୁଛି → ପ୍ରଶ୍ନବୋଧକ?',opts:['ମୁଁ ଖେଳୁଛି।','ମୁଁ ଖେଳୁଛି କି?','ମୁଁ ଖେଳିବି।','ମୁଁ ଖେଳିଥିଲି।'],ans:1},
+  {q:'ସେ ଭଲ ପିଲା → ବିସ୍ମୟବୋଧକ?',opts:['ସେ ଭଲ ପିଲା।','ସେ ଭଲ ପିଲା!','ସେ ଭଲ ପିଲା କି?','ସେ ଭଲ ପିଲା ନୁହେଁ।'],ans:1},
+  {q:'ମୋ ଦ୍ୱାରା ବହି ପଢ଼ାଗଲା → କର୍ତୃବାଚ୍ୟ?',opts:['ମୁଁ ବହି ପଢ଼ିଲି','ବହି ପଢ଼ାଗଲା','ମୋ ଦ୍ୱାରା ପଢ଼ା','ପଢ଼ା ହୋଇଗଲା'],ans:0}
+];
+var q7Idx=0;
+function renderQ7(){if(q7Idx>=q7Data.length){document.getElementById('quiz7Next').style.display='none';completeGame();return}var d=q7Data[q7Idx];var h='<div class="quiz-card"><div class="quiz-q-num">Question '+(q7Idx+1)+' of '+q7Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Choose the correct transformation</div><div class="quiz-options" id="q7Opts">';d.opts.forEach(function(o,i){h+='<button class="quiz-opt" onclick="pickQ(7,this,'+i+')" data-idx="'+i+'">'+o+'</button>'});h+='</div><div class="quiz-feedback" id="q7Fb"></div></div>';document.getElementById('quiz7Container').innerHTML=h;document.getElementById('quiz7Next').classList.remove('show')}
+renderQ7();
+
+// GAME 8 — Board Exam Grammar MCQ
+var q8Data=[
+  {q:'ସନ୍ଧି ଭାଙ୍ଗ: ବିଦ୍ୟାଳୟ',opts:['ବିଦ୍ୟା + ଆଳୟ','ବିଦ + ଆଳୟ','ବିଦ୍ୟାଳ + ୟ','ବି + ଦ୍ୟାଳୟ'],ans:0},
+  {q:'ତତ୍ପୁରୁଷ ସମାସର ଉଦାହରଣ?',opts:['ସୁଖ-ଦୁଃଖ','ରାଜପୁତ୍ର','ଚକ୍ରପାଣି','ଯଥାଶକ୍ତି'],ans:1},
+  {q:'ସ୍ତ୍ରୀ ପ୍ରତ୍ୟୟ ଯୋଗ: ଦେବ → ?',opts:['ଦେବୀ','ଦେବିନୀ','ଦେବତା','ଦେବାନୀ'],ans:0},
+  {q:'ଅଧିକରଣ କାରକ କେଉଁ ବିଭକ୍ତି?',opts:['ପ୍ରଥମା','ତୃତୀୟା','ପଞ୍ଚମୀ','ସପ୍ତମୀ'],ans:3},
+  {q:'ସନ୍ଧି ଭାଙ୍ଗ: ଦେବାଳୟ',opts:['ଦେବ + ଆଳୟ','ଦେବା + ଳୟ','ଦେ + ବାଳୟ','ଦେବାଳ + ୟ'],ans:0},
+  {q:'ବହୁବ୍ରୀହି ସମାସ ଚିହ୍ନଟ କର:',opts:['ସୁଖ-ଦୁଃଖ','ରାଜପୁତ୍ର','ନୀଳକଣ୍ଠ','ଯଥାଶକ୍ତି'],ans:2},
+  {q:'କୃତ୍ ପ୍ରତ୍ୟୟ ଯୋଗ: ଲେଖ + କ = ?',opts:['ଲେଖକ','ଲେଖିକା','ଲେଖନ','ଲେଖା'],ans:0},
+  {q:'କରଣ କାରକ କେଉଁ ବିଭକ୍ତି?',opts:['ପ୍ରଥମା','ଦ୍ୱିତୀୟା','ତୃତୀୟା','ଚତୁର୍ଥୀ'],ans:2},
+  {q:'ଆଗମ ସନ୍ଧିର ଉଦାହରଣ?',opts:['ସୂର୍ଯ୍ୟୋଦୟ','ଉଲ୍ଲାସ','ମହେଶ୍ୱର','ନିଶ୍ଶେଷ'],ans:2},
+  {q:'ଅବ୍ୟୟୀଭାବ ସମାସ ଚିହ୍ନଟ:',opts:['ମାତା-ପିତା','ଚକ୍ରପାଣି','ରାଜପୁତ୍ର','ଯଥାଶକ୍ତି'],ans:3}
+];
+var q8Idx=0;
+function renderQ8(){if(q8Idx>=q8Data.length){document.getElementById('quiz8Next').style.display='none';completeGame();return}var d=q8Data[q8Idx];var h='<div class="quiz-card"><div class="quiz-q-num">Question '+(q8Idx+1)+' of '+q8Data.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Board exam pattern question</div><div class="quiz-options" id="q8Opts">';d.opts.forEach(function(o,i){h+='<button class="quiz-opt" onclick="pickQ(8,this,'+i+')" data-idx="'+i+'">'+o+'</button>'});h+='</div><div class="quiz-feedback" id="q8Fb"></div></div>';document.getElementById('quiz8Container').innerHTML=h;document.getElementById('quiz8Next').classList.remove('show')}
+renderQ8();
+
+// CONFETTI
+function launchConfetti(){var canvas=document.getElementById('confetti');canvas.style.display='block';var ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;var pieces=[];var colors=['#3A86FF','#F9C74F','#43AA8B','#D62828','#FF6B6B','#7B2FF7'];for(var i=0;i<150;i++){pieces.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,w:Math.random()*10+5,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],vy:Math.random()*3+2,vx:Math.random()*2-1,rot:Math.random()*360,vr:Math.random()*6-3})}var frame=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(function(p){p.y+=p.vy;p.x+=p.vx;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});frame++;if(frame<180)requestAnimationFrame(draw);else canvas.style.display='none'}draw()}
+</script>
+</body>
+</html>

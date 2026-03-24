@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଶବ୍ଦକୋଷ — Vocabulary | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#FF9F43;--cbg:#FFF5EC;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid var(--border)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.vocab-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.vocab-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(255,159,67,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.vocab-section-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--c);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.vocab-item{background:var(--off);border-radius:12px;padding:14px;text-align:center;border:2px solid var(--border);transition:border-color .15s}
+.vocab-item:hover{border-color:var(--c)}
+.vocab-word{font-family:var(--font-or);font-size:1.1rem;font-weight:700;color:var(--ink)}
+.vocab-type{font-size:0.7rem;font-weight:700;color:var(--c);margin-top:2px}
+.vocab-meaning{font-family:var(--font-or);font-size:0.88rem;color:var(--soft);margin-top:4px}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}.vocab-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.breadcrumb{display:none}.vocab-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 3</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ଶବ୍ଦକୋଷ</span></div>
+</nav>
+<div class="page-hero"><div class="hero-emoji">📚</div><!-- REVIEW NEEDED --><h1>ଶବ୍ଦକୋଷ</h1><p class="subtitle">Shabdakosha — Vocabulary</p><span class="textbook-ref">📘 ଝୁଲଣ ଭାଗ ୩ (SCERT Odisha)</span></div>
+<hr class="divider">
+<div class="intro"><!-- REVIEW NEEDED --><p>ସମାନାର୍ଥୀ ଶବ୍ଦ (Synonyms) ଓ ବିପରୀତ ଶବ୍ଦ (Antonyms) ଶିଖ ଏବଂ ତୋର ଶବ୍ଦ ଭଣ୍ଡାର ବଢ଼ାଅ!</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Learn synonyms, antonyms, and expand your Odia word power!</p></div>
+<div class="content-section" id="vocabContainer"></div>
+<hr class="divider">
+<div class="bottom-nav"><!-- REVIEW NEEDED --><a href="paragraphs.html" class="btn btn-outline">← ଅନୁଚ୍ଛେଦ</a><a href="vocabulary-games.html" class="btn btn-primary">🎮 ଶବ୍ଦକୋଷ ଖେଳ</a><a href="index.html" class="btn btn-forward">ଓଡ଼ିଆ ବିଷୟ →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 3 · Odia · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var sections=[
+  {title:'📗 ସମାନାର୍ଥୀ ଶବ୍ଦ — Synonyms',items:[
+    {word:'ସୂର୍ଯ୍ୟ',meaning:'ରବି, ଦିନକର',type:'Synonym'},
+    {word:'ଚନ୍ଦ୍ର',meaning:'ଶଶି, ନିଶାକର',type:'Synonym'},
+    {word:'ପାଣି',meaning:'ଜଳ, ନୀର',type:'Synonym'},
+    {word:'ଗଛ',meaning:'ବୃକ୍ଷ, ତରୁ',type:'Synonym'},
+    {word:'ଫୁଲ',meaning:'ପୁଷ୍ପ, କୁସୁମ',type:'Synonym'},
+    {word:'ପୃଥିବୀ',meaning:'ଧରା, ବସୁନ୍ଧରା',type:'Synonym'},
+    {word:'ଆକାଶ',meaning:'ଗଗନ, ନଭ',type:'Synonym'},
+    {word:'ବାୟୁ',meaning:'ପବନ, ସମୀର',type:'Synonym'},
+    {word:'ଅଗ୍ନି',meaning:'ଆଗୁଣ, ପାବକ',type:'Synonym'},
+    {word:'ରାତି',meaning:'ନିଶା, ରଜନୀ',type:'Synonym'}
+  ]},
+  {title:'🔄 ବିପରୀତ ଶବ୍ଦ — Antonyms',items:[
+    {word:'ଦିନ',meaning:'ରାତି',type:'Antonym'},
+    {word:'ଭଲ',meaning:'ଖରାପ',type:'Antonym'},
+    {word:'ବଡ଼',meaning:'ଛୋଟ',type:'Antonym'},
+    {word:'ଉପର',meaning:'ତଳ',type:'Antonym'},
+    {word:'ଆଲୁଅ',meaning:'ଅନ୍ଧାର',type:'Antonym'},
+    {word:'ସତ',meaning:'ମିଛ',type:'Antonym'},
+    {word:'ସୁଖ',meaning:'ଦୁଃଖ',type:'Antonym'},
+    {word:'ଆସ',meaning:'ଯା',type:'Antonym'},
+    {word:'ନୂଆ',meaning:'ପୁରୁଣା',type:'Antonym'},
+    {word:'ଗରମ',meaning:'ଥଣ୍ଡା',type:'Antonym'}
+  ]}
+];
+var container=document.getElementById('vocabContainer');
+sections.forEach(function(sec,i){
+  var card=document.createElement('div');card.className='vocab-card';card.style.animationDelay=(i*0.15)+'s';
+  var gridHTML='';sec.items.forEach(function(item){gridHTML+='<div class="vocab-item"><div class="vocab-word">'+item.word+'</div><div class="vocab-type">'+item.type+'</div><div class="vocab-meaning">↔ '+item.meaning+'</div></div>'});
+  card.innerHTML='<div class="vocab-section-title">'+sec.title+'</div><div class="vocab-grid">'+gridHTML+'</div>';
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

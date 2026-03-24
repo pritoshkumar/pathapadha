@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବ୍ୟାକରଣ — Grammar | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #B8D4FF}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.topic-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.topic-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(58,134,255,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topic-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.topic-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.topic-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.topic-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.topic-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px}
+.example-box{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block;font-family:var(--font-or);margin-bottom:8px}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 9</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <span>ବ୍ୟାକରଣ</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">📐</div><h1>ବ୍ୟାକରଣ</h1><p class="subtitle">Byakarana — Grammar</p><span class="textbook-ref">📘 ବ୍ୟାକରଣ (BSE Odisha)</span></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="intro"><p>ନବମ ଶ୍ରେଣୀ ବ୍ୟାକରଣ — ବାକ୍ୟ ବିଶ୍ଳେଷଣ, ପଦକ୍ରମ, ସନ୍ଧି, ସମାସ, ପ୍ରତ୍ୟୟ ଆଦି ଶିଖ।</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Master sentence analysis, word order, sandhi, compounds, and affixes for Class 9.</p></div>
+<div class="content-section" id="topicsContainer"></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="bottom-nav"><a href="sahitya.html" class="btn btn-outline">← ସାହିତ୍ୟ</a><a href="byakarana-games.html" class="btn btn-primary">🎮 ବ୍ୟାକରଣ ଖେଳ</a><a href="rachana.html" class="btn btn-forward">ରଚନା →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 9 · Odia · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var topics=[
+  {title:'ବାକ୍ୟ ବିଶ୍ଳେଷଣ',titleEn:'Sentence Analysis',emoji:'🔍',
+   body:'ବାକ୍ୟ ବିଶ୍ଳେଷଣ ହେଉଛି ଏକ ବାକ୍ୟକୁ ତାହାର ଅଂଶ ଗୁଡ଼ିକରେ ଭାଗ କରି ପ୍ରତ୍ୟେକ ଅଂଶର କାର୍ଯ୍ୟ ବୁଝିବା। ଉଦ୍ଦେଶ୍ୟ (Subject), ବିଧେୟ (Predicate), କର୍ମ (Object), କ୍ରିୟା (Verb), ବିଶେଷଣ (Adjective), ଓ କ୍ରିୟା ବିଶେଷଣ (Adverb)।',
+   example:'ଉଦ୍ଦେଶ୍ୟ: ରାମ | ବିଧେୟ: ବହି ପଢ଼ୁଛି | କର୍ମ: ବହି | କ୍ରିୟା: ପଢ଼ୁଛି'},
+  {title:'ସନ୍ଧି',titleEn:'Sandhi (Phonetic Combination)',emoji:'🔗',
+   body:'ଦୁଇଟି ବର୍ଣ୍ଣ ମିଳିତ ହୋଇ ନୂଆ ବର୍ଣ୍ଣ ସୃଷ୍ଟି ହେବାକୁ ସନ୍ଧି କୁହାଯାଏ। ସ୍ୱରସନ୍ଧି: ସ୍ୱର + ସ୍ୱର, ବ୍ୟଞ୍ଜନସନ୍ଧି: ବ୍ୟଞ୍ଜନ + ସ୍ୱର/ବ୍ୟଞ୍ଜନ, ବିସର୍ଗସନ୍ଧି: ବିସର୍ଗ + ସ୍ୱର/ବ୍ୟଞ୍ଜନ।',
+   example:'ହିମ + ଆଳୟ = ହିମାଳୟ (ସ୍ୱରସନ୍ଧି) | ସତ୍ + ଜନ = ସଜ୍ଜନ (ବ୍ୟଞ୍ଜନସନ୍ଧି)'},
+  {title:'ସମାସ',titleEn:'Samasa (Compounds)',emoji:'📦',
+   body:'ଦୁଇ ବା ତତୋଧିକ ପଦ ମିଳିତ ହୋଇ ଏକ ପଦ ସୃଷ୍ଟି ହେବାକୁ ସମାସ କୁହାଯାଏ। ତତ୍ପୁରୁଷ, କର୍ମଧାରୟ, ଦ୍ୱନ୍ଦ୍ୱ, ବହୁବ୍ରୀହି, ଅବ୍ୟୟୀଭାବ — ଏହି ପାଞ୍ଚ ପ୍ରକାର ସମାସ ଅଛି।',
+   example:'ରାଜପୁତ୍ର = ରାଜାର ପୁତ୍ର (ତତ୍ପୁରୁଷ) | ନୀଳକଣ୍ଠ = ନୀଳ ଯାହାର କଣ୍ଠ (ବହୁବ୍ରୀହି)'},
+  {title:'ପ୍ରତ୍ୟୟ',titleEn:'Pratyaya (Suffixes)',emoji:'🧩',
+   body:'ଧାତୁ ବା ପ୍ରାତିପଦିକ ସହ ଯୋଡ଼ି ନୂଆ ଶବ୍ଦ ସୃଷ୍ଟି କରୁଥିବା ଅଂଶକୁ ପ୍ରତ୍ୟୟ କୁହାଯାଏ। କୃତ୍ ପ୍ରତ୍ୟୟ (ଧାତୁ ସହ) ଓ ତଦ୍ଧିତ ପ୍ରତ୍ୟୟ (ଶବ୍ଦ ସହ) — ଏହି ଦୁଇ ପ୍ରକାର ପ୍ରତ୍ୟୟ ଅଛି।',
+   example:'ପଢ଼ + ଆ = ପଢ଼ା (କୃତ୍ ପ୍ରତ୍ୟୟ) | ସୁନ୍ଦର + ତା = ସୁନ୍ଦରତା (ତଦ୍ଧିତ ପ୍ରତ୍ୟୟ)'},
+  {title:'ପଦକ୍ରମ',titleEn:'Padakrama (Word Order)',emoji:'📝',
+   body:'ଓଡ଼ିଆ ଭାଷାରେ ବାକ୍ୟର ମୂଳ ପଦକ୍ରମ ହେଉଛି: ଉଦ୍ଦେଶ୍ୟ (S) + କର୍ମ (O) + କ୍ରିୟା (V) ଅର୍ଥାତ୍ SOV। ବିଭିନ୍ନ ପ୍ରକାର ବାକ୍ୟ ଯଥା — ସରଳ, ଜଟିଳ, ଯୌଗିକ ବାକ୍ୟରେ ପଦକ୍ରମ ଭିନ୍ନ ହୋଇଥାଏ।',
+   example:'ସରଳ: ମୁଁ ଭାତ ଖାଉଛି | ଜଟିଳ: ମୁଁ ଯେତେବେଳେ ଘରେ ଥିଲି, ବୃଷ୍ଟି ହେଲା'}
+];
+var container=document.getElementById('topicsContainer');
+topics.forEach(function(t,i){
+  var card=document.createElement('div');card.className='topic-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="topic-header"><span style="font-size:2.5rem">'+t.emoji+'</span><div><div class="topic-num">Topic '+(i+1)+'</div><div class="topic-title">'+t.title+'</div><div class="topic-title-en">'+t.titleEn+'</div></div></div><div class="topic-body">'+t.body+'</div><div class="example-box">📌 '+t.example+'</div>';
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

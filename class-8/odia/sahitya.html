@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ସାହିତ୍ୟ — ଅଷ୍ଟମ ଶ୍ରେଣୀ ଓଡ଼ିଆ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#FF6B6B;--cbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #FFCDD2}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.story-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.story-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(255,107,107,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.story-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.story-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.story-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.story-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.story-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px}
+.story-moral{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block}
+.story-questions{margin-top:14px}
+.story-questions h4{font-size:0.8rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.story-questions ol{font-family:var(--font-or);font-size:0.9rem;color:var(--soft);padding-left:20px;line-height:2}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 8</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <span>ସାହିତ୍ୟ</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">📖</div><h1>ସାହିତ୍ୟ</h1><p class="subtitle">Sahitya — Prose & Literature</p><span class="textbook-ref">📘 ସାହିତ୍ୟ ମଞ୍ଜରୀ (BSE Class 8)</span></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="intro"><p>ଅଷ୍ଟମ ଶ୍ରେଣୀ ପାଇଁ ଗଦ୍ୟ ସାହିତ୍ୟ — ଗୋପବନ୍ଧୁ ଦାସ, ଫକୀର ମୋହନ ସେନାପତି ଓ ଅନ୍ୟ ଲେଖକମାନଙ୍କ ରଚନା ପଢ଼ି ବୁଝ।</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Read prose selections from great Odia authors and answer comprehension questions.</p></div>
+<div class="content-section" id="storiesContainer"></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="bottom-nav"><a href="index.html" class="btn btn-outline">← ଓଡ଼ିଆ ବିଷୟ</a><a href="sahitya-games.html" class="btn btn-primary">🎮 ସାହିତ୍ୟ ଖେଳ</a><a href="byakarana.html" class="btn btn-forward">ବ୍ୟାକରଣ →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 8 · ଓଡ଼ିଆ · ସାହିତ୍ୟ · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var stories=[
+  {title:'ବୀର ସୁରେନ୍ଦ୍ର ସାଇ',titleEn:'Bir Surendra Sai — Freedom Fighter of Odisha',emoji:'⚔️',
+   body:'ସୁରେନ୍ଦ୍ର ସାଇ ସମ୍ବଲପୁର ଜିଲ୍ଲାର ଜଣେ ବୀର ସ୍ୱାଧୀନତା ସଂଗ୍ରାମୀ ଥିଲେ। ସେ ବ୍ରିଟିଶ ଶାସନ ବିରୁଦ୍ଧରେ ଲଢ଼େଇ କରିଥିଲେ। ସେ ନିଜ ରାଜ୍ୟ ଓ ଜନତାଙ୍କ ପାଇଁ ସ୍ୱାଧୀନତା ଚାହୁଥିଲେ। ଅନେକ ଯୁଦ୍ଧରେ ସେ ବ୍ରିଟିଶ ସେନାକୁ ପରାସ୍ତ କରିଥିଲେ। ଶେଷରେ ବ୍ରିଟିଶ ତାଙ୍କୁ ବନ୍ଦୀ କରି ଅସରଗଡ଼ କାରାଗାରରେ ରଖିଲେ।',
+   moral:'ନୈତିକ ଶିକ୍ଷା: ସ୍ୱାଧୀନତା ପାଇଁ ସଂଗ୍ରାମ ସର୍ବଦା ମହାନ।',
+   questions:['ସୁରେନ୍ଦ୍ର ସାଇ କେଉଁ ଜିଲ୍ଲାର ଥିଲେ?','ସେ କାହା ବିରୁଦ୍ଧରେ ଲଢ଼େଇ କରିଥିଲେ?','ଶେଷରେ ତାଙ୍କର କଣ ହେଲା?']},
+  {title:'ଜଗନ୍ନାଥ ମନ୍ଦିର',titleEn:'The Jagannath Temple — Pride of Odisha',emoji:'🛕',
+   body:'ପୁରୀର ଜଗନ୍ନାଥ ମନ୍ଦିର ଭାରତର ଚାରିଧାମ ମଧ୍ୟରୁ ଅନ୍ୟତମ। ଏହା ଦ୍ୱାଦଶ ଶତାବ୍ଦୀରେ ଗଙ୍ଗ ବଂଶର ରାଜା ଅନନ୍ତବର୍ମନ ଚୋଡ଼ଗଙ୍ଗ ଦେବ ନିର୍ମାଣ କରାଇଥିଲେ। ପ୍ରତି ବର୍ଷ ରଥଯାତ୍ରା ସମୟରେ ଲକ୍ଷ ଲକ୍ଷ ଭକ୍ତ ପୁରୀକୁ ଆସନ୍ତି। ମନ୍ଦିର ଉଚ୍ଚତା ପ୍ରାୟ ୨୧୪ ଫୁଟ ଏବଂ ଏହା ଓଡ଼ିଶାର ଗର୍ବ।',
+   moral:'ସାରକଥା: ଓଡ଼ିଶାର ସାଂସ୍କୃତିକ ଐତିହ୍ୟ ଅମୂଲ୍ୟ।',
+   questions:['ଜଗନ୍ନାଥ ମନ୍ଦିର କିଏ ନିର୍ମାଣ କରାଇଥିଲେ?','ମନ୍ଦିରର ଉଚ୍ଚତା କେତେ?','ରଥଯାତ୍ରାରେ କିଏ ଆସନ୍ତି?']},
+  {title:'ଗୋପବନ୍ଧୁଙ୍କ ସେବା',titleEn:'Gopabandhu Das — Servant of the People',emoji:'🙏',
+   body:'ଗୋପବନ୍ଧୁ ଦାସ ଓଡ଼ିଶାର ଜଣେ ମହାନ ସମାଜସେବୀ ଓ କବି ଥିଲେ। ସେ ଗରିବ ଓ ଅସହାୟ ଲୋକଙ୍କ ସେବାରେ ନିଜ ଜୀବନ ଉତ୍ସର୍ଗ କରିଥିଲେ। ପ୍ରଳୟ ସମୟରେ ସେ ଲୋକଙ୍କ ଘରେ ଘରେ ଯାଇ ସାହାଯ୍ୟ କରୁଥିଲେ। ସେ ସତ୍ୟବାଦୀ ପତ୍ରିକା ସମ୍ପାଦନା କରୁଥିଲେ ଏବଂ ଓଡ଼ିଶାର ପୃଥକ ପ୍ରଦେଶ ଗଠନ ପାଇଁ ଲଢ଼ିଥିଲେ।',
+   moral:'ନୈତିକ ଶିକ୍ଷା: ନିଃସ୍ୱାର୍ଥ ସେବା ହେଉଛି ସର୍ବୋଚ୍ଚ ଧର୍ମ।',
+   questions:['ଗୋପବନ୍ଧୁ ଦାସ କେଉଁ ପତ୍ରିକା ସମ୍ପାଦନା କରୁଥିଲେ?','ସେ କାହା ସେବାରେ ଜୀବନ ଉତ୍ସର୍ଗ କଲେ?','ସେ କେଉଁ ଆନ୍ଦୋଳନ ପାଇଁ ଲଢ଼ିଥିଲେ?']}
+];
+var container=document.getElementById('storiesContainer');
+stories.forEach(function(s,i){
+  var qHTML='';s.questions.forEach(function(q){qHTML+='<li>'+q+'</li>'});
+  var card=document.createElement('div');card.className='story-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="story-header"><span style="font-size:2.5rem">'+s.emoji+'</span><div><div class="story-num">Lesson '+(i+1)+'</div><div class="story-title">'+s.title+'</div><div class="story-title-en">'+s.titleEn+'</div></div></div><div class="story-body">'+s.body+'</div><div class="story-moral">'+s.moral+'</div><div class="story-questions"><h4>ପ୍ରଶ୍ନ — Questions</h4><ol>'+qHTML+'</ol></div>';
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>

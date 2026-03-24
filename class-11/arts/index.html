@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>କଳା ଶାଖା — ଏକାଦଶ ଶ୍ରେଣୀ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;
+  --c:#7B5EA7;--cbg:#F3EDFF;
+  --font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.93);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-emoji{font-size:1.5rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-odia{font-family:var(--font-or);font-size:1.1rem;font-weight:700}
+.logo-url{font-size:0.68rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:var(--light)}
+.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--c)}
+
+.hero{max-width:1100px;margin:0 auto;padding:64px 48px 56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cbg);color:var(--c);font-size:0.78rem;font-weight:800;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.hero h1{font-family:var(--font-or);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;line-height:1.2;margin-bottom:8px}
+.hero-eng{font-size:1.1rem;font-weight:800;color:var(--light);margin-bottom:16px}
+.hero-desc{font-size:0.95rem;color:var(--soft);max-width:420px;line-height:1.8}
+.hero-art{width:160px;height:160px;border-radius:32px;background:var(--cbg);display:flex;align-items:center;justify-content:center;font-size:5rem;flex-shrink:0;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+hr.divider{border:none;border-top:1px solid var(--border)}
+
+.section{max-width:1100px;margin:0 auto;padding:56px 48px}
+.section-label{font-size:0.7rem;font-weight:700;color:#bbb;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:28px}
+
+.subject-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.subject-card{border-radius:24px;border:2px solid var(--border);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;background:#fff;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(.34,1.56,.64,1),box-shadow 0.2s,border-color 0.2s}
+.subject-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--sc)}
+.subject-card.live{cursor:pointer}
+.subject-card.live:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--sc)}
+
+.subj-top{display:flex;align-items:flex-start;justify-content:space-between}
+.subj-emoji{font-size:2.8rem;line-height:1}
+.subj-badge{font-size:0.68rem;font-weight:800;padding:4px 12px;border-radius:50px;background:var(--scbg);color:var(--sc);letter-spacing:0.5px}
+.subj-name-or{font-family:var(--font-or);font-size:1.4rem;font-weight:700;color:var(--ink);line-height:1.2}
+.subj-name-en{font-size:0.82rem;font-weight:700;color:var(--light);margin-top:4px}
+.subj-topics{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.topic-tag{font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--scbg);color:var(--sc);letter-spacing:0.3px}
+.subj-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+.subj-go{font-size:0.82rem;font-weight:800;color:var(--sc);display:flex;align-items:center;gap:5px;transition:gap .15s}
+.subject-card.live:hover .subj-go{gap:10px}
+.subj-progress{font-size:0.72rem;font-weight:700;color:var(--sc)}
+
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}
+.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+
+@media(max-width:768px){nav{padding:14px 20px}.hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:24px}.hero-art{width:100px;height:100px;font-size:3rem;border-radius:20px}.section{padding:40px 20px}.subject-grid{grid-template-columns:1fr}footer{padding:20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../../index.html" class="logo">
+    <div class="logo-emoji">📖</div>
+    <div class="logo-text">
+      <!-- REVIEW NEEDED -->
+      <span class="logo-odia">ପାଠପଢ଼ା</span>
+      <span class="logo-url">pathapadha.com</span>
+    </div>
+  </a>
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> ›
+    <a href="../index.html">Class 11</a> ›
+    <!-- REVIEW NEEDED -->
+    <span>କଳା</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <!-- REVIEW NEEDED -->
+    <div class="hero-badge">🎨 CHSE Odisha · କଳା ଶାଖା</div>
+    <!-- REVIEW NEEDED -->
+    <h1>କଳା ଶାଖା</h1>
+    <p class="hero-eng">Arts Stream · Class 11</p>
+    <p class="hero-desc">Study Odia Literature, English, History, Political Science, and Economics — all following the CHSE Odisha +2 Arts syllabus.</p>
+  </div>
+  <div class="hero-art">🎨</div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <!-- REVIEW NEEDED -->
+  <div class="section-label">ବିଷୟ ବାଛନ୍ତୁ — Choose a Subject</div>
+  <div class="subject-grid" id="subjectGrid"></div>
+</section>
+
+<footer>
+  <!-- REVIEW NEEDED -->
+  <span class="footer-logo">ପାଠପଢ଼ା</span>
+  <span class="footer-copy">Class 11 · Arts · CHSE Odisha · Free forever</span>
+</footer>
+
+<script>
+// REVIEW NEEDED
+var subjects = [
+  {
+    name: 'ଓଡ଼ିଆ ସାହିତ୍ୟ',
+    eng: 'Odia Literature',
+    emoji: '📗',
+    color: '#7B5EA7',
+    bg: '#F3EDFF',
+    topics: ['ଗଦ୍ୟ','ପଦ୍ୟ','ବ୍ୟାକରଣ'],
+    href: 'odia/index.html',
+    live: true,
+    progress: '3 topics'
+  },
+  {
+    name: 'ଇଂରାଜୀ',
+    eng: 'English',
+    emoji: '📙',
+    color: '#43AA8B',
+    bg: '#EDFAF4',
+    topics: ['Prose','Poetry','Grammar'],
+    href: 'english/index.html',
+    live: true,
+    progress: '3 topics'
+  },
+  {
+    name: 'ଇତିହାସ',
+    eng: 'History',
+    emoji: '🏛️',
+    color: '#D4A017',
+    bg: '#FFFBEC',
+    topics: ['ପ୍ରାଚୀନ ଭାରତ','ମଧ୍ୟଯୁଗୀୟ ଭାରତ','ବିଶ୍ୱ ଇତିହାସ'],
+    href: 'history/index.html',
+    live: true,
+    progress: '3 topics'
+  },
+  {
+    name: 'ରାଜନୀତି ବିଜ୍ଞାନ',
+    eng: 'Political Science',
+    emoji: '⚖️',
+    color: '#E63946',
+    bg: '#FFF0F1',
+    topics: ['ସମ୍ବିଧାନ','ସରକାର','ଅଧିକାର'],
+    href: 'political-science/index.html',
+    live: true,
+    progress: '3 topics'
+  },
+  {
+    name: 'ଅର୍ଥନୀତି',
+    eng: 'Economics',
+    emoji: '📊',
+    color: '#118AB2',
+    bg: '#E8F6FB',
+    topics: ['ସୂକ୍ଷ୍ମ ଅର୍ଥନୀତି','ପରିସଂଖ୍ୟାନ','ଅର୍ଥନୈତିକ ବିକାଶ'],
+    href: 'economics/index.html',
+    live: true,
+    progress: '3 topics'
+  }
+];
+
+var grid = document.getElementById('subjectGrid');
+
+subjects.forEach(function(s) {
+  var el = document.createElement(s.live ? 'a' : 'div');
+  if (s.live) el.href = s.href;
+  el.className = 'subject-card ' + (s.live ? 'live' : 'soon');
+  el.style.setProperty('--sc', s.color);
+  el.style.setProperty('--scbg', s.bg);
+
+  var topicsHTML = s.topics.map(function(t) {
+    return '<span class="topic-tag">' + t + '</span>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="subj-top">' +
+      '<div class="subj-emoji">' + s.emoji + '</div>' +
+      '<div class="subj-badge">Available</div>' +
+    '</div>' +
+    '<div>' +
+      '<div class="subj-name-or">' + s.name + '</div>' +
+      '<div class="subj-name-en">' + s.eng + '</div>' +
+    '</div>' +
+    '<div class="subj-topics">' + topicsHTML + '</div>' +
+    '<div class="subj-footer">' +
+      '<span class="subj-go">Start learning →</span>' +
+      '<span class="subj-progress">' + s.progress + '</span>' +
+    '</div>';
+
+  grid.appendChild(el);
+});
+</script>
+</body>
+</html>
