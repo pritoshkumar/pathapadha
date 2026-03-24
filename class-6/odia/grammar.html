@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ବ୍ୟାକରଣ — Grammar | ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#fff;--off:#F7F7F5;--border:#EBEBEB;--c:#3A86FF;--cbg:#EEF4FF;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #BBDEFB}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.topic-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.topic-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(58,134,255,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topic-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.topic-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.topic-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.topic-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.topic-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px}
+.example-box{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.rule-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.92rem}
+.rule-table th{background:var(--cbg);color:var(--c);font-weight:800;text-align:left;padding:10px 14px;border-bottom:2px solid var(--c)}
+.rule-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.rule-table tr:hover td{background:var(--off)}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}.btn-forward{background:var(--ink);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../index.html">Class 6</a> › <!-- REVIEW NEEDED --><a href="index.html">ଓଡ଼ିଆ</a> › <!-- REVIEW NEEDED --><span>ବ୍ୟାକରଣ</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">📝</div><h1>ବ୍ୟାକରଣ</h1><p class="subtitle">Vyakarana — Grammar: Sandhi & Samasa</p><span class="textbook-ref">📘 ସାହିତ୍ୟ ମଞ୍ଜରୀ (SCERT Odisha)</span></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="intro"><p>ଓଡ଼ିଆ ବ୍ୟାକରଣର ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ନିୟମ ଶିଖ — ସନ୍ଧି, ସମାସ, ପ୍ରତ୍ୟୟ ଓ ଉପସର୍ଗ। Learn key Odia grammar rules!</p></div>
+<div class="content-section" id="contentContainer"></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="bottom-nav"><a href="literature.html" class="btn btn-outline">← ସାହିତ୍ୟ</a><a href="grammar-games.html" class="btn btn-primary">🎮 ବ୍ୟାକରଣ ଖେଳ</a><a href="composition.html" class="btn btn-forward">ରଚନା →</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 6 · ଓଡ଼ିଆ · ବ୍ୟାକରଣ · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var sections=[
+  {title:'ସନ୍ଧି',titleEn:'Sandhi (Sound Joining)',emoji:'🔗',
+   body:'ଦୁଇଟି ଶବ୍ଦ ଯୋଡ଼ିଲେ ଯେଉଁ ଧ୍ୱନି ପରିବର୍ତ୍ତନ ହୁଏ, ତାକୁ ସନ୍ଧି କୁହାଯାଏ।',
+   examples:[
+     {rule:'ଅ + ଅ = ଆ',ex:'ଦେବ + ଆଳୟ = ଦେବାଳୟ'},
+     {rule:'ଅ + ଇ = ଏ',ex:'ମହା + ଈଶ = ମହେଶ'},
+     {rule:'ଅ + ଉ = ଓ',ex:'ସୂର୍ଯ୍ୟ + ଉଦୟ = ସୂର୍ଯ୍ୟୋଦୟ'},
+     {rule:'ଇ + ଇ = ଈ',ex:'ରବି + ଇନ୍ଦ୍ର = ରବୀନ୍ଦ୍ର'}
+   ]},
+  {title:'ସମାସ',titleEn:'Samasa (Compound Words)',emoji:'🧩',
+   body:'ଦୁଇ ବା ଅଧିକ ଶବ୍ଦ ମିଳି ଗୋଟିଏ ନୂଆ ଶବ୍ଦ ତିଆରି ହେଲେ, ତାକୁ ସମାସ କୁହାଯାଏ।',
+   examples:[
+     {rule:'ତତ୍ପୁରୁଷ',ex:'ରାଜପୁତ୍ର = ରାଜାର ପୁତ୍ର'},
+     {rule:'ଦ୍ୱନ୍ଦ୍ୱ',ex:'ଦେଶବିଦେଶ = ଦେଶ ଓ ବିଦେଶ'},
+     {rule:'କର୍ମଧାରୟ',ex:'ନୀଳାମ୍ବର = ନୀଳ ଅମ୍ବର'},
+     {rule:'ବହୁବ୍ରୀହି',ex:'ଦଶାନନ = ଦଶ ଆନନ ଯାହାର (ରାବଣ)'}
+   ]},
+  {title:'ପ୍ରତ୍ୟୟ',titleEn:'Pratyaya (Suffixes)',emoji:'🔚',
+   body:'ଶବ୍ଦର ଶେଷରେ ଯୋଡ଼ାଯାଉଥିବା ଅଂଶକୁ ପ୍ରତ୍ୟୟ କୁହାଯାଏ। ଏହା ଶବ୍ଦର ଅର୍ଥ ବଦଳାଇଦିଏ।',
+   examples:[
+     {rule:'-ତା',ex:'ସୁନ୍ଦର + ତା = ସୁନ୍ଦରତା'},
+     {rule:'-ତ୍ୱ',ex:'ମନୁଷ୍ୟ + ତ୍ୱ = ମନୁଷ୍ୟତ୍ୱ'},
+     {rule:'-ଆଳୀ',ex:'ଦୁଃଖ + ଆଳୀ = ଦୁଃଖାଳୀ'},
+     {rule:'-ଇକ',ex:'ବିଜ୍ଞାନ + ଇକ = ବୈଜ୍ଞାନିକ'}
+   ]},
+  {title:'ଉପସର୍ଗ',titleEn:'Upasarga (Prefixes)',emoji:'🔝',
+   body:'ଶବ୍ଦର ଆଗରେ ଯୋଡ଼ାଯାଉଥିବା ଅଂଶକୁ ଉପସର୍ଗ କୁହାଯାଏ। ଏହା ଶବ୍ଦର ଅର୍ଥ ବଦଳାଇଦିଏ।',
+   examples:[
+     {rule:'ପ୍ର-',ex:'ପ୍ର + ହାର = ପ୍ରହାର'},
+     {rule:'ଅନୁ-',ex:'ଅନୁ + ବାଦ = ଅନୁବାଦ'},
+     {rule:'ଅପ-',ex:'ଅପ + ମାନ = ଅପମାନ'},
+     {rule:'ସମ୍-',ex:'ସମ୍ + ମାନ = ସମ୍ମାନ'}
+   ]}
+];
+var container=document.getElementById('contentContainer');
+sections.forEach(function(s,i){
+  var tableHTML='<table class="rule-table"><tr><th>ନିୟମ / Rule</th><th>ଉଦାହରଣ / Example</th></tr>';
+  s.examples.forEach(function(e){tableHTML+='<tr><td>'+e.rule+'</td><td>'+e.ex+'</td></tr>'});
+  tableHTML+='</table>';
+  var card=document.createElement('div');card.className='topic-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="topic-header"><span style="font-size:2.5rem">'+s.emoji+'</span><div><div class="topic-num">Section '+(i+1)+'</div><div class="topic-title">'+s.title+'</div><div class="topic-title-en">'+s.titleEn+'</div></div></div><div class="topic-body">'+s.body+'</div>'+tableHTML;
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
