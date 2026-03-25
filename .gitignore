@@ -4,3 +4,4 @@ tools/
 .claude/settings.local.json
 *.py
 _gen*
+_build/
