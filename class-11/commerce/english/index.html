@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଇଂରାଜୀ — ବାଣିଜ୍ୟ ଶାଖା — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.hero-emoji{font-size:3.5rem;display:block;margin-bottom:12px;animation:bounce-slow 2s ease-in-out infinite}
+@keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--c);margin-bottom:6px}
+.page-hero .subtitle{font-size:1.05rem;color:var(--soft);font-weight:600}
+.page-hero .textbook-ref{font-size:0.78rem;color:var(--light);font-weight:600;margin-top:10px;display:inline-block;background:var(--cbg);padding:4px 16px;border-radius:50px;border:1px solid #A8E6CF}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.intro{max-width:900px;margin:0 auto;padding:36px 48px;text-align:center}
+.intro p{font-size:0.95rem;color:var(--soft);max-width:600px;margin:0 auto;line-height:1.8}
+.content-section{max-width:900px;margin:0 auto;padding:0 48px 48px}
+.topic-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:28px 24px;margin-bottom:20px;transition:transform .18s,border-color .18s,box-shadow .18s;animation:fadeUp .5s ease both}
+.topic-card:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(67,170,139,0.12)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.topic-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.topic-num{font-size:0.7rem;font-weight:800;color:var(--c);letter-spacing:1px;text-transform:uppercase}
+.topic-title{font-family:var(--font-or);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.topic-title-en{font-size:0.8rem;font-weight:600;color:var(--light)}
+.topic-body{font-family:var(--font-or);font-size:1rem;line-height:2;color:var(--soft);background:var(--off);border-radius:12px;padding:20px;margin-bottom:16px}
+.topic-key{font-size:0.88rem;font-weight:700;color:var(--c);background:var(--cbg);padding:10px 16px;border-radius:10px;display:inline-block}
+.topic-points{margin-top:14px}
+.topic-points h4{font-size:0.8rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.topic-points ul{font-family:var(--font-or);font-size:0.9rem;color:var(--soft);padding-left:20px;line-height:2}
+.bottom-nav{max-width:900px;margin:0 auto;padding:12px 48px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;transition:opacity .15s,transform .15s;border:none;cursor:pointer;font-family:var(--font)}.btn:hover{opacity:0.85;transform:translateY(-2px)}.btn-outline{background:#fff;color:var(--ink);border:2px solid var(--border)}.btn-primary{background:var(--c);color:#fff}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.page-hero,.intro,.content-section,.bottom-nav,footer{padding-left:20px;padding-right:20px}.bottom-nav{flex-direction:column;align-items:stretch;text-align:center}.btn{justify-content:center}}
+@media(max-width:480px){.breadcrumb{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../../index.html">Home</a> › <a href="../../index.html">Class 11</a> › <!-- REVIEW NEEDED --><a href="../index.html">ବାଣିଜ୍ୟ</a> › <span>ଇଂରାଜୀ</span></div>
+</nav>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><div class="hero-emoji">📙</div><h1>ଇଂରାଜୀ</h1><p class="subtitle">English — Commerce Stream</p><span class="textbook-ref">📘 CHSE Odisha +2 First Year English</span></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="intro"><p>ଏକାଦଶ ଶ୍ରେଣୀ ଇଂରାଜୀ — ଗଦ୍ୟ, ପଦ୍ୟ, ବ୍ୟାକରଣ ଏବଂ ଲେଖନ ବିଷୟରେ ପଢ଼ନ୍ତୁ।</p><p style="margin-top:8px;font-size:0.85rem;color:var(--light)">Study Prose, Poetry, Grammar, and Writing Skills for Class 11 English!</p></div>
+<div class="content-section" id="topicsContainer"></div>
+<hr class="divider">
+<!-- REVIEW NEEDED -->
+<div class="bottom-nav"><a href="../index.html" class="btn btn-outline">← ବାଣିଜ୍ୟ ଶାଖା</a><a href="english-games.html" class="btn btn-primary">🎮 ଇଂରାଜୀ ଖେଳ</a></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 11 · Commerce · ଇଂରାଜୀ · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var topics=[
+  {title:'ଗଦ୍ୟ',titleEn:'Prose',emoji:'📖',
+   body:'ଗଦ୍ୟ ବିଭାଗରେ ବିଭିନ୍ନ ସାହିତ୍ୟିକଙ୍କ ଲେଖା ଗଳ୍ପ ଓ ପ୍ରବନ୍ଧ ଅନ୍ତର୍ଭୁକ୍ତ। ପ୍ରତ୍ୟେକ ଗଦ୍ୟାଂଶରୁ ବାର୍ତ୍ତା, ଚରିତ୍ର ବିଶ୍ଳେଷଣ ଓ ଭାଷା ଶୈଳୀ ବୁଝିବା ଶିଖିବ। ସଂକ୍ଷିପ୍ତ ଉତ୍ତର ଓ ଦୀର୍ଘ ଉତ୍ତର ଅଭ୍ୟାସ କରିବ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: ପଠନ ବୋଧ ଓ ବିଶ୍ଳେଷଣ',
+   points:['ଗଳ୍ପ ସାରାଂଶ ଲେଖିବା','ଚରିତ୍ର ବିଶ୍ଳେଷଣ','ମୁଖ୍ୟ ବିଷୟବସ୍ତୁ ଚିହ୍ନଟ','ଶବ୍ଦ ଅର୍ଥ ଓ ବ୍ୟବହାର']},
+  {title:'ପଦ୍ୟ',titleEn:'Poetry',emoji:'🎭',
+   body:'ପଦ୍ୟ ବିଭାଗରେ ବିଭିନ୍ନ କବିଙ୍କ କବିତା ଅନ୍ତର୍ଭୁକ୍ତ। କବିତାର ଭାବ, ଭାଷା, ଛନ୍ଦ ଓ ଅଳଙ୍କାର ବିଷୟରେ ପଢ଼ିବ। ବ୍ୟାଖ୍ୟା ଲେଖିବା ଓ ସୌନ୍ଦର୍ଯ୍ୟ ବୋଧ ଶିଖିବ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: କବିତା ବ୍ୟାଖ୍ୟା ଓ ଭାବ',
+   points:['କବିତାର ମୂଳ ଭାବ','ଅଳଙ୍କାର ଚିହ୍ନଟ — Simile, Metaphor','ଛନ୍ଦ ଓ ଲୟ ବୋଧ','ସନ୍ଦର୍ଭ ସହ ବ୍ୟାଖ୍ୟା']},
+  {title:'ବ୍ୟାକରଣ',titleEn:'Grammar',emoji:'📐',
+   body:'ଇଂରାଜୀ ବ୍ୟାକରଣ ବିଭାଗରେ Tenses, Voice, Narration, Transformation ଓ ଅନ୍ୟାନ୍ୟ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ବିଷୟ ଅଛି। ସଠିକ ବ୍ୟାକରଣ ଜ୍ଞାନ ଲେଖନ ଓ ଭାଷଣ ଦୁଇଟିରେ ସହାୟକ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: Tenses, Voice, Narration',
+   points:['Tenses — Past, Present, Future','Active and Passive Voice','Direct and Indirect Speech','Sentence Transformation']},
+  {title:'ଲେଖନ',titleEn:'Writing Skills',emoji:'✍️',
+   body:'ଲେଖନ ବିଭାଗରେ ଚିଠି ଲେଖିବା, ପ୍ରବନ୍ଧ ଲେଖିବା, ସାରାଂଶ ଲେଖିବା ଏବଂ ବିଜ୍ଞପ୍ତି ଲେଖିବା ଶିଖାଯାଏ। ବ୍ୟବସାୟିକ ଚିଠି ଲେଖିବା ବାଣିଜ୍ୟ ଛାତ୍ରଙ୍କ ପାଇଁ ଅତ୍ୟନ୍ତ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ।',
+   key:'ମୁଖ୍ୟ ବିଷୟ: ଚିଠି, ପ୍ରବନ୍ଧ ଓ ସାରାଂଶ',
+   points:['ଔପଚାରିକ ଓ ଅନୌପଚାରିକ ଚିଠି','ପ୍ରବନ୍ଧ ଲେଖିବା','ସାରାଂଶ (Precis) ଲେଖିବା','ବିଜ୍ଞପ୍ତି ଓ ବିଜ୍ଞାପନ ଲେଖିବା']}
+];
+var container=document.getElementById('topicsContainer');
+topics.forEach(function(s,i){
+  var pHTML='';s.points.forEach(function(p){pHTML+='<li>'+p+'</li>'});
+  var card=document.createElement('div');card.className='topic-card';card.style.animationDelay=(i*0.1)+'s';
+  card.innerHTML='<div class="topic-header"><span style="font-size:2.5rem">'+s.emoji+'</span><div><div class="topic-num">Topic '+(i+1)+'</div><div class="topic-title">'+s.title+'</div><div class="topic-title-en">'+s.titleEn+'</div></div></div><div class="topic-body">'+s.body+'</div><div class="topic-key">'+s.key+'</div><div class="topic-points"><h4>ଶିଖିବାର ଲକ୍ଷ୍ୟ — Learning Objectives</h4><ul>'+pHTML+'</ul></div>';
+  container.appendChild(card);
+});
+</script>
+</body></html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- REVIEW NEEDED -->
+<title>ଇଂରାଜୀ ଖେଳ — ପାଠପଢ଼ା</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--soft:#555;--light:#888;--bg:#FFFDF9;--off:#F7F5F0;--border:#EBEBEB;--c:#43AA8B;--cbg:#EDFAF4;--green:#43AA8B;--greenbg:#EDFAF4;--yellow:#F9C74F;--blue:#3A86FF;--bluebg:#EEF4FF;--red:#FF6B6B;--redbg:#FFF0F0;--font:'Nunito',sans-serif;--font-or:'Noto Sans Oriya',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border);background:rgba(255,253,249,0.95);backdrop-filter:blur(8px);position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}.logo-emoji{font-size:1.4rem}.logo-text{display:flex;flex-direction:column;line-height:1.2}.logo-odia{font-family:var(--font-or);font-size:1.05rem;font-weight:700}.logo-url{font-size:0.65rem;font-weight:600;color:var(--light)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:700;color:var(--light)}.breadcrumb a{color:var(--light);transition:color .15s}.breadcrumb a:hover{color:var(--ink)}.breadcrumb span{color:var(--c)}
+.star-bar{background:#fff;border-bottom:1px solid var(--border);padding:10px 48px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.star-display{display:flex;align-items:center;gap:6px}.star-count{font-size:1.5rem;font-weight:900;color:var(--yellow);line-height:1}.star-label{font-size:0.78rem;font-weight:700;color:var(--light)}
+.progress-wrap{flex:1;min-width:160px}.progress-label{font-size:0.72rem;font-weight:700;color:var(--light);margin-bottom:4px}.progress-bar{height:8px;background:var(--off);border-radius:50px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--c));border-radius:50px;transition:width 0.5s ease}
+.games-done{font-size:0.78rem;font-weight:700;color:var(--light)}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 36px;text-align:center}
+.page-hero h1{font-family:var(--font-or);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:8px;color:var(--c)}
+.page-hero p{font-size:0.95rem;color:var(--soft)}
+hr.divider{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.game-section{max-width:900px;margin:0 auto;padding:48px 48px 56px}
+.game-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.game-icon{font-size:2rem}.game-title{font-size:1.3rem;font-weight:900;color:var(--ink)}.game-subtitle{font-size:0.82rem;font-weight:600;color:var(--light);margin-top:2px}
+.game-stars-possible{margin-left:auto;font-size:0.78rem;font-weight:800;background:#FFFBEC;color:var(--yellow);border:1px solid #FFE99A;padding:4px 12px;border-radius:50px}
+.quiz-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.quiz-q-num{font-size:0.72rem;font-weight:800;color:var(--light);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.quiz-question{font-family:var(--font);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.6}
+.quiz-instruction{font-size:0.85rem;color:var(--soft);margin-bottom:24px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:var(--font);font-size:1.1rem;font-weight:700;transition:all .15s;text-align:center}
+.quiz-opt:hover:not(:disabled){border-color:var(--blue);background:var(--bluebg)}
+.quiz-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.quiz-opt:disabled{cursor:default}
+.quiz-feedback{margin-top:14px;padding:12px 16px;border-radius:12px;font-size:0.88rem;font-weight:700;display:none}
+.quiz-feedback.show{display:block}.quiz-feedback.ok{background:var(--greenbg);color:var(--green)}.quiz-feedback.bad{background:var(--redbg);color:var(--red)}
+.quiz-next{margin-top:16px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.88rem;font-weight:800;display:none;transition:opacity .15s}.quiz-next:hover{opacity:0.8}.quiz-next.show{display:inline-block}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.match-col{display:flex;flex-direction:column;gap:10px}
+.match-col-label{font-size:0.7rem;font-weight:800;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.match-item{padding:14px 20px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:12px;font-weight:700;user-select:none}
+.match-item:hover{border-color:var(--c);background:var(--cbg)}
+.match-item.selected{border-color:var(--blue);background:var(--bluebg)}
+.match-item.correct{border-color:var(--green);background:var(--greenbg);pointer-events:none}
+.match-item.wrong{border-color:var(--red);background:var(--redbg);animation:shake .3s}
+.match-letter{font-size:1rem;font-weight:700}
+.fill-card{background:#fff;border-radius:20px;border:2px solid var(--border);padding:32px;margin-bottom:16px}
+.fill-prompt{font-size:1.3rem;font-weight:700;margin-bottom:8px;line-height:2}
+.fill-hint{font-size:0.85rem;color:var(--soft);margin-bottom:20px}
+.fill-choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fill-choice{font-size:1.2rem;font-weight:700;padding:12px 18px;border-radius:12px;border:2px solid var(--border);background:var(--off);cursor:pointer;transition:all .15s}
+.fill-choice:hover{border-color:var(--blue);background:var(--bluebg)}
+.fill-feedback{margin-top:12px;font-size:0.88rem;font-weight:700;display:none}.fill-feedback.show{display:block}.fill-feedback.ok{color:var(--green)}.fill-feedback.bad{color:var(--red)}
+.fill-next{margin-top:12px;background:var(--ink);color:#fff;padding:10px 24px;border-radius:10px;font-size:0.85rem;font-weight:800;display:none}.fill-next.show{display:inline-block}
+.results-banner{background:#fff;border:2px solid var(--yellow);border-radius:24px;padding:40px;text-align:center;margin:0 auto 40px;max-width:900px;display:none}
+.results-banner.show{display:block;animation:popIn .5s cubic-bezier(.34,1.56,.64,1)}
+.results-emoji{font-size:4rem;margin-bottom:12px}.results-title{font-size:1.8rem;font-weight:900;margin-bottom:8px}.results-score{font-size:1.1rem;color:var(--soft);margin-bottom:20px}.results-stars{font-size:2.5rem;letter-spacing:4px;margin-bottom:24px}
+.results-retry{background:var(--c);color:#fff;padding:12px 32px;border-radius:12px;font-size:1rem;font-weight:800;transition:opacity .15s}.results-retry:hover{opacity:0.85}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none}
+.game-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+.star-pop{position:fixed;font-size:2rem;pointer-events:none;z-index:999;animation:starFloat 1s ease forwards}
+@keyframes starFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.footer-logo{font-family:var(--font-or);font-size:1rem;font-weight:700}.footer-copy{font-size:0.78rem;color:var(--light);font-weight:600}
+@media(max-width:768px){nav,.star-bar,.page-hero,.game-section,footer{padding-left:20px;padding-right:20px}.match-grid,.quiz-options{grid-template-columns:1fr}}
+@media(max-width:480px){.breadcrumb{display:none}.quiz-options{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<nav>
+  <a href="../../../index.html" class="logo"><div class="logo-emoji">📖</div><div class="logo-text"><!-- REVIEW NEEDED --><span class="logo-odia">ପାଠପଢ଼ା</span><span class="logo-url">pathapadha.com</span></div></a>
+  <div class="breadcrumb"><a href="../../../index.html">Home</a> › <a href="../../index.html">Class 11</a> › <a href="../index.html">ବାଣିଜ୍ୟ</a> › <!-- REVIEW NEEDED --><span>ଇଂରାଜୀ ଖେଳ</span></div>
+</nav>
+<div class="star-bar"><div class="star-display"><span class="star-count" id="starCount">0</span><span style="font-size:1.4rem">⭐</span><span class="star-label">Stars earned</span></div><div class="progress-wrap"><div class="progress-label">Overall progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div></div><div class="games-done" id="gamesDone">0 / 4 games done</div></div>
+<!-- REVIEW NEEDED -->
+<div class="page-hero"><h1>ଇଂରାଜୀ ଖେଳ 🎮</h1><p>4 fun games to practise English — earn ⭐ for every correct answer!</p></div>
+<hr class="divider">
+
+<section class="game-section" id="game1">
+  <div class="game-header"><div class="game-icon">🔗</div><div><!-- REVIEW NEEDED --><div class="game-title">Game 1 — Literary Terms Match</div><div class="game-subtitle">Match the literary term to its definition.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div class="match-grid"><div class="match-col"><div class="match-col-label">TERM</div><div id="matchLeft"></div></div><div class="match-col"><div class="match-col-label">DEFINITION</div><div id="matchRight"></div></div></div>
+  <div style="margin-top:20px;font-size:0.85rem;font-weight:700;color:var(--light)" id="matchStatus"></div>
+</section>
+<hr class="game-divider">
+
+<section class="game-section" id="game2">
+  <div class="game-header"><div class="game-icon">❓</div><div><div class="game-title">Game 2 — Grammar Quiz</div><div class="game-subtitle">Test your English grammar knowledge.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div id="quizContainer"></div>
+  <button class="quiz-next show" id="quizNextBtn" onclick="nextQuiz()">Next Question →</button>
+</section>
+<hr class="game-divider">
+
+<section class="game-section" id="game3">
+  <div class="game-header"><div class="game-icon">✏️</div><div><div class="game-title">Game 3 — Fill in the Blank</div><div class="game-subtitle">Choose the correct word to complete the sentence.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div id="fillContainer"></div>
+  <button class="fill-next show" id="fillNextBtn" onclick="nextFill()">Next →</button>
+</section>
+<hr class="game-divider">
+
+<section class="game-section" id="game4">
+  <div class="game-header"><div class="game-icon">🔢</div><div><div class="game-title">Game 4 — Sentence Order</div><div class="game-subtitle">Arrange the sentences in logical order to form a paragraph.</div></div><div class="game-stars-possible">Up to 5 ⭐</div></div>
+  <div id="sortContainer"></div>
+  <button class="quiz-next show" id="sortCheckBtn" onclick="checkSort()">Check Order ✓</button>
+</section>
+
+<!-- REVIEW NEEDED -->
+<div class="results-banner" id="resultsBanner"><div class="results-emoji" id="resultsEmoji">🏆</div><div class="results-title" id="resultsTitle">ବହୁତ ଭଲ!</div><div class="results-score" id="resultsScore"></div><div class="results-stars" id="resultsStars"></div><button class="results-retry" onclick="location.reload()">ପୁଣି ଖେଳ 🔄</button></div>
+<footer><!-- REVIEW NEEDED --><span class="footer-logo">ପାଠପଢ଼ା</span><span class="footer-copy">Class 11 · Commerce · ଇଂରାଜୀ · Free forever</span></footer>
+<script>
+// REVIEW NEEDED
+var totalStars=0,gamesCompleted=0,totalGames=4;
+function addStars(n,el){totalStars+=n;document.getElementById('starCount').textContent=totalStars;updateProgress();for(var i=0;i<n;i++){(function(idx){setTimeout(function(){var pop=document.createElement('div');pop.className='star-pop';pop.textContent='⭐';if(el){var r=el.getBoundingClientRect();pop.style.left=(r.left+r.width/2)+'px';pop.style.top=r.top+'px'}else{pop.style.left=(window.innerWidth/2)+'px';pop.style.top=(window.innerHeight/2)+'px'}document.body.appendChild(pop);setTimeout(function(){pop.remove()},1000)},idx*150)})(i)}}
+function completeGame(){gamesCompleted++;updateProgress();if(gamesCompleted>=totalGames)showResults()}
+function updateProgress(){var pct=(gamesCompleted/totalGames)*100;document.getElementById('progressFill').style.width=pct+'%';document.getElementById('gamesDone').textContent=gamesCompleted+' / '+totalGames+' games done'}
+function showResults(){var maxStars=20;var banner=document.getElementById('resultsBanner');var pct=Math.round((totalStars/maxStars)*100);document.getElementById('resultsScore').textContent='You earned '+totalStars+' out of '+maxStars+' stars ('+pct+'%)';var s='';for(var i=0;i<Math.min(totalStars,10);i++)s+='⭐';if(totalStars>10)s+=' +'+(totalStars-10);document.getElementById('resultsStars').textContent=s;if(pct===100){document.getElementById('resultsEmoji').textContent='🏆';document.getElementById('resultsTitle').textContent='Perfect! ସମ୍ପୂର୍ଣ୍ଣ!'}else if(pct>=70){document.getElementById('resultsEmoji').textContent='🎉';document.getElementById('resultsTitle').textContent='ବହୁତ ଭଲ!'}else{document.getElementById('resultsEmoji').textContent='💪';document.getElementById('resultsTitle').textContent='ଆଉ ଥରେ ଚେଷ୍ଟା କର!'}banner.classList.add('show');if(pct>=70)launchConfetti()}
+
+// Game 1: Match Literary Terms
+var matchData=[
+  {left:'Simile',right:'Comparison using like/as',id:'a'},
+  {left:'Metaphor',right:'Direct comparison',id:'b'},
+  {left:'Alliteration',right:'Repeated initial sounds',id:'c'},
+  {left:'Irony',right:'Opposite of expected meaning',id:'d'},
+  {left:'Personification',right:'Human qualities to objects',id:'e'}
+];
+(function(){var data=matchData.slice();var shuffledRight=data.map(function(d){return{right:d.right,id:d.id}});for(var i=shuffledRight.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffledRight[i];shuffledRight[i]=shuffledRight[j];shuffledRight[j]=t}
+var leftCol=document.getElementById('matchLeft');var rightCol=document.getElementById('matchRight');var selected=null,matched=0,done=false;
+data.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span class="match-letter">'+d.left+'</span>';el.dataset.id=d.id;el.dataset.side='left';el.onclick=function(){click(el)};leftCol.appendChild(el)});
+shuffledRight.forEach(function(d){var el=document.createElement('div');el.className='match-item';el.innerHTML='<span class="match-letter">'+d.right+'</span>';el.dataset.id=d.id;el.dataset.side='right';el.onclick=function(){click(el)};rightCol.appendChild(el)});
+function click(el){if(done||el.classList.contains('correct'))return;if(!selected){selected=el;el.classList.add('selected');return}if(selected===el){selected.classList.remove('selected');selected=null;return}if(selected.dataset.side===el.dataset.side){selected.classList.remove('selected');selected=el;el.classList.add('selected');return}if(selected.dataset.id===el.dataset.id){selected.classList.remove('selected');selected.classList.add('correct');el.classList.add('correct');matched++;addStars(1,el);document.getElementById('matchStatus').textContent=matched+' / '+data.length+' matched';if(matched===data.length){done=true;document.getElementById('matchStatus').textContent='All matched! 🎉';completeGame()}}else{selected.classList.remove('selected');selected.classList.add('wrong');el.classList.add('wrong');setTimeout(function(){selected.classList.remove('wrong');el.classList.remove('wrong');selected=null},500);return}selected=null}})();
+
+// Game 2: Grammar Quiz
+var quizData=[
+  {q:'Choose the correct tense: "She ___ to school every day."',opts:['goes','went','going','gone'],ans:0},
+  {q:'Change to passive voice: "The cat caught the mouse."',opts:['The mouse was caught by the cat.','The mouse is caught by the cat.','The mouse caught the cat.','The cat was caught.'],ans:0},
+  {q:'Which is a compound sentence?',opts:['I was tired, so I went to bed.','Running in the park.','The big red ball.','Because it rained.'],ans:0},
+  {q:'Choose the correct form: "If I ___ rich, I would travel."',opts:['were','was','am','be'],ans:0},
+  {q:'Identify the figure of speech: "The wind howled in anger."',opts:['Personification','Simile','Metaphor','Hyperbole'],ans:0}
+];
+var quizIdx=0;
+function renderQuiz(){if(quizIdx>=quizData.length){document.getElementById('quizNextBtn').style.display='none';completeGame();return}var d=quizData[quizIdx];var html='<div class="quiz-card"><div class="quiz-q-num">Question '+(quizIdx+1)+' of '+quizData.length+'</div><div class="quiz-question">'+d.q+'</div><div class="quiz-instruction">Pick the correct answer</div><div class="quiz-options" id="quizOpts">';d.opts.forEach(function(o,i){html+='<button class="quiz-opt" onclick="pickQuiz(this,'+i+')" data-idx="'+i+'">'+o+'</button>'});html+='</div><div class="quiz-feedback" id="quizFeedback"></div></div>';document.getElementById('quizContainer').innerHTML=html;document.getElementById('quizNextBtn').classList.remove('show')}
+function pickQuiz(el,idx){var d=quizData[quizIdx];var all=document.querySelectorAll('#quizOpts .quiz-opt');all.forEach(function(o){o.disabled=true});var fb=document.getElementById('quizFeedback');if(idx===d.ans){el.classList.add('correct');fb.className='quiz-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.classList.add('wrong');all.forEach(function(o){if(parseInt(o.dataset.idx)===d.ans)o.classList.add('correct')});fb.className='quiz-feedback show bad';fb.textContent='❌ The correct answer is '+d.opts[d.ans]}document.getElementById('quizNextBtn').classList.add('show')}
+function nextQuiz(){quizIdx++;renderQuiz()}
+renderQuiz();
+
+// Game 3: Fill in the blank
+var fillData=[
+  {sentence:'He has been working here ___ 2010.',answer:'since',choices:['since','for','from','at'],hint:'📅'},
+  {sentence:'Neither the teacher ___ the students were present.',answer:'nor',choices:['nor','or','and','but'],hint:'📝'},
+  {sentence:'She is ___ honest girl. (article)',answer:'an',choices:['an','a','the','no article'],hint:'📖'},
+  {sentence:'If it rains, we ___ stay indoors.',answer:'will',choices:['will','would','should','could'],hint:'🌧️'},
+  {sentence:'The book ___ on the table right now.',answer:'is',choices:['is','was','were','are'],hint:'📕'}
+];
+var fillIdx=0;
+function renderFill(){if(fillIdx>=fillData.length){document.getElementById('fillNextBtn').style.display='none';completeGame();return}var d=fillData[fillIdx];var shuffled=d.choices.slice();for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t}var cHTML='';shuffled.forEach(function(c){cHTML+='<button class="fill-choice" onclick="pickFill(this)">'+c+'</button>'});var html='<div class="fill-card"><div class="quiz-q-num">Sentence '+(fillIdx+1)+' of '+fillData.length+'</div><div class="fill-prompt">'+d.hint+' '+d.sentence+'</div><div class="fill-hint">Pick the correct word</div><div class="fill-choices" id="fillChoices">'+cHTML+'</div><div class="fill-feedback" id="fillFeedback"></div></div>';document.getElementById('fillContainer').innerHTML=html;document.getElementById('fillNextBtn').classList.remove('show')}
+function pickFill(el){var d=fillData[fillIdx];var fb=document.getElementById('fillFeedback');document.querySelectorAll('#fillChoices .fill-choice').forEach(function(c){c.style.pointerEvents='none'});if(el.textContent===d.answer){el.style.borderColor='var(--green)';el.style.background='var(--greenbg)';fb.className='fill-feedback show ok';fb.textContent='✅ Correct!';addStars(1,el)}else{el.style.borderColor='var(--red)';el.style.background='var(--redbg)';fb.className='fill-feedback show bad';fb.textContent='❌ The correct answer is '+d.answer}document.getElementById('fillNextBtn').classList.add('show')}
+function nextFill(){fillIdx++;renderFill()}
+renderFill();
+
+// Game 4: Sort — Letter Writing Steps
+var sortLines=['① Understand the purpose of the letter','② Write the sender\'s address and date','③ Add the salutation (Dear Sir/Madam)','④ Write the body of the letter','⑤ End with closing and signature'];
+(function(){var correct=sortLines.slice();var shuffled=sortLines.slice();for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t}
+var container=document.getElementById('sortContainer');var dragIdx=null;
+function render(){container.innerHTML='';shuffled.forEach(function(line,i){var el=document.createElement('div');el.className='quiz-card';el.style.padding='16px 24px';el.style.cursor='grab';el.style.marginBottom='8px';el.draggable=true;el.innerHTML='<span style="color:var(--light);font-weight:800;margin-right:12px">'+(i+1)+'</span><span style="font-size:1rem">'+line+'</span>';el.ondragstart=function(){dragIdx=i};el.ondragover=function(e){e.preventDefault();el.style.borderColor='var(--c)'};el.ondragleave=function(){el.style.borderColor='var(--border)'};el.ondrop=function(e){e.preventDefault();el.style.borderColor='var(--border)';if(dragIdx!==null&&dragIdx!==i){var t=shuffled[dragIdx];shuffled[dragIdx]=shuffled[i];shuffled[i]=t;render()}dragIdx=null};el.onclick=function(){if(dragIdx===null){dragIdx=i;el.style.borderColor='var(--blue)';el.style.background='var(--bluebg)'}else if(dragIdx===i){dragIdx=null;render()}else{var t=shuffled[dragIdx];shuffled[dragIdx]=shuffled[i];shuffled[i]=t;dragIdx=null;render()}};container.appendChild(el)})}
+render();
+window.checkSort=function(){var allCorrect=true;for(var i=0;i<shuffled.length;i++){if(shuffled[i]!==correct[i]){allCorrect=false;break}}var cards=container.querySelectorAll('.quiz-card');if(allCorrect){cards.forEach(function(c){c.style.borderColor='var(--green)';c.style.background='var(--greenbg)'});addStars(5);document.getElementById('sortCheckBtn').style.display='none';completeGame()}else{var correctCount=0;cards.forEach(function(c,i){if(shuffled[i]===correct[i]){c.style.borderColor='var(--green)';c.style.background='var(--greenbg)';correctCount++}else{c.style.borderColor='var(--red)';c.style.background='var(--redbg)'}});if(correctCount>0)addStars(Math.floor(correctCount/2));setTimeout(function(){cards.forEach(function(c){c.style.borderColor='var(--border)';c.style.background='#fff'})},1500)}}})();
+
+function launchConfetti(){var canvas=document.getElementById('confetti');canvas.style.display='block';canvas.width=window.innerWidth;canvas.height=window.innerHeight;var ctx=canvas.getContext('2d');var pieces=[];var colors=['#43AA8B','#FF9F43','#FECA57','#48DBFB','#1DD1A1','#A29BFE','#FD79A8','#6C5CE7'];for(var i=0;i<150;i++){pieces.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,w:Math.random()*10+5,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],vy:Math.random()*3+2,vx:(Math.random()-0.5)*2,rot:Math.random()*360,vr:(Math.random()-0.5)*8})}var frames=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});frames++;if(frames<200)requestAnimationFrame(draw);else canvas.style.display='none'}draw()}
+</script>
+</body></html>
